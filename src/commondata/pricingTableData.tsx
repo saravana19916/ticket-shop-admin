@@ -1,0 +1,161 @@
+import { IPricingDetailsProps } from "../components/pricing/AddPricing/type";
+
+export type IPricingTypes = "Dynamic Price" | "Fixed Price";
+
+export const pricingDetailsData: IPricingDetailsProps[] = [
+  {
+    id: 1,
+    productDetails: {
+      productName: "Golden Ticket",
+      productType: "Ticket",
+      productCategory: "VIP",
+      productSubCategory: "Gold",
+      productSubTitle: "Weekday",
+      img: undefined,
+      description: "Access to VIP",
+    },
+    rulesAndTimeline: {
+      minOrder: "01",
+      maxOrder: "10",
+      access: "01",
+      scan: undefined,
+      salesStartDate: new Date("2024-10-08T18:30:00.000Z"),
+      salesEndDate: new Date("2024-10-08T18:30:00.000Z"),
+    },
+    pricing: {
+      netSalesPrice: 100,
+      transactionCurrency: "AED",
+      vatTax: 5,
+      entertainmentTax: 2,
+      municipalTax: 1,
+      otherTax: 3,
+    },
+    inclusion: {
+      inclusionList: ["Access to VIP area", "Priority entry"],
+    },
+  },
+  {
+    id: 2,
+    productDetails: {
+      productName: "Silver Ticket",
+      productType: "Ticket",
+      productCategory: "Standard",
+      productSubCategory: "Silver",
+      productSubTitle: "Weekend",
+      img: undefined,
+      description: "Standard entry ticket",
+    },
+    rulesAndTimeline: {
+      minOrder: "01",
+      maxOrder: "5",
+      access: "02",
+      scan: "100",
+      salesStartDate: new Date("2024-10-08T18:30:00.000Z"),
+      salesEndDate: new Date("2024-10-08T18:30:00.000Z"),
+    },
+    pricing: {
+      netSalesPrice: 75,
+      transactionCurrency: "AED",
+      vatTax: 5,
+      entertainmentTax: 2,
+      municipalTax: 1,
+      otherTax: 2,
+    },
+    inclusion: {
+      inclusionList: ["Standard entry", "General seating"],
+    },
+  },
+  {
+    id: 3,
+    productDetails: {
+      productName: "Platinum Pass",
+      productType: "Pass",
+      productCategory: "VIP",
+      productSubCategory: "Platinum",
+      productSubTitle: "Holiday Special",
+      img: undefined,
+      description: "Exclusive access",
+    },
+    rulesAndTimeline: {
+      minOrder: "01",
+      maxOrder: "3",
+      access: "03",
+      scan: "20",
+      salesStartDate: new Date("2024-10-08T18:30:00.000Z"),
+      salesEndDate: new Date("2024-10-05T18:30:00.000Z"),
+    },
+    pricing: {
+      netSalesPrice: 200,
+      transactionCurrency: "AED",
+      vatTax: 5,
+      entertainmentTax: 2,
+      municipalTax: 1,
+      otherTax: 4,
+    },
+    inclusion: {
+      inclusionList: ["VIP lounge access", "Complimentary drinks"],
+    },
+  },
+  {
+    id: 4,
+    productDetails: {
+      productName: "General Admission",
+      productType: "Ticket",
+      productCategory: "General",
+      productSubCategory: "Regular",
+      productSubTitle: "Regular",
+      img: undefined,
+      description: "General admission",
+    },
+    rulesAndTimeline: {
+      minOrder: "01",
+      maxOrder: "10",
+      access: "04",
+      scan: "180",
+      salesStartDate: new Date("2024-10-08T18:30:00.000Z"),
+      salesEndDate: new Date("2024-10-08T18:30:00.000Z"),
+    },
+    pricing: {
+      netSalesPrice: 50,
+      transactionCurrency: "AED",
+      vatTax: 5,
+      entertainmentTax: 2,
+      municipalTax: 1,
+      otherTax: 1,
+    },
+    inclusion: {
+      inclusionList: ["General seating"],
+    },
+  },
+  {
+    id: 5,
+    productDetails: {
+      productName: "Family Pack",
+      productType: "Ticket",
+      productCategory: "Family",
+      productSubCategory: "Pack",
+      productSubTitle: "Summer Offer",
+      img: undefined,
+      description: "Discounted pack",
+    },
+    rulesAndTimeline: {
+      minOrder: "01",
+      maxOrder: "5",
+      access: "05",
+      scan: "45",
+      salesStartDate: new Date("2024-10-08T18:30:00.000Z"),
+      salesEndDate: new Date("2024-07-08T18:30:00.000Z"),
+    },
+    pricing: {
+      netSalesPrice: 350,
+      transactionCurrency: "AED",
+      vatTax: 5,
+      entertainmentTax: 2,
+      municipalTax: 1,
+      otherTax: 6,
+    },
+    inclusion: {
+      inclusionList: ["Family seating", "Discounted food vouchers"],
+    },
+  },
+];

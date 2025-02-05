@@ -1,0 +1,78 @@
+.go-back-btn {
+  border-color: #000;
+  color: #000;
+}
+.badge-red {
+  background-color: #ed003b;
+  color: #fff;
+}
+.badge-red:hover {
+  background-color: #ed003b;
+  color: #fff;
+}
+.badge-light-gray {
+  background-color: #b6bbc4;
+  color: #fff;
+}
+.badge-light-green {
+  background-color: #06d001;
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+  &:active {
+    color: #fff;
+  }
+}
+
+.save-draft-btn {
+  border-color: #ed003b;
+  color: #ed003b;
+
+  &:hover {
+    border-color: #ed003b;
+    color: #ed003b;
+  }
+}
+
+.saved-draft-btn {
+  border-color: #00a650;
+  color: #00a650;
+
+  &:hover {
+    border-color: #00a650;
+    color: #00a650;
+  }
+}
+
+.complete-btn {
+  border-color: #ed003b;
+  background-color: #ed003b;
+  color: #fff;
+}
+.complete-btn:hover {
+  border-color: #ed003b;
+  background-color: #ed003b;
+  color: #fff;
+}
+
+.dark-mode {
+  .go-back-btn {
+    border-color: #dcdfe8;
+    color: #dcdfe8;
+  }
+  .complete-btn {
+    background-color: #ed003b;
+    border-color: #ed003b;
+    color: #fff;
+  }
+  .saved-draft-btn {
+    border-color: #00a650;
+    color: #00a650;
+  }
+  .save-draft-btn {
+    border-color: #ed003b;
+    color: #ed003b;
+  }
+}

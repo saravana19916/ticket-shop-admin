@@ -1,0 +1,32 @@
+@charset "UTF-8";
+// plugin css
+@import "./assets/scss/variables";
+// custom css
+@import "./assets/css/animated.css";
+@import "./assets/css/style.css";
+@import "./assets/css/icons.css";
+@import "./assets/iconfonts/feather/feather.css";
+@import "./assets/switcher/css/switcher.css";
+@import "./assets/switcher/demo.css";
+@import "./assets/scss/date-picker/date-picker-header";
+@import "./assets/scss/custom/add-listing";
+@import "./assets/scss/custom/dashboard";
+@import "./assets/scss/custom/custom-file-upload";
+@import "./assets/scss/custom/custom-dropdown";
+@import "./assets/scss/custom/custom-form-control";
+@import "./assets/scss/custom/custom-toggle-button";
+@import "./assets/scss/custom/custom-utilities";
+@import "./assets/scss/custom/custom-inclusion-badge";
+@import "./assets/scss/custom/sidebar";
+@import "./assets/scss/custom/accordion-table";
+@import "./assets/scss/custom/custom-tile";
+
+//perfect-scrollbar
+@import "react-perfect-scrollbar/dist/css/styles.css";
+// form-editor
+@import "suneditor/dist/css/suneditor.min.css";
+//react date picker
+@import "react-datepicker/dist/react-datepicker.css";
+@import "@simonwep/pickr/dist/themes/classic.min.css"; // 'classic' theme
+@import "@simonwep/pickr/dist/themes/monolith.min.css"; // 'monolith' theme
+@import "@simonwep/pickr/dist/themes/nano.min.css";

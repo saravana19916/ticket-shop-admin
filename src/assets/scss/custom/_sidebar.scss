@@ -1,0 +1,24 @@
+.sidebar-dropdown-border {
+  border-color: #d81c2b;
+}
+.dropdown-icon-dark {
+  color: #000;
+}
+.border.border-primary {
+  border-color: #d81c2b !important;
+}
+.bg-primary-circle {
+  background-color: #d81c2b !important;
+  border-radius: 50% !important;
+  width: 22px;
+  height: 22px;
+}
+.dark-mode {
+  .sidebar-dropdown-border {
+    border-color: #fff !important;
+  }
+
+  .dropdown-icon-dark {
+    color: #fff;
+  }
+}

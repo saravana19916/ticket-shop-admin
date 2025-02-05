@@ -1,0 +1,13 @@
+.toggle-button {
+  display: inline-block;
+  background-color: #17dac7;
+  transition: background-color 0.4s ease-out;
+}
+
+.toggle-button.off {
+  background-color: #e82646;
+}
+
+.toggle-circle {
+  transition: transform 0.4s ease-out;
+}

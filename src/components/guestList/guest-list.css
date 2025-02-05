@@ -1,0 +1,35 @@
+.dropdown-toggle::after {
+  display: none;
+}
+.accordion-button:not(.collapsed) {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+.custom-toggle-button .accordion-button::after {
+  font-size: 1.2rem;
+  color: #777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5e5e5;
+  border-radius: 50%;
+  width: 2.1rem;
+  height: 2.1rem;
+  position: relative;
+}
+.custom-toggle-button .accordion-button[aria-expanded="true"]::after {
+  background-color: #ff4d6d;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+.accordion-header:hover {
+  padding: 0px;
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.accordion-header:hover .bg-color-light-gray-2 {
+  background-color: #e9ecef;
+}

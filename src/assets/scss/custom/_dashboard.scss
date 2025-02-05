@@ -1,0 +1,71 @@
+//utilities
+.text-black {
+  color: #000;
+}
+.fs-14px {
+  font-size: 14px;
+}
+.fs-12px {
+  font-size: 12px;
+}
+.fw-300 {
+  font-weight: 300;
+}
+.bg-light-gray {
+  color: #777;
+  background-color: #f6f6fb;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+//badge
+
+.badge-bg-gray {
+  background-color: #a6a6a6;
+}
+.shared-modal-alert {
+  background-color: #f6eec9;
+  color: #000;
+}
+
+// containers
+.card-body-custom {
+  background-color: #e5e5e5;
+}
+.card-header-custom {
+  background-color: #e5e5e5;
+}
+
+//dark mode
+.dark-mode {
+  //utilities
+  .text-black {
+    color: #fff;
+  }
+  .bg-light-gray {
+    background-color: #f6f6fb;
+    color: #000;
+    border: none;
+  }
+  // containers
+  .card-body-custom {
+    background-color: transparent;
+  }
+  .card-header-custom {
+    background-color: transparent;
+  }
+
+  //badge
+
+  .badge-bg-gray {
+    background-color: #f6f6fb;
+    color: #000;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-body-custom {
+    padding: 15px 0 5px 20px;
+  }
+}

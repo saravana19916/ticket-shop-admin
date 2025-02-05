@@ -1,0 +1,240 @@
+// TEXT - COLOR
+.color-gray-3 {
+  color: #999 !important;
+}
+.text-color-gray-1 {
+  color: #b7b7b7 !important;
+}
+.text-primary-1 {
+  color: #ed003b !important;
+}
+.text-blue-1 {
+  color: #01204e !important;
+}
+.text-light-blue-1 {
+  color: #0d7cef !important;
+}
+
+//BACK GROUND
+
+.bg-color-gray-3 {
+  background-color: #999 !important;
+}
+.bg-color-light-gray-3 {
+  background-color: #c5c5c5 !important;
+}
+.bg-color-light-gray-2 {
+  background-color: #e5e5e5 !important;
+}
+.bg-color-light-gray-4 {
+  background-color: #6b6b6b !important;
+}
+.bg-primary-1 {
+  background-color: #ed003b !important;
+}
+.bg-secondary-1 {
+  background-color: #f1f2f2 !important;
+}
+.bg-white {
+  background-color: #fff !important;
+}
+.bg-white-2 {
+  background-color: #f1f2f2 !important;
+}
+.bg-black {
+  background-color: #000 !important;
+}
+.bg-gray-light-2 {
+  background-color: #eee !important;
+}
+
+// WIDTH & HEIGHT
+.w-220px {
+  width: 220px !important;
+}
+.min-w-100 {
+  min-width: 100% !important;
+}
+.w-255px {
+  width: 255px !important;
+}
+.w-60 {
+  width: 60% !important;
+}
+.max-w-100 {
+  max-width: 100% !important;
+}
+.w-20-px {
+  width: 20px !important;
+}
+
+.h-20-px {
+  height: 20px !important;
+}
+
+// BORDER
+.border-inline-end-0 {
+  border-inline-end: 0 !important;
+}
+.border-inline-start-0 {
+  border-inline-start: 0 !important;
+}
+
+.border-end-rounded {
+  border-start-end-radius: 50px !important;
+  border-end-end-radius: 50px !important;
+}
+.border-start-rounded {
+  border-start-start-radius: 50px !important;
+  border-end-start-radius: 50px !important;
+}
+.border-full-rounded {
+  border-start-end-radius: 50px !important;
+  border-end-end-radius: 50px !important;
+  border-start-start-radius: 50px !important;
+  border-end-start-radius: 50px !important;
+}
+.border-gray-light-2 {
+  border-color: #eee !important;
+}
+.border-gray-light-3 {
+  border-color: #b3b3b3 !important;
+}
+.border-form-input {
+  border-color: hsla(240, 3%, 71%, 0.809) !important;
+}
+.border-radius-20px {
+  border-radius: 20px;
+}
+.border-radius-16px {
+  border-radius: 16px;
+}
+.border-0 {
+  border: 0 !important;
+}
+// PADDING
+.px-9px {
+  padding-top: 9px !important;
+  padding-bottom: 9px !important;
+}
+.px-8px {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+.px-13px {
+  padding-top: 13px !important;
+  padding-bottom: 13px !important;
+}
+
+//MARGIN
+.m-0 {
+  margin: 0px !important;
+}
+.mb-1px {
+  margin-bottom: 1px !important;
+}
+
+// FORM
+.textarea-resize-none {
+  resize: none;
+}
+
+// Z INDEX
+.z-3 {
+  z-index: 3 !important;
+}
+
+// FONT -WEIGHT
+.fw-300 {
+  font-weight: 300;
+}
+.fw-black {
+  font-weight: 900;
+}
+
+// FONT_SIZE
+.fs-26px {
+  font-size: 26px;
+}
+.fs-16px {
+  font-size: 1.142rem !important;
+}
+.fs-1rem {
+  font-size: 1rem !important;
+}
+.fs-12px {
+  font-size: 0.857rem !important;
+}
+.fs-11px {
+  font-size: 0.785rem !important;
+}
+.fs-10px {
+  font-size: 0.714rem !important;
+}
+.fs-9px {
+  font-size: 0.642rem !important;
+}
+.fs-8px {
+  font-size: 0.571rem !important;
+}
+
+// POSITION
+.left-35 {
+  left: 35% !important;
+}
+
+//BUTTON
+.btn-primary-1 {
+  background-color: #ed003b !important;
+  color: #fff !important;
+}
+
+.custom-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* Default padding */
+  padding-right: 1rem;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    /* sm */
+    max-width: 640px;
+  }
+
+  @media (min-width: 768px) {
+    /* md */
+    max-width: 768px;
+  }
+
+  @media (min-width: 1024px) {
+    /* lg */
+    max-width: 1024px;
+  }
+
+  @media (min-width: 1280px) {
+    /* xl */
+    max-width: 1280px;
+  }
+
+  @media (min-width: 1536px) {
+    /* 2xl */
+    max-width: 1536px;
+  }
+}
+.center-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  width: 100%;
+  max-width: 100%;
+
+  @media (min-width: 836px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 836px;
+  }
+}
+.rounded-16px {
+  border-radius: 16px;
+}

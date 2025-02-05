@@ -1,0 +1,32 @@
+.custom-dropdown-toggle-start-rounded {
+  border-start-start-radius: 50px;
+  border-color: #eeedeb;
+  border-end-start-radius: 50px;
+  color: #000;
+  background-color: #fff;
+}
+.custom-dropdown-toggle-end-rounded {
+  border-start-end-radius: 50px;
+  border-color: #eeedeb;
+  border-end-end-radius: 50px;
+  color: #000;
+  background-color: #fff;
+}
+.custom-dropdown-down-icon {
+  color: #000;
+}
+.custom-dropdown-form-control {
+  border-start-end-radius: 50px;
+  border-end-end-radius: 50px;
+  color: #000;
+  background-color: #fff;
+  border-color: #eeedeb;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+}

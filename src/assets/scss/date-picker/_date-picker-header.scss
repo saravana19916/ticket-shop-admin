@@ -1,0 +1,367 @@
+.date-header-bg-color {
+  background-color: #777;
+  color: #b5cfb7;
+}
+
+.react-datepicker__header {
+  background-color: white !important;
+  border-bottom: none !important;
+}
+
+.react-datepicker__day-names {
+  margin-top: 20px !important;
+  margin-bottom: 0px !important;
+}
+
+.react-datepicker__day-name {
+  color: gray !important;
+}
+
+.react-datepicker__navigation {
+  top: 9.5% !important;
+}
+
+.react-datepicker__month-container {
+  padding: 20px !important;
+  padding-bottom: 5px !important;
+}
+
+.react-datepicker__day--today {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--highlighted {
+  background-color: rgb(254, 201, 218) !important;
+  color: rgb(3, 3, 3) !important;
+  border-radius: 41px !important;
+}
+
+.date-time-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-picker,
+.time-picker {
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  text-align: center;
+}
+
+.selected-date-time {
+  margin-top: 20px;
+}
+
+.custom-datepicker {
+  border: none !important;
+  border-color: none !important;
+  width: 10vw;
+}
+
+.custom-datepicker:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.react-datepicker__triangle {
+  display: none !important;
+}
+.react-datepicker__day:hover {
+  border-radius: 41px !important;
+}
+.react-datepicker__day--selected {
+  background-color: rgb(255, 0, 62) !important;
+  color: rgb(3, 3, 3) !important;
+  border-radius: 41px !important;
+}
+
+.stsearch-box input {
+  border: none !important;
+  background-color: #f6f6fb !important;
+}
+
+.stsearch-box input:target {
+  border: none !important;
+}
+
+.city-default {
+  .css-13cymwt-control {
+    border-radius: 7px !important;
+    border: none;
+    padding: 2px;
+    background-color: #f6f6fb !important;
+  }
+  .css-13cymwt-control:hover {
+    background-color: #f6f6fb !important;
+  }
+  .css-1u9des2-indicatorSeparator {
+    background-color: #f6f6fb !important;
+  }
+}
+.react-select-right-rounded {
+  .css-13cymwt-control {
+    padding: 2px;
+    border-start-start-radius: 50px !important;
+    border-end-start-radius: 50px !important;
+    color: #000;
+    border-color: #eeedeb;
+  }
+  .css-t3ipsp-control {
+    border-color: #eeedeb !important;
+    box-shadow: none !important;
+    border-start-end-radius: 50px !important;
+    border-end-end-radius: 50px !important;
+  }
+  .css-13cymwt-control:focus,
+  .css-13cymwt-control--is-focused {
+    box-shadow: none !important;
+    border-color: #eeedeb !important;
+    border-start-start-radius: 50px !important;
+    border-end-start-radius: 50px !important;
+  }
+  .css-1u9des2-indicatorSeparator {
+    background-color: #f6f6fb !important;
+  }
+}
+
+.stsearch-box {
+  padding: 6px;
+  background-color: #f6f6fb !important;
+}
+
+.stdropdown-input {
+  background-color: #f6f6fb !important;
+  border-radius: 7px;
+}
+
+.stdropdown-container {
+  border: none !important;
+}
+.custom-calendar {
+  .react-datepicker {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 0px;
+  }
+}
+.react-datepicker {
+  border: none !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background: #fff;
+}
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+.react-datepicker__month-container {
+  font-size: 14px !important;
+}
+
+.react-datepicker__day {
+  margin: 7px !important;
+}
+
+.react-datepicker__day-name {
+  margin: 0px 10px 2px 2px !important;
+}
+
+.custom-time-picker {
+  width: 100%;
+  border: 1px solid #f0f0f4 !important;
+  padding-right: 40px !important;
+}
+
+.custom-time-picker:focus-visible {
+  border: 1px solid #f0f0f4 !important;
+}
+
+.react-datepicker__time-box {
+  width: 20vw !important;
+  background-color: white !important;
+}
+
+.custom-time {
+  .react-datepicker__header {
+    display: none;
+  }
+}
+
+.icon {
+  color: #000;
+  right: 22px;
+  top: 25%;
+  height: 30px !important;
+  width: 35px !important;
+}
+
+.react-datepicker__input-container {
+  input {
+    color: #6e7070 !important;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji" !important;
+  }
+}
+
+.custom-border {
+  .css-13cymwt-control {
+    border-radius: 80px !important;
+    background-color: white !important;
+    border: 1px solid #b8b8b8 !important;
+  }
+  .css-13cymwt-control:focus-visible {
+    border-radius: 80px !important;
+    background-color: white !important;
+    border: 1px solid #b8b8b8 !important;
+  }
+  .css-w9q2zk-Input2 {
+    padding-top: 13px;
+  }
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item:hover {
+  background-color: #ffecee !important;
+  color: #d81c2b !important;
+}
+
+ul.react-datepicker__time-list li.react-datepicker__time-list-item {
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 14px;
+  color: #6e7070;
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  background-color: #f7c4c9 !important;
+  color: #d81c2b !important;
+}
+
+.css-9wlep6-control {
+  border: 1px solid #f1f2f2 !important;
+  height: 43px;
+}
+.number-select {
+  .css-12a83d4-MultiValueRemove {
+    display: none !important;
+  }
+
+  .css-1p3m7a8-multiValue {
+    background-color: transparent !important;
+  }
+
+  // .css-1p3m7a8-multiValue::after {
+  //   content: ",";
+  // }
+
+  // .css-1uz5b4z-multiValue::after {
+  //   content: ",";
+  // }
+}
+
+.css-wlub84-control:hover {
+  border-color: #f1f2f2 !important;
+  height: 43px;
+  border: #f1f2f2 !important;
+}
+
+.react-datepicker-time__input-container {
+  width: 100% !important;
+}
+
+.react-datepicker-time__input {
+  width: 92% !important;
+  border-radius: 20px;
+  padding: 4px 15px;
+  margin-left: 3px !important;
+  font-size: 14px;
+  border-color: #181c14 !important;
+}
+
+.react-datepicker-time__caption {
+  display: flex !important;
+  margin-left: 8% !important;
+  margin-bottom: 2px !important;
+  font-size: 14px;
+  border-color: #181c14 !important;
+}
+
+.css-1u9des2-indicatorSeparator {
+  display: none;
+}
+.form-datepicker {
+  padding: 12px 12px 12px 20px;
+  border-color: rgb(179, 179, 179);
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  input:focus-visible {
+    outline: none;
+  }
+}
+/* Change the primary color */
+.flatpickr-calendar {
+  --primary-color: var(--primary01); /* Custom color */
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.selected:hover {
+  background: #fec9da !important;
+  border-color: var(--primary-color) !important;
+}
+
+.flatpickr-months .flatpickr-month {
+  background: var(--primary-color) !important;
+}
+
+.flatpickr-current-month input.cur-year {
+  color: #ed003b !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  text-align: end;
+}
+.flatpickr-weekdays {
+  background: var(--primary-color) !important;
+}
+.flatpickr-weekday {
+  color: #ed003b !important;
+}
+
+.flatpickr-day.today {
+  border-color: var(--primary-color) !important;
+}
+.flatpickr-input[readonly] {
+  background-color: transparent !important;
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  color: #ed003b !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+}
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  fill: #ed003b !important;
+}
