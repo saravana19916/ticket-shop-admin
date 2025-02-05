@@ -69919,3 +69919,7 @@ a.fc-event:hover {
 .react-tel-input .flag {
   background-size: auto;
 }
+
+.dropdown-toggle::after {
+  border: none !important;
+}

@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { TabPanel } from "@headlessui/react";
-import { Card } from "react-bootstrap";
+import { Card, Dropdown } from "react-bootstrap";
 import moment from "moment";
 import { IShopDetailsProps } from "../../../commondata/Shops/shopsList";
 import { toast } from "react-toastify";
@@ -51,43 +51,72 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                       {l.shopInformation?.shopType}
                     </span>
                   </div>
-                  {l.shopInformation?.shopType == "Digital" ||
-                  l.shopInformation?.shopType == "Live" ? (
+                  {(l.shopInformation?.shopType === "Digital" ||
+                    l.shopInformation?.shopType === "Live") && (
                     <>
                       <div className="position-absolute end-0 d-flex justify-content-between mx-4 my-4">
-                        {copiedLink == l.id ? (
-                          <>
-                            <i
-                              className="bi bi-check-circle-fill cursor-pointer fs-5 text-success"
-                              onClick={() =>
-                                _handleCopyLink(
-                                  l.id,
-                                  "https://ticketshop.tixbox.com/home"
-                                )
-                              }
-                            ></i>
-                            {/* <span className="badge badge-success-light p-1 border rounded-5 cursor-pointer d-flex align-items-center justify-content-center">
-                              <i className="bi bi-check fs-6"></i>
-                            </span> */}
-                          </>
-                        ) : (
-                          <>
-                            <span
-                              className="badge text-bg-light p-1 border rounded-5 cursor-pointer d-flex align-items-center justify-content-center"
-                              onClick={() =>
-                                _handleCopyLink(
-                                  l.id,
-                                  "https://ticketshop.tixbox.com/home"
-                                )
-                              }
-                            >
-                              <i className="bi bi-link-45deg fs-6"></i>
-                            </span>
-                          </>
+                        <span
+                          className={`badge dark d-block p-2 px-3 rounded-pill text-black ${
+                            l.shopInformation?.status === "Offline"
+                              ? "badge-red"
+                              : l.shopInformation?.status === "Draft"
+                              ? "badge-light-gray"
+                              : "badge-light-green"
+                          }`}
+                        >
+                          {l.shopInformation?.status}
+                        </span>
+
+                        {(l.shopInformation?.shopType === "Digital" ||
+                          l.shopInformation?.shopType === "Live") && (
+                          <span className="position-absolute d-flex my-4">
+                            <Dropdown>
+                              <Dropdown.Toggle
+                                variant="link"
+                                id="dropdown-basic"
+                                style={{
+                                  background: "none",
+                                  color: "#fff",
+                                  border: "none",
+                                  fontSize: "24px",
+                                  textDecoration: "none",
+                                }}
+                              >
+                                ...
+                              </Dropdown.Toggle>
+                              <Dropdown.Menu>
+                                <Dropdown.Item
+                                  onClick={() =>
+                                    _handleCopyLink(
+                                      l.id,
+                                      "https://ticketshop.tixbox.com/home"
+                                    )
+                                  }
+                                >
+                                  {copiedLink === l.id
+                                    ? "Link Copied!"
+                                    : "Share Link"}
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                  as={Link}
+                                  to={`/edit-shop/${l.id}`}
+                                  onClick={() => _handleEdit(l)}
+                                >
+                                  Edit Shop
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                  Generate
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                  Copy
+                                </Dropdown.Item>
+                              </Dropdown.Menu>
+                            </Dropdown>
+                          </span>
                         )}
                       </div>
                     </>
-                  ) : null}
+                  )}
 
                   <img
                     src={l.img}
@@ -110,28 +139,6 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                             l.shopInformation?.country,
                           ])}
                         </span>
-                      </div>
-                      <div className="col-3 d-flex flex-column gap-2 mt-2">
-                        <button
-                          type="button"
-                          className={`btn rounded-pill p-1 text-capitalize fs-9px fw-600 ${
-                            l.shopInformation?.status === "Offline"
-                              ? "badge-red"
-                              : l.shopInformation?.status === "Draft"
-                              ? "badge-light-gray"
-                              : "badge-light-green"
-                          }`}
-                        >
-                          {l.shopInformation?.status}
-                        </button>
-                        <Link
-                          to={`/edit-shop/${l.id}`}
-                          onClick={() => _handleEdit(l)}
-                          className="btn text-white rounded-pill p-1 fs-9px fw-600"
-                          style={{ backgroundColor: "#000" }}
-                        >
-                          Edit
-                        </Link>
                       </div>
                     </div>
                   </Card.Body>
