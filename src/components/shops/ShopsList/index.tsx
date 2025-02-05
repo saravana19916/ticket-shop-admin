@@ -66,8 +66,33 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                         >
                           {l.shopInformation?.status}
                         </span>
-
-                        {(l.shopInformation?.shopType === "Digital" ||
+                      </div>
+                    </>
+                  )}
+                  <img
+                    src={l.img}
+                    className="card-img-top"
+                    alt="..."
+                    height={252}
+                  ></img>
+                  <Card.Body className="p-3 py-5">
+                    <div className="d-flex justify-content-between">
+                      <div className="col-9">
+                        <span className="fw-semibold d-line-block fs-10px">
+                          {l.shopInformation?.shopCode}
+                        </span>
+                        <LandingPageCardHeader>
+                          {l.shopInformation?.shopName}
+                        </LandingPageCardHeader>
+                        <span className="fs-10px">
+                          {_getAddress([
+                            l.shopInformation?.city,
+                            l.shopInformation?.country,
+                          ])}
+                        </span>
+                      </div>
+                      <div className="col-3 d-flex flex-column gap-2 mt-2">
+                      {(l.shopInformation?.shopType === "Digital" ||
                           l.shopInformation?.shopType === "Live") && (
                           <span className="position-absolute d-flex my-4">
                             <Dropdown>
@@ -76,7 +101,7 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                                 id="dropdown-basic"
                                 style={{
                                   background: "none",
-                                  color: "#fff",
+                                  color: "#000",
                                   border: "none",
                                   fontSize: "24px",
                                   textDecoration: "none",
@@ -114,31 +139,6 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                             </Dropdown>
                           </span>
                         )}
-                      </div>
-                    </>
-                  )}
-
-                  <img
-                    src={l.img}
-                    className="card-img-top"
-                    alt="..."
-                    height={252}
-                  ></img>
-                  <Card.Body className="p-3 py-5">
-                    <div className="d-flex justify-content-between">
-                      <div className="col-9">
-                        <span className="fw-semibold d-line-block fs-10px">
-                          {l.shopInformation?.shopCode}
-                        </span>
-                        <LandingPageCardHeader>
-                          {l.shopInformation?.shopName}
-                        </LandingPageCardHeader>
-                        <span className="fs-10px">
-                          {_getAddress([
-                            l.shopInformation?.city,
-                            l.shopInformation?.country,
-                          ])}
-                        </span>
                       </div>
                     </div>
                   </Card.Body>
