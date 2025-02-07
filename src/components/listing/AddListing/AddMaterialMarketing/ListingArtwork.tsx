@@ -74,7 +74,7 @@ const ListingArtwork: FC<IListingArtWork> = ({}) => {
   }, [fileName]);
   return (
     <>
-      <div className="col-12 mb-3">
+      <div className="col-12 mb-5">
         <Form.Group>
           <Form.Label className="fs-5 fw-500 text-black">
             Listing Artwork

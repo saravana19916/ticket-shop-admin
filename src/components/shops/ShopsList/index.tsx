@@ -91,17 +91,17 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                           ])}
                         </span>
                       </div>
-                      <div className="col-3 d-flex flex-column gap-2 mt-2">
+                      <div className="col-3 d-flex flex-column gap-2 mt-2 align-items-end">
                       {(l.shopInformation?.shopType === "Digital" ||
                           l.shopInformation?.shopType === "Live") && (
-                          <span className="position-absolute d-flex my-4">
+                          <span className="position-absolute d-flex">
                             <Dropdown>
                               <Dropdown.Toggle
                                 variant="link"
                                 id="dropdown-basic"
+                                className="text-black dark:text-white"
                                 style={{
                                   background: "none",
-                                  color: "#000",
                                   border: "none",
                                   fontSize: "24px",
                                   textDecoration: "none",

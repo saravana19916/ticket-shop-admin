@@ -136,7 +136,7 @@ export const FormDescriptionStyled = styled.textarea`
 `;
 
 export const FormInputDescriptionStyled = styled.span`
-  font-size: 0.857rem;
+  font-size: 0.72rem;
   color: #6b7280;
   margin-top: 12px;
   display: block;
@@ -247,21 +247,6 @@ export const ButtonSuccess = styled.button`
     background-color: #16d9c6;
     color: #fff;
   }
-  i {
-    display: block;
-
-    @media (min-width: 768px) {
-      display: none;
-    }
-  }
-
-  span {
-    display: none;
-
-    @media (min-width: 768px) {
-      display: block;
-    }
-  }
 `;
 
 export const ButtonSecondary = styled.button`
@@ -276,8 +261,42 @@ export const ButtonSecondary = styled.button`
     border-color 0.3s ease;
 
   &:hover {
-    background-color: #f3f4f6; /* Equivalent to hover:bg-neutral-100 */
+    background-color: #f3f4f6; 
   }
+  }
+`;
+export const ButtonActive = styled.button`
+  border-radius: 50px;
+  border-color: #00ff00;
+  color: #fff;
+  background-color: #00ff00;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 8px 32px;
+  min-width: 130px;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    background-color: #00ff00;
+    color: #fff;
+  }
+`;
+export const ButtonNotActive = styled.button`
+  border-radius: 50px;
+  border-color: #00dcfa;
+  color: #fff;
+  background-color: #00dcfa;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 8px 32px;
+  min-width: 130px;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    background-color: #00dcfa;
+    color: #fff;
   }
 `;
 export const ButtonSecondaryGrey = styled.button`

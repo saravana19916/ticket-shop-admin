@@ -341,7 +341,6 @@ ul.react-datepicker__time-list li.react-datepicker__time-list-item {
   color: #ed003b !important;
   font-size: 14px !important;
   font-weight: 400 !important;
-  text-align: end;
 }
 .flatpickr-weekdays {
   background: var(--primary-color) !important;
@@ -364,4 +363,7 @@ ul.react-datepicker__time-list li.react-datepicker__time-list-item {
 .flatpickr-months .flatpickr-prev-month,
 .flatpickr-months .flatpickr-next-month {
   fill: #ed003b !important;
+}
+.flatpickr-current-month .numInputWrapper {
+  float: inline-end;
 }

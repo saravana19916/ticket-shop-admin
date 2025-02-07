@@ -71,8 +71,18 @@ const DateFlatpickr: React.FC<DateFlatpickrProps> = ({
 }) => {
   const options = {
     date: { enableTime: false, noCalendar: false, dateFormat: "Y-m-d" },
-    datetime: { enableTime: true, noCalendar: false, dateFormat: "Y-m-d H:i" },
-    time: { enableTime: true, noCalendar: true, dateFormat: "H:i" },
+    datetime: {
+      enableTime: true,
+      noCalendar: false,
+      dateFormat: "Y-m-d H:i",
+      minuteIncrement: 1,
+    },
+    time: {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "H:i",
+      minuteIncrement: 1,
+    },
   }[type];
   return (
     <StyledDateFlatpickr>

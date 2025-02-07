@@ -24,6 +24,7 @@ import {
   ButtonSecondary,
   ButtonSecondaryDarkGrey,
   ButtonSecondaryGrey,
+  FormInputDescriptionStyled,
 } from "../../../styledComponents/styledForm";
 
 interface IAddShopsProps {}
@@ -163,7 +164,7 @@ const AddShops: FC<IAddShopsProps> = () => {
                         />
                       </div>
                     </div>
-                    <div className="col-12 mb-8">
+                    <div className="col-12 mb-6">
                       <div className="float-end d-flex gap-4">
                         <ButtonSecondaryDarkGrey type="button" className="btn">
                           <PlusIcon className="w-4 h-4 me-3 mb-1px" />
@@ -179,12 +180,25 @@ const AddShops: FC<IAddShopsProps> = () => {
                         </ButtonPrimary>
                       </div>
                     </div>
+                    <div className="col-12 mb-6">
+                      <FormInputDescriptionStyled>
+                        You can activate your shop by opening the Shop below and
+                        click the ‘Activate’ button or you can activate the shop
+                        later from the ‘Shop’ tab.
+                      </FormInputDescriptionStyled>
+                    </div>
                     <div className="mt-6">
                       <Accordion className="panel-default d-flex flex-column gap-4">
                         {tableData?.map(
                           (item: IAddListingShopProps, index: number) => (
                             <>
-                              <ShopsAccordion item={item} index={`${index}`} />
+                              <ShopsAccordion
+                                item={item}
+                                index={`${index}`}
+                                status={
+                                  index % 2 === 0 ? "active" : "in-active"
+                                }
+                              />
                             </>
                           )
                         )}
