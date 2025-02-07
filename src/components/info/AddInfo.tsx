@@ -1,11 +1,11 @@
 import React from "react";
-import AddListingInfo from "../listing/AddListing/AddListingInfo";
+import AddNewListingInfo from "../listing/AddListing/AddNewListingInfo";
 
 const AddInfo = () => {
   return (
     <>
       <div className="center-container">
-        <AddListingInfo />
+        <AddNewListingInfo />
       </div>
     </>
   );

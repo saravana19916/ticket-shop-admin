@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import AddListingHeader from "./AddListingHeader";
 import { useNavigate } from "react-router-dom";
-import AddListingInfo from "./AddListingInfo";
+import AddNewListingInfo from "./AddNewListingInfo";
 import AddLocation from "./AddLocation";
 import AddShowDateAndTime from "./Shows/AddShowDateAndTime";
 import AddZoningAndCapacity from "./AddZoningAndCapacity";
@@ -74,7 +74,7 @@ const index: FC<IAddListing> = () => {
     switch (pathName) {
       case "/add-listing/info":
         setCurrentPageName("Listing Info");
-        return <AddListingInfo />;
+        return <AddNewListingInfo />;
       case "/add-listing/location":
         setCurrentPageName("Listing location");
         return <AddLocation />;
