@@ -19,6 +19,7 @@ import {
   FormInputStyled,
   FormLabelStyled,
   StyledSunEditor,
+  FormStyledPill
 } from "../../../styledComponents/styledForm";
 import SunEditor from "suneditor-react";
 interface IAddListingPageOneProps {}
@@ -103,23 +104,30 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                     <div className="row">
                       <div className="col-12 mb-3">
                         <p className="fw-600 fs-26px text-black mb-3">
-                          Your Listing Info
+                          Listing information
                         </p>
+                        {/* <span className="text-gray d-block mb-6 fs-12px">
+                          In this section, you define the main details of your listing which will appear in the dedicated page of your listing.
+                        </span> */}
+                      </div>
+                      <div className="col-12">
+                        <span className="text-gray d-block mb-6 fs-12px">
+                          In this section, you define the main details of your listing which will appear in the dedicated page of your listing.
+                        </span>
                       </div>
                       <div className="col-12 mb-7">
                         <Form.Group>
                           <FormLabelStyled>Listing name</FormLabelStyled>
                           <FormInputStyled
                             type="text"
-                            placeholder="Enter name"
+                            placeholder="type the listing name"
                             className="form-control"
                             value={values?.listingName || ""}
                             name="listingName"
                             onChange={handleChange}
                           />
                           <FormInputDescriptionStyled>
-                            type your listing name which would be placed as the
-                            title of your listing.
+                            This is the title of your listing and will be the headline reference of your listing across the platform.
                           </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.listingName && touched?.listingName && (
@@ -148,8 +156,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             }}
                           />
                           <FormInputDescriptionStyled className="d-block mb-4">
-                            write your event description in the box below,
-                            maximum of xxx characters.
+                            In this section, you should provide us with description of your listing, limited to xxxx characters.
                           </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.description && touched?.description && (
@@ -211,9 +218,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             }}
                           />
                           <FormInputDescriptionStyled>
-                            choose your listing category from dropdown menu (i.e
-                            : Performing Arts, Music, Sports, Exhibition,
-                            Leisure, Tourism, Transportation, Fashion)
+                            In this section, you choose the category of your listing, so it can be classified accordingly in the platform.
                           </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.listingCategory &&
@@ -252,8 +257,8 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             }}
                           />
                           <FormInputDescriptionStyled>
-                            In this section you choose the language of the
-                            performance or content
+                            In this section, you choose the language of the
+                            performance or content.
                           </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.language && touched?.language && (
@@ -263,12 +268,13 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                         )}
                       </div>
                       <div
-className="col-12 mb-6 rounded-md border border-neutral-200 dark:border-neutral-700 dark:text-black  p-4">
+                        className="col-12 mb-6 rounded-md dark:text-black  p-4">
+                          <FormStyledPill>
                         <Form.Group>
                           <div style={{ display: "flex", alignItems: "center" }}>
-                          <FormLabelStyled>
+                          
                             Does the event have subtitles in the local language?
-                          </FormLabelStyled>
+                          
                           <div className="row d-flex" style={{ marginLeft: "15px" }}>
                             {[
                               { value: "yes", label: "Yes" },
@@ -292,7 +298,7 @@ className="col-12 mb-6 rounded-md border border-neutral-200 dark:border-neutral-
                                       setFieldValue("subtitles", e.target.value)
                                     }
                                   />
-                                  <span className="custom-control-label">
+                                  <span className="custom-control-label dark:!text-black">
                                     {option.label}
                                   </span>
                                 </label>
@@ -306,6 +312,7 @@ className="col-12 mb-6 rounded-md border border-neutral-200 dark:border-neutral-
                           )}
                           </div>
                         </Form.Group>
+                        </FormStyledPill>
                       </div>
 
                       <div className="col-12 mb-6">
@@ -315,11 +322,11 @@ className="col-12 mb-6 rounded-md border border-neutral-200 dark:border-neutral-
                             {[
                               { value: "family", label: "Family" },
                               { value: "kids", label: "Kids" },
+                              { value: "couples", label: "Couples" },
                               { value: "adults", label: "Adults" },
                               { value: "children", label: "Children" },
-                              { value: "elderly", label: "Elderly" },
-                              { value: "couples", label: "Couples" },
                               { value: "teenagers", label: "Teenagers" },
+                              { value: "elderly", label: "Elderly" },
                               { value: "locals", label: "Locals" },
                               { value: "expats", label: "Expats" },
                             ].map((option) => (
@@ -368,10 +375,6 @@ className="col-12 mb-6 rounded-md border border-neutral-200 dark:border-neutral-
                               {errors.suitability}
                             </span>
                           )}
-                          <FormInputDescriptionStyled>
-                            Choose your listing subcategory from the checkboxes.
-                            You can select multiple options.
-                          </FormInputDescriptionStyled>
                         </Form.Group>
                       </div>
 
@@ -452,10 +455,6 @@ className="col-12 mb-6 rounded-md border border-neutral-200 dark:border-neutral-
                                 {errors.contentGrading}
                               </span>
                             )}
-                          <FormInputDescriptionStyled>
-                            Select the appropriate content grading. You can
-                            choose multiple options if needed.
-                          </FormInputDescriptionStyled>
                         </Form.Group>
                       </div>
                       <div className="col-12 mb-7">
@@ -505,10 +504,6 @@ className="col-12 mb-6 rounded-md border border-neutral-200 dark:border-neutral-
                               </div>
                             ))}
                           </div>
-                          <FormInputDescriptionStyled>
-                            Choose the age suitability and content rating. You
-                            can select multiple options.
-                          </FormInputDescriptionStyled>
                           {errors?.ageLimit && touched?.ageLimit && (
                             <span className="text-danger ms-5 d-inline-block">
                               {errors.ageLimit}
@@ -548,6 +543,11 @@ className="col-12 mb-6 rounded-md border border-neutral-200 dark:border-neutral-
                                 value: "Non Smoking",
                               },
                               {
+                                id: "smokingRoom",
+                                label: "Smoking Room",
+                                value: "Smoking Room",
+                              },
+                              {
                                 id: "freeParking",
                                 label: "Free Parking",
                                 value: "Free Parking",
@@ -583,19 +583,14 @@ className="col-12 mb-6 rounded-md border border-neutral-200 dark:border-neutral-
                                 value: "Public Restroom",
                               },
                               {
-                                id: "familyRestroom",
-                                label: "Family Restroom",
-                                value: "Family Restroom",
-                              },
-                              {
-                                id: "smokingRoom",
-                                label: "Smoking Room",
-                                value: "Smoking Room",
-                              },
-                              {
                                 id: "vipRestroom",
                                 label: "VIP Restroom",
                                 value: "VIP Restroom",
+                              },
+                              {
+                                id: "familyRestroom",
+                                label: "Family Restroom",
+                                value: "Family Restroom",
                               },
                               {
                                 id: "freeWifi",
