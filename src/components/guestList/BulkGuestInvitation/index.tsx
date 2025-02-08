@@ -21,6 +21,7 @@ import {
 import GuestListBulkInvitationAccordion from "./GuestListBulkInvitationAccordion";
 import { GuestListData } from "../helpers";
 import BackBreadCrumb from "../../shared/BackBreadCrumb/BackBreadCrumb";
+import * as XLSX from "xlsx";
 
 interface IProps {}
 const H5 = styled.h5`
@@ -30,6 +31,39 @@ const H5 = styled.h5`
   font-weight: 600;
 `;
 const index: FC<IProps> = () => {
+  const handleDownloadTemplate = () => {
+    const header = [
+      "Unit",
+      "Name",
+      "Order",
+      "Date",
+      "Payment Method",
+      "Total Value",
+      "Promo Code",
+      "Discount",
+      "Grand Total",
+      "Issued By",
+      "Delivery Mode",
+      "Delivery Address",
+      "Status",
+      "Organization",
+      "2 x VIP Concert Ticket",
+      "Process Fee",
+      "Service Charge",
+      "Net Total",
+      "Discount (Promo Code)",
+      "Vat",
+      "Grand Total",
+    ];
+    const data = [header];
+
+    const worksheet = XLSX.utils.aoa_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Bluk Template");
+
+    XLSX.writeFile(workbook, "Bluk.xlsx");
+  };
+
   return (
     <>
       {/* <Colors /> */}
@@ -50,6 +84,7 @@ const index: FC<IProps> = () => {
               <button
                 className="btn btn-pill py-2 px-7 fs-12px fw-semibold px-5"
                 style={{ backgroundColor: "#F3F4F4" }}
+                onClick={handleDownloadTemplate}
               >
                 Download Template
               </button>
@@ -88,11 +123,6 @@ const index: FC<IProps> = () => {
               </>
             ))}
           </Accordion>
-          {/* <Pagination
-            count={10}
-            variant="outlined"
-            className="d-flex align-items-center justify-content-center m-5"
-          /> */}
         </div>
       </div>
     </>
