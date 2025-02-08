@@ -51,24 +51,35 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                       {l.shopInformation?.shopType}
                     </span>
                   </div>
-                  {(l.shopInformation?.shopType === "Digital" ||
-                    l.shopInformation?.shopType === "Live") && (
-                    <>
-                      <div className="position-absolute end-0 d-flex justify-content-between mx-4 my-4">
-                        <span
-                          className={`badge dark d-block p-2 px-3 rounded-pill text-black ${
-                            l.shopInformation?.status === "Offline"
-                              ? "badge-red"
-                              : l.shopInformation?.status === "Draft"
-                              ? "badge-light-gray"
-                              : "badge-light-green"
-                          }`}
-                        >
-                          {l.shopInformation?.status}
-                        </span>
-                      </div>
-                    </>
-                  )}
+
+                  <div className="position-absolute end-0 d-flex justify-content-between mx-4 my-4">
+                    <span
+                      className="badge dark d-block p-2 px-3 rounded-pill text-black"
+                      style={{
+                        borderRadius: "50px",
+                        borderColor:
+                          l.shopInformation?.status === "Draft"
+                            ? "#00dcfa"
+                            : "#00ff00",
+                        color: "#fff",
+                        backgroundColor:
+                          l.shopInformation?.status === "Draft"
+                            ? "#00dcfa"
+                            : "#00ff00",
+                        fontWeight: 500,
+                        fontSize: "12px",
+                        padding: "8px 32px",
+                        minWidth: "130px",
+                        transition:
+                          "background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease",
+                      }}
+                    >
+                      {l.shopInformation?.status === "Draft"
+                        ? "Not Active"
+                        : "Active"}
+                    </span>
+                  </div>
+
                   <img
                     src={l.img}
                     className="card-img-top"
@@ -92,8 +103,8 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                         </span>
                       </div>
                       <div className="col-3 d-flex flex-column gap-2 mt-2 align-items-end">
-                      {(l.shopInformation?.shopType === "Digital" ||
-                          l.shopInformation?.shopType === "Live") && (
+                        {/* {(l.shopInformation?.shopType === "Digital" ||
+                          l.shopInformation?.shopType === "Live") && ( */}
                           <span className="position-absolute d-flex">
                             <Dropdown>
                               <Dropdown.Toggle
@@ -127,18 +138,16 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                                   to={`/edit-shop/${l.id}`}
                                   onClick={() => _handleEdit(l)}
                                 >
-                                  Edit Shop
+                                  Edit
                                 </Dropdown.Item>
-                                <Dropdown.Item>
-                                  Generate
-                                </Dropdown.Item>
-                                <Dropdown.Item>
-                                  Copy
-                                </Dropdown.Item>
+                                <Dropdown.Item>Generate</Dropdown.Item>
+                                <Dropdown.Item>Copy</Dropdown.Item>
+                                <Dropdown.Item>Active</Dropdown.Item>
+                                <Dropdown.Item>Not Active</Dropdown.Item>
                               </Dropdown.Menu>
                             </Dropdown>
                           </span>
-                        )}
+                        {/* )} */}
                       </div>
                     </div>
                   </Card.Body>
