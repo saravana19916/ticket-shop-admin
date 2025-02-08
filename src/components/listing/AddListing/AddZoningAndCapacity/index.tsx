@@ -21,7 +21,11 @@ import { toast } from "react-toastify";
 import ButtonCustom from "../../../shared/ButtonCustom";
 import ZoningAccordion from "./ZoningAccordion";
 import CustomTabButton from "../../../shared/CustomTabButton";
-import { ButtonPrimary } from "../../../styledComponents/styledForm";
+import {
+  ButtonPrimary,
+  FormInputDescriptionStyled,
+} from "../../../styledComponents/styledForm";
+import DefineZones from "./DefineZones";
 const tabList = ["Design Manually", "Use Design Tool"];
 
 interface IAddZoningAndCapacityProps {}
@@ -79,7 +83,7 @@ const AddZoningAndCapacity: FC<IAddZoningAndCapacityProps> = ({}) => {
           resetForm();
         }}
       >
-        {({ submitForm, values, errors, touched, setFieldValue }) => (
+        {({}) => (
           <>
             <div
               className={`row px-0 px-md-2 px-lg-4 px-xl-6 mx-xl-3 mx-0 mx-md-1 mx-lg-3 ${
@@ -90,11 +94,17 @@ const AddZoningAndCapacity: FC<IAddZoningAndCapacityProps> = ({}) => {
                 <div className="p-0 p-md-5">
                   <div className="row">
                     <div className="col-12 mb-3">
-                      <p className="fw-600 fs-26px text-black mb-3">
+                      <p className="fw-600 fs-26px text-black mb-6">
                         Zoning & Capacity
                       </p>
+                      <FormInputDescriptionStyled>
+                        In this section you can design your zones manually. If
+                        you wish to design your floor plan using the Design
+                        tools, click on Design Floor Plan.{" "}
+                      </FormInputDescriptionStyled>
                     </div>
-                    <TabGroup className="row px-0 px-md-2 px-lg-4 px-xl-4 py-2">
+                    <DefineZones />
+                    {/* <TabGroup className="row px-0 px-md-2 px-lg-4 px-xl-4 py-2">
                       <TabList className="d-flex align-items-center gap-3 mb-5">
                         <Tab as={Fragment} key={tabList[0]}>
                           {({ selected }) => (
@@ -150,7 +160,7 @@ const AddZoningAndCapacity: FC<IAddZoningAndCapacityProps> = ({}) => {
                         </TabPanel>
                         <TabPanel></TabPanel>
                       </TabPanels>
-                    </TabGroup>
+                    </TabGroup> */}
                     {isSeparateUrl ? (
                       <></>
                     ) : (

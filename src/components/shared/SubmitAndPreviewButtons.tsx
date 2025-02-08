@@ -66,6 +66,7 @@ const SubmitAndPreviewButtons: FC<IProps> = ({
                 src={croppedImageUrl}
                 alt="Cropped Preview"
                 className="max-w-100 h-auto"
+                style={{ borderRadius: "16px" }}
               />
             ) : (
               <p>No image to preview</p>
