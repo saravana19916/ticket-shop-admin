@@ -5,7 +5,6 @@ import {
   AccordionH2Light,
   AccordionBodyTop,
   AccordionBodyLeftSection,
-  AccordionBodyRightSection,
   AccordionButton,
 } from "../../../styledComponents/accordion";
 import { IPricingDetailsProps } from "../../../pricing/AddPricing/type";
@@ -15,7 +14,15 @@ interface IProps {
   index: string;
 }
 
-const PricingAccordion: FC<IProps> = ({ item, index }) => {
+const PricingAccordion: FC<IProps> = ({ index }) => {
+  const inclusions = [
+    "Complementary Drink",
+    "Dedicated Seat",
+    "Bronze Ticket",
+    "Silver Ticket",
+    "Gold Ticket",
+  ];
+
   return (
     <>
       <Accordion.Item
@@ -34,27 +41,23 @@ const PricingAccordion: FC<IProps> = ({ item, index }) => {
             ></div>
             <div className="row flex-grow-1">
               <div className="col-3">
-                <AccordionH2Light className="mb-2">S.No</AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">{item.id}</span>
+                <AccordionH2Light className="mb-2">Product</AccordionH2Light>
+                <span className="fs-12px fw-600 text-black">
+                  Sliver Ticket
+                </span>
+              </div>
+              <div className="col-3">
+                <AccordionH2Light className="mb-2">Zone</AccordionH2Light>
+                <span className="fs-12px fw-600 text-black">
+                  Platinum I
+                </span>
               </div>
               <div className="col-3">
                 <AccordionH2Light className="mb-2">
-                  Product Name
+                  Section / Row
                 </AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">
-                  {item.productDetails?.productName}
-                </span>
-              </div>
-              <div className="col-3">
-                <AccordionH2Light className="mb-2"> Subtitle</AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">
-                  {item.productDetails?.productSubTitle}
-                </span>
-              </div>
-              <div className="col-3">
-                <AccordionH2Light className="mb-2">Category</AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">
-                  {item.productDetails?.productCategory}
+                  AB
                 </span>
               </div>
             </div>
@@ -63,93 +66,107 @@ const PricingAccordion: FC<IProps> = ({ item, index }) => {
         <Accordion.Body className="p-2 pb-6">
           <AccordionBodyTop className="row px-md-3 px-lg-7 py-7 mx-md-1 mx-lg-2 my-3">
             <div className="col-5">
-              <h4 className="fw-bold fs-6">Product Info</h4>
+              <h4 className="fw-bold fs-6">Details</h4>
               <div className="d-flex flex-column gap-1 fs-6">
                 <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyLeftSection>Name</AccordionBodyLeftSection>
                   <AccordionBodyLeftSection>
-                    {item.productDetails?.productName}
+                    Product name
                   </AccordionBodyLeftSection>
-                </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyLeftSection>Sub Title</AccordionBodyLeftSection>
                   <AccordionBodyLeftSection>
-                    {item.productDetails?.productSubTitle}
-                  </AccordionBodyLeftSection>
-                </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyLeftSection>Type</AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection>
-                    {item.productDetails?.productType}
-                  </AccordionBodyLeftSection>
-                </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyLeftSection>Category</AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection>
-                    {item.productDetails?.productCategory}
+                    Sliver Ticket
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center justify-content-between">
                   <AccordionBodyLeftSection>
-                    Sub Category
+                    Product price
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection>AED 100</AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center justify-content-between">
+                  <AccordionBodyLeftSection>Zone name</AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection>
+                    Platinum I
+                  </AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center justify-content-between">
+                  <AccordionBodyLeftSection>
+                    Section Row
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection>AB</AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center justify-content-between">
+                  <AccordionBodyLeftSection>
+                    Has access to
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection>All zones</AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center justify-content-between">
+                  <AccordionBodyLeftSection>
+                    Entrace Gate
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection>
-                    {item.productDetails?.productSubCategory}
+                    Entrance 2
                   </AccordionBodyLeftSection>
                 </div>
-              </div>
-            </div>
-            <div className="col-1 d-flex h-auto justify-content-center mt-1">
-              <div className="vr"></div>
-            </div>
-            <div className="col-5">
-              <h4 className="fw-bold fs-6">Pricing Info</h4>
-              <div className="d-flex flex-column gap-1 fs-6">
                 <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyRightSection>
-                    Net Sales Price
-                  </AccordionBodyRightSection>
-                  <AccordionBodyRightSection>
-                    {item.pricing?.netSalesPrice}.00
-                  </AccordionBodyRightSection>
+                  <AccordionBodyLeftSection>
+                    Total Capacity
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection>1500</AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyRightSection>
-                    Currency
-                  </AccordionBodyRightSection>
-                  <AccordionBodyRightSection>
-                    {item.pricing?.transactionCurrency}
-                  </AccordionBodyRightSection>
+                  <AccordionBodyLeftSection>
+                    On Sale capacity
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection>1400</AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyRightSection>VAT</AccordionBodyRightSection>
-                  <AccordionBodyRightSection>5%</AccordionBodyRightSection>
+                  <AccordionBodyLeftSection>
+                    Blocked Capacity
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection>50</AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyRightSection>
-                    Entertainment Tax
-                  </AccordionBodyRightSection>
-                  <AccordionBodyRightSection>
-                    {item.pricing?.entertainmentTax || 0}%
-                  </AccordionBodyRightSection>
-                </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyRightSection>
-                    Other Tax
-                  </AccordionBodyRightSection>
-                  <AccordionBodyRightSection>
-                    {item.pricing?.otherTax || 0}%
-                  </AccordionBodyRightSection>
+                  <AccordionBodyLeftSection>Status</AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection>
+                    <span style={{ color: "green" }}> active</span>
+                  </AccordionBodyLeftSection>
                 </div>
               </div>
             </div>
           </AccordionBodyTop>
+          <AccordionBodyTop className="row px-md-3 px-lg-7 py-7 mx-md-1 mx-lg-2 my-3">
+            <h4 className="fw-bold fs-6">Inclusions</h4>
+            <div
+              className="d-flex flex-wrap gap-3 mt-5 ms-5"
+              style={{ rowGap: "12px" }}
+            >
+              {inclusions.map((item, index) => (
+                <AccordionButton
+                  key={index}
+                  className="btn px-6 py-2"
+                  style={{
+                    flexGrow: 1,
+                    minWidth: "150px",
+                    maxWidth: "200px",
+                    textAlign: "center",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {item}
+                </AccordionButton>
+              ))}
+            </div>
+          </AccordionBodyTop>
           <div className="d-flex align-items-center gap-3 justify-content-start ms-5 mt-5">
             <AccordionButton className="btn px-6 py-2">
-              Duplicate
+              activate
             </AccordionButton>
-            <AccordionButton className="btn px-6 py-2">Edit</AccordionButton>
-            <AccordionButton className="btn px-6 py-2">Delete</AccordionButton>
+            <AccordionButton className="btn px-6 py-2">edit</AccordionButton>
+            <AccordionButton className="btn px-6 py-2">delete</AccordionButton>
+            <AccordionButton className="btn px-6 py-2">
+              duplicate
+            </AccordionButton>
           </div>
         </Accordion.Body>
       </Accordion.Item>

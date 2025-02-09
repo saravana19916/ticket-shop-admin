@@ -1,15 +1,15 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { Form } from "react-bootstrap";
 
 import Select from "react-select";
 import { FormikErrors, FormikTouched } from "formik";
 import { IPricingDetailsProps } from "../../../pricing/AddPricing/type";
 import {
-  FormDescriptionStyled,
   FormInputStyled,
   FormLabelStyled,
-  StyledSunEditor,
 } from "../../../styledComponents/styledForm";
+import { SketchPicker } from "react-color";
+
 interface IProductInfoProps {
   errors: FormikErrors<IPricingDetailsProps>;
   values: IPricingDetailsProps;
@@ -29,10 +29,23 @@ const productTypes = [
 
 const ProductInfo: FC<IProductInfoProps> = ({
   handleOnChange,
-  values,
-  errors,
-  touched,
 }) => {
+  const [color, setColor] = useState("#00D1FF");
+  const [showColorPicker, setShowColorPicker] = useState(false);
+  const colorPickerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        colorPickerRef.current &&
+        !colorPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowColorPicker(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const customStyles = {
     singleValue: (provided: any) => ({
       ...provided,
@@ -98,151 +111,128 @@ const ProductInfo: FC<IProductInfoProps> = ({
   const handleDropdownChange = (field: string, value: string | null) => {
     handleOnChange(field, value);
   };
+
+  const productTypes = [
+    { label: "Silver Ticket", value: "silver" },
+    { label: "Golden Ticket", value: "golden" },
+  ];
+
+  const zoneTypes = [
+    { label: "Platinum I", value: "platinumI" },
+    { label: "Platinum II", value: "platinumII" },
+  ];
+
+  const sectionTypes = [
+    { label: "AB", value: "ab" },
+    { label: "AC", value: "ac" },
+  ];
+
+  const hasAccess = [{ label: "All Zones", value: "allZones" }];
+
   return (
     <>
       <div className="col-12 mb-7">
         <Form.Group>
-          <Form.Group className="fs-5 fw-500 text-black mb-4">
-            Product Information
-          </Form.Group>
           <span className="text-gray d-block mb-6 fs-12px">
-            the explanation about this section goes here
+            In the section, you connect the products created with the releavant
+            zones and define access for each of the products.
           </span>
           <div className="row">
-            <div className="col-12 mb-6">
+            <div className="col-9 mb-6">
               <Form.Group>
-                <FormLabelStyled>Product Name / Title</FormLabelStyled>
-                <FormInputStyled
-                  type="text"
-                  placeholder="Enter Name / Title"
-                  className="form-control"
-                  name="productName"
-                  value={values.productDetails?.productName || ""}
-                  onChange={handleChange}
-                />
-                {errors &&
-                  touched &&
-                  touched?.productDetails?.productName &&
-                  errors?.productDetails?.productName && (
-                    <span className="text-danger d-inline-block ms-5">
-                      {errors?.productDetails?.productName}
-                    </span>
-                  )}
-              </Form.Group>
-            </div>
-            <div className="col-12 mb-6">
-              <Form.Group>
-                <FormLabelStyled>Product Type</FormLabelStyled>
+                <FormLabelStyled>Select Product</FormLabelStyled>
                 <Select
                   options={productTypes}
-                  placeholder="Select Type"
+                  placeholder="Select Product"
                   classNamePrefix="Select"
                   className="mb-2"
                   styles={customStyles}
-                  value={productTypes?.find(
-                    (l) => l.value === values.productDetails?.productCategory
-                  )}
-                  // onChange={(e) => {
-                  //   setFieldValue("productCategory", e?.value || null);
-                  // }}
                 />
               </Form.Group>
             </div>
-            <div className="col-12 mb-6">
+            <div className="col-3 mb-6">
               <Form.Group>
-                <FormLabelStyled>Product Category</FormLabelStyled>
+                <FormLabelStyled>Color Tag</FormLabelStyled>
+                <div
+                  ref={colorPickerRef}
+                  style={{ position: "relative", display: "inline-block" }}
+                >
+                  <div
+                    onClick={() => setShowColorPicker(!showColorPicker)}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      cursor: "pointer",
+                      gap: "10px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        backgroundColor: color,
+                        borderRadius: "50%",
+                        border: "1px solid #ccc",
+                      }}
+                    />
+                    <span>Pick Color</span>
+                  </div>
+                  {showColorPicker && (
+                    <div style={{ position: "absolute", zIndex: 100 }}>
+                      <SketchPicker
+                        color={color}
+                        onChange={(updatedColor) => setColor(updatedColor.hex)}
+                      />
+                    </div>
+                  )}
+                </div>
+              </Form.Group>
+            </div>
+            <div className="col-6 mb-6">
+              <Form.Group>
+                <FormLabelStyled>Zone</FormLabelStyled>
+                <Select
+                  options={zoneTypes}
+                  placeholder="Select Zone"
+                  classNamePrefix="Select"
+                  className="mb-2"
+                  styles={customStyles}
+                />
+              </Form.Group>
+            </div>
+            <div className="col-6 mb-6">
+              <Form.Group>
+                <FormLabelStyled>Section or Row</FormLabelStyled>
+                <Select
+                  options={sectionTypes}
+                  placeholder="Select Section or Row"
+                  classNamePrefix="Select"
+                  className="mb-2"
+                  styles={customStyles}
+                />
+              </Form.Group>
+            </div>
+            <div className="col-6 mb-6">
+              <Form.Group>
+                <FormLabelStyled>Has access to</FormLabelStyled>
+                <Select
+                  options={hasAccess}
+                  placeholder="Select Has access to"
+                  classNamePrefix="Select"
+                  className="mb-2"
+                  styles={customStyles}
+                />
+              </Form.Group>
+            </div>
+            <div className="col-6 mb-6">
+              <Form.Group>
+                <FormLabelStyled>Entrance Gate</FormLabelStyled>
                 <FormInputStyled
                   type="text"
-                  placeholder="Enter Category"
-                  name="productCategory"
-                  value={values.productDetails?.productCategory || ""}
-                  onChange={handleChange}
+                  placeholder="Type Entrance Gate"
                   className="form-control"
+                  name="productName"
                 />
-                {errors &&
-                  touched &&
-                  touched?.productDetails?.productCategory &&
-                  errors?.productDetails?.productCategory && (
-                    <span className="text-danger d-inline-block ms-5">
-                      {errors?.productDetails?.productCategory}
-                    </span>
-                  )}
-              </Form.Group>
-            </div>
-            <div className="col-12 mb-6">
-              <Form.Group>
-                <FormLabelStyled>Product Sub Category</FormLabelStyled>
-                <FormInputStyled
-                  type="text"
-                  placeholder="Enter Sub category"
-                  name="productSubCategory"
-                  value={values.productDetails?.productSubCategory || ""}
-                  onChange={handleChange}
-                  className="form-control"
-                />
-                {errors &&
-                  touched &&
-                  touched?.productDetails?.productSubCategory &&
-                  errors?.productDetails?.productSubCategory && (
-                    <span className="text-danger d-inline-block ms-5">
-                      {errors?.productDetails?.productSubCategory}
-                    </span>
-                  )}
-              </Form.Group>
-            </div>
-            <div className="col-12 mb-6">
-              <Form.Group>
-                <FormLabelStyled>
-                  Product Subtitle (Early Bird / Last Minute)
-                </FormLabelStyled>
-                <FormInputStyled
-                  type="text"
-                  placeholder="Enter Subtitle"
-                  className="form-control"
-                  name="productSubTitle"
-                  value={values.productDetails?.productSubTitle || ""}
-                  onChange={handleChange}
-                />
-                {errors &&
-                  touched &&
-                  touched?.productDetails?.productSubTitle &&
-                  errors?.productDetails?.productSubTitle && (
-                    <span className="text-danger d-inline-block ms-5">
-                      {errors?.productDetails?.productSubTitle}
-                    </span>
-                  )}
-              </Form.Group>
-            </div>
-            <div className="col-12 mb-6">
-              <Form.Group>
-                <FormLabelStyled>Description</FormLabelStyled>
-                <StyledSunEditor
-                  setOptions={{
-                    font: ["Poppins"],
-                    defaultStyle: "font-family: Poppins;",
-                    height: "260px",
-                    buttonList: [
-                      ["undo", "redo"],
-                      ["bold", "italic", "underline", "strike"],
-                      ["list", "align", "fontSize"],
-                    ],
-                  }}
-                />
-                {/* <FormDescriptionStyled
-                  placeholder="Description"
-                  name="description"
-                  className="p-5 form-control"
-                  value={values.productDetails?.description || ""}
-                  onChange={handleChange}
-                /> */}
-                {errors &&
-                  touched &&
-                  touched?.productDetails?.description &&
-                  errors?.productDetails?.description && (
-                    <span className="text-danger d-inline-block ms-5">
-                      {errors?.productDetails?.description}
-                    </span>
-                  )}
               </Form.Group>
             </div>
           </div>

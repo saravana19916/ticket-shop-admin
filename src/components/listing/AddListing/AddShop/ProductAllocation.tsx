@@ -154,9 +154,6 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
   return (
     <>
       <div className="col-12 mb-4">
-        <Form.Label className="fs-5 fw-500 text-black">
-          Product Allocation
-        </Form.Label>
         <span className="text-gray d-block mb-6 fs-12px">
           Add the products you like to the shop and define special discounts if
           any.{" "}

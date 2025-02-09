@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import ButtonCustom from "../../../shared/ButtonCustom";
 import { Accordion } from "react-bootstrap";
 import PricingAccordion from "./PricingAccordion";
+import { color } from "echarts";
 
 interface IAddPricingProps {}
 
@@ -125,7 +126,7 @@ const AddPricing: FC<IAddPricingProps> = () => {
           }
         }}
       >
-        {({ values, errors, touched, setFieldValue, setFieldError }) => (
+        {({ values, errors, touched, setFieldValue }) => (
           <>
             <Form
               className={`row px-0 px-md-2 px-lg-4 px-xl-6 mx-xl-3 mx-0 mx-md-1 mx-lg-3 `}
@@ -138,7 +139,7 @@ const AddPricing: FC<IAddPricingProps> = () => {
                         className="fw-600 fs-26px text-black mb-3"
                         id="addPricingTop"
                       >
-                        Product
+                        Product Allocation
                       </p>
                     </div>
                     <ProductInfo
@@ -149,45 +150,11 @@ const AddPricing: FC<IAddPricingProps> = () => {
                         _handleProductInfo(field, value, setFieldValue)
                       }
                     />
-                    <Pricing
-                      values={values}
-                      errors={errors}
-                      touched={touched}
-                      handleOnChange={(field, value) =>
-                        _handlePricingOnChange(field, value, setFieldValue)
-                      }
-                    />
-                    <RulesAndTimeline
-                      values={values}
-                      errors={errors}
-                      touched={touched}
-                      handleOnChange={(field, value) =>
-                        _handleRulesAndTimelineOnChange(
-                          field,
-                          value,
-                          setFieldValue
-                        )
-                      }
-                    />
-                    <PricingInclusion
-                      values={values}
-                      errors={errors}
-                      touched={touched}
-                      handleOnChange={(field, value) =>
-                        _handleRulesAndTimelineOnChange(
-                          field,
-                          value,
-                          setFieldValue
-                        )
-                      }
-                      setFieldValue={setFieldValue}
-                      setFieldError={setFieldError}
-                    />
                     <div className="col-12 mb-7">
                       <div className="float-end mb-5">
                         <ButtonCustom
                           title={
-                            values?.id === 0 ? "Add Product" : "Update Product"
+                            values?.id === 0 ? "Add" : "Update"
                           }
                           className="fs-6"
                           paddingClassName="p-2 px-5"
@@ -201,6 +168,7 @@ const AddPricing: FC<IAddPricingProps> = () => {
                         />
                       </div>
                     </div>
+                    <p className="text-gray">You can amend edit, update, delete, activate and deactivate your zones and make changes to your sub section, in the <span style={{ color: '#ed003b' }}>'Product Allocation'</span> Tab. A list of your created zones and sections/subsections/rows are listed below.</p>
                     <div className="mt-6">
                       <Accordion className="panel-default d-flex flex-column gap-4">
                         {tableData?.map(
