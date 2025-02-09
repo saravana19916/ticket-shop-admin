@@ -40,19 +40,19 @@ const PricingAccordion: FC<IProps> = ({ index }) => {
               style={{ minWidth: "4rem", height: "4rem" }}
             ></div>
             <div className="row flex-grow-1">
-              <div className="col-3">
+              <div className="col-12 col-md-3">
                 <AccordionH2Light className="mb-2">Product</AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">
                   Sliver Ticket
                 </span>
               </div>
-              <div className="col-3">
+              <div className="col-12 col-md-3 mt-3 mt-md-0">
                 <AccordionH2Light className="mb-2">Zone</AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">
                   Platinum I
                 </span>
               </div>
-              <div className="col-3">
+              <div className="col-12 col-md-3 mt-3 mt-md-0">
                 <AccordionH2Light className="mb-2">
                   Section / Row
                 </AccordionH2Light>
@@ -63,9 +63,9 @@ const PricingAccordion: FC<IProps> = ({ index }) => {
             </div>
           </div>
         </Accordion.Header>
-        <Accordion.Body className="p-2 pb-6">
+        <Accordion.Body className="p-4 p-md-2 pb-6">
           <AccordionBodyTop className="row px-md-3 px-lg-7 py-7 mx-md-1 mx-lg-2 my-3">
-            <div className="col-5">
+            <div className="col-12 col-md-6">
               <h4 className="fw-bold fs-6">Details</h4>
               <div className="d-flex flex-column gap-1 fs-6">
                 <div className="fw-semibold d-flex align-items-center justify-content-between">
@@ -158,7 +158,7 @@ const PricingAccordion: FC<IProps> = ({ index }) => {
               ))}
             </div>
           </AccordionBodyTop>
-          <div className="d-flex align-items-center gap-3 justify-content-start ms-5 mt-5">
+          <div className="d-flex flex-wrap align-items-center gap-3 justify-content-start ms-5 mt-5">
             <AccordionButton className="btn px-6 py-2">
               activate
             </AccordionButton>

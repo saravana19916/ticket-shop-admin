@@ -123,7 +123,7 @@ const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             }}
                           />
                           <FormInputDescriptionStyled>
-                            pick your listing top from the dropdown menu (i.e :
+                            Pick your listing top from the dropdown menu (i.e :
                             Event, Restaurant, Experience, Transportation,
                             Product, Service )
                           </FormInputDescriptionStyled>
@@ -148,7 +148,7 @@ const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             onChange={handleChange}
                           />
                           <FormInputDescriptionStyled>
-                            type your listing name which would be placed as the
+                            Type your listing name which would be placed as the
                             title of your listing.
                           </FormInputDescriptionStyled>
                         </Form.Group>
@@ -180,7 +180,7 @@ const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             }}
                           />
                           <FormInputDescriptionStyled>
-                            choose your listing category from dropdown menu (i.e
+                            Choose your listing category from dropdown menu (i.e
                             : Performing Arts, Music, Sports, Exhibition,
                             Leisure, Tourism, Transportation, Fashion)
                           </FormInputDescriptionStyled>
@@ -247,7 +247,7 @@ const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             isClearable={false}
                           />
                           <FormInputDescriptionStyled>
-                            choose your listing sub category from dropdown menu.
+                            Choose your listing sub category from dropdown menu.
                             You can choose multiple options
                           </FormInputDescriptionStyled>
                         </Form.Group>
@@ -279,7 +279,7 @@ const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             isClearable={false}
                           />
                           <FormInputDescriptionStyled>
-                            choose the age suitability and content rating from
+                            Choose the age suitability and content rating from
                             dropdown menu. You can choose multiple options
                           </FormInputDescriptionStyled>
                         </Form.Group>
@@ -319,7 +319,7 @@ const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             onChange={handleChange}
                           ></FormDescriptionStyled> */}
                           <FormInputDescriptionStyled className="d-block mb-4">
-                            write your event description in the box below,
+                            Write your event description in the box below,
                             maximum of xxx characters.
                           </FormInputDescriptionStyled>
                         </Form.Group>

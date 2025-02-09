@@ -155,7 +155,8 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               ],
                             }}
                           />
-                          <FormInputDescriptionStyled className="d-block mb-4">
+                          <FormInputDescriptionStyled className="d-block mb-4 me-2"
+                          >
                             In this section, you should provide us with description of your listing, limited to xxxx characters.
                           </FormInputDescriptionStyled>
                         </Form.Group>
@@ -184,7 +185,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             }}
                           />
                           <FormInputDescriptionStyled>
-                            pick your listing top from the dropdown menu (i.e :
+                            Pick your listing top from the dropdown menu (i.e :
                             Event, Restaurant, Experience, Transportation,
                             Product, Service )
                           </FormInputDescriptionStyled>

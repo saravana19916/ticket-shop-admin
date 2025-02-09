@@ -27,7 +27,7 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
             General Info
           </Form.Label>
           <span className="text-gray d-block mb-6 fs-12px">
-            in this section, you can set the date and time of your show.
+            In this section, you can set the date and time of your show.
           </span>
           <div className="row">
             <div className="col-12 mb-6">

@@ -378,7 +378,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
         <Form.Group>
           <FormLabelStyled> Phone Number</FormLabelStyled>
           <FormInputStyled
-            type="email"
+            type="tel"
             className="form-control"
             placeholder="Enter phone number"
             value={values.shopInformation?.phoneNumber || ""}

@@ -138,7 +138,7 @@ const ProductInfo: FC<IProductInfoProps> = ({
             zones and define access for each of the products.
           </span>
           <div className="row">
-            <div className="col-9 mb-6">
+            <div className="col-12 col-md-9 mb-6">
               <Form.Group>
                 <FormLabelStyled>Select Product</FormLabelStyled>
                 <Select
@@ -150,7 +150,7 @@ const ProductInfo: FC<IProductInfoProps> = ({
                 />
               </Form.Group>
             </div>
-            <div className="col-3 mb-6">
+            <div className="col-12 col-md-3 mb-6">
               <Form.Group>
                 <FormLabelStyled>Color Tag</FormLabelStyled>
                 <div
@@ -188,7 +188,7 @@ const ProductInfo: FC<IProductInfoProps> = ({
                 </div>
               </Form.Group>
             </div>
-            <div className="col-6 mb-6">
+            <div className="col-12 col-md-6 mb-6">
               <Form.Group>
                 <FormLabelStyled>Zone</FormLabelStyled>
                 <Select
@@ -200,7 +200,7 @@ const ProductInfo: FC<IProductInfoProps> = ({
                 />
               </Form.Group>
             </div>
-            <div className="col-6 mb-6">
+            <div className="col-12 col-md-6 mb-6">
               <Form.Group>
                 <FormLabelStyled>Section or Row</FormLabelStyled>
                 <Select
@@ -212,7 +212,7 @@ const ProductInfo: FC<IProductInfoProps> = ({
                 />
               </Form.Group>
             </div>
-            <div className="col-6 mb-6">
+            <div className="col-12 col-md-6 mb-6">
               <Form.Group>
                 <FormLabelStyled>Has access to</FormLabelStyled>
                 <Select
@@ -224,7 +224,7 @@ const ProductInfo: FC<IProductInfoProps> = ({
                 />
               </Form.Group>
             </div>
-            <div className="col-6 mb-6">
+            <div className="col-12 col-md-6 mb-6">
               <Form.Group>
                 <FormLabelStyled>Entrance Gate</FormLabelStyled>
                 <FormInputStyled
