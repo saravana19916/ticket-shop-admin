@@ -66,8 +66,32 @@ const customStyles = {
 };
 const FormatOptions = [
   {
-    label: "Theater",
-    value: "Theater",
+    label: "Seating",
+    value: "Seating",
+  },
+  {
+    label: "Standing",
+    value: "Standing",
+  },
+];
+const SelectionOptions = [
+  {
+    label: "Automatic",
+    value: "Automatic",
+  },
+  {
+    label: "Manual",
+    value: "Manual",
+  },
+];
+const typeOptions = [
+  {
+    label: "Allocated",
+    value: "Allocated",
+  },
+  {
+    label: "Free",
+    value: "Free",
   },
 ];
 const DefineZones = () => {
@@ -102,7 +126,7 @@ const DefineZones = () => {
           <Select
             id="dropdown-basic"
             options={FormatOptions}
-            placeholder="Select Type"
+            placeholder="Select Format"
             classNamePrefix="Select"
             className="mb-2"
             styles={customStyles}
@@ -114,8 +138,8 @@ const DefineZones = () => {
           <FormLabelStyled>Selection</FormLabelStyled>
           <Select
             id="dropdown-basic"
-            options={FormatOptions}
-            placeholder="Select Type"
+            options={SelectionOptions}
+            placeholder="Select Selection"
             classNamePrefix="Select"
             className="mb-2"
             styles={customStyles}
@@ -127,7 +151,7 @@ const DefineZones = () => {
           <FormLabelStyled>Type</FormLabelStyled>
           <Select
             id="dropdown-basic"
-            options={FormatOptions}
+            options={typeOptions}
             placeholder="Select Type"
             classNamePrefix="Select"
             className="mb-2"

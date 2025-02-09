@@ -24,8 +24,10 @@ import CustomTabButton from "../../../shared/CustomTabButton";
 import {
   ButtonPrimary,
   FormInputDescriptionStyled,
+  FormStyledContentSection,
 } from "../../../styledComponents/styledForm";
 import DefineZones from "./DefineZones";
+import AddRowAndZones from "./AddRowAndZones";
 const tabList = ["Design Manually", "Use Design Tool"];
 
 interface IAddZoningAndCapacityProps {}
@@ -104,6 +106,7 @@ const AddZoningAndCapacity: FC<IAddZoningAndCapacityProps> = ({}) => {
                       </FormInputDescriptionStyled>
                     </div>
                     <DefineZones />
+                    <AddRowAndZones />
                     {/* <TabGroup className="row px-0 px-md-2 px-lg-4 px-xl-4 py-2">
                       <TabList className="d-flex align-items-center gap-3 mb-5">
                         <Tab as={Fragment} key={tabList[0]}>

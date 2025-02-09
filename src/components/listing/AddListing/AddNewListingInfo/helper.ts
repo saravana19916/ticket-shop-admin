@@ -17,4 +17,8 @@ export const listingInfoInitialState: IListingInfoProps = {
   suitability: null,
   ageLimit: null,
   description: null,
+  language: null,
+  subtitles: null,
+  contentGrading: null,
+  facilities: null,
 };

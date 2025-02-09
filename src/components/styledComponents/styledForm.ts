@@ -299,6 +299,7 @@ export const ButtonNotActive = styled.button`
     color: #fff;
   }
 `;
+
 export const ButtonSecondaryGrey = styled.button`
   border-radius: 50px;
   border-color: #dadbdf; 
@@ -437,5 +438,36 @@ export const FormStyledPill = styled.div`
 
   .fw-normal {
     font-weight: 400; /* Normal font weight for span */
+  }
+`;
+
+export const FormStyledContentSection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background: #fafbfc; /* Light background color */
+  border-radius: 16px; /* Rounded corners */
+
+  .question {
+    font-size: 0.857rem;
+    font-weight: 600;
+    color: #121826;
+    margin-right: 1rem;
+  }
+  input {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #e1e4e7;
+    margin-right: 1rem;
+    accent-color: #e00036;
+    border-radius: 4px;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    font-size: 0.857rem;
+    font-weight: 400;
+    color: #121826;
   }
 `;

@@ -6,4 +6,8 @@ export interface IListingInfoProps {
   suitability: string[] | null;
   ageLimit: string[] | null;
   description: string | null;
+  language: string[] | null;
+  subtitles: string | null;
+  contentGrading: string[] | null;
+  facilities: string[] | null;
 }

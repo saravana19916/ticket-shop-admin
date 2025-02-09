@@ -17,8 +17,32 @@ interface IProps {
 }
 const FormatOptions = [
   {
-    label: "Theater",
-    value: "Theater",
+    label: "Seating",
+    value: "Seating",
+  },
+  {
+    label: "Standing",
+    value: "Standing",
+  },
+];
+const SelectionOptions = [
+  {
+    label: "Automatic",
+    value: "Automatic",
+  },
+  {
+    label: "Manual",
+    value: "Manual",
+  },
+];
+const typeOptions = [
+  {
+    label: "Allocated",
+    value: "Allocated",
+  },
+  {
+    label: "Free",
+    value: "Free",
   },
 ];
 
