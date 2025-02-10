@@ -54,37 +54,11 @@ const GuestListAccordion: FC<IProps> = ({ item, index }) => {
               style={{ minWidth: "4rem", height: "4rem" }}
             ></div>
             <div className="row flex-grow-1">
-            <div className="col-1">
-                <AccordionH2Light className="mb-2">Unit</AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">{item.unit}</span>
-              </div>
-              <div className="col-2">
-                <AccordionH2Light className="mb-2">Order</AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">
-                  {item.orderId}
-                </span>
-              </div>
-              <div className="col-2">
+              <div className="col-4">
                 <AccordionH2Light className="mb-2">Name</AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">{item.name}</span>
               </div>
-              <div className="col-2">
-                <AccordionH2Light className="mb-2">
-                  Organization
-                </AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">
-                  {item.organization}
-                </span>
-              </div>
-              <div className="col-3">
-                <AccordionH2Light className="mb-2">
-                  Delivery Address
-                </AccordionH2Light>
-                <span className="fs-12px fw-500 text-light-blue-1">
-                  {item.deliveryAddress}
-                </span>
-              </div>
-              <div className="col-2">
+              <div className="col-4">
                 <AccordionH2Light className="mb-2">
                   Total Value
                 </AccordionH2Light>

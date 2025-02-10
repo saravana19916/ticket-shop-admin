@@ -45,7 +45,7 @@ const SingleGuestListAccordion: FC<IProps> = ({ item, index }) => {
                 <h4 className="fw-bold m-0">{item.ticket}</h4>
               </div>
 
-              <div className="col-12 col-md-5 col-lg-3">
+              <div className="col-12 col-md-5 col-lg-4">
                 <p className="m-0">availability</p>
                 <div className="d-flex align-items-center justify-content-between bg-light-gray px-3 py-2 rounded-pill gap-5">
                   <small className="bg-white px-4 py-1 rounded-pill w-100 text-dark">

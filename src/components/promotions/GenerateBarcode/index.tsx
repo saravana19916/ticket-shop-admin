@@ -60,7 +60,9 @@ const index: FC<IProps> = () => {
   };
   return (
     <>
-      {/* <Buttons /> */}
+      <div className="center-container">
+      <div className="card border p-4 rounded-16px">
+        <div className="p-0 p-md-5">
       <div className="row mb-4">
         <BackBreadCrumb />
         <div className="col-12 mb-3 mt-3">
@@ -279,13 +281,13 @@ const index: FC<IProps> = () => {
                     ></i>
                     <h4 className="m-0 fw-semibold">Silver Ticket</h4>
                   </div>
-                  <div className="col-4 text-center">
+                  <div className="col-3 text-center">
                     <h4 className="m-0 fw-bold">AED 199.00</h4>
                     <small className="text-color-gray-1">
                       net of all taxes
                     </small>
                   </div>
-                  <div className="col-5 d-flex align-items-center gap-3">
+                  <div className="col-6 d-flex align-items-center gap-3">
                     <InputGroup style={{ width: "10rem" }}>
                       <FormControl
                         className="fw-semibold p-3 ps-5 fs-14px  text-black form-control-label-rounded-start"
@@ -326,13 +328,13 @@ const index: FC<IProps> = () => {
                     ></i>
                     <h4 className="m-0 fw-semibold">Gold Ticket</h4>
                   </div>
-                  <div className="col-4 text-center">
+                  <div className="col-3 text-center">
                     <h4 className="m-0 fw-bold">AED 199.00</h4>
                     <small className="text-color-gray-1">
                       net of all taxes
                     </small>
                   </div>
-                  <div className="col-5 d-flex align-items-center gap-3">
+                  <div className="col-6 d-flex align-items-center gap-3">
                     <InputGroup style={{ width: "10rem" }}>
                       <FormControl
                         className="fw-semibold p-3 ps-5 fs-14px  text-black form-control-label-rounded-start"
@@ -373,13 +375,13 @@ const index: FC<IProps> = () => {
                     ></i>
                     <h4 className="m-0 fw-semibold">Platinum Ticket</h4>
                   </div>
-                  <div className="col-4 text-center">
+                  <div className="col-3 text-center">
                     <h4 className="m-0 fw-bold">AED 199.00</h4>
                     <small className="text-color-gray-1">
                       net of all taxes
                     </small>
                   </div>
-                  <div className="col-5 d-flex align-items-center gap-3">
+                  <div className="col-6 d-flex align-items-center gap-3">
                     <InputGroup style={{ width: "10rem" }}>
                       <FormControl
                         className="fw-semibold p-3 ps-5 fs-14px  text-black form-control-label-rounded-start"
@@ -420,13 +422,13 @@ const index: FC<IProps> = () => {
                     ></i>
                     <h4 className="m-0 fw-semibold">Royal Ticket</h4>
                   </div>
-                  <div className="col-4 text-center">
+                  <div className="col-3 text-center">
                     <h4 className="m-0 fw-bold">AED 199.00</h4>
                     <small className="text-color-gray-1">
                       net of all taxes
                     </small>
                   </div>
-                  <div className="col-5 d-flex align-items-center gap-3">
+                  <div className="col-6 d-flex align-items-center gap-3">
                     <InputGroup style={{ width: "10rem" }}>
                       <FormControl
                         className="fw-semibold p-3 ps-5 fs-14px  text-black form-control-label-rounded-start"
@@ -463,6 +465,9 @@ const index: FC<IProps> = () => {
             </TabPanels>
           </TabGroup>
         </div>
+      </div>
+      </div>
+      </div>
       </div>
     </>
   );
