@@ -1,24 +1,19 @@
 import React, { FC, useState } from "react";
-import ProductInfo from "./ProductInfo";
-import ZoningAndAllocation from "./ZoningAndAllocation";
-import RulesAndTimeline from "./RulesAndTimeline";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import PricingTable from "./PricingTable";
 import { Form, Formik, FormikErrors } from "formik";
 import {
   addPricingDetailsInitialValue,
   addPricingValidationSchema,
 } from "../../../pricing/AddPricing/helpers";
 import { IPricingDetailsProps } from "../../../pricing/AddPricing/type";
-import Pricing from "./Pricing";
-import PricingInclusion from "./PricingInclusion";
 import { pricingDetailsData } from "../../../../commondata/pricingTableData";
 import { toast } from "react-toastify";
 import ButtonCustom from "../../../shared/ButtonCustom";
 import { Accordion } from "react-bootstrap";
-import PricingAccordion from "./PricingAccordion";
+import ProductAllocationAccordion from "./ProductAllocationAccordion";
 import { color } from "echarts";
 import { FormInputDescriptionStyled } from "../../../styledComponents/styledForm";
+import ProductInfo from "./Produt";
 
 interface IAddPricingProps {}
 
@@ -185,7 +180,7 @@ const AddPricing: FC<IAddPricingProps> = () => {
                         {tableData?.map(
                           (item: IPricingDetailsProps, index: number) => (
                             <>
-                              <PricingAccordion
+                              <ProductAllocationAccordion
                                 item={item}
                                 index={`${index}`}
                               />

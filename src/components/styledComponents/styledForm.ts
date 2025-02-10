@@ -456,8 +456,8 @@ export const FormStyledContentSection = styled.div`
     margin-right: 1rem;
   }
   input {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border: 1px solid #e1e4e7;
     margin-right: 1rem;
     accent-color: #e00036;
@@ -469,5 +469,38 @@ export const FormStyledContentSection = styled.div`
     font-size: 0.857rem;
     font-weight: 400;
     color: #121826;
+  }
+`;
+
+export const StyledCountButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #e1e4e7;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: #4b5563;
+  }
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: #f9fafb;
+    border-color: #e5e7eb;
+
+    svg {
+      color: #9ca3af;
+    }
   }
 `;

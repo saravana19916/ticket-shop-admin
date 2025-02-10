@@ -9,13 +9,18 @@ import {
   AccordionButton,
 } from "../../../styledComponents/accordion";
 import { IAddListingAddZoningAndCapacity } from "./type";
+import {
+  ButtonActive,
+  ButtonNotActive,
+} from "../../../styledComponents/styledForm";
 
 interface IProps {
   item: IAddListingAddZoningAndCapacity;
   index: string;
+  status: "active" | "in-active";
 }
 
-const ZoningAccordion: FC<IProps> = ({ item, index }) => {
+const ZoningAccordion: FC<IProps> = ({ item, index, status }) => {
   return (
     <>
       <Accordion.Item
@@ -33,105 +38,169 @@ const ZoningAccordion: FC<IProps> = ({ item, index }) => {
               style={{ minWidth: "4rem", height: "4rem" }}
             ></div>
             <div className="row flex-grow-1">
-              <div className="col-3">
-                <AccordionH2Light className="mb-2">S.No</AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">{item.id}</span>
-              </div>
-              <div className="col-3">
-                <AccordionH2Light className="mb-2">Zone Name</AccordionH2Light>
+              <div className="col-3 mt-1">
+                <AccordionH2Light className="mb-2">Zone</AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">
                   {item.zones?.zoneName}
                 </span>
               </div>
-              <div className="col-3">
+              <div className="col-3 mt-1">
                 <AccordionH2Light className="mb-2"> Format</AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">
                   {item.zones?.zoneFormat}
                 </span>
               </div>
-              <div className="col-3">
-                <AccordionH2Light className="mb-2">Type</AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">
-                  {item.zones?.zoneType}
-                </span>
+              <div className="col-1"></div>
+              <div className="col-5">
+                {status === "active" ? (
+                  <>
+                    <ButtonActive className="btn">Active</ButtonActive>
+                  </>
+                ) : (
+                  <>
+                    <ButtonNotActive className="btn">
+                      Not Active
+                    </ButtonNotActive>
+                  </>
+                )}
               </div>
             </div>
           </div>
         </Accordion.Header>
         <Accordion.Body className="p-2 pb-6">
-          <AccordionBodyTop className="row px-md-3 px-lg-7 py-7 mx-md-1 mx-lg-2 my-3">
-            <div className="col-5">
-              <h4 className="fw-bold fs-6">Zone Info</h4>
+          <AccordionBodyTop
+            className="row px-md-3 px-lg-7 py-7 mx-md-1 mx-lg-2 mb-0 mt-3"
+            // style={{
+            //   borderBottomLeftRadius: "0px",
+            //   borderBottomRightRadius: "0px",
+            //   borderTopLeftRadius: "16px",
+            //   borderTopRightRadius: "16px",
+            // }}
+          >
+            <div className="col-12">
+              <h4 className="fw-bold fs-6 text-black mb-5">Details</h4>
               <div className="d-flex flex-column gap-1 fs-6">
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyLeftSection>Name</AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    Zone Name
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-7 fw-light">
                     {item.zones?.zoneName}
                   </AccordionBodyLeftSection>
                 </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyLeftSection>Format</AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    Zone Format
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-7 fw-light">
                     {item.zones?.zoneFormat}
                   </AccordionBodyLeftSection>
                 </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyLeftSection>Type</AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection>
-                    {item.zones?.zoneType}
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    Selection
                   </AccordionBodyLeftSection>
-                </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyLeftSection>Selection</AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-7 fw-light">
                     {item.zones?.zoneSelection}
                   </AccordionBodyLeftSection>
                 </div>
-              </div>
-            </div>
-            <div className="col-1 d-flex h-auto justify-content-center mt-1">
-              <div className="vr"></div>
-            </div>
-            <div className="col-5">
-              <h4 className="fw-bold fs-6">Zone Design</h4>
-              <div className="d-flex flex-column gap-1 fs-6">
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyRightSection>Section</AccordionBodyRightSection>
-                  <AccordionBodyRightSection>
-                    Section 1
-                  </AccordionBodyRightSection>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    Type
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-7 fw-light">
+                    {item.zones?.zoneType}
+                  </AccordionBodyLeftSection>
                 </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyRightSection>Floor</AccordionBodyRightSection>
-                  <AccordionBodyRightSection>
-                    1st Floor{" "}
-                  </AccordionBodyRightSection>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    Total Capacity
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-7 fw-light">
+                    1500
+                  </AccordionBodyLeftSection>
                 </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyRightSection>Block</AccordionBodyRightSection>
-                  <AccordionBodyRightSection>
-                    Block 10
-                  </AccordionBodyRightSection>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    On Sale Capacity
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-7 fw-light">
+                    1450
+                  </AccordionBodyLeftSection>
                 </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyRightSection>Row</AccordionBodyRightSection>
-                  <AccordionBodyRightSection>Row 1</AccordionBodyRightSection>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    Blocked Capacity
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-7 fw-light">
+                    50
+                  </AccordionBodyLeftSection>
                 </div>
-                <div className="fw-semibold d-flex align-items-center justify-content-between">
-                  <AccordionBodyRightSection>Wing</AccordionBodyRightSection>
-                  <AccordionBodyRightSection>
-                    East Wing
-                  </AccordionBodyRightSection>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    Sub Section / Rows
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-7 fw-light text-light-blue-1">
+                    Yes
+                  </AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    Number of Sub Section / Rows
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-7 fw-light">
+                    4
+                  </AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    Connected Products
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-7 fw-light">
+                    None
+                  </AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-5">
+                    Status
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection
+                    className="col-7 fw-light"
+                    style={{
+                      color: status === "active" ? "#00ff00" : "#45bced",
+                    }}
+                  >
+                    Created - {status === "active" ? "Active" : "Inactive"}
+                  </AccordionBodyLeftSection>
                 </div>
               </div>
             </div>
           </AccordionBodyTop>
-          <div className="d-flex align-items-center gap-3 justify-content-start ms-5 mt-5">
-            <AccordionButton className="btn px-6 py-2">
+          <div className="d-flex align-items-center gap-3 justify-content-start ms-4 mt-5 flex-wrap">
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "138px" }}
+            >
+              {status != "active" ? "Activate" : "Deactivate"}
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "138px" }}
+            >
               Duplicate
             </AccordionButton>
-            <AccordionButton className="btn px-6 py-2">Edit</AccordionButton>
-            <AccordionButton className="btn px-6 py-2">Delete</AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "138px" }}
+            >
+              Edit
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "138px" }}
+            >
+              Delete
+            </AccordionButton>
           </div>
         </Accordion.Body>
       </Accordion.Item>

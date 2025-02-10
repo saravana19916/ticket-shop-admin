@@ -359,6 +359,10 @@ export const RouterData = [
     element: <AddListing />,
   },
   {
+    path: `${import.meta.env.BASE_URL}add-listing/product-allocation`,
+    element: <AddListing />,
+  },
+  {
     path: `${import.meta.env.BASE_URL}add-listing/shops`,
     element: <AddListing />,
   },

@@ -14,6 +14,7 @@ import AddMaterialMarketing from "./AddMaterialMarketing";
 import AddRulesAndPolicies from "./AddRulesAndPolicies";
 import AddPolicies from "./Policies/AddPolicies";
 import AddRules from "./AddRules";
+import AddProductAllocation from "./AddProductAllocation";
 interface IAddListing {}
 
 const index: FC<IAddListing> = () => {
@@ -22,8 +23,9 @@ const index: FC<IAddListing> = () => {
     "/add-listing/info",
     "/add-listing/location",
     "/add-listing/date-show-time",
-    "/add-listing/products",
     "/add-listing/zoning-and-capacity",
+    "/add-listing/products",
+    // "/add-listing/product-allocation",
     "/add-listing/shops",
     // "/add-listing/dynamic-pricing",
     "/add-listing/marketing-material",
@@ -87,6 +89,9 @@ const index: FC<IAddListing> = () => {
       case "/add-listing/zoning-and-capacity":
         setCurrentPageName("Zoning and capacity");
         return <AddZoningAndCapacity />;
+      case "/add-listing/product-allocation":
+        setCurrentPageName("Product Allocation");
+        return <AddProductAllocation />;
       case "/add-listing/shops":
         setCurrentPageName("Shop");
         return <AddShops />;

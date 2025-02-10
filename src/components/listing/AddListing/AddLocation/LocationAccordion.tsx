@@ -1,27 +1,22 @@
 import React, { FC } from "react";
-import { Accordion } from "react-bootstrap";
-import styled from "styled-components";
-import { IShowDateAndTimeSectionProps } from "../../../../../commondata/showDateAndTime";
-import moment from "moment";
+import { IAddLocationProps } from "./type";
 import {
   AccordionBodyLeftSection,
-  AccordionBodyRightSection,
   AccordionBodyTop,
-  AccordionH2Light,
   AccordionButton,
-} from "../../../../styledComponents/accordion";
+  AccordionH2Light,
+} from "../../../styledComponents/accordion";
+import { Accordion } from "react-bootstrap";
 import {
   ButtonActive,
   ButtonNotActive,
-} from "../../../../styledComponents/styledForm";
-
+} from "../../../styledComponents/styledForm";
 interface IProps {
-  item: IShowDateAndTimeSectionProps;
+  item: IAddLocationProps;
   index: string;
   status: "active" | "in-active";
 }
-
-const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
+const LocationAccordion: FC<IProps> = ({ item, index, status }) => {
   return (
     <>
       <Accordion.Item
@@ -39,20 +34,14 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
               style={{ minWidth: "4rem", height: "4rem" }}
             ></div>
             <div className="row flex-grow-1 d-flex align-items-center">
-              <div className="col-3 mt-1">
-                <AccordionH2Light className="mb-2">Show Name</AccordionH2Light>
+              <div className="col-6 mt-1">
+                <AccordionH2Light className="mb-2">Name</AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">
-                  Show {item.id}
+                  {item.locationName}
                 </span>
               </div>
-              <div className="col-4 mt-1">
-                <AccordionH2Light className="mb-2">
-                  Start Date Time
-                </AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">
-                  {item.eventDate} {item.showTime}
-                </span>
-              </div>
+
+              <div className="col-1"></div>
               <div className="col-5">
                 {status === "active" ? (
                   <>
@@ -70,58 +59,48 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
           </div>
         </Accordion.Header>
         <Accordion.Body className="p-2 pb-6">
-          <AccordionBodyTop
-            className="row px-md-3 px-lg-7 py-7 mx-md-1 mx-lg-2 mb-0 mt-3"
-            style={{
-              borderBottomLeftRadius: "0px",
-              borderBottomRightRadius: "0px",
-              borderTopLeftRadius: "16px",
-              borderTopRightRadius: "16px",
-            }}
-          >
+          <AccordionBodyTop className="row px-md-3 px-lg-7 py-7 mx-md-1 mx-lg-2 mb-0 mt-3">
             <div className="col-12">
               <h4 className="fw-bold fs-6 text-black mb-5">Details</h4>
               <div className="d-flex flex-column gap-1 fs-6">
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Start Date & Time
+                    Location Name
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    {moment().format("DD MMM YYYY - HH:mm")}
+                    {item.locationName}
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    End Date & Time
+                    Country
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    {moment().add(150, "minutes").format("DD MMM YYYY - HH:mm")}
+                    {item.countryId}
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Duration
+                    City
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    2hrs 30 mins
+                    {item.cityId}
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Door Opens At
+                    Location Website
                   </AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection className="col-8 fw-light">
-                    {moment()
-                      .subtract(10, "minutes")
-                      .format("DD MMM YYYY - HH:mm")}
+                  <AccordionBodyLeftSection className="col-8 fw-light text-light-blue-1">
+                    {item.locationWebsite}
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Door Closes At
+                    Address
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    {moment().add(10, "minutes").format("DD MMM YYYY - HH:mm")}
+                    {item?.address}
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
@@ -135,44 +114,6 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
                     }}
                   >
                     Created - {status === "active" ? "Active" : "Inactive"}
-                  </AccordionBodyLeftSection>
-                </div>
-              </div>
-            </div>
-          </AccordionBodyTop>
-          <AccordionBodyTop
-            className="row px-md-3 px-lg-7 py-3 mx-md-1 mx-lg-2 mb-3 mt-1"
-            style={{
-              borderBottomLeftRadius: "16px",
-              borderBottomRightRadius: "16px",
-              borderTopLeftRadius: "0",
-              borderTopRightRadius: "0",
-            }}
-          >
-            <div className="col-12">
-              <div className="d-flex flex-column gap-1 fs-6">
-                <div className="fw-semibold d-flex align-items-center row">
-                  <AccordionBodyLeftSection className="col-4">
-                    Intermission Start Time
-                  </AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection className="col-8 fw-light">
-                    {moment().add(75, "minutes").format("HH:mm")}
-                  </AccordionBodyLeftSection>
-                </div>
-                <div className="fw-semibold d-flex align-items-center row">
-                  <AccordionBodyLeftSection className="col-4">
-                    Intermission End Time
-                  </AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection className="col-8 fw-light">
-                    {moment().add(85, "minutes").format("HH:mm")}
-                  </AccordionBodyLeftSection>
-                </div>
-                <div className="fw-semibold d-flex align-items-center row">
-                  <AccordionBodyLeftSection className="col-4">
-                    Intermission Duration
-                  </AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection className="col-8 fw-light">
-                    10:00 mins
                   </AccordionBodyLeftSection>
                 </div>
               </div>
@@ -210,4 +151,4 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
   );
 };
 
-export default ShowDateAndTimeAccordion;
+export default LocationAccordion;

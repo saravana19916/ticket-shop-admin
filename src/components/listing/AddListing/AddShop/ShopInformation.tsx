@@ -242,7 +242,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
       </div>
       <div className="col-12 mb-6">
         <FormInputDescriptionStyled>
-          choose the type of store you are presenting your product in alongside
+          Choose the type of store you are presenting your product in alongside
           a tag for the shop. Physical store means a store that would sell your
           products physically without a web page Digital Store, means a store
           that would sell your products through a dedicated web page.{" "}

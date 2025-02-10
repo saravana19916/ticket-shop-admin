@@ -23,6 +23,7 @@ import ZoningAccordion from "./ZoningAccordion";
 import CustomTabButton from "../../../shared/CustomTabButton";
 import {
   ButtonPrimary,
+  ButtonSecondaryDarkGrey,
   FormInputDescriptionStyled,
   FormStyledContentSection,
 } from "../../../styledComponents/styledForm";
@@ -107,6 +108,29 @@ const AddZoningAndCapacity: FC<IAddZoningAndCapacityProps> = ({}) => {
                     </div>
                     <DefineZones />
                     <AddRowAndZones />
+                    <div className="col-12 mb-6 mt-5">
+                      <div className="float-end d-flex gap-4">
+                        <ButtonSecondaryDarkGrey type="button" className="btn">
+                          <PlusIcon className="w-4 h-4 me-3 mb-1px" />
+                          Add Another Zone
+                        </ButtonSecondaryDarkGrey>
+                        <ButtonPrimary type="submit" className="btn">
+                          Create Zone
+                        </ButtonPrimary>
+                      </div>
+                    </div>
+                    <div className="col-12 my-6">
+                      <FormInputDescriptionStyled>
+                        You can amend edit, update, delete , activate and
+                        deactivate your zones and make changes to your sub
+                        section, in the{" "}
+                        <span className="text-primary-1">
+                          'Zoning & Capacity'
+                        </span>{" "}
+                        Tab. A list of your created zones and
+                        sections/subsections/rows are listed below.
+                      </FormInputDescriptionStyled>
+                    </div>
                     {/* <TabGroup className="row px-0 px-md-2 px-lg-4 px-xl-4 py-2">
                       <TabList className="d-flex align-items-center gap-3 mb-5">
                         <Tab as={Fragment} key={tabList[0]}>
@@ -179,6 +203,9 @@ const AddZoningAndCapacity: FC<IAddZoningAndCapacityProps> = ({}) => {
                                   <ZoningAccordion
                                     item={item}
                                     index={`${index}`}
+                                    status={
+                                      index % 2 === 0 ? "active" : "in-active"
+                                    }
                                   />
                                 </>
                               )

@@ -175,7 +175,6 @@ const AddShops: FC<IAddShopsProps> = () => {
                           className="btn"
                           onClick={submitForm}
                         >
-                          
                           {editId ? "Update Shop" : "Create Shop"}
                         </ButtonPrimary>
                       </div>

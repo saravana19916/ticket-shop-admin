@@ -5,8 +5,8 @@ export const zoningAndCapacitySectionData: IAddListingAddZoningAndCapacity[] = [
   {
     id: 1,
     zones: {
-      zoneName: "Zone A",
-      zoneFormat: "Format 1",
+      zoneName: "Gold",
+      zoneFormat: "Seated",
       zoneType: "VIP",
       zoneColor: "Red",
       zoneSelection: "Manual & automated",
@@ -34,8 +34,8 @@ export const zoningAndCapacitySectionData: IAddListingAddZoningAndCapacity[] = [
   {
     id: 2,
     zones: {
-      zoneName: "Zone B",
-      zoneFormat: "Format 2",
+      zoneName: "Platinum",
+      zoneFormat: "Standing",
       zoneType: "Standard",
       zoneColor: "Blue",
       zoneSelection: "Manual & automated",
@@ -63,8 +63,8 @@ export const zoningAndCapacitySectionData: IAddListingAddZoningAndCapacity[] = [
   {
     id: 3,
     zones: {
-      zoneName: "Zone C",
-      zoneFormat: "Format 3",
+      zoneName: "Gold",
+      zoneFormat: "Seated",
       zoneType: "Premium",
       zoneSelection: "Manual & automated",
       zoneColor: "Green",

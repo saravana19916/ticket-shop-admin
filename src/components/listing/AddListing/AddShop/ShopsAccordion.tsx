@@ -6,7 +6,6 @@ import {
   AccordionH2Light,
   AccordionBodyTop,
   AccordionBodyLeftSection,
-  AccordionBodyRightSection,
   AccordionButton,
 } from "../../../styledComponents/accordion";
 import { IAddListingShopProps } from "./type";
@@ -79,7 +78,7 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
             }}
           >
             <div className="col-12">
-              <h4 className="fw-bold fs-6 text-black mb-5">Shop Details</h4>
+              <h4 className="fw-bold fs-6 text-black mb-5">Details</h4>
               <div className="d-flex flex-column gap-1 fs-6">
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">

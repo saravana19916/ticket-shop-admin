@@ -8,6 +8,10 @@ import { useGeolocated } from "react-geolocated";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import ManualLocationTab from "./ManualLocationTab";
 import CustomTabButton from "../../../shared/CustomTabButton";
+import { Accordion } from "react-bootstrap";
+import { IAddLocationProps } from "./type";
+import LocationAccordion from "./LocationAccordion";
+import { locationAccordionData } from "./helper";
 interface IAddListingPageOneProps {}
 
 const AddLocationForListing: FC<IAddListingPageOneProps> = ({}) => {
@@ -148,6 +152,21 @@ const AddLocationForListing: FC<IAddListingPageOneProps> = ({}) => {
                   </TabPanel>
                 </TabPanels>
               </TabGroup>
+              <div className="mt-6">
+                <Accordion className="panel-default d-flex flex-column gap-4">
+                  {locationAccordionData?.map(
+                    (item: IAddLocationProps, index: number) => (
+                      <>
+                        <LocationAccordion
+                          item={item}
+                          index={`${index}`}
+                          status={index % 2 === 0 ? "active" : "in-active"}
+                        />
+                      </>
+                    )
+                  )}
+                </Accordion>
+              </div>
               {/* <div className="col-12 mb-3">
                 <GetGeoLocation />
               </div>

@@ -370,6 +370,7 @@ const AddListingPageOne: FC<IAddListingPageOneProps> = ({}) => {
                             <ShowDateAndTimeAccordion
                               item={item}
                               index={`${index}`}
+                              status={index % 2 === 0 ? "active" : "in-active"}
                             />
                           </>
                         )
