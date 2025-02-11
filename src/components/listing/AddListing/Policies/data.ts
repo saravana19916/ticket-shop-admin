@@ -5,7 +5,7 @@ export const allPoliciesList: IPoliciesDetailsProps[] = [
   {
     id: 1,
     policyName: "Privacy Policy",
-    toBeVisibleOn: "Website",
+    toBeVisibleOn: "Event Page",
     policyText:
       "We are committed to protecting your personal information and privacy.",
     createdAt: new Date("2025-01-01").toISOString(),
@@ -14,7 +14,7 @@ export const allPoliciesList: IPoliciesDetailsProps[] = [
   {
     id: 2,
     policyName: "Cookie Policy",
-    toBeVisibleOn: "Website",
+    toBeVisibleOn: "Event Page",
     policyText:
       "This site uses cookies to enhance user experience and analyze traffic.",
     createdAt: new Date("2025-01-04").toISOString(),
@@ -24,7 +24,7 @@ export const allPoliciesList: IPoliciesDetailsProps[] = [
   {
     id: 3,
     policyName: "Terms and Conditions",
-    toBeVisibleOn: "Mobile App",
+    toBeVisibleOn: "Digital Ticket",
     policyText:
       "By using this application, you agree to the following terms and conditions.",
     createdAt: new Date("2025-01-02").toISOString(),
@@ -33,7 +33,7 @@ export const allPoliciesList: IPoliciesDetailsProps[] = [
   {
     id: 4,
     policyName: "User Agreement",
-    toBeVisibleOn: "Website",
+    toBeVisibleOn: "Event Page",
     policyText:
       "All users must adhere to the guidelines provided in this agreement.",
     createdAt: new Date("2025-01-05").toISOString(),

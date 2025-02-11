@@ -9,6 +9,7 @@ import { IAddLocationProps } from "./type";
 import LocationAccordion from "./LocationAccordion";
 import { locationAccordionData } from "./helper";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { FormInputStyled } from "../../../styledComponents/styledForm";
 
 const mapContainerStyle = {
   width: "100%",
@@ -50,7 +51,9 @@ const AddLocationForListing: FC = () => {
         <div className="p-0 p-md-5">
           <div className="row">
             <div className="col-12 mb-3">
-              <p className="fw-600 fs-26px text-black mb-3">Your Listing Location</p>
+              <p className="fw-600 fs-26px text-black mb-3">
+                Your Listing Location
+              </p>
             </div>
             <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
               <TabList className="d-flex align-items-center gap-3 mb-5">
@@ -72,10 +75,10 @@ const AddLocationForListing: FC = () => {
                   <div className="col-12 mb-7 mt-3">
                     <Form.Group>
                       <Form.Label>Search from Google</Form.Label>
-                      <Form.Control
+                      <FormInputStyled
                         type="text"
                         placeholder="Search here"
-                        className="form-control mb-5"
+                        className="form-control mb-6"
                         value={formValues.locationName}
                         name="locationName"
                         onChange={handleChange}
@@ -84,7 +87,11 @@ const AddLocationForListing: FC = () => {
                     <LoadScript googleMapsApiKey="&callback=initMap">
                       <GoogleMap
                         mapContainerStyle={mapContainerStyle}
-                        center={location.lat && location.lng ? location : defaultCenter}
+                        center={
+                          location.lat && location.lng
+                            ? location
+                            : defaultCenter
+                        }
                         zoom={location.lat && location.lng ? 15 : 10}
                       >
                         {location.lat && location.lng && (

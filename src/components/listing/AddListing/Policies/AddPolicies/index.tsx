@@ -1,5 +1,5 @@
 import { ErrorMessage, Formik, Form as FormikForm } from "formik";
-import { Form } from "react-bootstrap";
+import { Accordion, Form } from "react-bootstrap";
 import React from "react";
 import * as Yup from "yup";
 import Select from "react-select";
@@ -15,6 +15,8 @@ import {
   FormLabelStyled,
   StyledSunEditor,
 } from "../../../../styledComponents/styledForm";
+import { IPoliciesDetailsProps } from "../PoliciesLists";
+import PoliciesAccordion from "./PoliciesAccordion";
 const policiesToVisible: IOptionProps[] = [
   { value: "Website", label: "Website" },
   { value: "Mobile App", label: "Mobile App" },
@@ -145,7 +147,7 @@ const index = () => {
                                   placeholder="Enter name"
                                   className="form-control"
                                   value={values?.policyName || ""}
-                                  name="listingName"
+                                  name="policyName"
                                   onChange={handleChange}
                                 />
                                 {errors?.policyName && touched?.policyName && (
@@ -221,20 +223,6 @@ const index = () => {
                                     ],
                                   }}
                                 />
-                                {/* <Form.Control
-                                as="textarea"
-                                id="policyText"
-                                className="mb-3 p-5"
-                                style={{
-                                  height: "250px",
-                                  resize: "none",
-                                  borderRadius: "32px",
-                                  borderColor: "#B3B3B3",
-                                }}
-                                value={values?.policyText || ""}
-                                name="policyText"
-                                onChange={handleChange}
-                              ></Form.Control> */}
                                 {errors?.policyText && touched?.policyText && (
                                   <span className="text-danger d-inline-block ms-5 mt-1 fs-11px">
                                     {errors?.policyText}
@@ -245,8 +233,7 @@ const index = () => {
                             <div className="col-12 mb-5">
                               <div className="float-end mb-5">
                                 <ButtonPrimary type="submit" className="btn">
-                                  <PlusIcon className="w-4 h-4 me-3 mb-1px" />
-                                  {id ? "Update " : "Add "}{" "}
+                                  {id ? "Update " : "Create "}{" "}
                                 </ButtonPrimary>
                               </div>
                             </div>
@@ -255,6 +242,21 @@ const index = () => {
                       </>
                     )}
                   </Formik>
+                </div>
+                <div className="col-12 mt-6">
+                  <Accordion className="panel-default d-flex flex-column gap-4">
+                    {allPoliciesList?.map(
+                      (item: IPoliciesDetailsProps, index: number) => (
+                        <>
+                          <PoliciesAccordion
+                            item={item}
+                            index={`${index}`}
+                            status={index % 2 === 0 ? "active" : "in-active"}
+                          />
+                        </>
+                      )
+                    )}
+                  </Accordion>
                 </div>
               </div>
             </div>
