@@ -18,8 +18,8 @@ const AddFloorPlan: FC<IProps> = ({}) => {
     unit: "px", // Use pixels for exact sizing
     x: 0,
     y: 0,
-    width: 150, // Fixed width
-    height: 150, // Fixed height
+    width: 958, // Fixed width
+    height: 723, // Fixed height
   });
   const [completedCrop, setCompletedCrop] = useState<PixelCrop | null>(null);
   const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
@@ -58,8 +58,8 @@ const AddFloorPlan: FC<IProps> = ({}) => {
   const saveCroppedImage = async () => {
     if (completedCrop && floorPlanRef.current) {
       const canvas = document.createElement("canvas");
-      canvas.width = 150; // Fixed width
-      canvas.height = 150; // Fixed height
+      canvas.width = 958; // Fixed width
+      canvas.height = 723; // Fixed height
       const ctx = canvas.getContext("2d");
 
       if (ctx) {
@@ -104,8 +104,8 @@ const AddFloorPlan: FC<IProps> = ({}) => {
         unit: "px",
         x: 0,
         y: 0,
-        width: 150,
-        height: 150,
+        width: 958,
+        height: 723,
       };
       setCrop(initialCrop);
       setCompletedCrop(initialCrop);
@@ -131,8 +131,8 @@ const AddFloorPlan: FC<IProps> = ({}) => {
                 </>
               )}
             </FormFileInputStyled>
-            <span className="d-block ms-3 fs-10px">
-              <span className="fw-600">Size: </span>150 pixel (w) x 150 pixel
+            <span className="d-block ms-3 fs-12px">
+              <span className="fw-600">Size: </span>958 pixel (w) x 723 pixel
               (h)
             </span>
             <input
@@ -164,8 +164,8 @@ const AddFloorPlan: FC<IProps> = ({}) => {
                 onChange={(newCrop) => setCrop(newCrop)}
                 onComplete={onCropComplete}
                 aspect={1} // To maintain a 1:1 aspect ratio
-                minWidth={150} // Minimum width of the crop box
-                minHeight={150} // Minimum height of the crop box
+                minWidth={958} // Minimum width of the crop box
+                minHeight={723} // Minimum height of the crop box
                 locked // Lock the aspect ratio and size
               >
                 <img

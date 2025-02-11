@@ -96,7 +96,7 @@ const index = () => {
           <div className="col-6 mb-3">
             <Link
               to="/add-shop"
-              className="btn badge-red float-end rounded-pill mt-2 fs-6 px-6 py-2"
+              className="btn badge-red float-start rounded-pill mt-2 fs-6 px-6 py-2"
             >
               <PlusIcon
                 className="w-5 h-5 me-1"

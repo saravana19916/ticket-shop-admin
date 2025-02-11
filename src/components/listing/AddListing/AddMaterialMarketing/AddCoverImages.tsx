@@ -19,8 +19,8 @@ const AddCoverImage: FC<IProps> = () => {
     unit: "px", // Use pixels for exact sizing
     x: 0,
     y: 0,
-    width: 50, // Fixed width
-    height: 50, // Fixed height
+    width: 1280, // Fixed width
+    height: 720, // Fixed height
   });
   const [completedCrop, setCompletedCrop] = useState<PixelCrop | null>(null);
   const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
@@ -59,8 +59,8 @@ const AddCoverImage: FC<IProps> = () => {
   const saveCroppedImage = async () => {
     if (completedCrop && imageRef.current) {
       const canvas = document.createElement("canvas");
-      canvas.width = 50; // Fixed width
-      canvas.height = 50; // Fixed height
+      canvas.width = 1280; // Fixed width
+      canvas.height = 720; // Fixed height
       const ctx = canvas.getContext("2d");
 
       if (ctx) {
@@ -116,8 +116,8 @@ const AddCoverImage: FC<IProps> = () => {
               </>
             )}
           </FormFileInputStyled>
-          <span className="d-block ms-3 fs-10px">
-            <span className="fw-600">Size: </span>50 pixel (w) x 50 pixel (h)
+          <span className="d-block ms-3 fs-12px">
+            <span className="fw-600">Size: </span>1280 pixel (w) x 720 pixel (h)
           </span>
           <input
             type="file"
@@ -150,8 +150,8 @@ const AddCoverImage: FC<IProps> = () => {
               onChange={(newCrop) => setCrop(newCrop)}
               onComplete={onCropComplete}
               aspect={1} // To maintain a 1:1 aspect ratio
-              minWidth={50} // Minimum width of the crop box
-              minHeight={50} // Minimum height of the crop box
+              minWidth={1280} // Minimum width of the crop box
+              minHeight={720} // Minimum height of the crop box
               locked // Lock the aspect ratio and size
             >
               <img

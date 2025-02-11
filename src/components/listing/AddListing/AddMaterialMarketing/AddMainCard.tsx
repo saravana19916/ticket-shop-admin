@@ -20,8 +20,8 @@ const AddMainCard: FC<IProps> = ({}) => {
     unit: "px", // Use pixels for exact sizing
     x: 0,
     y: 0,
-    width: 150, // Fixed width
-    height: 200, // Fixed height
+    width: 405, // Fixed width
+    height: 486, // Fixed height
   });
   const [completedCrop, setCompletedCrop] = useState<PixelCrop | null>(null);
   const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
@@ -62,8 +62,8 @@ const AddMainCard: FC<IProps> = ({}) => {
   const saveCroppedImage = async () => {
     if (completedCrop && mainCardRef.current) {
       const canvas = document.createElement("canvas");
-      canvas.width = 150; // Fixed width
-      canvas.height = 200; // Fixed height
+      canvas.width = 405; // Fixed width
+      canvas.height = 486; // Fixed height
       const ctx = canvas.getContext("2d");
 
       if (ctx) {
@@ -118,8 +118,8 @@ const AddMainCard: FC<IProps> = ({}) => {
         unit: "px",
         x: 0,
         y: 0,
-        width: 150,
-        height: 200,
+        width: 405,
+        height: 486,
       };
       setCrop(initialCrop);
       setCompletedCrop(initialCrop);
@@ -145,8 +145,8 @@ const AddMainCard: FC<IProps> = ({}) => {
                 </>
               )}
             </FormFileInputStyled>
-            <span className="d-block ms-3 fs-10px">
-              <span className="fw-600">Size: </span>150 pixel (w) x 200 pixel
+            <span className="d-block ms-3 fs-12px">
+              <span className="fw-600">Size: </span>405 pixel (w) x 486 pixel
               (h)
             </span>
             <input
@@ -170,7 +170,7 @@ const AddMainCard: FC<IProps> = ({}) => {
         <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
           <Modal.Header closeButton>
             <Modal.Title className="pt-3">
-              Crop Main Card Image - 150 pixel (w) x 200 pixel (h)
+              Crop Main Card Image - 405 pixel (w) x 486 pixel (h)
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -180,8 +180,8 @@ const AddMainCard: FC<IProps> = ({}) => {
                 onChange={(newCrop) => setCrop(newCrop)}
                 onComplete={onCropComplete}
                 aspect={1} // To maintain a 1:1 aspect ratio
-                minWidth={150} // Minimum width of the crop box
-                minHeight={200} // Minimum height of the crop box
+                minWidth={405} // Minimum width of the crop box
+                minHeight={486} // Minimum height of the crop box
                 locked // Lock the aspect ratio and size
               >
                 <img

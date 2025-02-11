@@ -18,8 +18,8 @@ const AddGallery: FC<IProps> = ({}) => {
     unit: "px", // Use pixels for exact sizing
     x: 0,
     y: 0,
-    width: 150, // Fixed width
-    height: 150, // Fixed height
+    width: 314, // Fixed width
+    height: 236, // Fixed height
   });
   const [completedCrop, setCompletedCrop] = useState<PixelCrop | null>(null);
   const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
@@ -58,8 +58,8 @@ const AddGallery: FC<IProps> = ({}) => {
   const saveCroppedImage = async () => {
     if (completedCrop && addGalleryRef.current) {
       const canvas = document.createElement("canvas");
-      canvas.width = 150; // Fixed width
-      canvas.height = 150; // Fixed height
+      canvas.width = 314; // Fixed width
+      canvas.height = 236; // Fixed height
       const ctx = canvas.getContext("2d");
 
       if (ctx) {
@@ -104,8 +104,9 @@ const AddGallery: FC<IProps> = ({}) => {
         unit: "px",
         x: 0,
         y: 0,
-        width: 150,
-        height: 150,
+        width: 314,
+        height: 236
+        ,
       };
       setCrop(initialCrop);
       setCompletedCrop(initialCrop);
@@ -130,8 +131,8 @@ const AddGallery: FC<IProps> = ({}) => {
                 </>
               )}
             </FormFileInputStyled>
-            <span className="d-block ms-3 fs-10px">
-              <span className="fw-600">Size: </span>150 pixel (w) x 150 pixel
+            <span className="d-block ms-3 fs-12px">
+              <span className="fw-600">Size: </span>314 pixel (w) x 150 pixel
               (h)
             </span>
             <input
@@ -156,7 +157,7 @@ const AddGallery: FC<IProps> = ({}) => {
         <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
           <Modal.Header closeButton>
             <Modal.Title className="mt-3">
-              Crop Gallery Image - 150 pixel (w) x 150 pixel (h)
+              Crop Gallery Image - 314 pixel (w) x 150 pixel (h)
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -166,8 +167,8 @@ const AddGallery: FC<IProps> = ({}) => {
                 onChange={(newCrop) => setCrop(newCrop)}
                 onComplete={onCropComplete}
                 aspect={1} // To maintain a 1:1 aspect ratio
-                minWidth={150} // Minimum width of the crop box
-                minHeight={150} // Minimum height of the crop box
+                minWidth={314} // Minimum width of the crop box
+                minHeight={236} // Minimum height of the crop box
                 locked // Lock the aspect ratio and size
               >
                 <img
