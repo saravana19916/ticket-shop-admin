@@ -196,7 +196,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
             </span>
           )}
       </div>
-      <div className="col-xl-6 col-12">
+      <div className="col-xl-6 col-12 mb-6 mb-xl-0">
         <Form.Group>
           <FormLabelStyled>Shop type</FormLabelStyled>
           <Select
@@ -219,7 +219,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
             </span>
           )}
       </div>
-      <div className="col-xl-6 col-12">
+      <div className="col-xl-6 col-12 mb-5 mb-xl-0">
         <Form.Group>
           <FormLabelStyled>Shop tag/code</FormLabelStyled>
           <FormInputStyled

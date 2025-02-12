@@ -14,11 +14,28 @@ import {
   DateTimeInputGroup,
 } from "../../../../styledComponents/styledForm";
 import DateFlatpickr from "../../../../shared/DateFlatpickr";
-
+interface IDateTimeType {
+  startDateAndTime: Date | null;
+  endDateAndTime: Date | null;
+  doorOpenTime: Date | null;
+  doorCloseTime: Date | null;
+}
 interface IGeneralInfo {}
 const GeneralInfo: FC<IGeneralInfo> = ({}) => {
-  const [date, setDate] = useState<Date | null>(null);
-  const [dateTime, setDateTime] = useState<Date | null>(null);
+  const [dateTime, setDateTime] = useState<IDateTimeType>({
+    startDateAndTime: null,
+    endDateAndTime: null,
+    doorOpenTime: null,
+    doorCloseTime: null,
+  });
+  const handleDateTimeChange = (type: string, value: Date | null) => {
+    setDateTime((prev) => {
+      return {
+        ...prev,
+        [type]: value,
+      };
+    });
+  };
   return (
     <>
       <div className="col-12 mb-7">
@@ -45,8 +62,10 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
               <Form.Group>
                 <FormLabelStyled>Start Date & Time</FormLabelStyled>
                 <DateFlatpickr
-                  value={dateTime}
-                  onChange={setDateTime}
+                  value={dateTime?.startDateAndTime}
+                  onChange={(date) =>
+                    handleDateTimeChange("startDateAndTime", date)
+                  }
                   type="datetime"
                   placeholder="Enter Start Date Time"
                 />
@@ -56,8 +75,10 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
               <Form.Group>
                 <FormLabelStyled>End Date & Time</FormLabelStyled>
                 <DateFlatpickr
-                  value={dateTime}
-                  onChange={setDateTime}
+                  value={dateTime?.endDateAndTime}
+                  onChange={(date) =>
+                    handleDateTimeChange("endDateAndTime", date)
+                  }
                   type="datetime"
                   placeholder="Enter End Date Time"
                 />
@@ -78,12 +99,14 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
             </div>
             <div className="col-xl-12 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled htmlFor="showDuration">
+                <FormLabelStyled htmlFor="doorOpenTime">
                   Doors Open Time
                 </FormLabelStyled>
                 <DateFlatpickr
-                  value={dateTime}
-                  onChange={setDateTime}
+                  value={dateTime?.doorOpenTime}
+                  onChange={(date) =>
+                    handleDateTimeChange("doorOpenTime", date)
+                  }
                   type="time"
                   placeholder="Enter Door Open Time"
                 />
@@ -91,12 +114,14 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
             </div>
             <div className="col-xl-12 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled htmlFor="showDuration">
+                <FormLabelStyled htmlFor="doorCloseTime">
                   Doors Close Time
                 </FormLabelStyled>
                 <DateFlatpickr
-                  value={dateTime}
-                  onChange={setDateTime}
+                  value={dateTime?.doorCloseTime}
+                  onChange={(date) =>
+                    handleDateTimeChange("doorCloseTime", date)
+                  }
                   type="time"
                   placeholder="Enter Door Close Time"
                 />

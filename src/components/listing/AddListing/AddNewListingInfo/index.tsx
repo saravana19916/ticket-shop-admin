@@ -19,7 +19,9 @@ import {
   FormInputStyled,
   FormLabelStyled,
   StyledSunEditor,
-  FormStyledPill
+  FormStyledPill,
+  FormStyledContentSection,
+  StyledInputDiv,
 } from "../../../styledComponents/styledForm";
 import SunEditor from "suneditor-react";
 interface IAddListingPageOneProps {}
@@ -112,7 +114,9 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       </div>
                       <div className="col-12">
                         <span className="text-gray d-block mb-6 fs-12px">
-                          In this section, you define the main details of your listing which will appear in the dedicated page of your listing.
+                          In this section, you define the main details of your
+                          listing which will appear in the dedicated page of
+                          your listing.
                         </span>
                       </div>
                       <div className="col-12 mb-7">
@@ -127,7 +131,9 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             onChange={handleChange}
                           />
                           <FormInputDescriptionStyled>
-                            This is the title of your listing and will be the headline reference of your listing across the platform.
+                            This is the title of your listing and will be the
+                            headline reference of your listing across the
+                            platform.
                           </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.listingName && touched?.listingName && (
@@ -155,9 +161,10 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               ],
                             }}
                           />
-                          <FormInputDescriptionStyled className="d-block mb-4 me-2"
-                          >
-                            In this section, you should provide us with description of your listing, limited to xxxx characters.
+                          <FormInputDescriptionStyled className="d-block mb-4 me-2">
+                            In this section, you should provide us with
+                            description of your listing, limited to xxxx
+                            characters.
                           </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.description && touched?.description && (
@@ -219,7 +226,9 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             }}
                           />
                           <FormInputDescriptionStyled>
-                            In this section, you choose the category of your listing, so it can be classified accordingly in the platform.
+                            In this section, you choose the category of your
+                            listing, so it can be classified accordingly in the
+                            platform.
                           </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.listingCategory &&
@@ -268,52 +277,53 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                           </span>
                         )}
                       </div>
-                      <div
-                        className="col-12 mb-6 rounded-md dark:text-black  p-4">
-                          <FormStyledPill>
-                        <Form.Group>
-                          <div style={{ display: "flex", alignItems: "center" }}>
-                          
+                      <div className="col-12 mb-6">
+                        <FormStyledContentSection>
+                          <span className="question">
                             Does the event have subtitles in the local language?
-                          
-                          <div className="row d-flex" style={{ marginLeft: "15px" }}>
-                            {[
-                              { value: "yes", label: "Yes" },
-                              { value: "no", label: "No" },
-                            ].map((option) => (
-                              <div
-                                className="col-auto d-flex align-items-center"
-                                key={option.value}
-                              >
-                                <label
-                                  className="custom-control custom-checkbox-md"
-                                  htmlFor={option.value}
-                                >
-                                  <input
-                                    id={option.value}
-                                    type="radio"
-                                    className="custom-control-input"
-                                    value={option.value}
-                                    checked={values?.subtitles === option.value}
-                                    onChange={(e) =>
-                                      setFieldValue("subtitles", e.target.value)
-                                    }
-                                  />
-                                  <span className="custom-control-label dark:!text-black">
-                                    {option.label}
-                                  </span>
-                                </label>
-                              </div>
-                            ))}
+                          </span>
+                          <div className="form-check">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name="addSubtitles"
+                              value="yes"
+                              id="addSubtitles"
+                              checked={values?.subtitles === "yes"}
+                              onChange={(e) =>
+                                setFieldValue("subtitles", e.target.value)
+                              }
+                            />
+
+                            <label
+                              className="form-check-label ms-3"
+                              htmlFor="addSubtitles"
+                              style={{ marginTop: "6px", fontSize: "12px" }}
+                            >
+                              Yes
+                            </label>
                           </div>
-                          {errors?.subtitles && touched?.subtitles && (
-                            <span className="text-danger ms-5 d-inline-block mt-1">
-                              {errors.subtitles}
-                            </span>
-                          )}
+                          <div className="form-check">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              id="donNotAddSubtitles"
+                              name="addSubtitles"
+                              value="no"
+                              checked={values?.subtitles === "no"}
+                              onChange={(e) =>
+                                setFieldValue("subtitles", e.target.value)
+                              }
+                            />
+                            <label
+                              htmlFor="donNotAddSubtitles"
+                              className="form-check-label ms-3"
+                              style={{ marginTop: "6px", fontSize: "12px" }}
+                            >
+                              No
+                            </label>
                           </div>
-                        </Form.Group>
-                        </FormStyledPill>
+                        </FormStyledContentSection>
                       </div>
 
                       <div className="col-12 mb-6">
@@ -332,17 +342,15 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               { value: "expats", label: "Expats" },
                             ].map((option) => (
                               <div
-                                className="col-lg-4 col-md-6 col-12"
+                                className="col-lg-4 col-md-6 col-12 g-3"
                                 key={option.value}
                               >
-                                <label
-                                  className="custom-control custom-checkbox-md"
-                                  htmlFor={option.value}
-                                >
+                                <StyledInputDiv className="form-check">
                                   <input
-                                    id={option.value}
+                                    className="form-check-input"
                                     type="checkbox"
-                                    className="custom-control-input"
+                                    id={option.value}
+                                    name={option.value}
                                     value={option.value}
                                     checked={values?.suitability?.includes(
                                       option.value
@@ -364,10 +372,17 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                                       );
                                     }}
                                   />
-                                  <span className="custom-control-label">
+                                  <label
+                                    htmlFor={option.value}
+                                    className="form-check-label ms-3"
+                                    style={{
+                                      marginTop: "7px",
+                                      fontSize: "12px",
+                                    }}
+                                  >
                                     {option.label}
-                                  </span>
-                                </label>
+                                  </label>
+                                </StyledInputDiv>
                               </div>
                             ))}
                           </div>
@@ -411,17 +426,15 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               },
                             ].map((option) => (
                               <div
-                                className="col-lg-4 col-md-6 col-12"
+                                className="col-lg-4 col-md-6 col-12 g-3"
                                 key={option.id}
                               >
-                                <label
-                                  className="custom-control custom-checkbox-md"
-                                  htmlFor={option.id}
-                                >
+                                <StyledInputDiv className="form-check">
                                   <input
-                                    id={option.id}
+                                    className="form-check-input"
                                     type="checkbox"
-                                    className="custom-control-input"
+                                    id={option.value}
+                                    name={option.value}
                                     value={option.value}
                                     checked={values?.contentGrading?.includes(
                                       option.value
@@ -443,10 +456,17 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                                       );
                                     }}
                                   />
-                                  <span className="custom-control-label">
+                                  <label
+                                    htmlFor={option.value}
+                                    className="form-check-label ms-3"
+                                    style={{
+                                      marginTop: "7px",
+                                      fontSize: "12px",
+                                    }}
+                                  >
                                     {option.label}
-                                  </span>
-                                </label>
+                                  </label>
+                                </StyledInputDiv>
                               </div>
                             ))}
                           </div>
@@ -469,17 +489,15 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               { value: "plus21", label: "Plus 21" },
                             ].map((option) => (
                               <div
-                                className="col-lg-4 col-md-6 col-12"
+                                className="col-lg-4 col-md-6 col-12 g-3"
                                 key={option.value}
                               >
-                                <label
-                                  className="custom-control custom-checkbox-md"
-                                  htmlFor={option.value}
-                                >
+                                <StyledInputDiv className="form-check">
                                   <input
-                                    id={option.value}
+                                    className="form-check-input"
                                     type="checkbox"
-                                    className="custom-control-input"
+                                    id={option.value}
+                                    name={option.value}
                                     value={option.value}
                                     checked={values?.ageLimit?.includes(
                                       option.value
@@ -498,10 +516,17 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                                       );
                                     }}
                                   />
-                                  <span className="custom-control-label">
+                                  <label
+                                    htmlFor={option.value}
+                                    className="form-check-label ms-3"
+                                    style={{
+                                      marginTop: "7px",
+                                      fontSize: "12px",
+                                    }}
+                                  >
                                     {option.label}
-                                  </span>
-                                </label>
+                                  </label>
+                                </StyledInputDiv>
                               </div>
                             ))}
                           </div>
@@ -715,17 +740,15 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               },
                             ].map((facility) => (
                               <div
-                                className="col-lg-4 col-md-6 col-12"
+                                className="col-lg-4 col-md-6 col-12 g-3"
                                 key={facility.id}
                               >
-                                <label
-                                  className="custom-control custom-checkbox-md"
-                                  htmlFor={facility.id}
-                                >
+                                <StyledInputDiv className="form-check">
                                   <input
-                                    id={facility.id}
+                                    className="form-check-input"
                                     type="checkbox"
-                                    className="custom-control-input"
+                                    id={facility.value}
+                                    name={facility.value}
                                     value={facility.value}
                                     checked={values?.facilities?.includes(
                                       facility.value
@@ -747,10 +770,17 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                                       );
                                     }}
                                   />
-                                  <span className="custom-control-label">
+                                  <label
+                                    htmlFor={facility.value}
+                                    className="form-check-label ms-3"
+                                    style={{
+                                      marginTop: "7px",
+                                      fontSize: "12px",
+                                    }}
+                                  >
                                     {facility.label}
-                                  </span>
-                                </label>
+                                  </label>
+                                </StyledInputDiv>
                               </div>
                             ))}
                           </div>

@@ -8,7 +8,10 @@ import {
 } from "@heroicons/react/24/outline";
 import DatePicker from "react-datepicker";
 import ToggleButton from "../../../../shared/ToggleButton";
-
+interface IDateTimeType {
+  intermissionStartTime: Date | null;
+  intermissionEndTime: Date | null;
+}
 import {
   FormInputStyled,
   FormLabelStyled,
@@ -18,8 +21,18 @@ import {
 import DateFlatpickr from "../../../../shared/DateFlatpickr";
 interface IIntermission {}
 const Intermission: FC<IIntermission> = ({}) => {
-  const [date, setDate] = useState<Date | null>(null);
-  const [dateTime, setDateTime] = useState<Date | null>(null);
+  const [dateTime, setDateTime] = useState<IDateTimeType>({
+    intermissionEndTime: null,
+    intermissionStartTime: null,
+  });
+  const handleDateTimeChange = (type: string, value: Date | null) => {
+    setDateTime((prev) => {
+      return {
+        ...prev,
+        [type]: value,
+      };
+    });
+  };
   const [checked, setChecked] = useState(true);
   const handleChange = () => {
     setChecked(!checked);
@@ -70,8 +83,10 @@ const Intermission: FC<IIntermission> = ({}) => {
               <Form.Group>
                 <FormLabelStyled>Start Time</FormLabelStyled>
                 <DateFlatpickr
-                  value={dateTime}
-                  onChange={setDateTime}
+                  value={dateTime?.intermissionStartTime}
+                  onChange={(date) =>
+                    handleDateTimeChange("intermissionStartTime", date)
+                  }
                   type="time"
                   placeholder="Enter Start Time"
                 />
@@ -81,8 +96,10 @@ const Intermission: FC<IIntermission> = ({}) => {
               <Form.Group>
                 <FormLabelStyled>End Time</FormLabelStyled>
                 <DateFlatpickr
-                  value={dateTime}
-                  onChange={setDateTime}
+                  value={dateTime?.intermissionEndTime}
+                  onChange={(date) =>
+                    handleDateTimeChange("intermissionEndTime", date)
+                  }
                   type="time"
                   placeholder="Enter End Time"
                 />

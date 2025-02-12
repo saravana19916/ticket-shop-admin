@@ -97,6 +97,14 @@ const LocationAccordion: FC<IProps> = ({ item, index, status }) => {
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
+                    Zip Code
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-8 fw-light">
+                    {item?.zipCode}
+                  </AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-4">
                     Address
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">

@@ -47,7 +47,7 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
               </div>
               <div className="col-4 mt-1">
                 <AccordionH2Light className="mb-2">
-                  Start Date Time
+                  Start Date & Time
                 </AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">
                   {item.eventDate} {item.showTime}

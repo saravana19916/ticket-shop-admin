@@ -504,3 +504,24 @@ export const StyledCountButton = styled.div`
     }
   }
 `;
+
+export const StyledInputDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  input {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #e1e4e7;
+    margin-right: 1rem;
+    accent-color: #e00036;
+    border-radius: 4px;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    font-size: 0.857rem;
+    font-weight: 400;
+    color: #121826;
+  }
+`;
