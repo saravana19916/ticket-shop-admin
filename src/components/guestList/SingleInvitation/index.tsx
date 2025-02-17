@@ -35,7 +35,7 @@ import VerifyOTPModel from "./VerfiyOTPModel";
 import CustomToastContainer from "../../shared/CustomToastContainer";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 interface IProps {}
-const tabList = ["Tickets", "Services", "Add ons", "Merchandise", "F&B"];
+const tabList = ["All Listings", "Shows", "Mechandise", "Food & Beverage", "Hospitality", "Services"];
 
 const index: FC<IProps> = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);

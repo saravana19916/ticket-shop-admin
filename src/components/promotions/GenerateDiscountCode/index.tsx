@@ -23,10 +23,18 @@ import {
 import { ButtonPrimary } from "../../styledComponents/styledButton";
 import DateFlatpickr from "../../shared/DateFlatpickr";
 import CounterInput from "../../shared/CounterInput";
+import CustomTooltip from "../../shared/CustomTooltip";
 interface IProps {}
 
 const index: FC<IProps> = () => {
-  const tabList = ["Tickets", "Services", "Add ons", "Mechandise", "F&B"];
+  const tabList = [
+    "All Listings",
+    "Shows",
+    "Mechandise",
+    "Food & Beverage",
+    "Hospitality",
+    "Services",
+  ];
   const tabAddCode = ["Add Manually", "generate automatically"];
   const [chipWidth, setChipWidth] = useState(
     window.innerWidth < 768 ? "50%" : "24%"
@@ -100,7 +108,8 @@ const index: FC<IProps> = () => {
   const handleDeleteChip = () => {
     console.info("You clicked the delete icon.");
   };
-  const [count, setCount] = useState(0);
+
+  const [count, setCount] = useState(1);
   return (
     <>
       {/* <div className="center-container">
@@ -280,11 +289,12 @@ const index: FC<IProps> = () => {
             <div className="d-flex flex-column gap-3 mb-7 mt-7">
               <span className="fw-600 fs-5">
                 Choose products & define discount amount
+                <CustomTooltip
+                  iconMarginBottom="1px"
+                  title="In this section you can choose the products you want to apply
+                              the discount to and define those discounts."
+                />
               </span>
-              <small className="text-gray">
-                In this section you can choose the products you want to apply
-                the discount to and define those discounts.
-              </small>
             </div>
             <TabGroup className="row px-0 px-md-2 px-lg-4 px-xl-4 py-2 mt-6">
               <TabList className="filter-container mb-7 px-0">

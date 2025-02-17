@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+
 const CounterInputContainer = styled.div`
   font-size: 1rem;
   border: 1px solid #e5e7eb;
@@ -52,7 +53,7 @@ const CounterInput: React.FC<CounterInputProps> = ({
       <Button
         onClick={(event) => {
           event.preventDefault();
-          onDecrement;
+          onDecrement(); // <-- CALL the function
         }}
       >
         <MinusIcon />
@@ -61,7 +62,7 @@ const CounterInput: React.FC<CounterInputProps> = ({
       <Button
         onClick={(event) => {
           event.preventDefault();
-          onIncrement;
+          onIncrement(); // <-- CALL the function
         }}
       >
         <PlusIcon />

@@ -383,15 +383,16 @@ export const Sidebar = () => {
         centered
         contentClassName="rounded-5"
       >
-        <Modal.Header>
-          <Modal.Title as="h6" className="fw-600 fs-5">
+        <Modal.Header className="d-flex justify-content-between align-items-center">
+          <Modal.Title as="h6" className="fw-600 fs-5 p-3">
             {t("chooseUserEvent")}
           </Modal.Title>
           <span
-            className="d-flex ms-auto cursor-pointer"
+            className="d-flex align-items-center justify-content-center cursor-pointer"
             onClick={handleShowChooseEventModal}
+            style={{ width: "40px", height: "40px" }} // Optional: Adjust size for better UI
           >
-            <i className="fe fe-x ms-auto fs-4"></i>
+            <i className="fe fe-x fs-4"></i>
           </span>
         </Modal.Header>
         <Modal.Body>

@@ -642,15 +642,16 @@ export const Sidebar = () => {
         centered
         contentClassName="rounded-5"
       >
-        <Modal.Header>
+        <Modal.Header className="d-flex justify-content-between align-items-center">
           <Modal.Title as="h6" className="fw-600 fs-5 p-3">
             {t("chooseUserEvent")}
           </Modal.Title>
           <span
-            className="d-flex ms-auto cursor-pointer"
+            className="d-flex align-items-center justify-content-center cursor-pointer"
             onClick={handleShowChooseEventModal}
+            style={{ width: "40px", height: "40px" }} // Optional: Adjust size for better UI
           >
-            <i className="fe fe-x ms-auto fs-4"></i>
+            <i className="fe fe-x fs-4"></i>
           </span>
         </Modal.Header>
         <Modal.Body>
@@ -681,7 +682,7 @@ export const Sidebar = () => {
                         : ""
                     }`}
                   >
-                    <div className="d-flex w-100 justify-content-between">
+                    <div className="d-flex w-100 justify-content-between mt-4s">
                       <h4 className="mb-1 fw-semibold">{event.identifier}</h4>
                       {/* <small className="text-muted">4 hrs ago</small> */}
                     </div>
@@ -691,17 +692,6 @@ export const Sidebar = () => {
                       <EventPublishStatus
                         publishStatus={event.publish_status || "on_sale"}
                       />
-                      {/* <span
-                        className={`badge ${
-                          event.publish_status == "on_sale"
-                            ? "bg-success"
-                            : event.publish_status == "canceled"
-                            ? "bg-danger"
-                            : "bg-dark"
-                        }`}
-                      >
-                        {event.publish_status}
-                      </span> */}
                     </div>
                   </a>
                 ))}

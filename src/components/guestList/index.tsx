@@ -71,7 +71,7 @@ const index = () => {
         </div>
       </div>
       <div className="row px-0 px-md-2 px-lg-4 px-xl-4 py-2">
-        {/* <div className="d-flex align-items-center gap-3 mb-6">
+        <div className="d-flex align-items-center gap-3 mb-6">
           <ButtonGroup className="mt-2 mb-2 me-1">
             <Dropdown>
               <Dropdown.Toggle
@@ -171,9 +171,9 @@ const index = () => {
               </>
             ))}
           </Accordion>
-        </div> */}
+        </div>
 
-        <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
+        {/* <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
           <TabList className="filter-container mb-7" style={{ margin: "auto" }}>
             {tabList.map((tabName, idx) => (
               <Tab as={Fragment} key={idx}>
@@ -199,7 +199,7 @@ const index = () => {
               ))}
             </Accordion>
           </TabPanels>
-        </TabGroup>
+        </TabGroup> */}
       </div>
       <GuestListSetting show={showSetting} onClose={viewSettingClose} />
     </>
