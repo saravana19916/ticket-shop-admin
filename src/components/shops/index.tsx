@@ -69,7 +69,7 @@ const index = () => {
     setItemsPerRow(count);
   };
   useEffect(() => {
-    getItemsPerRow();
+    setTimeout(getItemsPerRow, 100);
     const screenWidth = window.innerWidth;
     setIsMobile(screenWidth < 899);
     const handleResize = () => getItemsPerRow();
@@ -86,7 +86,6 @@ const index = () => {
       setMaxWidth("");
     }
 
-    setMaxWidth("96%");
   }, [itemsPerRow, isMobile]);
 
   return (

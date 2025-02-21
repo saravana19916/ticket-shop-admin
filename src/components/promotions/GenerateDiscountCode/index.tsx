@@ -219,7 +219,7 @@ const index: FC<IProps> = () => {
                     placeholder="Enter Discount code"
                   />
                   <ButtonPrimary className="btn" style={{ minWidth: "118px" }}>
-                    + Add
+                    Add
                   </ButtonPrimary>
                 </div>
 
@@ -232,63 +232,79 @@ const index: FC<IProps> = () => {
           {/* <button className="btn btn-primary btn-pill mt-3 px-6 py-2 fw-semibold fs-6">
                 Generate barcodes
               </button> */}
-          <div className="d-flex gap-4 flex-column px-5">
-            <span className="fw-600 fs-6">Generated Barcodes</span>
+          <div className="d-flex gap-4 flex-column px-5" style={{
+              padding: "40px",
+              borderRadius: "10px",
+              backgroundColor:"#fafbfc"
+            }}>
+            <span className="fw-600 fs-6" style={{
+              color:"#000000"
+            }}>Generated Barcodes</span>
             <div className="d-flex align-items-center gap-3 flex-wrap">
               <Chip
                 label="ABC20241"
                 variant="outlined"
                 onDelete={handleDeleteChip}
+                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
               />
               <Chip
                 label="ABC20241"
                 variant="outlined"
                 onDelete={handleDeleteChip}
+                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
               />
               <Chip
                 label="ABC20241"
                 variant="outlined"
                 onDelete={handleDeleteChip}
+                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
               />
               <Chip
                 label="ABC20241"
                 variant="outlined"
                 onDelete={handleDeleteChip}
+                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
               />
               <Chip
                 label="ABC20241"
                 variant="outlined"
                 onDelete={handleDeleteChip}
+                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
               />
               <Chip
                 label="ABC20241"
                 variant="outlined"
                 onDelete={handleDeleteChip}
+                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
               />
               <Chip
                 label="ABC20241"
                 variant="outlined"
                 onDelete={handleDeleteChip}
+                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
               />
               <Chip
                 label="ABC20241"
                 variant="outlined"
                 onDelete={handleDeleteChip}
+                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
               />
               <Chip
                 label="ABC20241"
                 variant="outlined"
                 onDelete={handleDeleteChip}
+                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
               />
               <Chip
                 label="ABC20241"
                 variant="outlined"
                 onDelete={handleDeleteChip}
+                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
               />
             </div>
           </div>
           <div>
-            <div className="d-flex flex-column gap-3 mb-7">
+            <div className="d-flex flex-column gap-3 mb-7 mt-7">
               <span className="fw-600 fs-5">
                 Choose products & define discount amount
               </span>
