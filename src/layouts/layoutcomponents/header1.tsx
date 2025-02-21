@@ -764,7 +764,7 @@ const Header1 = () => {
                               className=" d-flex"
                               href={`${
                                 import.meta.env.BASE_URL
-                              }pages/notificationlist/`}
+                              }notificationlist`}
                             >
                               <div className="me-3 notifyimg  bg-primary brround box-shadow-primary">
                                 <i className="fe fe-mail"></i>
@@ -782,7 +782,7 @@ const Header1 = () => {
                               className="d-flex"
                               href={`${
                                 import.meta.env.BASE_URL
-                              }pages/notificationlist/`}
+                              }notificationlist`}
                             >
                               <div className="me-3 notifyimg  bg-secondary brround box-shadow-secondary">
                                 <i className="fe fe-check-circle"></i>
@@ -800,7 +800,7 @@ const Header1 = () => {
                               className="d-flex"
                               href={`${
                                 import.meta.env.BASE_URL
-                              }pages/notificationlist/`}
+                              }notificationlist`}
                             >
                               <div className="me-3 notifyimg  bg-success brround box-shadow-success">
                                 <i className="fe fe-shopping-cart"></i>
@@ -818,7 +818,7 @@ const Header1 = () => {
                               className="d-flex"
                               href={`${
                                 import.meta.env.BASE_URL
-                              }pages/notificationlist/`}
+                              }notificationlist`}
                             >
                               <div className="me-3 notifyimg bg-pink brround box-shadow-pink">
                                 <i className="fe fe-user-plus"></i>

@@ -87,8 +87,8 @@ const GuestListAccordion: FC<IProps> = ({ item, index }) => {
               </div>
             </div>
             <StyledBadge
-              className="py-2"
-              style={{ minWidth: "12%" }}
+              className="fw-medium fs-6 px-4 py-4"
+              style={{ minWidth: "130px" }}
               status={item.status as "Cancelled" | "Used" | "Issued" | "Other"}
             >
               {item.status}
@@ -258,29 +258,29 @@ const GuestListAccordion: FC<IProps> = ({ item, index }) => {
                   <span>Net Total</span>
                   <span>AED {item.orderDetails?.netTotal}</span>
                 </div>
-                <div className="d-flex fs-12px align-items-center justify-content-between">
-                  <AccordionBodyOrderDetailsValue>
+                <div className="row fs-12px align-items-center justify-content-between">
+                  <AccordionBodyOrderDetailsValue className="col-4">
                     Discount{" "}
                     <span className="fs-10px">
                       ({item.orderDetails?.discountType})
                     </span>
-                    <AccordionBodyOrderDetailsValue className="ms-7">
-                      {item.orderDetails?.discount}%
-                    </AccordionBodyOrderDetailsValue>
                   </AccordionBodyOrderDetailsValue>
-                  <span className="text-primary fw-bold">
+                  <AccordionBodyOrderDetailsValue className="col-4">
+                    {item.orderDetails?.discount}%
+                  </AccordionBodyOrderDetailsValue>
+                  <span className="text-primary fw-bold col-4 text-end">
                     -AED {item.orderDetails?.discountValue}
                   </span>
                 </div>
                 <span className="border-bottom my-2"></span>
-                <div className="d-flex fs-12px align-items-center justify-content-between">
-                  <AccordionBodyOrderDetailsValue>
-                    Vat
+                <div className="row fs-12px align-items-center justify-content-between">
+                  <AccordionBodyOrderDetailsValue className="col-4">
+                    VAT
                   </AccordionBodyOrderDetailsValue>
-                  <AccordionBodyOrderDetailsValue>
-                    &nbsp;&nbsp;&nbsp;&nbsp; {item.orderDetails?.vat}%
+                  <AccordionBodyOrderDetailsValue className="col-4">
+                    {item.orderDetails?.vat}%
                   </AccordionBodyOrderDetailsValue>
-                  <AccordionBodyOrderDetailsValue>
+                  <AccordionBodyOrderDetailsValue className="col-4 text-end">
                     AED {item.orderDetails?.vatValue}
                   </AccordionBodyOrderDetailsValue>
                 </div>
@@ -293,9 +293,24 @@ const GuestListAccordion: FC<IProps> = ({ item, index }) => {
             </div>
           </AccordionBodyTop>
           <div className="d-flex align-items-center gap-3 justify-content-start ms-5 mt-5 flex-wrap">
-            <AccordionButton className="btn">Download Booking</AccordionButton>
-            <AccordionButton className="btn">View Workflow</AccordionButton>
-            <AccordionButton className="btn">Scanning Record</AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              Download Booking
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              View Workflow
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              Scanning Record
+            </AccordionButton>
           </div>
         </Accordion.Body>
       </Accordion.Item>

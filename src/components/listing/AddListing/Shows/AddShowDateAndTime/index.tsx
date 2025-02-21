@@ -22,7 +22,7 @@ import Intermission from "./Intermission";
 import ButtonCustom from "../../../../shared/ButtonCustom";
 import ShowDateAndTimeAccordion from "./ShowDateAndTimeAccordion";
 import "../../../../guestList/guest-list.css";
-import { ButtonPrimary } from "../../../../styledComponents/styledForm";
+import { ButtonPrimary } from "../../../../styledComponents/styledButton";
 
 const AddListingPageOne: FC<IAddListingPageOneProps> = ({}) => {
   const isAddListingLocation = window.location?.pathname === "/add-listing";
@@ -233,9 +233,12 @@ const AddListingPageOne: FC<IAddListingPageOneProps> = ({}) => {
                       <Intermission />
                       <div className="col-12">
                         <div className="float-end mb-7">
-                          <ButtonPrimary type="submit" className="btn">
-                            <PlusIcon className="w-4 h-4 me-3 mb-1px" />
-                            Add Section
+                          <ButtonPrimary
+                            type="submit"
+                            className="btn "
+                            style={{ minWidth: "118px" }}
+                          >
+                            Create Show
                           </ButtonPrimary>
                         </div>
                       </div>

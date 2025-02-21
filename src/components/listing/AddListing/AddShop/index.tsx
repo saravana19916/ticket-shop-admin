@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { Accordion, Form } from "react-bootstrap";
+import { Accordion, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import ShopInformation from "./ShopInformation";
 import CommercialTerms from "./CommercialTerms";
 import ProductAllocation from "./ProductAllocation";
@@ -19,13 +19,11 @@ import { shopTableData } from "../../../../commondata/shopTableData";
 import { toast } from "react-toastify";
 import ButtonCustom from "../../../shared/ButtonCustom";
 import ShopsAccordion from "./ShopsAccordion";
+import { FormInputDescriptionStyled } from "../../../styledComponents/styledForm";
 import {
   ButtonPrimary,
-  ButtonSecondary,
   ButtonSecondaryDarkGrey,
-  ButtonSecondaryGrey,
-  FormInputDescriptionStyled,
-} from "../../../styledComponents/styledForm";
+} from "../../../styledComponents/styledButton";
 
 interface IAddShopsProps {}
 
@@ -129,16 +127,23 @@ const AddShops: FC<IAddShopsProps> = () => {
                   <div className="row">
                     <div className="col-12 mb-3">
                       <p
-                        className="fw-600 fs-26px text-black mb-3"
+                        className="fw-600 fs-26px text-black mb-3 d-flex align-items-center"
                         id="addListingShops"
                       >
                         Shops
+                        <OverlayTrigger
+                          placement="top"
+                          overlay={
+                            <Tooltip>
+                              Shops represent your sales channels. you can add
+                              the shops you like by filling up the below fields
+                              and allocate your products to the shops.
+                            </Tooltip>
+                          }
+                        >
+                          <i className="fe fe-info d-inline-block ms-3 cursor-pointer"></i>
+                        </OverlayTrigger>
                       </p>
-                      <span className="text-gray d-block mb-6 fs-12px">
-                        Shops represent your sales channels. you can add the
-                        shops you like by filling up the below fields and
-                        allocate your products to the shops.{" "}
-                      </span>
                     </div>
                     <div className="col-12 mb-7">
                       <div className="row">
@@ -167,7 +172,6 @@ const AddShops: FC<IAddShopsProps> = () => {
                     <div className="col-12 mb-6">
                       <div className="float-end d-flex gap-4">
                         <ButtonSecondaryDarkGrey type="button" className="btn">
-                          <PlusIcon className="w-4 h-4 me-3 mb-1px" />
                           Add Another Shop
                         </ButtonSecondaryDarkGrey>
                         <ButtonPrimary

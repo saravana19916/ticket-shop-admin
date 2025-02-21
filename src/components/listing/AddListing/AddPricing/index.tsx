@@ -15,10 +15,10 @@ import PricingInclusion from "./PricingInclusion";
 import { pricingDetailsData } from "../../../../commondata/pricingTableData";
 import { toast } from "react-toastify";
 import ButtonCustom from "../../../shared/ButtonCustom";
-import { Accordion } from "react-bootstrap";
+import { Accordion, OverlayTrigger, Tooltip } from "react-bootstrap";
 import PricingAccordion from "./PricingAccordion";
 import { color } from "echarts";
-import { FormInputDescriptionStyled } from "../../../styledComponents/styledForm";
+import { ButtonPrimary } from "../../../styledComponents/styledButton";
 
 interface IAddPricingProps {}
 
@@ -127,7 +127,7 @@ const AddPricing: FC<IAddPricingProps> = () => {
           }
         }}
       >
-        {({ values, errors, touched, setFieldValue }) => (
+        {({ values, errors, touched, setFieldValue, setFieldError }) => (
           <>
             <Form
               className={`row px-0 px-md-2 px-lg-4 px-xl-6 mx-xl-3 mx-0 mx-md-1 mx-lg-3 `}
@@ -137,10 +137,10 @@ const AddPricing: FC<IAddPricingProps> = () => {
                   <div className="row">
                     <div className="col-12 mb-3">
                       <p
-                        className="fw-600 fs-26px text-black mb-3"
+                        className="fw-600 fs-26px text-black mb-3 d-flex align-items-center"
                         id="addPricingTop"
                       >
-                        Product Allocation
+                        Product & Pricing
                       </p>
                     </div>
                     <ProductInfo
@@ -151,35 +151,37 @@ const AddPricing: FC<IAddPricingProps> = () => {
                         _handleProductInfo(field, value, setFieldValue)
                       }
                     />
+                    <RulesAndTimeline
+                      values={values}
+                      errors={errors}
+                      touched={touched}
+                      handleOnChange={(field, value) =>
+                        _handleProductInfo(field, value, setFieldValue)
+                      }
+                    />
+                    <PricingInclusion
+                      errors={errors}
+                      values={values}
+                      touched={touched}
+                      handleOnChange={(field, value) =>
+                        _handleProductInfo(field, value, setFieldValue)
+                      }
+                      setFieldError={setFieldError}
+                      setFieldValue={setFieldValue}
+                    />
                     <div className="col-12 mb-7">
                       <div className="float-end mb-5">
-                        <ButtonCustom
-                          title={values?.id === 0 ? "Add" : "Update"}
-                          className="fs-6"
-                          paddingClassName="p-2 px-5"
-                          icon={
-                            <PlusIcon
-                              className="w-4 h-4"
-                              style={{ marginBottom: "1px" }}
-                            />
-                          }
+                        <ButtonPrimary
                           type="submit"
-                        />
+                          className="btn"
+                          style={{ minWidth: "118px" }}
+                        >
+                          {values?.id === 0
+                            ? "Create Product"
+                            : "Update Product"}{" "}
+                        </ButtonPrimary>
                       </div>
                     </div>
-                    <div className="col-12 mb-7">
-                      <FormInputDescriptionStyled>
-                        You can amend edit, update, delete, activate and
-                        deactivate your zones and make changes to your sub
-                        section, in the{" "}
-                        <span className="text-primary-1">
-                          'Product Allocation'
-                        </span>{" "}
-                        Tab. A list of your created zones and
-                        sections/subsections/rows are listed below.
-                      </FormInputDescriptionStyled>
-                    </div>
-
                     <div className="mt-6">
                       <Accordion className="panel-default d-flex flex-column gap-4">
                         {tableData?.map(

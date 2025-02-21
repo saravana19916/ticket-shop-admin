@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { PlusIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { Form, FormControl } from "react-bootstrap";
-import {
-  FormInputStyled,
-  FormLabelStyled,
-} from "../../../styledComponents/styledForm";
-import ButtonCustom from "../../../shared/ButtonCustom";
+import { FormInputStyled } from "../../../styledComponents/styledForm";
+import { ButtonPrimary } from "../../../styledComponents/styledButton";
 
 const index = () => {
   const isAddListingLocation = window.location?.pathname === "/add-listing";
@@ -49,10 +46,10 @@ const index = () => {
                     </Form.Label>
                   </Form.Group>
                 </div>
-                <div className="col-xl-10 col-lg-11 col-12 mb-5 p-0">
+                <div className="col-12 mb-5 p-0">
                   <Form onSubmit={handleAddRule}>
-                    <div className="row">
-                      <div className="col-9">
+                    <div className="d-flex gap-3 flex-wrap flex-md-nowrap">
+                      <div className="flex-grow-1">
                         <Form.Group>
                           <FormInputStyled
                             type="text"
@@ -62,35 +59,30 @@ const index = () => {
                           />
                         </Form.Group>
                       </div>
-                      <div className="col-3">
-                        <ButtonCustom
-                          title="Add"
-                          className="fs-6"
-                          paddingClassName="p-3 px-6"
-                          icon={
-                            <PlusIcon
-                              className="w-4 h-4"
-                              style={{ marginBottom: "1px" }}
-                            />
-                          }
+                      <div>
+                        <ButtonPrimary
                           type="submit"
-                        />
+                          className="btn w-100 w-md-auto "
+                          style={{ minWidth: "120px" }}
+                        >
+                          Add
+                        </ButtonPrimary>
                       </div>
                     </div>
                   </Form>
                 </div>
-                <div className="col-xl-10 col-lg-11 col-12 mb-5 ">
+                <div className="col-12 mb-5 ">
                   <div className="row mx-3">
                     {rulesData?.map((l: string, index: number) => (
                       <div
                         key={index}
-                        className="col-lg-9 col-12 px-0 d-flex justify-content-between align-items-center py-3 border-bottom"
+                        className="col-12 px-0 d-flex justify-content-between align-items-center py-3 border-bottom"
                       >
-                        <span>
+                        <span className="d-inline-block me-2">
                           {index + 1}. {l}
                         </span>{" "}
                         <XCircleIcon
-                          className="h-5 w-5 text-gray cursor-pointer"
+                          className="h-5 w-5 text-gray cursor-pointer flex-shrink-0"
                           onClick={() => handleRemoveRule(l)}
                         />
                       </div>

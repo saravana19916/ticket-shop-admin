@@ -7,6 +7,8 @@ import {
   Form,
   FormControl,
   InputGroup,
+  OverlayTrigger,
+  Tooltip,
 } from "react-bootstrap";
 import { IAddListingShopProps } from "./type";
 import { ErrorMessage, FormikErrors, FormikTouched } from "formik";
@@ -153,12 +155,6 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
   };
   return (
     <>
-      <div className="col-12 mb-4">
-        <span className="text-gray d-block mb-6 fs-12px">
-          Add the products you like to the shop and define special discounts if
-          any.{" "}
-        </span>
-      </div>
       <div className="col-12 mb-4 table-responsive">
         <table
           className="w-100"
@@ -167,7 +163,25 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
           <thead>
             <tr>
               <th>
-                <FormLabelStyled>Products</FormLabelStyled>
+                <FormLabelStyled className="d-flex align-items-center">
+                  Products{" "}
+                  <OverlayTrigger
+                    placement="top"
+                    overlay={
+                      <Tooltip>
+                        Add the products you like to the shop and define special
+                        discounts if any.{" "}
+                      </Tooltip>
+                    }
+                  >
+                    <i
+                      style={{
+                        marginBottom: "2px",
+                      }}
+                      className="fe fe-info d-inline-block ms-2 cursor-pointer"
+                    ></i>
+                  </OverlayTrigger>
+                </FormLabelStyled>
               </th>
               <th>
                 <FormLabelStyled>Units</FormLabelStyled>

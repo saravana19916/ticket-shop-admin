@@ -5,6 +5,7 @@ import { IPricingDetailsProps } from "./AddPricing/type";
 import { LandingPageCardHeader } from "../styledComponents/LandingPage";
 import { Link } from "react-router-dom";
 import ResponsiveTile from "../styledComponents/tiles";
+import { NotActiveBadge, ActiveBadge, WhiteBadge } from "../styledComponents/badge";
 
 interface IProps {
   pricingListData: IPricingDetailsProps[];
@@ -23,32 +24,23 @@ const PricingList: FC<IProps> = ({ pricingListData }) => {
               }}
             >
               <div className="position-absolute d-flex justify-content-between mx-4 my-4">
-                <span
-                  className="badge dark d-block p-2 px-3 rounded-pill"
-                  style={{ backgroundColor: "#fff", color: "#000" }}
-                >
+                <WhiteBadge className="badge p-2">
                   {l.productDetails?.productCategory}
-                </span>
+                </WhiteBadge>
               </div>
 
               <div className="position-absolute end-0 d-flex justify-content-between mx-4 my-4">
-                <span
-                  className="badge dark d-block p-2 px-3 rounded-pill text-black"
-                  style={{
-                    borderRadius: "50px",
-                    borderColor: "#00ff00",
-                    color: "#fff",
-                    backgroundColor: "#00ff00",
-                    fontWeight: 500,
-                    fontSize: "12px",
-                    padding: "8px 32px",
-                    minWidth: "130px",
-                    transition:
-                      "background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease",
-                  }}
-                >
-                  Active
-                </span>
+                {status === "draft" ? (
+                  <>
+                    <NotActiveBadge className="badge p-2">
+                      Not Active
+                    </NotActiveBadge>
+                  </>
+                ) : (
+                  <>
+                    <ActiveBadge className="badge p-2">Active</ActiveBadge>
+                  </>
+                )}
               </div>
 
               <img
@@ -71,7 +63,7 @@ const PricingList: FC<IProps> = ({ pricingListData }) => {
                       {l.inclusion?.inclusionList?.length || 0}
                     </div>
                   </div>
-                  
+
                   <div className="col-3 d-flex flex-column gap-2 mt-2 align-items-end">
                     <span className="position-absolute d-flex">
                       <Dropdown>
@@ -93,13 +85,19 @@ const PricingList: FC<IProps> = ({ pricingListData }) => {
                           <Dropdown.Item>Edit</Dropdown.Item>
                           <Dropdown.Item>Generate</Dropdown.Item>
                           <Dropdown.Item>Copy</Dropdown.Item>
-                          <Dropdown.Item>Active</Dropdown.Item>
-                          <Dropdown.Item>Not Active</Dropdown.Item>
+                          {status === "draft" ? (
+                            <>
+                              <Dropdown.Item>Activate</Dropdown.Item>
+                            </>
+                          ) : (
+                            <>
+                              <Dropdown.Item>Deactivate</Dropdown.Item>
+                            </>
+                          )}
                         </Dropdown.Menu>
                       </Dropdown>
                     </span>
                   </div>
-
                 </div>
               </Card.Body>
             </Card>

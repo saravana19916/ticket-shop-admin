@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import ButtonCustom from "../shared/ButtonCustom";
 import LandingPageWrapper from "../shared/LandingPageWrapper";
 import CustomTabButton from "../shared/CustomTabButton";
+import { ButtonPrimary } from "../styledComponents/styledButton";
 
 interface IListingProps {}
 const tabList = [
@@ -312,19 +313,13 @@ const index: FC<IListingProps> = ({}) => {
             <p className="fw-600 fs-26px text-black mb-3">My Listings</p>
           </div>
           <div className="col-6 mb-6">
-            <ButtonCustom
+            <ButtonPrimary
+              type="button"
+              className="float-end mt-2 btn"
               onClick={_handleAddListing}
-              title="Add Listing"
-              paddingClassName="px-6 py-2"
-              className="float-end mt-2 "
-              fontSizeClassName="fs-6"
-              icon={
-                <PlusIcon
-                  className="w-5 h-5 me-1"
-                  style={{ marginBottom: "1px" }}
-                />
-              }
-            />
+            >
+              <span>Add Listing</span>
+            </ButtonPrimary>
           </div>
         </div>
         <div className="row">

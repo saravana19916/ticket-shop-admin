@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PoliciesList from "./PoliciesLists";
 import LandingPageWrapper from "../../../shared/LandingPageWrapper";
 import { useState, useEffect } from "react";
+import { LinkButtonPrimary } from "../../../styledComponents/styledButton";
 
 const index = () => {
   const [itemsPerRow, setItemsPerRow] = useState<number | null>(0);
@@ -53,16 +54,9 @@ const index = () => {
             <p className="fw-600 fs-26px text-black mb-3">My Policies</p>
           </div>
           <div className="col-6 mb-3">
-            <Link
-              to="/add-policy"
-              className="btn badge-red float-end rounded-pill mt-2 fs-6 px-6 py-2"
-            >
-              <PlusIcon
-                className="w-5 h-5 me-1"
-                style={{ marginBottom: "2px" }}
-              />{" "}
-              Add Policy
-            </Link>
+            <LinkButtonPrimary className="float-end mt-2 btn" to="/add-policy">
+              <span>Add Policy</span>
+            </LinkButtonPrimary>
           </div>
         </div>
         <div className="row">

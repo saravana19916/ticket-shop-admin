@@ -1,6 +1,13 @@
 import { ChevronDownIcon, PlusIcon } from "@heroicons/react/24/outline";
 import React, { FC, useEffect, useState } from "react";
-import { InputGroup, Form, FormControl, Dropdown } from "react-bootstrap";
+import {
+  InputGroup,
+  Form,
+  FormControl,
+  Dropdown,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import { CustomDropdownToggle } from "../../../shared/CustomDropDownToggle";
 import { FormikErrors, FormikTouched } from "formik";
 import { IAddListingShopProps } from "./type";
@@ -13,6 +20,7 @@ import {
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
 import Select from "react-select";
+import SelectDropDown from "../../../shared/SelectDropDown";
 
 interface IShopInformationProps {
   handleOnChange: (field: string, value: string) => void;
@@ -176,7 +184,24 @@ const ShopInformation: FC<IShopInformationProps> = ({
     <>
       <div className="col-12 mb-6">
         <Form.Group>
-          <FormLabelStyled>Show Name</FormLabelStyled>
+          <FormLabelStyled className="d-flex align-items-center">
+            Show Name
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  Add the shops you like by filling up the below fields
+                </Tooltip>
+              }
+            >
+              <i
+                style={{
+                  marginBottom: "2px",
+                }}
+                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+              ></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
           <FormInputStyled
             type="text"
             className="form-control"
@@ -185,9 +210,6 @@ const ShopInformation: FC<IShopInformationProps> = ({
             name="shopName"
             onChange={handleChange}
           />
-          <FormInputDescriptionStyled>
-            Add the shops you like by filling up the below fields
-          </FormInputDescriptionStyled>
         </Form.Group>
         {touched?.shopInformation?.shopName &&
           errors?.shopInformation?.shopName && (
@@ -196,17 +218,36 @@ const ShopInformation: FC<IShopInformationProps> = ({
             </span>
           )}
       </div>
-      <div className="col-xl-6 col-12 mb-6 mb-xl-0">
+      <div className="col-xl-6 col-12 mb-6">
         <Form.Group>
-          <FormLabelStyled>Shop type</FormLabelStyled>
-          <Select
-            id="dropdown-basic"
+          <FormLabelStyled className="d-flex align-items-center">
+            Shop type
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  Choose the type of store you are presenting your product in
+                  alongside a tag for the shop. Physical store means a store
+                  that would sell your products physically without a web page
+                  Digital Store, means a store that would sell your products
+                  through a dedicated web page.{" "}
+                </Tooltip>
+              }
+            >
+              <i
+                style={{
+                  marginBottom: "2px",
+                }}
+                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+              ></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
+          <SelectDropDown
             options={ShopType}
             placeholder="Select Shop type"
             classNamePrefix="Select"
             className="mb-2"
-            styles={customStyles}
-            value={ShopType?.find(
+            selectedValue={ShopType?.find(
               (l) => l.value === values?.shopInformation?.shopType || ""
             )}
             onChange={(e: any) => handleDropDownChange("shopType", e?.value)}
@@ -219,9 +260,30 @@ const ShopInformation: FC<IShopInformationProps> = ({
             </span>
           )}
       </div>
-      <div className="col-xl-6 col-12 mb-5 mb-xl-0">
+      <div className="col-xl-6 col-12 mb-6 ">
         <Form.Group>
-          <FormLabelStyled>Shop tag/code</FormLabelStyled>
+          <FormLabelStyled className="d-flex align-items-center">
+            Shop tag/code
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  Choose the type of store you are presenting your product in
+                  alongside a tag for the shop. Physical store means a store
+                  that would sell your products physically without a web page
+                  Digital Store, means a store that would sell your products
+                  through a dedicated web page.{" "}
+                </Tooltip>
+              }
+            >
+              <i
+                style={{
+                  marginBottom: "2px",
+                }}
+                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+              ></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
           <FormInputStyled
             type="text"
             className="form-control"
@@ -240,28 +302,18 @@ const ShopInformation: FC<IShopInformationProps> = ({
             </span>
           )}
       </div>
-      <div className="col-12 mb-6">
-        <FormInputDescriptionStyled>
-          Choose the type of store you are presenting your product in alongside
-          a tag for the shop. Physical store means a store that would sell your
-          products physically without a web page Digital Store, means a store
-          that would sell your products through a dedicated web page.{" "}
-        </FormInputDescriptionStyled>
-      </div>
       <div className="col-xl-6 col-12 mb-6">
         <Form.Group>
           <FormLabelStyled>Shop Country</FormLabelStyled>
-          <Select
-            id="dropdown-basic"
+          <SelectDropDown
             options={countriesList}
-            placeholder="Choose"
+            placeholder="Select Shop Country"
             classNamePrefix="Select"
             className="mb-2"
-            styles={customStyles}
-            value={
+            selectedValue={
               countriesList?.find(
                 (l: any) => l.label == values?.shopInformation?.country
-              ) || ""
+              ) || null
             }
             onChange={(country: any) => {
               if (country) {
@@ -282,29 +334,44 @@ const ShopInformation: FC<IShopInformationProps> = ({
       <div className="col-xl-6 col-12 mb-6">
         <Form.Group>
           <FormLabelStyled>Shop city</FormLabelStyled>
-          <Select
-            id="dropdown-basic"
+          <SelectDropDown
             options={cityData}
             placeholder="Select Shop city"
             classNamePrefix="Select"
             className="mb-2"
-            styles={customStyles}
             onChange={(city: any) => {
               if (city) {
                 handleDropDownChange("city", city.label);
               }
             }}
-            value={
+            selectedValue={
               cityData?.find(
                 (l: any) => l.label == values?.shopInformation?.city
-              ) || ""
+              ) || null
             }
           />
         </Form.Group>
       </div>
       <div className="col-12 mb-6">
         <Form.Group>
-          <FormLabelStyled>Shop Address</FormLabelStyled>
+          <FormLabelStyled className="d-flex align-items-center">
+            Shop Address{" "}
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  Add the shops you like by filling up the below fields.
+                </Tooltip>
+              }
+            >
+              <i
+                style={{
+                  marginBottom: "2px",
+                }}
+                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+              ></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
           <FormInputStyled
             type="text"
             className="form-control"
@@ -314,9 +381,6 @@ const ShopInformation: FC<IShopInformationProps> = ({
             onChange={handleChange}
           />
         </Form.Group>
-        <FormInputDescriptionStyled>
-          Add the shops you like by filling up the below fields.
-        </FormInputDescriptionStyled>
         {errors &&
           touched &&
           touched?.shopInformation?.address &&
@@ -328,7 +392,24 @@ const ShopInformation: FC<IShopInformationProps> = ({
       </div>
       <div className="col-12 mb-6">
         <Form.Group>
-          <FormLabelStyled> Point of contact</FormLabelStyled>
+          <FormLabelStyled className="d-flex align-items-center">
+            Point of contact
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  Add the shops you like by filling up the below fields.
+                </Tooltip>
+              }
+            >
+              <i
+                style={{
+                  marginBottom: "2px",
+                }}
+                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+              ></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
           <FormInputStyled
             type="text"
             className="form-control"
@@ -338,9 +419,6 @@ const ShopInformation: FC<IShopInformationProps> = ({
             onChange={handleChange}
           />
         </Form.Group>
-        <FormInputDescriptionStyled>
-          Add the shops you like by filling up the below fields.
-        </FormInputDescriptionStyled>
         {errors &&
           touched &&
           touched?.shopInformation?.pointOfContact &&
@@ -352,7 +430,25 @@ const ShopInformation: FC<IShopInformationProps> = ({
       </div>
       <div className="col-12 mb-6">
         <Form.Group>
-          <FormLabelStyled> Email Address</FormLabelStyled>
+          <FormLabelStyled className="d-flex align-items-center">
+            {" "}
+            Email Address
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  Add the shops you like by filling up the below fields.{" "}
+                </Tooltip>
+              }
+            >
+              <i
+                style={{
+                  marginBottom: "2px",
+                }}
+                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+              ></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
           <FormInputStyled
             type="email"
             className="form-control"
@@ -362,9 +458,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
             onChange={handleChange}
           />
         </Form.Group>
-        <FormInputDescriptionStyled>
-          Add the shops you like by filling up the below fields.
-        </FormInputDescriptionStyled>
+
         {errors &&
           touched &&
           touched?.shopInformation?.emailAddress &&
@@ -376,7 +470,25 @@ const ShopInformation: FC<IShopInformationProps> = ({
       </div>
       <div className="col-12 mb-6">
         <Form.Group>
-          <FormLabelStyled> Phone Number</FormLabelStyled>
+          <FormLabelStyled className="d-flex align-items-center">
+            {" "}
+            Phone Number
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  Add the shops you like by filling up the below fields.
+                </Tooltip>
+              }
+            >
+              <i
+                style={{
+                  marginBottom: "2px",
+                }}
+                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+              ></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
           <FormInputStyled
             type="tel"
             className="form-control"
@@ -386,9 +498,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
             onChange={handleChange}
           />
         </Form.Group>
-        <FormInputDescriptionStyled>
-          Add the shops you like by filling up the below fields.
-        </FormInputDescriptionStyled>
+
         {errors &&
           touched &&
           touched?.shopInformation?.phoneNumber &&
@@ -398,9 +508,28 @@ const ShopInformation: FC<IShopInformationProps> = ({
             </span>
           )}
       </div>
-      <div className="col-xl-6 col-12">
+      <div className="col-xl-6 col-12 mb-6">
         <Form.Group>
-          <FormLabelStyled> Service Fee</FormLabelStyled>
+          <FormLabelStyled className="d-flex align-items-center">
+            {" "}
+            Service Fee{" "}
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  In this section you mention the commercial terms for your
+                  shop.{" "}
+                </Tooltip>
+              }
+            >
+              <i
+                style={{
+                  marginBottom: "2px",
+                }}
+                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+              ></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
           <FormInputStyled
             type="number"
             className="form-control"
@@ -419,9 +548,27 @@ const ShopInformation: FC<IShopInformationProps> = ({
             </span>
           )}
       </div>
-      <div className="col-xl-6 col-12">
+      <div className="col-xl-6 col-12 mb-6">
         <Form.Group>
-          <FormLabelStyled>Sales Commission</FormLabelStyled>
+          <FormLabelStyled className="d-flex align-items-center">
+            Sales Commission{" "}
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  In this section you mention the commercial terms for your
+                  shop.
+                </Tooltip>
+              }
+            >
+              <i
+                style={{
+                  marginBottom: "2px",
+                }}
+                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+              ></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
           <FormInputStyled
             type="number"
             className="form-control"
@@ -439,11 +586,6 @@ const ShopInformation: FC<IShopInformationProps> = ({
               {errors?.shopInformation?.salesCommission}
             </span>
           )}
-      </div>
-      <div className="col-12 mb-6">
-        <FormInputDescriptionStyled>
-          in this section you mention the commercial terms for your shop.
-        </FormInputDescriptionStyled>
       </div>
     </>
   );

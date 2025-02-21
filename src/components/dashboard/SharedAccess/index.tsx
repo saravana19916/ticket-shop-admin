@@ -5,6 +5,7 @@ import { Badge, Dropdown } from "react-bootstrap";
 import ShareModal from "./ShareModal";
 import { toast } from "react-toastify";
 import moment from "moment";
+import { ButtonPrimary } from "../../styledComponents/styledButton";
 interface ISharedAccessProps {}
 export interface ISharedAccessDataProps {
   status: string;
@@ -124,15 +125,19 @@ const index: FC<ISharedAccessProps> = () => {
             </div>
           </div>
           <div className="col-md-6 col-12 mb-4">
-            <div className="float-end">
-              <button
-                type="button"
-                className="btn btn-primary rounded-pill"
-                onClick={_handleAddShareAccess}
-              >
-                <PlusIcon className="h-4 w-4 " /> Share
+            <ButtonPrimary
+              style={{ padding: "6px 24px" }}
+              type="button"
+              className="float-end mt-2 btn"
+              onClick={_handleAddShareAccess}
+            >
+              <span>Share</span>
+            </ButtonPrimary>
+            {/* <div className="float-end">
+              <button type="button" className="btn btn-primary rounded-pill">
+                Share
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="row">

@@ -9,7 +9,7 @@ import {
   addPricingValidationSchema,
 } from "./helpers";
 import { IPricingDetailsProps } from "./type";
-import { ButtonPrimary } from "../../styledComponents/styledForm";
+import { ButtonPrimary } from "../../styledComponents/styledButton";
 
 interface IProps {}
 

@@ -11,10 +11,10 @@ import { addListingLocationValidationSchema } from "./helper";
 import { toast } from "react-toastify";
 import ButtonCustom from "../../../shared/ButtonCustom";
 import {
-  ButtonPrimary,
   FormInputStyled,
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
+import { ButtonPrimary } from "../../../styledComponents/styledButton";
 interface IProps {}
 const ManualLocationTab: FC<IProps> = ({}) => {
   const customStyles = {
@@ -162,7 +162,7 @@ const ManualLocationTab: FC<IProps> = ({}) => {
         {({ values, handleChange, setFieldValue, errors, touched }) => (
           <>
             <FormikForm>
-              <div className="col-12 mb-7 pe-0">
+              <div className="col-12 mb-7 mt-3 pe-0">
                 <Form.Group>
                   <FormLabelStyled>Location Name</FormLabelStyled>
                   <FormInputStyled
@@ -185,7 +185,7 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                   <FormLabelStyled>Location Website</FormLabelStyled>
                   <FormInputStyled
                     type="text"
-                    placeholder="Enter location address"
+                    placeholder="Enter location website"
                     className="form-control"
                     value={values?.locationWebsite || ""}
                     name="locationWebsite"
@@ -292,9 +292,12 @@ const ManualLocationTab: FC<IProps> = ({}) => {
               </div>
               <div className="col-12 pe-0">
                 <div className="float-end">
-                  <ButtonPrimary type="submit" className="btn">
-                    <PlusIcon className="w-4 h-4 me-3 mb-1px" />
-                    Add
+                  <ButtonPrimary
+                    type="submit"
+                    className="btn"
+                    style={{ minWidth: "118px" }}
+                  >
+                    Create Location
                   </ButtonPrimary>
                 </div>
               </div>

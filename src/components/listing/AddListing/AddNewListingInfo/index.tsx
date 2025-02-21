@@ -1,12 +1,10 @@
-import Select from "react-select";
 import React, { FC, useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { MultiValue } from "react-select";
+
 import {
   listingCategory,
-  listingSubCategory,
   listingType,
-  listingSuitability,
-  listingAgeLimit,
 } from "../../../../commondata/addListingPageOne";
 import ReactSelect from "react-select";
 import { Formik, Form as FormikForm } from "formik";
@@ -14,75 +12,21 @@ import { listingInfoInitialState, listingInfoValidationSchema } from "./helper";
 import ButtonCustom from "../../../shared/ButtonCustom";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import {
-  FormDescriptionStyled,
-  FormInputDescriptionStyled,
   FormInputStyled,
   FormLabelStyled,
   StyledSunEditor,
-  FormStyledPill,
   FormStyledContentSection,
   StyledInputDiv,
 } from "../../../styledComponents/styledForm";
-import SunEditor from "suneditor-react";
+import SelectDropDown, { IOptionType } from "../../../shared/SelectDropDown";
 interface IAddListingPageOneProps {}
-
+const languageOptions = [
+  { value: "english", label: "English" },
+  { value: "arabic", label: "Arabic" },
+  { value: "spanish", label: "Spanish" },
+];
 const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
-  const customStyles = {
-    singleValue: (provided: any) => ({
-      ...provided,
-      color: "#000",
-      fontWeight: "400",
-      fontSize: "14px",
-    }),
-    indicatorSeparator: (provided: any) => ({
-      ...provided,
-      display: "none",
-    }),
-    dropdownIndicator: (provided: any) => ({
-      ...provided,
-      color: "#777",
-    }),
-    control: (provided: any, state: any) => ({
-      ...provided,
-      padding: "3px",
-      paddingLeft: "14px",
-      borderRadius: "50px",
-      borderColor: state.isFocused ? "#fec9da80" : "#e5e7eb",
-      outline: state.isFocused ? "1px solid #fec9da80" : "none",
-      boxShadow: "null",
-      "&:focus": {
-        borderColor: "#fec9da80",
-        outline: "1px solid #fec9da80",
-      },
-      "&:focus-within": {
-        borderColor: "#fec9da80",
-        outline: "1px solid #fec9da80",
-      },
-    }),
-    menu: (provided: any) => ({
-      ...provided,
-      borderRadius: "8px",
-    }),
-    multiValue: (provided: any) => ({
-      ...provided,
-      color: "#000",
-      fontWeight: "500",
-      fontSize: "18px",
-      margin: "0px",
-      padding: "0px",
-      backgroundColor: "",
-    }),
-    option: (provided: any, state: any) => ({
-      ...provided,
-      backgroundColor: state.isSelected ? "#ED003B" : "transparent",
-      color: state.isSelected ? "#fff" : provided.color,
-      cursor: "pointer",
-      transition: "background-color 0.2s ease",
-      "&:hover": {
-        backgroundColor: state.isSelected ? "#ED003B" : "#fec9da80",
-      },
-    }),
-  };
+  const [selectedLanguage, setSelectedLanguage] = useState<any>([]);
   const isSeparateUrl =
     window.location?.pathname === "/add-info" ||
     window.location?.pathname.startsWith("/edit-info/");
@@ -105,23 +49,39 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                   <div className="p-0 p-md-5">
                     <div className="row">
                       <div className="col-12 mb-3">
-                        <p className="fw-600 fs-26px text-black mb-3">
+                        <p className="fw-600 fs-26px text-black mb-3 d-flex align-items-center">
                           Listing information
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={
+                              <Tooltip>
+                                In this section, you define the main details of
+                                your listing which will appear in the dedicated
+                                page of your listing.
+                              </Tooltip>
+                            }
+                          >
+                            <i className="fe fe-info d-inline-block ms-3 cursor-pointer"></i>
+                          </OverlayTrigger>
                         </p>
-                        {/* <span className="text-gray d-block mb-6 fs-12px">
-                          In this section, you define the main details of your listing which will appear in the dedicated page of your listing.
-                        </span> */}
                       </div>
-                      <div className="col-12">
-                        <span className="text-gray d-block mb-6 fs-12px">
-                          In this section, you define the main details of your
-                          listing which will appear in the dedicated page of
-                          your listing.
-                        </span>
-                      </div>
+
                       <div className="col-12 mb-7">
                         <Form.Group>
-                          <FormLabelStyled>Listing name</FormLabelStyled>
+                          <FormLabelStyled className="d-flex align-items-center">
+                            Listing name
+                            <OverlayTrigger
+                              placement="top"
+                              overlay={
+                                <Tooltip>
+                                  Type your listing name which would be placed
+                                  as the title of your listing.
+                                </Tooltip>
+                              }
+                            >
+                              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
+                            </OverlayTrigger>
+                          </FormLabelStyled>{" "}
                           <FormInputStyled
                             type="text"
                             placeholder="type the listing name"
@@ -130,11 +90,6 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             name="listingName"
                             onChange={handleChange}
                           />
-                          <FormInputDescriptionStyled>
-                            This is the title of your listing and will be the
-                            headline reference of your listing across the
-                            platform.
-                          </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.listingName && touched?.listingName && (
                           <>
@@ -146,8 +101,23 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       </div>
                       <div className="col-12 mb-7">
                         <Form.Group>
-                          <FormLabelStyled htmlFor="descriptionOne">
-                            Listing Description
+                          <FormLabelStyled
+                            htmlFor="descriptionOne"
+                            className="d-flex align-items-center"
+                          >
+                            Listing Description{" "}
+                            <OverlayTrigger
+                              placement="top"
+                              overlay={
+                                <Tooltip>
+                                  In this section, you should provide us with
+                                  description of your listing, limited to xxxx
+                                  characters.
+                                </Tooltip>
+                              }
+                            >
+                              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
+                            </OverlayTrigger>
                           </FormLabelStyled>
                           <StyledSunEditor
                             setOptions={{
@@ -161,11 +131,6 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               ],
                             }}
                           />
-                          <FormInputDescriptionStyled className="d-block mb-4 me-2">
-                            In this section, you should provide us with
-                            description of your listing, limited to xxxx
-                            characters.
-                          </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.description && touched?.description && (
                           <>
@@ -177,25 +142,33 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       </div>
                       <div className="col-12 mb-7">
                         <Form.Group>
-                          <FormLabelStyled>Listing type</FormLabelStyled>
-                          <Select
+                          <FormLabelStyled className="d-flex align-items-center">
+                            Listing type{" "}
+                            <OverlayTrigger
+                              placement="top"
+                              overlay={
+                                <Tooltip>
+                                  Pick your listing top from the dropdown menu
+                                  (i.e : Event, Restaurant, Experience,
+                                  Transportation, Product, Service )
+                                </Tooltip>
+                              }
+                            >
+                              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
+                            </OverlayTrigger>
+                          </FormLabelStyled>
+                          <SelectDropDown
                             options={listingType}
                             placeholder="Select Type"
                             classNamePrefix="Select"
-                            styles={customStyles}
                             className="mt-1"
-                            value={listingType?.find(
+                            selectedValue={listingType?.find(
                               (l) => l.value === values?.listingType
                             )}
                             onChange={(e) => {
                               setFieldValue("listingType", e?.value || null);
                             }}
                           />
-                          <FormInputDescriptionStyled>
-                            Pick your listing top from the dropdown menu (i.e :
-                            Event, Restaurant, Experience, Transportation,
-                            Product, Service )
-                          </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.listingType && touched?.listingType && (
                           <>
@@ -208,14 +181,27 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
 
                       <div className="col-12 mb-7">
                         <Form.Group>
-                          <FormLabelStyled>Listing category</FormLabelStyled>
-                          <Select
+                          <FormLabelStyled className="d-flex align-items-center">
+                            Listing category{" "}
+                            <OverlayTrigger
+                              placement="top"
+                              overlay={
+                                <Tooltip>
+                                  In this section, you choose the category of
+                                  your listing, so it can be classified
+                                  accordingly in the platform.
+                                </Tooltip>
+                              }
+                            >
+                              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
+                            </OverlayTrigger>
+                          </FormLabelStyled>
+                          <SelectDropDown
                             options={listingCategory}
                             placeholder="Select Category"
                             classNamePrefix="Select"
                             className="mb-2"
-                            styles={customStyles}
-                            value={listingCategory?.find(
+                            selectedValue={listingCategory?.find(
                               (l) => l.value === values?.listingCategory
                             )}
                             onChange={(e) => {
@@ -225,11 +211,6 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               );
                             }}
                           />
-                          <FormInputDescriptionStyled>
-                            In this section, you choose the category of your
-                            listing, so it can be classified accordingly in the
-                            platform.
-                          </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.listingCategory &&
                           touched?.listingCategory && (
@@ -242,34 +223,35 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       </div>
                       <div className="col-12 mb-7">
                         <Form.Group>
-                          <FormLabelStyled>Language</FormLabelStyled>
-                          <Select
-                            options={[
-                              { value: "english", label: "English" },
-                              { value: "arabic", label: "Arabic" },
-                              { value: "spanish", label: "Spanish" },
-                            ]}
+                          <FormLabelStyled className="d-flex align-items-center">
+                            Language{" "}
+                            <OverlayTrigger
+                              placement="top"
+                              overlay={
+                                <Tooltip>
+                                  In this section, you choose the language of
+                                  the performance or content.
+                                </Tooltip>
+                              }
+                            >
+                              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
+                            </OverlayTrigger>
+                          </FormLabelStyled>
+                          <SelectDropDown
+                            options={languageOptions}
                             placeholder="Select Language"
                             classNamePrefix="Select"
-                            styles={customStyles}
                             className="mt-1"
-                            isMulti
-                            value={values?.language?.map((lang) => ({
-                              value: lang,
-                              label:
-                                lang.charAt(0).toUpperCase() + lang.slice(1),
-                            }))}
-                            onChange={(selectedOptions) => {
-                              const selectedValues = selectedOptions.map(
+                            isMulti={true}
+                            multiSelectOnChange={(selectedOptions) => {
+                              const selectedValues = selectedOptions?.map(
                                 (option) => option.value
                               );
                               setFieldValue("language", selectedValues);
+                              setSelectedLanguage(selectedOptions);
                             }}
+                            selectedValue={selectedLanguage}
                           />
-                          <FormInputDescriptionStyled>
-                            In this section, you choose the language of the
-                            performance or content.
-                          </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.language && touched?.language && (
                           <span className="text-danger ms-5 d-inline-block">
@@ -342,7 +324,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               { value: "expats", label: "Expats" },
                             ].map((option) => (
                               <div
-                                className="col-lg-4 col-md-6 col-12 g-3"
+                                className="col-lg-4 col-md-6 col-12 g-3 ps-4"
                                 key={option.value}
                               >
                                 <StyledInputDiv className="form-check">
@@ -426,7 +408,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               },
                             ].map((option) => (
                               <div
-                                className="col-lg-4 col-md-6 col-12 g-3"
+                                className="col-lg-4 col-md-6 col-12 g-3 ps-4"
                                 key={option.id}
                               >
                                 <StyledInputDiv className="form-check">
@@ -489,7 +471,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               { value: "plus21", label: "Plus 21" },
                             ].map((option) => (
                               <div
-                                className="col-lg-4 col-md-6 col-12 g-3"
+                                className="col-lg-4 col-md-6 col-12 g-3 ps-4"
                                 key={option.value}
                               >
                                 <StyledInputDiv className="form-check">
@@ -740,7 +722,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               },
                             ].map((facility) => (
                               <div
-                                className="col-lg-4 col-md-6 col-12 g-3"
+                                className="col-lg-4 col-md-6 col-12 g-3 ps-4"
                                 key={facility.id}
                               >
                                 <StyledInputDiv className="form-check">

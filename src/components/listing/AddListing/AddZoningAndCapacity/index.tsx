@@ -14,21 +14,13 @@ import {
   IAddListingAddZoningAndCapacity,
   IAddListingAddZoningAndCapacityZoneDesign,
 } from "./type";
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import { Accordion, Button } from "react-bootstrap";
-import DesignZoningAndCapacityManually from "./DesignManually/DesignZoningAndCapacityManually";
+import { Accordion, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { toast } from "react-toastify";
-import ButtonCustom from "../../../shared/ButtonCustom";
 import ZoningAccordion from "./ZoningAccordion";
-import CustomTabButton from "../../../shared/CustomTabButton";
-import {
-  ButtonPrimary,
-  ButtonSecondaryDarkGrey,
-  FormInputDescriptionStyled,
-  FormStyledContentSection,
-} from "../../../styledComponents/styledForm";
+import { FormInputDescriptionStyled } from "../../../styledComponents/styledForm";
 import DefineZones from "./DefineZones";
 import AddRowAndZones from "./AddRowAndZones";
+import { ButtonPrimary, ButtonSecondaryDarkGrey } from "../../../styledComponents/styledButton";
 const tabList = ["Design Manually", "Use Design Tool"];
 
 interface IAddZoningAndCapacityProps {}
@@ -97,21 +89,28 @@ const AddZoningAndCapacity: FC<IAddZoningAndCapacityProps> = ({}) => {
                 <div className="p-0 p-md-5">
                   <div className="row">
                     <div className="col-12 mb-3">
-                      <p className="fw-600 fs-26px text-black mb-6">
+                      <p className="fw-600 fs-26px text-black mb-3 d-flex align-items-center">
                         Zoning & Capacity
+                        <OverlayTrigger
+                          placement="top"
+                          overlay={
+                            <Tooltip>
+                              In this section you can design your zones
+                              manually. If you wish to design your floor plan
+                              using the Design tools, click on Design Floor
+                              Plan.{" "}
+                            </Tooltip>
+                          }
+                        >
+                          <i className="fe fe-info d-inline-block ms-3 cursor-pointer"></i>
+                        </OverlayTrigger>
                       </p>
-                      <FormInputDescriptionStyled>
-                        In this section you can design your zones manually. If
-                        you wish to design your floor plan using the Design
-                        tools, click on Design Floor Plan.{" "}
-                      </FormInputDescriptionStyled>
                     </div>
                     <DefineZones />
                     <AddRowAndZones />
                     <div className="col-12 mb-6 mt-5">
                       <div className="float-end d-flex gap-4">
                         <ButtonSecondaryDarkGrey type="button" className="btn">
-                          <PlusIcon className="w-4 h-4 me-3 mb-1px" />
                           Add Another Zone
                         </ButtonSecondaryDarkGrey>
                         <ButtonPrimary type="submit" className="btn">

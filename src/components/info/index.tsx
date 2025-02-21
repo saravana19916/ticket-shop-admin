@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import LandingPageWrapper from "../shared/LandingPageWrapper";
-import { Link } from "react-router-dom";
-import { PlusIcon } from "@heroicons/react/24/outline";
+
 import InfoList from "./InfoList";
+import { LinkButtonPrimary } from "../styledComponents/styledButton";
 
 const index = () => {
   const [itemsPerRow, setItemsPerRow] = useState<number | null>(0);
@@ -53,16 +53,9 @@ const index = () => {
             <p className="fw-600 fs-26px text-black mb-3">My Info</p>
           </div>
           <div className="col-6 mb-3">
-            <Link
-              to="/add-info"
-              className="btn badge-red float-end rounded-pill mt-2 fs-6 px-6 py-2"
-            >
-              <PlusIcon
-                className="w-5 h-5 me-1"
-                style={{ marginBottom: "2px" }}
-              />{" "}
-              Add Info
-            </Link>
+            <LinkButtonPrimary className="float-end mt-2 btn" to="/add-info">
+              <span>Add Listing</span>
+            </LinkButtonPrimary>
           </div>
         </div>
         <div className="row">

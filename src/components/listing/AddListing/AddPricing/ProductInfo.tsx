@@ -1,14 +1,20 @@
 import React, { FC, useEffect, useRef, useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 
 import Select from "react-select";
 import { FormikErrors, FormikTouched } from "formik";
 import { IPricingDetailsProps } from "../../../pricing/AddPricing/type";
 import {
   FormInputStyled,
+  FormInputWrapper,
   FormLabelStyled,
+  StyledInputDiv,
+  StyledSunEditor,
+  FormInputGroupLabel,
+  FormStyledContentSectionUndesignedForFields,
+  FormInputDescriptionStyled,
 } from "../../../styledComponents/styledForm";
-import { SketchPicker } from "react-color";
+import SelectDropDown from "../../../shared/SelectDropDown";
 
 interface IProductInfoProps {
   errors: FormikErrors<IPricingDetailsProps>;
@@ -16,18 +22,8 @@ interface IProductInfoProps {
   touched: FormikTouched<IPricingDetailsProps>;
   handleOnChange: (field: string, value: string | null) => void;
 }
-const productTypes = [
-  {
-    label: "Dubai Concert Ticket",
-    value: "Dubai Concert Ticket",
-  },
-  {
-    label: "Aquaventure Waterpark Ticket",
-    value: "Aquaventure Waterpark Ticket",
-  },
-];
 
-const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
+const ProductInfo: FC<IProductInfoProps> = ({}) => {
   const [color, setColor] = useState("#00D1FF");
   const [showColorPicker, setShowColorPicker] = useState(false);
   const colorPickerRef = useRef<HTMLDivElement>(null);
@@ -44,198 +40,355 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const customStyles = {
-    singleValue: (provided: any) => ({
-      ...provided,
-      color: "#000",
-      fontWeight: "400",
-      fontSize: "14px",
-    }),
-    indicatorSeparator: (provided: any) => ({
-      ...provided,
-      display: "none",
-    }),
-    dropdownIndicator: (provided: any) => ({
-      ...provided,
-      color: "#777",
-    }),
-    control: (provided: any, state: any) => ({
-      ...provided,
-      padding: "3px",
-      paddingLeft: "14px",
-      borderRadius: "50px",
-      borderColor: state.isFocused ? "#fec9da80" : "#e5e7eb",
-      outline: state.isFocused ? "1px solid #fec9da80" : "none",
-      boxShadow: "null",
-      "&:focus": {
-        borderColor: "#fec9da80",
-        outline: "1px solid #fec9da80",
-      },
-      "&:focus-within": {
-        borderColor: "#fec9da80",
-        outline: "1px solid #fec9da80",
-      },
-    }),
-    menu: (provided: any) => ({
-      ...provided,
-      borderRadius: "8px",
-    }),
-    multiValue: (provided: any) => ({
-      ...provided,
-      color: "#000",
-      fontWeight: "500",
-      fontSize: "18px",
-      margin: "0px",
-      padding: "0px",
-      backgroundColor: "",
-    }),
-    option: (provided: any, state: any) => ({
-      ...provided,
-      backgroundColor: state.isSelected ? "#ED003B" : "transparent",
-      color: state.isSelected ? "#fff" : provided.color,
-      cursor: "pointer",
-      transition: "background-color 0.2s ease",
-      "&:hover": {
-        backgroundColor: state.isSelected ? "#ED003B" : "#fec9da80",
-      },
-    }),
-  };
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { value, name } = event.target;
-    handleOnChange(name, value);
-  };
-  const handleDropdownChange = (field: string, value: string | null) => {
-    handleOnChange(field, value);
-  };
-
   const productTypes = [
-    { label: "Silver Ticket", value: "silver" },
-    { label: "Golden Ticket", value: "golden" },
+    { label: "Ticket", value: "ticket" },
+    { label: "Merchandise", value: "merchandise" },
+    { label: "Service", value: "service" },
+    { label: "Food and Beverage", value: "foodAndBeverage" },
   ];
-
-  const zoneTypes = [
-    { label: "Platinum I", value: "platinumI" },
-    { label: "Platinum II", value: "platinumII" },
-  ];
-
-  const sectionTypes = [
-    { label: "AB", value: "ab" },
-    { label: "AC", value: "ac" },
-  ];
-
-  const hasAccess = [
-    { label: "A", value: "a" },
-    { label: "All Zones", value: "allZones" },
+  const serviceFeeOption = [
+    {
+      label: "Fixed Fee per issued Product",
+      value: "Fixed Fee per issued Product",
+    },
   ];
 
   return (
     <>
-      <div className="col-12 mb-7">
+      <div className="col-12 mb-7 mt-5">
         <Form.Group>
-          <span className="text-gray d-block mb-6 fs-12px">
-            In the section, you connect the products created with the releavant
-            zones and define access for each of the products.
-          </span>
           <div className="row">
-            <div className="col-12 col-md-9 mb-6">
+            <div className="col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Select Product</FormLabelStyled>
-                <Select
-                  options={productTypes}
-                  placeholder="Select Product"
-                  classNamePrefix="Select"
-                  className="mb-2"
-                  styles={customStyles}
-                />
-              </Form.Group>
-            </div>
-            <div className="col-12 col-md-3 mb-6">
-              <Form.Group>
-                <FormLabelStyled>Color Tag</FormLabelStyled>
-                <div
-                  ref={colorPickerRef}
-                  style={{ position: "relative", display: "inline-block" }}
-                >
-                  <div
-                    onClick={() => setShowColorPicker(!showColorPicker)}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      cursor: "pointer",
-                      gap: "10px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "24px",
-                        height: "24px",
-                        backgroundColor: color,
-                        borderRadius: "50%",
-                        border: "1px solid #ccc",
-                      }}
-                    />
-                    <span>Pick Color</span>
-                  </div>
-                  {showColorPicker && (
-                    <div style={{ position: "absolute", zIndex: 100 }}>
-                      <SketchPicker
-                        color={color}
-                        onChange={(updatedColor) => setColor(updatedColor.hex)}
-                      />
-                    </div>
-                  )}
-                </div>
-              </Form.Group>
-            </div>
-            <div className="col-12 col-md-6 mb-6">
-              <Form.Group>
-                <FormLabelStyled>Zone</FormLabelStyled>
-                <Select
-                  options={zoneTypes}
-                  placeholder="Select Zone"
-                  classNamePrefix="Select"
-                  className="mb-2"
-                  styles={customStyles}
-                />
-              </Form.Group>
-            </div>
-            <div className="col-12 col-md-6 mb-6">
-              <Form.Group>
-                <FormLabelStyled>Section or Row</FormLabelStyled>
-                <Select
-                  options={sectionTypes}
-                  placeholder="Select Section or Row"
-                  classNamePrefix="Select"
-                  className="mb-2"
-                  styles={customStyles}
-                />
-              </Form.Group>
-            </div>
-            <div className="col-12 col-md-6 mb-6">
-              <Form.Group>
-                <FormLabelStyled>Has access to</FormLabelStyled>
-                <Select
-                  options={hasAccess}
-                  placeholder="Select Has access to"
-                  classNamePrefix="Select"
-                  className="mb-2"
-                  styles={customStyles}
-                  isMulti={true}
-                />
-              </Form.Group>
-            </div>
-            <div className="col-12 col-md-6 mb-6">
-              <Form.Group>
-                <FormLabelStyled>Entrance Gate</FormLabelStyled>
+                <FormLabelStyled>Product Name</FormLabelStyled>
                 <FormInputStyled
                   type="text"
-                  placeholder="Type Entrance Gate"
+                  placeholder="type the product name"
                   className="form-control"
                   name="productName"
                 />
               </Form.Group>
+            </div>
+            <div className="col-12 mb-7">
+              <Form.Group>
+                <FormLabelStyled className="d-flex align-items-center">
+                  Product Type
+                  <OverlayTrigger
+                    placement="top"
+                    overlay={
+                      <Tooltip>
+                        Pick your listing top from the dropdown menu (i.e :
+                        Event, Restaurant, Experience, Transportation, Product,
+                        Service )
+                      </Tooltip>
+                    }
+                  >
+                    <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
+                  </OverlayTrigger>
+                </FormLabelStyled>
+                <SelectDropDown
+                  options={productTypes}
+                  placeholder="Select Type"
+                  classNamePrefix="Select"
+                  className="mt-1"
+                />
+              </Form.Group>
+            </div>
+            <div className="col-12 mb-7">
+              <Form.Group>
+                <FormLabelStyled>Product Description</FormLabelStyled>
+                <StyledSunEditor
+                  setOptions={{
+                    font: ["Poppins"],
+                    defaultStyle: "font-family: Poppins;",
+                    height: "260px",
+                    buttonList: [
+                      ["undo", "redo"],
+                      ["bold", "italic", "underline", "strike"],
+                      ["list", "align", "fontSize"],
+                    ],
+                  }}
+                />
+              </Form.Group>
+            </div>
+            <div className="col-12 mb-6 mt-5">
+              <Form.Group>
+                <FormLabelStyled>Category</FormLabelStyled>
+                <div className="row">
+                  {[
+                    {
+                      id: "standard",
+                      label: "Standard",
+                      value: "Standard",
+                    },
+                    {
+                      id: "premium",
+                      label: "Premium",
+                      value: "Premium",
+                    },
+                    {
+                      id: "VIP",
+                      label: "VIP",
+                      value: "VIP",
+                    },
+                    {
+                      id: "VVIP",
+                      label: "VVIP",
+                      value: "VVIP",
+                    },
+                    {
+                      id: "notApplicable",
+                      label: "Not Applicable",
+                      value: "Not Applicable",
+                    },
+                  ].map((option) => (
+                    <div
+                      className="col-lg-4 col-md-6 col-12 g-3 ps-4"
+                      key={option.id}
+                    >
+                      <StyledInputDiv className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id={option.value}
+                          name={option.value}
+                          value={option.value}
+                          // checked={values?.contentGrading?.includes(
+                          //   option.value
+                          // )}
+                          // onChange={(e) => {
+                          //   const newValue = e.target.value;
+                          //   const updatedSelection = e.target.checked
+                          //     ? [...(values.contentGrading || []), newValue]
+                          //     : values.contentGrading?.filter(
+                          //         (v) => v !== newValue
+                          //       );
+
+                          //   setFieldValue("contentGrading", updatedSelection);
+                          // }}
+                        />
+                        <label
+                          htmlFor={option.value}
+                          className="form-check-label ms-3"
+                          style={{
+                            marginTop: "7px",
+                            fontSize: "12px",
+                          }}
+                        >
+                          {option.label}
+                        </label>
+                      </StyledInputDiv>
+                    </div>
+                  ))}
+                </div>
+              </Form.Group>
+            </div>
+            <div className="col-12 mb-7 mt-5">
+              <Form.Group>
+                <FormLabelStyled>Age Limit</FormLabelStyled>
+                <div className="row">
+                  {[
+                    { value: "openAge2", label: "Open Age (+2)" },
+                    { value: "openAge4", label: "Open Age (+4)" },
+                    { value: "plus18", label: "Plus 18" },
+                    { value: "plus21", label: "Plus 21" },
+                  ].map((option) => (
+                    <div
+                      className="col-lg-4 col-md-6 col-12 g-3 ps-4"
+                      key={option.value}
+                    >
+                      <StyledInputDiv className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id={option.value}
+                          name={option.value}
+                          value={option.value}
+                          // checked={values?.contentGrading?.includes(
+                          //   option.value
+                          // )}
+                          // onChange={(e) => {
+                          //   const newValue = e.target.value;
+                          //   const updatedSelection = e.target.checked
+                          //     ? [...(values.contentGrading || []), newValue]
+                          //     : values.contentGrading?.filter(
+                          //         (v) => v !== newValue
+                          //       );
+
+                          //   setFieldValue("contentGrading", updatedSelection);
+                          // }}
+                        />
+                        <label
+                          htmlFor={option.value}
+                          className="form-check-label ms-3"
+                          style={{
+                            marginTop: "7px",
+                            fontSize: "12px",
+                          }}
+                        >
+                          {option.label}
+                        </label>
+                      </StyledInputDiv>
+                    </div>
+                  ))}
+                </div>
+              </Form.Group>
+            </div>
+            <div className="col-12 col-xl-6 mb-7">
+              <Form.Group>
+                <FormLabelStyled className="d-flex align-items-center">
+                  Net Price
+                </FormLabelStyled>
+                <FormInputStyled
+                  type="text"
+                  className="form-control"
+                  name="netPrice"
+                />
+              </Form.Group>
+            </div>
+            <div className="col-12 col-xl-6 mb-7">
+              <Form.Group>
+                <FormLabelStyled className="d-flex align-items-center">
+                  Transaction Currency
+                </FormLabelStyled>
+                <SelectDropDown
+                  options={[
+                    { value: "AED - UAE Dirhams", label: "AED - UAE Dirhams" },
+                  ]}
+                  placeholder="Select Currency"
+                  classNamePrefix="Select"
+                  className="mt-1"
+                />
+              </Form.Group>
+            </div>
+            <div className="col-12 col-xl-6 mb-7">
+              <Form.Group>
+                <FormLabelStyled className="d-flex align-items-center">
+                  VAT TAX
+                </FormLabelStyled>
+                <FormInputWrapper className="w-100">
+                  <FormInputStyled
+                    className="form-control"
+                    type="number"
+                    name="vatTax"
+                  />
+                  <FormInputGroupLabel>%</FormInputGroupLabel>
+                </FormInputWrapper>
+              </Form.Group>
+            </div>
+            <div className="col-12 col-xl-6 mb-7">
+              <Form.Group>
+                <FormLabelStyled className="d-flex align-items-center">
+                  Entertainment TAX
+                </FormLabelStyled>
+                <FormInputWrapper className="w-100">
+                  <FormInputStyled
+                    className="form-control"
+                    type="number"
+                    name="entertainmentTax"
+                  />
+                  <FormInputGroupLabel>%</FormInputGroupLabel>
+                </FormInputWrapper>
+              </Form.Group>
+            </div>
+            <div className="col-12 col-xl-6 mb-7">
+              <Form.Group>
+                <FormLabelStyled className="d-flex align-items-center">
+                  Other Taxes
+                </FormLabelStyled>
+                <FormInputWrapper className="w-100">
+                  <FormInputStyled
+                    className="form-control"
+                    type="number"
+                    name="otherTaxes1"
+                  />
+                  <FormInputGroupLabel>%</FormInputGroupLabel>
+                </FormInputWrapper>
+              </Form.Group>
+            </div>
+            <div className="col-12 col-xl-6 mb-7">
+              <Form.Group>
+                <FormLabelStyled className="d-flex align-items-center">
+                  Other Taxes
+                </FormLabelStyled>
+                <FormInputWrapper className="w-100">
+                  <FormInputStyled
+                    className="form-control"
+                    type="number"
+                    name="otherTaxes2"
+                  />
+                  <FormInputGroupLabel>%</FormInputGroupLabel>
+                </FormInputWrapper>
+              </Form.Group>
+            </div>
+            <div className="col-12 mb-7 p-0">
+              <FormStyledContentSectionUndesignedForFields>
+                <div className="col-12 col-xl-6 mb-6 mb-xl-0">
+                  <Form.Group>
+                    <FormLabelStyled className="d-flex align-items-center">
+                      Service Fee Option{" "}
+                    </FormLabelStyled>
+                    <SelectDropDown
+                      options={serviceFeeOption}
+                      placeholder="Select Fee Option"
+                      classNamePrefix="Select"
+                      className="mt-1"
+                    />
+                  </Form.Group>
+                </div>
+                <div className="col-12 col-xl-6 mb-6 mb-xl-0">
+                  <Form.Group>
+                    <FormLabelStyled className="d-flex align-items-center">
+                      Service fee per Ticket{" "}
+                    </FormLabelStyled>
+                    <FormInputWrapper className="w-100">
+                      <FormInputStyled
+                        className="form-control mt-1 fw-semibold"
+                        type="text"
+                        name="otherTaxes1"
+                        value="160.00"
+                        style={{ border: "1px #fff", color: "#000" }}
+                      />
+                      <FormInputGroupLabel
+                        className="fw-semibold"
+                        style={{ color: "#000", top: "18px" }}
+                      >
+                        AED
+                      </FormInputGroupLabel>
+                    </FormInputWrapper>
+                  </Form.Group>
+                </div>
+              </FormStyledContentSectionUndesignedForFields>
+            </div>
+            <div className="col-12 mb-1 p-0">
+              <FormStyledContentSectionUndesignedForFields>
+                <FormLabelStyled>Final Product Price to Buyer </FormLabelStyled>
+                <FormInputWrapper
+                  style={{
+                    width: "48%",
+                  }}
+                >
+                  <FormInputStyled
+                    className="form-control mt-1 fw-semibold"
+                    type="text"
+                    name="otherTaxes1"
+                    value="160.00"
+                    style={{ border: "1px #fff", color: "#000" }}
+                  />
+                  <FormInputGroupLabel
+                    className="fw-semibold"
+                    style={{ color: "#000", top: "18px" }}
+                  >
+                    AED
+                  </FormInputGroupLabel>
+                </FormInputWrapper>
+              </FormStyledContentSectionUndesignedForFields>
+            </div>
+            <div className="col-12 mb-3">
+              <FormInputDescriptionStyled className="ms-4">
+                This price does not include other banking charges, process fees
+                and levies.
+              </FormInputDescriptionStyled>
             </div>
           </div>
         </Form.Group>

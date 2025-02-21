@@ -1,6 +1,5 @@
-import React, { FC, Fragment, useEffect, useState } from "react";
+import React, { FC, Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useGeolocated } from "react-geolocated";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import ManualLocationTab from "./ManualLocationTab";
 import CustomTabButton from "../../../shared/CustomTabButton";
@@ -9,7 +8,13 @@ import { IAddLocationProps } from "./type";
 import LocationAccordion from "./LocationAccordion";
 import { locationAccordionData } from "./helper";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import { FormInputStyled } from "../../../styledComponents/styledForm";
+import {
+  FormInputGroupLabel,
+  FormInputStyled,
+  FormInputWrapper,
+  FormLabelStyled,
+} from "../../../styledComponents/styledForm";
+import { ButtonPrimary } from "../../../styledComponents/styledButton";
 
 const mapContainerStyle = {
   width: "100%",
@@ -18,35 +23,23 @@ const mapContainerStyle = {
 const defaultCenter = { lat: 37.7749, lng: -122.4194 };
 const AddLocationForListing: FC = () => {
   const [location, setLocation] = useState<any>({ lat: null, lng: null });
-  const [address, setAddress] = useState("");
-  const [formValues, setFormValues] = useState({ locationName: "" });
-
-  const { t } = useTranslation();
-  const [fetchLocation, setFetchLocation] = useState(false);
-  const tabList = ["Use Google Maps", "Enter Manually"];
-  const [selectedTab, setSelectedTab] = useState<number>(1);
-
-  const { coords } = useGeolocated({
-    positionOptions: {
-      enableHighAccuracy: true,
-    },
-    userDecisionTimeout: 5000,
+  const [formValues, setFormValues] = useState({
+    locationName: "",
+    locationWebsite: "",
   });
 
-  useEffect(() => {
-    if (fetchLocation && coords) {
-      setLocation({ lat: coords.latitude, lng: coords.longitude });
-    }
-  }, [fetchLocation, coords]);
-
-  const handleGetLocation = () => setFetchLocation(true);
+  const { t } = useTranslation();
+  const tabList = ["Use Google Maps", "Enter Manually"];
+  const [selectedTab, setSelectedTab] = useState<number>(1);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
   return (
-    <div className={`row px-0 px-md-2 px-lg-4 mx-0 mb-6`}>
+    <div
+      className={`row px-0 px-md-2 px-lg-4 px-xl-6 mx-xl-3 mx-0 mx-md-1 mx-lg-3 `}
+    >
       <div className="card border p-4 rounded-16px">
         <div className="p-0 p-md-5">
           <div className="row">
@@ -72,18 +65,25 @@ const AddLocationForListing: FC = () => {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <div className="col-12 mb-7 mt-3">
+                  <div className="col-12 mb-7 mt-6 pe-0">
                     <Form.Group>
-                      <Form.Label>Search from Google</Form.Label>
-                      <FormInputStyled
-                        type="text"
-                        placeholder="Search here"
-                        className="form-control mb-6"
-                        value={formValues.locationName}
-                        name="locationName"
-                        onChange={handleChange}
-                      />
+                      <FormLabelStyled>Search from Google</FormLabelStyled>
+                      <FormInputWrapper className="w-100">
+                        <FormInputStyled
+                          type="text"
+                          placeholder="Search here"
+                          className="form-control mb-6"
+                          value={formValues.locationName}
+                          name="locationName"
+                          onChange={handleChange}
+                        />
+                        <FormInputGroupLabel>
+                          <i className="bi bi-search pe-3"></i>
+                        </FormInputGroupLabel>
+                      </FormInputWrapper>
                     </Form.Group>
+                  </div>
+                  <div className="col-12 mb-7">
                     <LoadScript googleMapsApiKey="&callback=initMap">
                       <GoogleMap
                         mapContainerStyle={mapContainerStyle}
@@ -99,6 +99,30 @@ const AddLocationForListing: FC = () => {
                         )}
                       </GoogleMap>
                     </LoadScript>
+                  </div>
+                  <div className="col-12 mb-7 pe-0">
+                    <Form.Group>
+                      <FormLabelStyled>Location Website</FormLabelStyled>
+                      <FormInputStyled
+                        type="text"
+                        value={formValues.locationWebsite}
+                        placeholder="Enter location website"
+                        className="form-control"
+                        name="locationWebsite"
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                  </div>
+                  <div className="col-12 pe-0">
+                    <div className="float-end">
+                      <ButtonPrimary
+                        type="submit"
+                        className="btn"
+                        style={{ minWidth: "118px" }}
+                      >
+                        Create Location
+                      </ButtonPrimary>
+                    </div>
                   </div>
                 </TabPanel>
                 <TabPanel>

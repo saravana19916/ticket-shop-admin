@@ -1,13 +1,20 @@
 import React, { FC } from "react";
 import { IPricingDetailsProps } from "../../../pricing/AddPricing/type";
 import { FormikErrors, FormikTouched } from "formik";
-import { Form, InputGroup, FormControl } from "react-bootstrap";
+import {
+  Form,
+  InputGroup,
+  FormControl,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
 import {
   FormInputStyled,
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
+import { IconButtonPrimary } from "../../../styledComponents/styledButton";
 interface IProps {
   errors: FormikErrors<IPricingDetailsProps>;
   values: IPricingDetailsProps;
@@ -65,32 +72,34 @@ const PricingInclusion: FC<IProps> = ({
     <>
       <div className="col-12 mb-6">
         <Form.Group className="mb-1">
-          <Form.Label className="fs-5 fw-500 text-black mb-4">
-            Inclusion
-          </Form.Label>
-          <span className="text-gray d-block mb-6 fs-12px">
-            insert what is included in the Product.{" "}
-          </span>
+          <FormLabelStyled className="d-flex align-items-center mb-5">
+            Add Inclusion{" "}
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>Insert what is included in the Product.</Tooltip>
+              }
+            >
+              <i className="fe fe-info d-inline-block ms-3 cursor-pointer"></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
+
           <div className="row">
-            <div className="col-12 mb-4">
-              <Form.Group>
-                <FormLabelStyled>Add inclusions</FormLabelStyled>
-                <div className="position-relative">
-                  <FormInputStyled
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => _handleInclusionFieldOnChange(e)}
-                    value={values.inclusion?.inclusionText}
-                    placeholder="If you can't find your inclusion below, type them here and press + button"
-                  />
-                  <div
-                    onClick={() => _handleAddInclusion(values)}
-                    className="me-4 cursor-pointer bg-primary-1 position-absolute text-white rounded-circle top-50 end-0 translate-middle-y"
-                  >
-                    <PlusIcon className="h-5 w-5 fw-bold" />
-                  </div>
-                </div>
-              </Form.Group>
+            <div className="col-12 mb-4 d-flex gap-3">
+              <FormInputStyled
+                type="text"
+                className="form-control"
+                onChange={(e) => _handleInclusionFieldOnChange(e)}
+                value={values.inclusion?.inclusionText}
+              />
+              <IconButtonPrimary
+                className="btn px-4"
+                style={{ marginBottom: "7px" }}
+                type="button"
+                onClick={() => _handleAddInclusion(values)}
+              >
+                <PlusIcon className="h-5 w-5 fw-bold" />
+              </IconButtonPrimary>
             </div>
           </div>
         </Form.Group>

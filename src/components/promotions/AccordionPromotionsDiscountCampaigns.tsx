@@ -78,12 +78,12 @@ const AccordionPromotionsDiscountCampaigns: FC<IProps> = ({ index, item }) => {
               className="bg-default rounded-3 d-none d-md-block"
               style={{ width: "4rem", height: "4rem" }}
             ></div>
-            <div className="row flex-grow-1">
-              <div className="col-2">
+            <div className="row flex-grow-1 ms-4">
+              <div className="col-12 col-sm-6 col-md-2 d-none d-sm-block">
                 <AccordionH2Light className="mb-2">Type</AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">{item.type}</span>
               </div>
-              <div className="col-3">
+              <div className="col-12 col-sm-6 col-md-3">
                 <AccordionH2Light className="mb-2">
                   Campaign Name
                 </AccordionH2Light>
@@ -91,7 +91,7 @@ const AccordionPromotionsDiscountCampaigns: FC<IProps> = ({ index, item }) => {
                   {item.campaignsName}
                 </span>
               </div>
-              <div className="col-3">
+              <div className="col-3 d-none d-md-block">
                 <AccordionH2Light className="mb-2">
                   Expiry Date & Time
                 </AccordionH2Light>
@@ -99,13 +99,13 @@ const AccordionPromotionsDiscountCampaigns: FC<IProps> = ({ index, item }) => {
                   {moment(item.expiryDate)?.format("DD.MMM.YYYY/HH:mm")}
                 </span>
               </div>
-              <div className="col-2">
+              <div className="col-2 d-none d-md-block">
                 <AccordionH2Light className="mb-2">Discount</AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">
                   {item.discount} %
                 </span>
               </div>
-              <div className="col-2">
+              <div className="col-2 d-none d-md-block">
                 <AccordionH2Light className="mb-2">Unit</AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">{item.unit}</span>
               </div>
@@ -114,7 +114,7 @@ const AccordionPromotionsDiscountCampaigns: FC<IProps> = ({ index, item }) => {
         </Accordion.Header>
         <Accordion.Body>
           <AccordionBodyTop className="row px-md-3 px-lg-7 py-7 mx-md-1 mx-lg-2 my-3">
-            <div className="col-6">
+            <div className="col-12 col-md-6">
               <h4 className="fw-bold fs-6">Summary</h4>
               <div className="d-flex flex-column gap-1 mt-4 fs-6">
                 <div className="fw-semibold d-flex align-items-center justify-content-between">
@@ -219,10 +219,12 @@ const AccordionPromotionsDiscountCampaigns: FC<IProps> = ({ index, item }) => {
                 </div>
               </div>
             </div>
-            <div className="col-1 d-flex h-auto justify-content-center mt-3">
-              <div className="vr"></div>
+            <div className="col-12 col-md-1 d-flex justify-content-center mt-3">
+              <div className="vr d-none d-md-block"></div>
+
+              <hr className="w-100 d-md-none border-2" />
             </div>
-            <div className="col-5">
+            <div className="col-12 col-md-5">
               <h4 className="fw-bold fs-6 ">List of Codes & Usage</h4>
               <div
                 className="px-6 py-2 bg-white mt-4 "
@@ -257,11 +259,36 @@ const AccordionPromotionsDiscountCampaigns: FC<IProps> = ({ index, item }) => {
             </div>
           </AccordionBodyTop>
           <div className="d-flex align-items-center gap-3 justify-content-start ms-5 mt-5 flex-wrap">
-            <AccordionButton className="btn">Download Booking</AccordionButton>
-            <AccordionButton className="btn">View Workflow</AccordionButton>
-            <AccordionButton className="btn">Edit</AccordionButton>
-            <AccordionButton className="btn">Extend Expiry</AccordionButton>
-            <AccordionButton className="btn">Delete</AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              Download Booking
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              View Workflow
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              Edit
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              Extend Expiry
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              Delete
+            </AccordionButton>
           </div>
         </Accordion.Body>
       </Accordion.Item>

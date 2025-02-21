@@ -54,25 +54,51 @@ const GuestListAccordion: FC<IProps> = ({ item, index }) => {
               style={{ minWidth: "4rem", height: "4rem" }}
             ></div>
             <div className="row flex-grow-1">
-              <div className="col-4">
+              <div className="col-12 col-sm-6 col-md-4 col-xl-2 d-none d-sm-block">
+                <AccordionH2Light className="mb-2">Order</AccordionH2Light>
+                <span className="fs-12px fw-600 text-black">
+                  {item.orderId}
+                </span>
+              </div>
+              <div className="col-12 col-sm-6 col-md-4 col-xl-2">
                 <AccordionH2Light className="mb-2">Name</AccordionH2Light>
                 <span className="fs-12px fw-600 text-black">{item.name}</span>
               </div>
-              <div className="col-4">
+              <div className="col-12 col-md-4 col-xl-3 d-none d-md-block">
+                <AccordionH2Light className="mb-2">
+                  Organization
+                </AccordionH2Light>
+                <span className="fs-12px fw-600 text-black">
+                  {item.organization}
+                </span>
+              </div>
+              <div className="col-3 d-none d-lg-block">
+                <AccordionH2Light className="mb-2">
+                  Delivery Address
+                </AccordionH2Light>
+                <span className="fs-12px fw-500 text-light-blue-1">
+                  {item.deliveryAddress}
+                </span>
+              </div>
+              <div className="col-2 d-none d-lg-block">
                 <AccordionH2Light className="mb-2">
                   Total Value
                 </AccordionH2Light>
                 <span className="fs-12px fw-500 text-light-blue-1">
-                AED {item.transactionSummary?.totalValue}
+                  AED {item.transactionSummary?.totalValue}
                 </span>
               </div>
             </div>
-            <AccordionButton className="btn px-7 py-1">Confirm</AccordionButton>
+            <div className="d-none d-xl-block">
+              <AccordionButton className="btn px-7 py-1">
+                Confirm
+              </AccordionButton>
+            </div>
           </div>
         </Accordion.Header>
         <Accordion.Body className="p-2 pb-6">
-          <AccordionBodyTop className="row px-md-3 px-lg-7 py-7 mx-md-1 mx-lg-2 my-3">
-            <div className="col-5">
+          <AccordionBodyTop className="row px-3 px-lg-3 py-7 mx-md-1 mx-lg-2 my-3">
+            <div className="col-12 col-md-5">
               <h4 className="fw-bold fs-6">Transaction Summary</h4>
               <div className="d-flex flex-column gap-1 mt-5 fs-6">
                 <div className="fw-semibold d-flex align-items-center justify-content-between">
@@ -179,10 +205,12 @@ const GuestListAccordion: FC<IProps> = ({ item, index }) => {
                 </div>
               </div>
             </div>
-            <div className="col-1 d-flex h-auto justify-content-center mt-3">
-              <div className="vr"></div>
+            <div className="col-12 col-md-1 d-flex justify-content-center mt-3">
+              <div className="vr d-none d-md-block"></div>
+
+              <hr className="w-100 d-md-none border-2" />
             </div>
-            <div className="col-5">
+            <div className="col-12 col-md-6">
               <h4 className="fw-bold fs-6">Order Details</h4>
               <div className="d-flex flex-column gap-1 mt-5 fs-6">
                 {item.orderDetails?.tickets?.map((ticket) => (
@@ -220,29 +248,29 @@ const GuestListAccordion: FC<IProps> = ({ item, index }) => {
                   <span>Net Total</span>
                   <span>AED {item.orderDetails?.netTotal}</span>
                 </div>
-                <div className="d-flex fs-12px align-items-center justify-content-between">
-                  <AccordionBodyOrderDetailsValue>
+                <div className="row fs-12px align-items-center justify-content-between">
+                  <AccordionBodyOrderDetailsValue className="col-4">
                     Discount{" "}
                     <span className="fs-10px">
                       ({item.orderDetails?.discountType})
                     </span>
-                    <AccordionBodyOrderDetailsValue className="ms-7">
-                      {item.orderDetails?.discount}%
-                    </AccordionBodyOrderDetailsValue>
                   </AccordionBodyOrderDetailsValue>
-                  <span className="text-primary fw-bold">
+                  <AccordionBodyOrderDetailsValue className="col-4">
+                    {item.orderDetails?.discount}%
+                  </AccordionBodyOrderDetailsValue>
+                  <span className="text-primary fw-bold col-4 text-end">
                     -AED {item.orderDetails?.discountValue}
                   </span>
                 </div>
                 <span className="border-bottom my-2"></span>
-                <div className="d-flex fs-12px align-items-center justify-content-between">
-                  <AccordionBodyOrderDetailsValue>
+                <div className="row fs-12px align-items-center justify-content-between">
+                  <AccordionBodyOrderDetailsValue className="col-4">
                     Vat
                   </AccordionBodyOrderDetailsValue>
-                  <AccordionBodyOrderDetailsValue>
-                    &nbsp;&nbsp;&nbsp;&nbsp; {item.orderDetails?.vat}%
+                  <AccordionBodyOrderDetailsValue className="col-4">
+                    {item.orderDetails?.vat}%
                   </AccordionBodyOrderDetailsValue>
-                  <AccordionBodyOrderDetailsValue>
+                  <AccordionBodyOrderDetailsValue className="col-4 text-end">
                     AED {item.orderDetails?.vatValue}
                   </AccordionBodyOrderDetailsValue>
                 </div>
@@ -255,10 +283,30 @@ const GuestListAccordion: FC<IProps> = ({ item, index }) => {
             </div>
           </AccordionBodyTop>
           <div className="d-flex align-items-center gap-3 justify-content-start ms-5 mt-5 flex-wrap">
-            <AccordionButton className="btn">Confirm</AccordionButton>
-            <AccordionButton className="btn">View Workflow</AccordionButton>
-            <AccordionButton className="btn">Edit</AccordionButton>
-            <AccordionButton className="btn">Delete</AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              Confirm
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              View Workflow
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              Edit
+            </AccordionButton>
+            <AccordionButton
+              className="btn px-6 py-2"
+              style={{ minWidth: "168px" }}
+            >
+              Delete
+            </AccordionButton>
           </div>
         </Accordion.Body>
       </Accordion.Item>

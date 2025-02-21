@@ -112,6 +112,12 @@ const Promotions = lazy(() => import("../components/promotions"));
 const GenerateBarcode = lazy(
   () => import("../components/promotions/GenerateBarcode")
 );
+const GenerateDiscountCode = lazy(
+  () => import("../components/promotions/GenerateDiscountCode")
+);
+const PromotionsImport = lazy(
+  () => import("../components/promotions/PromotionsImport")
+);
 const BulkGuestInvitation = lazy(
   () => import("../components/guestList/BulkGuestInvitation")
 );
@@ -333,6 +339,14 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}generate-barcode`,
     element: <GenerateBarcode />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}generate-discountcode`,
+    element: <GenerateDiscountCode />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}promotions-import`,
+    element: <PromotionsImport />,
   },
   {
     path: `${import.meta.env.BASE_URL}bulk-invitation`,

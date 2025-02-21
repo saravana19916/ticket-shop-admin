@@ -11,6 +11,7 @@ import {
 import LandingPageWrapper from "../shared/LandingPageWrapper";
 import { Link } from "react-router-dom";
 import CustomTabButton from "../shared/CustomTabButton";
+import { LinkButtonPrimary } from "../styledComponents/styledButton";
 
 const index = () => {
   const tabList = ["All", "Entertainment", "Cultural", "Business"];
@@ -63,16 +64,9 @@ const index = () => {
             <p className="fw-600 fs-26px text-black mb-3">My Products</p>
           </div>
           <div className="col-6 mb-3">
-            <Link
-              to="/add-product"
-              className="btn badge-red float-end rounded-pill mt-2 fs-6 px-6 py-2"
-            >
-              <PlusIcon
-                className="w-5 h-5 me-1"
-                style={{ marginBottom: "2px" }}
-              />{" "}
-              Add Product
-            </Link>
+            <LinkButtonPrimary className="float-end mt-2 btn" to="/add-product">
+              <span>Add Product</span>
+            </LinkButtonPrimary>
           </div>
         </div>
         <div className="row">

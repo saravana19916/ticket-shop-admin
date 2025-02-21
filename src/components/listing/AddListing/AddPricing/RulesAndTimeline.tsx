@@ -49,16 +49,10 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
     <>
       <div className="col-12 mb-7">
         <Form.Group>
-          <Form.Label className="fs-5 fw-500 text-black mb-4">
-            Rules & Timeline
-          </Form.Label>
-          <span className="text-gray d-block mb-6 fs-12px">
-            the explanation about this section goes here
-          </span>
           <div className="row">
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Min order</FormLabelStyled>
+                <FormLabelStyled>Minimum order</FormLabelStyled>
                 <FormInputStyled
                   min={1}
                   value={values?.rulesAndTimeline?.minOrder || ""}
@@ -87,7 +81,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
             </div>
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Max order</FormLabelStyled>
+                <FormLabelStyled>Maximum order</FormLabelStyled>
                 <FormInputStyled
                   min={1}
                   value={values?.rulesAndTimeline?.maxOrder || ""}
@@ -116,7 +110,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
             </div>
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Access</FormLabelStyled>
+                <FormLabelStyled>Number of Access/Entires</FormLabelStyled>
                 <FormInputStyled
                   type="text"
                   placeholder="Enter Access"
@@ -137,7 +131,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
             </div>
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Scan</FormLabelStyled>
+                <FormLabelStyled>Number of Authorized Scan</FormLabelStyled>
                 <FormInputStyled
                   type="text"
                   placeholder="Enter Scan"
@@ -158,7 +152,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
             </div>
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Sale Start Date</FormLabelStyled>
+                <FormLabelStyled>Sale Start Date & Time</FormLabelStyled>
                 <DateFlatpickr
                   value={
                     values.rulesAndTimeline?.salesStartDate
@@ -168,8 +162,8 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
                       : ""
                   }
                   onChange={handleStartDateChange}
-                  type="date"
-                  placeholder="Enter Sale Start Date"
+                  type="datetime"
+                  placeholder="Enter Sale Start Date Time"
                 />
                 {errors &&
                   touched &&
@@ -184,7 +178,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
 
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>End Date & Time</FormLabelStyled>
+                <FormLabelStyled>Sale End Date & Time</FormLabelStyled>
                 <DateFlatpickr
                   value={
                     values.rulesAndTimeline?.salesEndDate
@@ -195,7 +189,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
                   }
                   onChange={handleEndDateChange}
                   type="datetime"
-                  placeholder="Enter Sale End Date"
+                  placeholder="Enter Sale End Date Time"
                 />
                 {errors &&
                   touched &&

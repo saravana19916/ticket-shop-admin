@@ -1,73 +1,15 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import SunEditor from "suneditor-react";
-
-interface DateTimeInputGroupProps {
-  disabled?: boolean;
-}
-export const FormLabelStyled = styled.label`
-  font-weight: 500;
-  color: #374151;
+const commonStyles = css`
   font-size: 1rem;
-  .dark-mode & {
-    color: #fff;
-  }
-`;
-
-export const FormInputStyled = styled.input`
-  font-size: 1rem;
-  padding: 12px 12px 12px 20px;
   border-color: #e5e7eb;
   font-weight: 400;
   color: #000;
   border-radius: 50px;
   margin-bottom: 0.5rem;
+
   .dark-mode & {
     border-color: #e5e7eb;
-    color: #fff;
-  }
-  &:hover {
-    border-color: #b3b3b3;
-
-    .dark-mode & {
-      border-color: #e5e7eb;
-    }
-  }
-
-  &:focus {
-    border-color: #fec9da80;
-    outline: 1px solid #fec9da80;
-    .dark-mode & {
-      border-color: #777;
-    }
-  }
-  &:focus-within {
-    border-color: #fec9da80;
-    outline: 1px solid #fec9da80;
-    .dark-mode & {
-      border-color: #777;
-    }
-  }
-
-  &:disabled {
-    background-color: #f2f2f2;
-    color: #888;
-    cursor: not-allowed;
-  }
-`;
-export const FormFileInputStyled = styled.div`
-  font-size: 1rem;
-  padding: 12px 20px;
-  border-color: #e5e7eb;
-  font-weight: 400;
-  color: #000;
-  border-radius: 50px;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Ensures spacing between text and icon */
-
-  .dark-mode & {
-    border-color: #555;
     color: #fff;
   }
 
@@ -93,46 +35,62 @@ export const FormFileInputStyled = styled.div`
     cursor: not-allowed;
   }
 `;
+interface DateTimeInputGroupProps {
+  disabled?: boolean;
+}
+
+export const FormInputStyled = styled.input`
+  ${commonStyles}
+  padding: 12px 12px 12px 20px;
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
+export const FormDivStyled = styled.div`
+  ${commonStyles}
+  padding: 11px 12px 11px 20px;
+`;
+
+export const FormFileInputStyled = styled.div`
+  ${commonStyles}
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures spacing between text and icon */
+`;
+
 export const FormDescriptionStyled = styled.textarea`
-  font-size: 1rem;
-  border-color: #e5e7eb;
-  font-weight: 400;
-  color: #000;
+  ${commonStyles}
   border-radius: 26px;
-  margin-bottom: 0.5rem;
   resize: none;
+`;
+
+export const FormLabelStyled = styled.label`
+  font-weight: 500;
+  color: #374151;
+  font-size: 1rem;
   .dark-mode & {
-    border-color: #e5e7eb;
     color: #fff;
   }
-  &:hover {
-    border-color: #b3b3b3;
+`;
+export const FormInputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: fit-content; /* Adjust width as needed */
+`;
 
-    .dark-mode & {
-      border-color: #e5e7eb;
-    }
-  }
-
-  &:focus {
-    border-color: #fec9da80;
-    outline: 1px solid #fec9da80;
-    .dark-mode & {
-      border-color: #777;
-    }
-  }
-  &:focus-within {
-    border-color: #fec9da80;
-    outline: 1px solid #fec9da80;
-    .dark-mode & {
-      border-color: #777;
-    }
-  }
-
-  &:disabled {
-    background-color: #f2f2f2;
-    color: #888;
-    cursor: not-allowed;
-  }
+export const FormInputGroupLabel = styled.span`
+  position: absolute;
+  right: 18px; /* Adjust position */
+  top: 13px;
+  font-size: 1rem;
+  color: #888;
 `;
 
 export const FormInputDescriptionStyled = styled.span`
@@ -200,137 +158,6 @@ export const DateTimeCustomInput = styled.input`
 
   &:focus {
     outline: none;
-  }
-`;
-
-export const ButtonPrimary = styled.button`
-  border-radius: 50px;
-  font-weight: 500;
-  padding: 10px 24px;
-  font-size: 14px;
-  color: #fff;
-  border-color: #ed003b;
-  background-color: #ed003b;
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  &:hover {
-    background-color: #e00036;
-    color: #fff;
-  }
-  i {
-    display: block;
-
-    @media (min-width: 768px) {
-      display: none;
-    }
-  }
-
-  span {
-    display: none;
-
-    @media (min-width: 768px) {
-      display: block;
-    }
-  }
-`;
-export const ButtonSuccess = styled.button`
-  border-radius: 50px;
-  font-weight: 500;
-  padding: 10px 24px;
-  color: #fff;
-  font-size: 14px;
-  border-color: #16d9c6;
-  background-color: #16d9c6;
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  &:hover {
-    background-color: #16d9c6;
-    color: #fff;
-  }
-`;
-
-export const ButtonSecondary = styled.button`
-  border-radius: 50px;
-  border-color: #e5e7eb; 
-  color: #374151; 
-  background-color: #ffffff; 
-  font-weight: 500; 
-  font-size: 14px;
-  padding: 10px 24px;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
-
-  &:hover {
-    background-color: #f3f4f6; 
-  }
-  }
-`;
-export const ButtonActive = styled.button`
-  border-radius: 50px;
-  border-color: #00ff00;
-  color: #fff;
-  background-color: #00ff00;
-  font-weight: 500;
-  font-size: 12px;
-  padding: 8px 32px;
-  min-width: 130px;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
-
-  &:hover {
-    background-color: #00ff00;
-    color: #fff;
-  }
-`;
-export const ButtonNotActive = styled.button`
-  border-radius: 50px;
-  border-color: #00dcfa;
-  color: #fff;
-  background-color: #00dcfa;
-  font-weight: 500;
-  font-size: 12px;
-  padding: 8px 32px;
-  min-width: 130px;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
-
-  &:hover {
-    background-color: #00dcfa;
-    color: #fff;
-  }
-`;
-
-export const ButtonSecondaryGrey = styled.button`
-  border-radius: 50px;
-  border-color: #dadbdf; 
-  color: #374151; 
-  background-color: #e4e4e4; 
-  font-weight: 500; 
-  font-size: 14px;
-  padding: 10px 24px;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
-
-  &:hover {
-    background-color: #f3f4f6; /* Equivalent to hover:bg-neutral-100 */
-  }
-  }
-`;
-export const ButtonSecondaryDarkGrey = styled.button`
-  border-radius: 50px;
-  border-color: #8c8c8c;
-  color: #fff;
-  background-color: #8c8c8c;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 10px 24px;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
-
-  &:hover {
-    color: #fff;
-    background-color: #a6a6a6; // Lightened grey for hover effect
-    border-color: #a6a6a6; // Lighten the border color as well
   }
 `;
 
@@ -470,6 +297,14 @@ export const FormStyledContentSection = styled.div`
     font-weight: 400;
     color: #121826;
   }
+`;
+export const FormStyledContentSectionUndesignedForFields = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background: #fafbfc; /* Light background color */
+  border-radius: 16px; /* Rounded corners */
 `;
 
 export const StyledCountButton = styled.div`

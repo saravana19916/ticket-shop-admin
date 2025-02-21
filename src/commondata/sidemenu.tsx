@@ -2425,7 +2425,12 @@ const guestListUrl = [
   "/single-invitation",
   "/single-invitation",
 ];
-const promotionsUrl = ["/promotions", "/generate-barcode"];
+const promotionsUrl = [
+  "/promotions",
+  "/generate-barcode",
+  "/generate-discountcode",
+  "/promotions-import"
+];
 
 export const SIDE_MENU_ITEM_ONE = [
   {

@@ -1,17 +1,9 @@
 import React, { FC, useState } from "react";
-import { FormikErrors, FormikTouched } from "formik";
-import { Form, InputGroup, FormControl } from "react-bootstrap";
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "@heroicons/react/24/outline";
-import DatePicker from "react-datepicker";
+import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
+
 import {
   FormInputStyled,
   FormLabelStyled,
-  DateTimeCustomInput,
-  DateTimeInputGroup,
 } from "../../../../styledComponents/styledForm";
 import DateFlatpickr from "../../../../shared/DateFlatpickr";
 interface IDateTimeType {
@@ -40,12 +32,25 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
     <>
       <div className="col-12 mb-7">
         <Form.Group>
-          <Form.Label className="fs-5 fw-500 text-black mb-4">
+          <Form.Label className="fs-5 fw-500 text-black mb-4 d-flex align-items-center">
             General Info
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  In this section, you can set the date and time of your show.{" "}
+                </Tooltip>
+              }
+            >
+              <i
+                style={{
+                  marginBottom: "2px",
+                }}
+                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+              ></i>
+            </OverlayTrigger>
           </Form.Label>
-          <span className="text-gray d-block mb-6 fs-12px">
-            In this section, you can set the date and time of your show.
-          </span>
+
           <div className="row">
             <div className="col-12 mb-6">
               <Form.Group>

@@ -710,9 +710,7 @@ const Header = () => {
                         <div className="notifications-menu">
                           <Dropdown.Item
                             className=" d-flex"
-                            href={`${
-                              import.meta.env.BASE_URL
-                            }pages/notificationlist/`}
+                            href={`${import.meta.env.BASE_URL}notificationlist`}
                           >
                             <div className="me-3 notifyimg  bg-primary brround box-shadow-primary">
                               <i className="fe fe-mail"></i>
@@ -728,9 +726,7 @@ const Header = () => {
                           </Dropdown.Item>
                           <Dropdown.Item
                             className="d-flex"
-                            href={`${
-                              import.meta.env.BASE_URL
-                            }pages/notificationlist/`}
+                            href={`${import.meta.env.BASE_URL}notificationlist`}
                           >
                             <div className="me-3 notifyimg  bg-secondary brround box-shadow-secondary">
                               <i className="fe fe-check-circle"></i>
@@ -746,9 +742,7 @@ const Header = () => {
                           </Dropdown.Item>
                           <Dropdown.Item
                             className="d-flex"
-                            href={`${
-                              import.meta.env.BASE_URL
-                            }pages/notificationlist/`}
+                            href={`${import.meta.env.BASE_URL}notificationlist`}
                           >
                             <div className="me-3 notifyimg  bg-success brround box-shadow-success">
                               <i className="fe fe-shopping-cart"></i>
@@ -764,9 +758,7 @@ const Header = () => {
                           </Dropdown.Item>
                           <Dropdown.Item
                             className="d-flex"
-                            href={`${
-                              import.meta.env.BASE_URL
-                            }pages/notificationlist/`}
+                            href={`${import.meta.env.BASE_URL}notificationlist`}
                           >
                             <div className="me-3 notifyimg bg-pink brround box-shadow-pink">
                               <i className="fe fe-user-plus"></i>

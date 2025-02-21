@@ -10,7 +10,7 @@ import { Accordion } from "react-bootstrap";
 import {
   ButtonActive,
   ButtonNotActive,
-} from "../../../../styledComponents/styledForm";
+} from "../../../../styledComponents/styledButton";
 interface IProps {
   item: IPoliciesDetailsProps;
   index: string;

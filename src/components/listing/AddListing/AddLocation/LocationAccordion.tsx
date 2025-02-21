@@ -10,7 +10,7 @@ import { Accordion } from "react-bootstrap";
 import {
   ButtonActive,
   ButtonNotActive,
-} from "../../../styledComponents/styledForm";
+} from "../../../styledComponents/styledButton";
 interface IProps {
   item: IAddLocationProps;
   index: string;
@@ -133,12 +133,6 @@ const LocationAccordion: FC<IProps> = ({ item, index, status }) => {
               style={{ minWidth: "138px" }}
             >
               {status != "active" ? "Activate" : "Deactivate"}
-            </AccordionButton>
-            <AccordionButton
-              className="btn px-6 py-2"
-              style={{ minWidth: "138px" }}
-            >
-              Duplicate
             </AccordionButton>
             <AccordionButton
               className="btn px-6 py-2"

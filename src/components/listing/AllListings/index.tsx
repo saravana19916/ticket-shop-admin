@@ -5,28 +5,12 @@ import { Card, Dropdown } from "react-bootstrap";
 import { IListDetailsProps } from "..";
 import ResponsiveTile from "../../styledComponents/tiles";
 import { toast } from "react-toastify";
+import { WhiteBadge, NotActiveBadge, ActiveBadge } from "../../styledComponents/badge";
 interface IAllListingProps {
   listDetailsData: IListDetailsProps[];
 }
 
 const index: FC<IAllListingProps> = ({ listDetailsData }) => {
-  const [copiedLink, setCopiedLink] = useState<undefined | number | string>(
-    undefined
-  );
-
-  const _handleCopyLink = (id: string | number, link: string) => {
-    navigator.clipboard
-      .writeText(link)
-      .then(() => {
-        setCopiedLink(id);
-        toast.success("Link copied successfully!");
-      })
-      .catch((err) => {
-        console.error("Failed to copy link: ", err);
-        toast.error("Failed to copy link!");
-      });
-  };
-
   const _handleEdit = (shopData: IAllListingProps) => {
     sessionStorage.setItem("editShop", JSON.stringify(shopData));
   };
@@ -45,40 +29,21 @@ const index: FC<IAllListingProps> = ({ listDetailsData }) => {
                   }}
                 >
                   <div className="position-absolute d-flex justify-content-between mx-4 my-4">
-                    <span
-                      className="badge dark d-block p-2 px-3 rounded-pill"
-                      style={{ backgroundColor: "#fff", color: "#000" }}
-                    >
-                      {l.type}
-                    </span>
+                    <WhiteBadge className="badge p-2">{l.type}</WhiteBadge>
                   </div>
 
                   <div className="position-absolute end-0 d-flex justify-content-between mx-4 my-4">
-                    <span
-                      className="badge dark d-block p-2 px-3 rounded-pill text-black"
-                      style={{
-                        borderRadius: "50px",
-                        borderColor:
-                          l.status === "Draft"
-                            ? "#00dcfa"
-                            : "#00ff00",
-                        color: "#fff",
-                        backgroundColor:
-                          l.status === "Draft"
-                            ? "#00dcfa"
-                            : "#00ff00",
-                        fontWeight: 500,
-                        fontSize: "12px",
-                        padding: "8px 32px",
-                        minWidth: "130px",
-                        transition:
-                          "background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease",
-                      }}
-                    >
-                      {l.status === "Draft"
-                        ? "Not Active"
-                        : "Active"}
-                    </span>
+                    {l?.status == "draft" ? (
+                      <>
+                        <NotActiveBadge className="badge p-2">
+                          Not Active
+                        </NotActiveBadge>
+                      </>
+                    ) : (
+                      <>
+                        <ActiveBadge className="badge p-2">Active</ActiveBadge>
+                      </>
+                    )}
                   </div>
 
                   <img
@@ -125,8 +90,15 @@ const index: FC<IAllListingProps> = ({ listDetailsData }) => {
                               <Dropdown.Item>Edit</Dropdown.Item>
                               <Dropdown.Item>Generate</Dropdown.Item>
                               <Dropdown.Item>Copy</Dropdown.Item>
-                              <Dropdown.Item>Active</Dropdown.Item>
-                              <Dropdown.Item>Not Active</Dropdown.Item>
+                              {l.status === "Draft" ? (
+                                <>
+                                  <Dropdown.Item>Activate</Dropdown.Item>
+                                </>
+                              ) : (
+                                <>
+                                  <Dropdown.Item>Deactivate</Dropdown.Item>
+                                </>
+                              )}
                             </Dropdown.Menu>
                           </Dropdown>
                         </span>

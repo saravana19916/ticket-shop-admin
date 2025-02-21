@@ -4,7 +4,10 @@ import { toast } from "react-toastify";
 import SubmitAndPreviewButtons from "../../shared/SubmitAndPreviewButtons";
 import ReactCrop, { Crop, PixelCrop } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
-import { ButtonSecondary, ButtonPrimary } from "../../styledComponents/styledForm";
+import {
+  ButtonSecondary,
+  ButtonPrimary,
+} from "../../styledComponents/styledButton";
 
 interface IProps {}
 

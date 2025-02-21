@@ -20,6 +20,7 @@ import Owl from "../../assets/images/owl.jpg";
 import { Link } from "react-router-dom";
 import LandingPageWrapper from "../shared/LandingPageWrapper";
 import CustomTabButton from "../shared/CustomTabButton";
+import { LinkButtonPrimary } from "../styledComponents/styledButton";
 
 const tabList = ["All", "Physical", "Digital", "Live", "Office", "Draft"];
 const index = () => {
@@ -96,16 +97,9 @@ const index = () => {
             <span className="fw-600 fs-26px text-black mb-3">My Shops</span>
           </div>
           <div className="col-6 mb-3">
-            <Link
-              to="/add-shop"
-              className="btn badge-red float-end rounded-pill mt-2 fs-6 px-6 py-2"
-            >
-              <PlusIcon
-                className="w-5 h-5 me-1"
-                style={{ marginBottom: "2px" }}
-              />{" "}
-              Add Shop
-            </Link>
+            <LinkButtonPrimary className="float-end mt-2 btn" to="/add-shop">
+              <span>Add Shop</span>
+            </LinkButtonPrimary>
           </div>
         </div>
         <div className="row">

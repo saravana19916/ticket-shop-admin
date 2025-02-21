@@ -7,6 +7,11 @@ import { ILocationDetailsProps } from "./LocationList";
 import { LandingPageCardHeader } from "../styledComponents/LandingPage";
 import ResponsiveTile from "../styledComponents/tiles";
 import Owl from "../../assets/images/owl.jpg";
+import {
+  WhiteBadge,
+  NotActiveBadge,
+  ActiveBadge,
+} from "../styledComponents/badge";
 
 interface IProps {
   list: ILocationDetailsProps[];
@@ -26,40 +31,21 @@ const List: FC<IProps> = ({ list }) => {
                   }}
                 >
                   <div className="position-absolute d-flex justify-content-between mx-4 my-4">
-                    <span
-                      className="badge dark d-block p-2 px-4 fs-10px rounded-pill"
-                      style={{ backgroundColor: "#fff", color: "#000" }}
-                    >
-                      {l.city}
-                    </span>
+                    <WhiteBadge className="badge p-2"> {l.city}</WhiteBadge>
                   </div>
 
                   <div className="position-absolute end-0 d-flex justify-content-between mx-4 my-4">
-                    <span
-                      className="badge dark d-block p-2 px-3 rounded-pill text-black"
-                      style={{
-                        borderRadius: "50px",
-                        borderColor:
-                          l.status === "draft"
-                            ? "#00dcfa"
-                            : "#00ff00",
-                        color: "#fff",
-                        backgroundColor:
-                          l.status === "draft"
-                            ? "#00dcfa"
-                            : "#00ff00",
-                        fontWeight: 500,
-                        fontSize: "12px",
-                        padding: "8px 32px",
-                        minWidth: "130px",
-                        transition:
-                          "background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease",
-                      }}
-                    >
-                      {l.status === "draft"
-                        ? "Not Active"
-                        : "Active"}
-                    </span>
+                    {l?.status === "draft" ? (
+                      <>
+                        <NotActiveBadge className="badge p-2">
+                          Not Active
+                        </NotActiveBadge>
+                      </>
+                    ) : (
+                      <>
+                        <ActiveBadge className="badge p-2">Active</ActiveBadge>
+                      </>
+                    )}
                   </div>
 
                   <img
@@ -92,7 +78,7 @@ const List: FC<IProps> = ({ list }) => {
                           <span>{l.address}</span>
                         </div>
                       </div>
-                      
+
                       <div className="col-3 d-flex flex-column gap-2 mt-2 align-items-end">
                         <span className="position-absolute d-flex">
                           <Dropdown>
@@ -114,13 +100,19 @@ const List: FC<IProps> = ({ list }) => {
                               <Dropdown.Item>Edit</Dropdown.Item>
                               <Dropdown.Item>Generate</Dropdown.Item>
                               <Dropdown.Item>Copy</Dropdown.Item>
-                              <Dropdown.Item>Active</Dropdown.Item>
-                              <Dropdown.Item>Not Active</Dropdown.Item>
+                              {l.status === "draft" ? (
+                                <>
+                                  <Dropdown.Item>Activate</Dropdown.Item>
+                                </>
+                              ) : (
+                                <>
+                                  <Dropdown.Item>Deactivate</Dropdown.Item>
+                                </>
+                              )}
                             </Dropdown.Menu>
                           </Dropdown>
                         </span>
                       </div>
-
                     </div>
                   </Card.Body>
                 </Card>

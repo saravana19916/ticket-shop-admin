@@ -9,6 +9,11 @@ import { IAddListingShopProps } from "../../listing/AddListing/AddShop/type";
 import { LandingPageCardHeader } from "../../styledComponents/LandingPage";
 import { Link } from "react-router-dom";
 import ResponsiveTile from "../../styledComponents/tiles";
+import {
+  ActiveBadge,
+  NotActiveBadge,
+  WhiteBadge,
+} from "../../styledComponents/badge";
 
 interface IShopsListProps {
   shopsListData: IAddListingShopProps[];
@@ -47,37 +52,23 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                   style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" }}
                 >
                   <div className="position-absolute d-flex justify-content-between mx-4 my-4">
-                    <span className="badge dark d-block p-2 px-3 rounded-pill bg-white text-black">
+                    <WhiteBadge className="badge p-2">
                       {l.shopInformation?.shopType}
-                    </span>
+                    </WhiteBadge>
                   </div>
 
                   <div className="position-absolute end-0 d-flex justify-content-between mx-4 my-4">
-                    <span
-                      className="badge dark d-block p-2 px-3 rounded-pill text-black"
-                      style={{
-                        borderRadius: "50px",
-                        borderColor:
-                          l.shopInformation?.status === "Draft"
-                            ? "#00dcfa"
-                            : "#00ff00",
-                        color: "#fff",
-                        backgroundColor:
-                          l.shopInformation?.status === "Draft"
-                            ? "#00dcfa"
-                            : "#00ff00",
-                        fontWeight: 500,
-                        fontSize: "12px",
-                        padding: "8px 32px",
-                        minWidth: "130px",
-                        transition:
-                          "background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease",
-                      }}
-                    >
-                      {l.shopInformation?.status === "Draft"
-                        ? "Not Active"
-                        : "Active"}
-                    </span>
+                    {l.shopInformation?.status === "Draft" ? (
+                      <>
+                        <NotActiveBadge className="badge p-2">
+                          Not Active
+                        </NotActiveBadge>
+                      </>
+                    ) : (
+                      <>
+                        <ActiveBadge className="badge p-2">Active</ActiveBadge>
+                      </>
+                    )}
                   </div>
 
                   <img
@@ -105,48 +96,55 @@ const index: FC<IShopsListProps> = ({ shopsListData }) => {
                       <div className="col-3 d-flex flex-column gap-2 mt-2 align-items-end">
                         {/* {(l.shopInformation?.shopType === "Digital" ||
                           l.shopInformation?.shopType === "Live") && ( */}
-                          <span className="position-absolute d-flex">
-                            <Dropdown>
-                              <Dropdown.Toggle
-                                variant="link"
-                                id="dropdown-basic"
-                                className="text-black dark:text-white"
-                                style={{
-                                  background: "none",
-                                  border: "none",
-                                  fontSize: "24px",
-                                  textDecoration: "none",
-                                }}
+                        <span className="position-absolute d-flex">
+                          <Dropdown>
+                            <Dropdown.Toggle
+                              variant="link"
+                              id="dropdown-basic"
+                              className="text-black dark:text-white"
+                              style={{
+                                background: "none",
+                                border: "none",
+                                fontSize: "24px",
+                                textDecoration: "none",
+                              }}
+                            >
+                              ...
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                              <Dropdown.Item
+                                onClick={() =>
+                                  _handleCopyLink(
+                                    l.id,
+                                    "https://ticketshop.tixbox.com/home"
+                                  )
+                                }
                               >
-                                ...
-                              </Dropdown.Toggle>
-                              <Dropdown.Menu>
-                                <Dropdown.Item
-                                  onClick={() =>
-                                    _handleCopyLink(
-                                      l.id,
-                                      "https://ticketshop.tixbox.com/home"
-                                    )
-                                  }
-                                >
-                                  {copiedLink === l.id
-                                    ? "Link Copied!"
-                                    : "Share Link"}
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                  as={Link}
-                                  to={`/edit-shop/${l.id}`}
-                                  onClick={() => _handleEdit(l)}
-                                >
-                                  Edit
-                                </Dropdown.Item>
-                                <Dropdown.Item>Generate</Dropdown.Item>
-                                <Dropdown.Item>Copy</Dropdown.Item>
-                                <Dropdown.Item>Active</Dropdown.Item>
-                                <Dropdown.Item>Not Active</Dropdown.Item>
-                              </Dropdown.Menu>
-                            </Dropdown>
-                          </span>
+                                {copiedLink === l.id
+                                  ? "Link Copied!"
+                                  : "Share Link"}
+                              </Dropdown.Item>
+                              <Dropdown.Item
+                                as={Link}
+                                to={`/edit-shop/${l.id}`}
+                                onClick={() => _handleEdit(l)}
+                              >
+                                Edit
+                              </Dropdown.Item>
+                              <Dropdown.Item>Generate</Dropdown.Item>
+                              <Dropdown.Item>Copy</Dropdown.Item>
+                              {l.shopInformation?.status === "Draft" ? (
+                                <>
+                                  <Dropdown.Item>Activate</Dropdown.Item>
+                                </>
+                              ) : (
+                                <>
+                                  <Dropdown.Item>Deactivate</Dropdown.Item>
+                                </>
+                              )}
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </span>
                         {/* )} */}
                       </div>
                     </div>

@@ -1,12 +1,21 @@
 import React, { FC, useRef, useState } from "react";
 import SubmitAndPreviewButtons from "../../../shared/SubmitAndPreviewButtons";
-import { Form, InputGroup, Modal, Button } from "react-bootstrap";
+import {
+  Form,
+  InputGroup,
+  Modal,
+  Button,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import { toast } from "react-toastify";
 import ReactCrop, { Crop, PixelCrop } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import {
   ButtonPrimary,
   ButtonSecondary,
+} from "../../../styledComponents/styledButton";
+import {
   FormFileInputStyled,
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
@@ -118,7 +127,24 @@ const AddCreditLogo: FC<IProps> = () => {
     <div className="d-flex gap-4 align-items-center flex-wrap">
       <div className="flex-grow-1 mb-2">
         <Form.Group>
-          <FormLabelStyled htmlFor="showName"> Credit Logo</FormLabelStyled>
+          <FormLabelStyled
+            htmlFor="showName"
+            className="d-flex align-items-center"
+          >
+            {" "}
+            Credit Logo
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>
+                  <span className="fw-600">Size: </span>50 pixel (w) x 50 pixel
+                  (h)
+                </Tooltip>
+              }
+            >
+              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
+            </OverlayTrigger>
+          </FormLabelStyled>
           <FormFileInputStyled
             onClick={handleFileInputClick}
             className={`form-control cursor-pointer ${
@@ -132,9 +158,6 @@ const AddCreditLogo: FC<IProps> = () => {
               </>
             )}
           </FormFileInputStyled>
-          <span className="d-block ms-3 fs-10px">
-            <span className="fw-600">Size: </span>50 pixel (w) x 50 pixel (h)
-          </span>
           <input
             type="file"
             ref={coverImageFileRef}
@@ -145,7 +168,7 @@ const AddCreditLogo: FC<IProps> = () => {
         </Form.Group>
       </div>
 
-      <div className="mb-0">
+      <div className="mb-0 mt-4">
         <SubmitAndPreviewButtons
           isSubmitted={isSubmitted}
           handleSubmit={handleSubmit}

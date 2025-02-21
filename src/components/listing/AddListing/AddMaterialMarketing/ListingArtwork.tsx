@@ -7,6 +7,7 @@ import AddBillBoard from "./AddBillBoard";
 import AddGallery from "./AddGallery";
 import AddFloorPlan from "./AddFloorPlan";
 import AddCreditLogo from "./AddCreditLogo";
+import AddThumbnail from "./AddThumbnail";
 interface IListingArtWork {}
 type IFileTypes =
   | "mainCard"
@@ -95,6 +96,9 @@ const ListingArtwork: FC<IListingArtWork> = ({}) => {
       </div>
       <div className="col-12 mb-6">
         <AddCreditLogo />
+      </div>
+      <div className="col-12 mb-6">
+        <AddThumbnail />
       </div>
     </>
   );

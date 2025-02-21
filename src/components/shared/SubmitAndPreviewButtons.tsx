@@ -3,7 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import {
   ButtonSecondary,
   ButtonSecondaryGrey,
-} from "../styledComponents/styledForm";
+} from "../styledComponents/styledButton";
 
 interface IProps {
   isSubmitted: boolean;

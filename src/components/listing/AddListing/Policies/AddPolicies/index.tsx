@@ -2,19 +2,16 @@ import { ErrorMessage, Formik, Form as FormikForm } from "formik";
 import { Accordion, Form } from "react-bootstrap";
 import React from "react";
 import * as Yup from "yup";
-import Select from "react-select";
 import { IOptionProps } from "../../../../../commondata/addListingPageOne";
-import { PlusIcon } from "@heroicons/react/24/outline";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { allPoliciesList } from "../data";
-import ButtonCustom from "../../../../shared/ButtonCustom";
 import {
-  ButtonPrimary,
   FormInputStyled,
   FormLabelStyled,
   StyledSunEditor,
 } from "../../../../styledComponents/styledForm";
+import { ButtonPrimary } from "../../../../styledComponents/styledButton";
 import { IPoliciesDetailsProps } from "../PoliciesLists";
 import PoliciesAccordion from "./PoliciesAccordion";
 const policiesToVisible: IOptionProps[] = [
@@ -233,7 +230,7 @@ const index = () => {
                             <div className="col-12 mb-5">
                               <div className="float-end mb-5">
                                 <ButtonPrimary type="submit" className="btn">
-                                  {id ? "Update " : "Create "}{" "}
+                                  {id ? "Update Policy" : "Create Policy"}{" "}
                                 </ButtonPrimary>
                               </div>
                             </div>

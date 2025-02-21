@@ -12,7 +12,7 @@ import { IAddListingShopProps } from "./type";
 import {
   ButtonActive,
   ButtonNotActive,
-} from "../../../styledComponents/styledForm";
+} from "../../../styledComponents/styledButton";
 
 interface IProps {
   item: IAddListingShopProps;

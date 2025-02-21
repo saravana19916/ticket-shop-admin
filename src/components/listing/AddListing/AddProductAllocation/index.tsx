@@ -9,10 +9,11 @@ import { IPricingDetailsProps } from "../../../pricing/AddPricing/type";
 import { pricingDetailsData } from "../../../../commondata/pricingTableData";
 import { toast } from "react-toastify";
 import ButtonCustom from "../../../shared/ButtonCustom";
-import { Accordion } from "react-bootstrap";
+import { Accordion, OverlayTrigger, Popover, Tooltip } from "react-bootstrap";
 import ProductAllocationAccordion from "./ProductAllocationAccordion";
 import { color } from "echarts";
 import { FormInputDescriptionStyled } from "../../../styledComponents/styledForm";
+import { ButtonPrimary } from "../../../styledComponents/styledButton";
 import ProductInfo from "./Produt";
 
 interface IAddPricingProps {}
@@ -132,12 +133,25 @@ const AddPricing: FC<IAddPricingProps> = () => {
                   <div className="row">
                     <div className="col-12 mb-3">
                       <p
-                        className="fw-600 fs-26px text-black mb-3"
+                        className="fw-600 fs-26px text-black mb-3 d-flex align-items-center"
                         id="addPricingTop"
                       >
                         Product Allocation
+                        <OverlayTrigger
+                          placement="top"
+                          overlay={
+                            <Tooltip>
+                              In the section, you connect the products created
+                              with the relevant zones and define access for each
+                              of the products.
+                            </Tooltip>
+                          }
+                        >
+                          <i className="fe fe-info d-inline-block ms-3 cursor-pointer"></i>
+                        </OverlayTrigger>
                       </p>
                     </div>
+
                     <ProductInfo
                       values={values}
                       errors={errors}
@@ -148,18 +162,15 @@ const AddPricing: FC<IAddPricingProps> = () => {
                     />
                     <div className="col-12 mb-7">
                       <div className="float-end mb-5">
-                        <ButtonCustom
-                          title={values?.id === 0 ? "Add" : "Update"}
-                          className="fs-6"
-                          paddingClassName="p-2 px-5"
-                          icon={
-                            <PlusIcon
-                              className="w-4 h-4"
-                              style={{ marginBottom: "1px" }}
-                            />
-                          }
+                        <ButtonPrimary
                           type="submit"
-                        />
+                          className="btn"
+                          style={{ minWidth: "118px" }}
+                        >
+                          {values?.id === 0
+                            ? "Create Allocation"
+                            : "Update Allocation"}{" "}
+                        </ButtonPrimary>
                       </div>
                     </div>
                     <div className="col-12 mb-7">

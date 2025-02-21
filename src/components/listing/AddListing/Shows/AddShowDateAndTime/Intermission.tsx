@@ -1,6 +1,12 @@
 import React, { FC, useState } from "react";
 import { FormikErrors, FormikTouched } from "formik";
-import { Form, InputGroup, FormControl } from "react-bootstrap";
+import {
+  Form,
+  InputGroup,
+  FormControl,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -71,13 +77,26 @@ const Intermission: FC<IIntermission> = ({}) => {
               handleToggle={handleChange}
               divClassName="mb-3"
             /> */}
-            <Form.Label className="fs-5 fw-500 text-black mb-4">
-              Intermission
+            <Form.Label className="fs-5 fw-500 text-black mb-4 d-flex align-items-center">
+              Intermission{" "}
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip>
+                    In this section, you can set the intermission time of your
+                    show.
+                  </Tooltip>
+                }
+              >
+                <i
+                  style={{
+                    marginBottom: "2px",
+                  }}
+                  className="fe fe-info d-inline-block ms-2 cursor-pointer"
+                ></i>
+              </OverlayTrigger>
             </Form.Label>
           </div>
-          <span className="text-gray d-block mb-3 fs-12px mb-7">
-            Pick your show dates by highlighting the dates of your event.
-          </span>
           <div className="row">
             <div className="col-12 mb-6">
               <Form.Group>

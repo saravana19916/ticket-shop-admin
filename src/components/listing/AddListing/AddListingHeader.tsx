@@ -4,7 +4,7 @@ import Buttons from "../../bootstrap/buttons/buttons";
 import {
   ButtonPrimary,
   ButtonSecondary,
-} from "../../styledComponents/styledForm";
+} from "../../styledComponents/styledButton";
 interface AddListingHeaderProps {
   pageNumber: number;
   onGoBack: () => void;

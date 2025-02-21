@@ -22,6 +22,10 @@ import GuestListBulkInvitationAccordion from "./GuestListBulkInvitationAccordion
 import { GuestListData } from "../helpers";
 import BackBreadCrumb from "../../shared/BackBreadCrumb/BackBreadCrumb";
 import * as XLSX from "xlsx";
+import {
+  ButtonPrimary,
+  ButtonSecondaryDarkGrey,
+} from "../../styledComponents/styledButton";
 
 interface IProps {}
 const H5 = styled.h5`
@@ -66,8 +70,7 @@ const index: FC<IProps> = () => {
 
   return (
     <>
-      <div className="center-container">
-      <div className="card border p-4 rounded-16px">
+      <div className="p-4">
         <div className="p-0 p-md-5">
           <div className="row">
             <div className="row p-0 p-md-2 p-lg-4 p-xl-4">
@@ -81,22 +84,24 @@ const index: FC<IProps> = () => {
                 <H5>Import File</H5>
                 <div className="d-flex flex-column flex-md-row align-items-center justify-content-between gap-5">
                   <FileUpload />
-                  <div className="d-flex align-items-center gap-3 mb-4">
-                    <button
-                      className="btn btn-pill py-2 px-7 fs-12px fw-semibold px-5"
-                      style={{ backgroundColor: "#F3F4F4" }}
+                  <div className="d-flex align-items-center gap-3 mb-6">
+                    <ButtonSecondaryDarkGrey
+                      className="btn"
                       onClick={handleDownloadTemplate}
                     >
                       Download Template
-                    </button>
-                    <button className="btn btn-primary btn-pill py-2 px-7 fw-semibold fs-12px">
+                    </ButtonSecondaryDarkGrey>
+                    <ButtonPrimary
+                      className="btn"
+                      style={{ minWidth: "118px" }}
+                    >
                       Import
-                    </button>
+                    </ButtonPrimary>
                   </div>
                 </div>
               </div>
               <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between">
-                <div className="d-flex flex-column">
+                <div className="d-flex flex-column mt-3">
                   <h4
                     className="fw-semibold fs-12px"
                     style={{
@@ -105,13 +110,13 @@ const index: FC<IProps> = () => {
                   >
                     Double check & Confirm
                   </h4>
-                  <p className="m-0 fs-10px" style={{ color: "#4d515c" }}>
+                  <p className="my-2 fs-10px" style={{ color: "#4d515c" }}>
                     you can confirm the orders individually or in bulk .
                   </p>
                 </div>
-                <button className="btn btn-primary btn-pill mt-2 mt-md-0 px-7 fw-semibold fs-12px">
+                <ButtonPrimary className="btn" style={{ minWidth: "118px" }}>
                   Confirm all
-                </button>
+                </ButtonPrimary>
               </div>
               <div>
                 <Accordion className="d-flex flex-column gap-4">
@@ -128,7 +133,6 @@ const index: FC<IProps> = () => {
             </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );

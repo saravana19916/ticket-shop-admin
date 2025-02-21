@@ -39,20 +39,18 @@ const PricingAccordion: FC<IProps> = ({ index }) => {
               className="bg-color-light-gray-2 rounded-3 d-none d-md-block"
               style={{ minWidth: "4rem", height: "4rem" }}
             ></div>
-            <div className="row flex-grow-1">
-              <div className="col-12 col-md-3">
+            <div className="row flex-grow-1 ms-4">
+              <div className="col-12 col-md-4">
                 <AccordionH2Light className="mb-2">Product</AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">Sliver Ticket</span>
+                <span className="fs-12px fw-600 text-black">Sliver </span>
               </div>
-              <div className="col-12 col-md-3 mt-3 mt-md-0">
-                <AccordionH2Light className="mb-2">Zone</AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">Platinum I</span>
+              <div className="col-12 col-md-4 mt-3 mt-md-0">
+                <AccordionH2Light className="mb-2">Category</AccordionH2Light>
+                <span className="fs-12px fw-600 text-black">VIP</span>
               </div>
-              <div className="col-12 col-md-3 mt-3 mt-md-0">
-                <AccordionH2Light className="mb-2">
-                  Section / Row
-                </AccordionH2Light>
-                <span className="fs-12px fw-600 text-black">AB</span>
+              <div className="col-12 col-md-4 mt-3 mt-md-0">
+                <AccordionH2Light className="mb-2">Price</AccordionH2Light>
+                <span className="fs-12px fw-600 text-black">100.00</span>
               </div>
             </div>
           </div>
@@ -68,7 +66,7 @@ const PricingAccordion: FC<IProps> = ({ index }) => {
             }}
           >
             <div className="col-12">
-              <h4 className="fw-bold fs-6 text-black mb-5">Details</h4>
+              <h4 >Details</h4>
               <div className="d-flex flex-column gap-1 fs-6">
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
@@ -80,69 +78,110 @@ const PricingAccordion: FC<IProps> = ({ index }) => {
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Product price
+                    Product Type
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    AED 100
+                    Ticket / Merchandise / Service{" "}
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Zone name
+                    Category
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    Platinum I
+                    VIP, Standard
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Section Row
+                    Age Limit
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    AB
+                    +21
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Has access to
+                    Net Price
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    All zones
+                    AED 100.00
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Entrance Gate
+                    Transaction Currency
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    Entrance 2
+                    AED, UAE -Dirhams
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Total Capacity
+                    Total Taxes (%)
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    1500
+                    25%
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    On Sale capacity
+                    Service Fee & Option{" "}
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    1400
+                    Fixed fee per product - AED 6.00{" "}
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Blocked Capacity
+                    Minimum Order
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    50
+                    01
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-4">
+                    Maximum Order
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-8 fw-light">
+                    100
+                  </AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-4">
+                    Number of Access
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-8 fw-light">
+                    01
+                  </AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-4">
+                    Number of Scans{" "}
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-8 fw-light">
+                    02
+                  </AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-4">
+                    Sales Start Date & Time
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-8 fw-light">
+                    01 January 2025 00:00
+                  </AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-4">
+                    Sales End Date & Time
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-8 fw-light">
+                    01 January 2026 00:00
+                  </AccordionBodyLeftSection>
+                </div>
+
+                {/* <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
                     Status
                   </AccordionBodyLeftSection>
@@ -154,7 +193,7 @@ const PricingAccordion: FC<IProps> = ({ index }) => {
                   >
                     Created - {status === "active" ? "Active" : "Inactive"}
                   </AccordionBodyLeftSection>
-                </div>
+                </div> */}
               </div>
             </div>
           </AccordionBodyTop>

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import {
-  ButtonSecondary,
   FormInputStyled,
   FormLabelStyled,
 } from "../../../../styledComponents/styledForm";
+import { ButtonSecondary } from "../../../../styledComponents/styledButton";
 import { Form, InputGroup, FormControl } from "react-bootstrap";
 import ButtonCustom from "../../../../shared/ButtonCustom";
 type ModelAddDesignZonesProps = {

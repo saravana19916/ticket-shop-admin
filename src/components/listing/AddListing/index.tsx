@@ -21,14 +21,14 @@ const index: FC<IAddListing> = () => {
   const [page, setPage] = useState<number>(1);
   const listingPages = [
     "/add-listing/info",
+    "/add-listing/marketing-material",
     "/add-listing/location",
     "/add-listing/date-show-time",
-    "/add-listing/zoning-and-capacity",
     "/add-listing/products",
-    // "/add-listing/product-allocation",
+    "/add-listing/zoning-and-capacity",
+    "/add-listing/product-allocation",
     "/add-listing/shops",
     // "/add-listing/dynamic-pricing",
-    "/add-listing/marketing-material",
     "/add-listing/rules",
     "/add-listing/add-policies",
   ];
@@ -83,12 +83,12 @@ const index: FC<IAddListing> = () => {
       case "/add-listing/date-show-time":
         setCurrentPageName("Show date and time");
         return <AddShowDateAndTime />;
-      case "/add-listing/products":
-        setCurrentPageName("Pricing");
-        return <AddPricing />;
       case "/add-listing/zoning-and-capacity":
         setCurrentPageName("Zoning and capacity");
         return <AddZoningAndCapacity />;
+      case "/add-listing/products":
+        setCurrentPageName("Pricing");
+        return <AddPricing />;
       case "/add-listing/product-allocation":
         setCurrentPageName("Product Allocation");
         return <AddProductAllocation />;

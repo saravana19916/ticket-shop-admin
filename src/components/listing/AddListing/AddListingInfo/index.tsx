@@ -1,6 +1,6 @@
 import Select from "react-select";
 import React, { FC, useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import {
   listingCategory,
   listingSubCategory,
@@ -138,7 +138,25 @@ const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       </div>
                       <div className="col-12 mb-7">
                         <Form.Group>
-                          <FormLabelStyled>Listing name</FormLabelStyled>
+                          <FormLabelStyled className="d-flex align-items-center">
+                            Listing name
+                            <OverlayTrigger
+                              placement="top"
+                              overlay={
+                                <Tooltip>
+                                  Type your listing name which would be placed
+                                  as the title of your listing.
+                                </Tooltip>
+                              }
+                            >
+                              <i
+                                style={{
+                                  marginBottom: "2px",
+                                }}
+                                className="fe fe-info d-inline-block ms-2 cursor-pointer"
+                              ></i>
+                            </OverlayTrigger>
+                          </FormLabelStyled>
                           <FormInputStyled
                             type="text"
                             placeholder="Enter name"
@@ -147,10 +165,6 @@ const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             name="listingName"
                             onChange={handleChange}
                           />
-                          <FormInputDescriptionStyled>
-                            Type your listing name which would be placed as the
-                            title of your listing.
-                          </FormInputDescriptionStyled>
                         </Form.Group>
                         {errors?.listingName && touched?.listingName && (
                           <>
