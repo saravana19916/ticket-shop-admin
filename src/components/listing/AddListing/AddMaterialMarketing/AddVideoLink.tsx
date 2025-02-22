@@ -7,8 +7,11 @@ import {
   FormInputStyled,
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
+import VideoPlayer from "../../../VideoPlayer";
+
 interface IProps {}
 const AddVideoLink: FC<IProps> = () => {
+  const [videoModalIsOpen, setVideoModalIsOpen] = useState<boolean>(false);
   const [videoLink, setVideoLink] = useState<undefined | string>();
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
@@ -24,6 +27,9 @@ const AddVideoLink: FC<IProps> = () => {
       toast.error("Please Insert Video Link!");
     }
   };
+  const handlePreview = () => {
+    setVideoModalIsOpen(true);
+  };
   return (
     <>
       <div className="d-flex gap-4 align-items-center flex-wrap">
@@ -38,11 +44,32 @@ const AddVideoLink: FC<IProps> = () => {
             />
           </Form.Group>
         </div>
-        <div className="mt-4">
-          <SubmitAndPreviewButtons
-            isSubmitted={isSubmitted}
-            handleSubmit={_handleSubmit}
-          />
+        <div
+          className="mt-4"
+          style={{
+            borderColor: "#dadbdf",
+            backgroundColor: "#e4e4e4",
+            borderRadius: "50px",
+            fontWeight: 500,
+            color: "#000",
+            padding: "10px 24px",
+          }}
+        >
+          <a href="#" onClick={handlePreview}>
+            <span
+              style={{
+                color: "#000",
+              }}
+            >
+              Preview
+            </span>
+            <VideoPlayer
+              videoLink={videoLink}
+              videoModalIsOpen={videoModalIsOpen}
+              setVideoLink={setVideoLink}
+              setVideoModalIsOpen={setVideoModalIsOpen}
+            />
+          </a>
         </div>
       </div>
     </>
