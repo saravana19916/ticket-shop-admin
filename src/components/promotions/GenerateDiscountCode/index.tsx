@@ -1,5 +1,5 @@
 // import ZoningAndAllocation from "../../listing/AddListing/AddPricing/ZoningAndAllocation";
-import React, { FC, Fragment, useState } from "react";
+import React, { FC, Fragment, useEffect, useState } from "react";
 import Input from "../../shared/input";
 import Select from "react-select";
 import { listingType } from "../../../commondata/addListingPageOne";
@@ -28,6 +28,19 @@ interface IProps {}
 const index: FC<IProps> = () => {
   const tabList = ["Tickets", "Services", "Add ons", "Mechandise", "F&B"];
   const tabAddCode = ["Add Manually", "generate automatically"];
+  const [chipWidth, setChipWidth] = useState(
+    window.innerWidth < 768 ? "50%" : "24%"
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setChipWidth(window.innerWidth < 768 ? "50%" : "24%");
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const customStyles = {
     singleValue: (provided: any) => ({
       ...provided,
@@ -232,75 +245,35 @@ const index: FC<IProps> = () => {
           {/* <button className="btn btn-primary btn-pill mt-3 px-6 py-2 fw-semibold fs-6">
                 Generate barcodes
               </button> */}
-          <div className="d-flex gap-4 flex-column px-5" style={{
+          <div
+            className="d-flex gap-4 flex-column px-5"
+            style={{
               padding: "40px",
               borderRadius: "10px",
-              backgroundColor:"#fafbfc"
-            }}>
-            <span className="fw-600 fs-6" style={{
-              color:"#000000"
-            }}>Generated Barcodes</span>
+              backgroundColor: "#fafbfc",
+            }}
+          >
+            <span
+              className="fw-600 fs-6"
+              style={{
+                color: "#000000",
+              }}
+            >
+              Generated Barcodes
+            </span>
             <div className="d-flex align-items-center gap-3 flex-wrap">
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-                style={{width: "24%", height: '40px', justifyContent:'space-between'}}
-              />
+              {[...Array(10)].map((_, index) => (
+                <Chip
+                  key={index}
+                  label="ABC20241"
+                  variant="outlined"
+                  style={{
+                    width: chipWidth,
+                    height: "40px",
+                    justifyContent: "space-between",
+                  }}
+                />
+              ))}
             </div>
           </div>
           <div>

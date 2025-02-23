@@ -1,5 +1,5 @@
 // import ZoningAndAllocation from "../../listing/AddListing/AddPricing/ZoningAndAllocation";
-import React, { FC, Fragment, useState } from "react";
+import React, { FC, Fragment, useEffect, useState } from "react";
 import Input from "../../shared/input";
 import Select from "react-select";
 import { listingType } from "../../../commondata/addListingPageOne";
@@ -38,6 +38,19 @@ interface IDateTimeType {
 
 const index: FC<IProps> = () => {
   const tabList = ["Tickets", "Services", "Add ons", "Mechandise", "F&B"];
+  const [chipWidth, setChipWidth] = useState(
+    window.innerWidth < 768 ? "50%" : "24%"
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setChipWidth(window.innerWidth < 768 ? "50%" : "24%");
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [dateTime, setDateTime] = useState<IDateTimeType>({
     startDateAndTime: null,
     endDateAndTime: null,
@@ -271,56 +284,19 @@ const index: FC<IProps> = () => {
           <div className="d-flex gap-4 flex-column px-5">
             <span className="fw-600 fs-6">Generated Barcodes</span>
             <div className="d-flex align-items-center gap-3 flex-wrap">
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-              />
-              <Chip
-                label="ABC20241"
-                variant="outlined"
-                onDelete={handleDeleteChip}
-              />
+              {[...Array(10)].map((_, index) => (
+                <Chip
+                  key={index}
+                  label="ABC20241"
+                  variant="outlined"
+                  onDelete={handleDeleteChip}
+                  style={{
+                    width: chipWidth,
+                    height: "40px",
+                    justifyContent: "space-between",
+                  }}
+                />
+              ))}
             </div>
           </div>
           <div>

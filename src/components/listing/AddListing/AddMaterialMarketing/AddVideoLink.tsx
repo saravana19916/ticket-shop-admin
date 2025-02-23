@@ -45,16 +45,16 @@ const AddVideoLink: FC<IProps> = () => {
           </Form.Group>
         </div>
         <div
-          className="mt-4"
-          style={{
-            borderColor: "#dadbdf",
-            backgroundColor: "#e4e4e4",
-            borderRadius: "50px",
-            fontWeight: 500,
-            color: "#000",
-            padding: "10px 24px",
-          }}
-        >
+            className="mt-4 border rounded-full font-medium text-black px-6 py-4"
+            style={{
+              borderColor: "#dadbdf",
+              backgroundColor: "#e4e4e4",
+              padding: "13px 30px",
+              borderRadius: "35px",
+              opacity: !videoLink ? 0.65 : 1,
+              pointerEvents: !videoLink ? "none" : "auto",
+            }}
+          >
           <a href="#" onClick={handlePreview}>
             <span
               style={{
