@@ -20,6 +20,7 @@ import {
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
 import { SuccessIcon } from "../../../styledComponents/styledIcons";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 interface IProps {}
 
@@ -117,17 +118,15 @@ const AddCoverImage: FC<IProps> = () => {
           >
             {" "}
             Cover Image{" "}
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title={
+                <>
                   <span className="fw-600">Size: </span>1280 pixel (w) x 720
                   pixel (h)
-                </Tooltip>
+                </>
               }
-            >
-              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
-            </OverlayTrigger>
+            />
           </FormLabelStyled>
           <FormFileInputStyled
             onClick={handleFileInputClick}

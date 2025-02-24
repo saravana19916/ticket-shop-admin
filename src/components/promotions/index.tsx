@@ -27,7 +27,7 @@ const index: FC<IProps> = () => {
 
   return (
     <>
-      <div className="row p-0 p-md-2 p-lg-4 p-xl-4 mt-7 mb-7">
+      <div className="row p-0 p-md-2 p-lg-4 p-xl-4 mt-7 mb-6">
         <div className="col-12 col-lg-4 mb-3 mt-3">
           <span className="fw-600 fs-26px">My Promotions</span>
         </div>
@@ -77,7 +77,7 @@ const index: FC<IProps> = () => {
               </Tab>
             ))}
           </TabList>
-          <TabPanels as="div" className="col-12 mt-7">
+          <TabPanels as="div" className="col-12 mt-6">
             <Accordion className="panel-default d-flex flex-column gap-4">
               {promotionsDiscountCampaignsData?.map((item, index) => (
                 <>

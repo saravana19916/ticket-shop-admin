@@ -21,6 +21,7 @@ import {
   StyledSunEditor,
 } from "../../../styledComponents/styledForm";
 import SunEditor from "suneditor-react";
+import CustomTooltip from "../../../shared/CustomTooltip";
 interface IAddListingPageOneProps {}
 
 const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
@@ -140,22 +141,11 @@ const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                         <Form.Group>
                           <FormLabelStyled className="d-flex align-items-center">
                             Listing name
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip>
-                                  Type your listing name which would be placed
-                                  as the title of your listing.
-                                </Tooltip>
-                              }
-                            >
-                              <i
-                                style={{
-                                  marginBottom: "2px",
-                                }}
-                                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-                              ></i>
-                            </OverlayTrigger>
+                            <CustomTooltip
+                              iconMarginBottom="1px"
+                              title="Type your listing name which would be placed
+                                  as the title of your listing."
+                            />
                           </FormLabelStyled>
                           <FormInputStyled
                             type="text"

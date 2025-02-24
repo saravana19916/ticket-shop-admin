@@ -9,7 +9,9 @@ interface IInputGroupProps {
   buttonClassName: string;
   buttonType: "submit" | "button" | "reset";
   buttonTitle: string;
+  inputValue?: string;
   handleAction: () => void;
+  handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 const InputGroup: FC<IInputGroupProps> = ({
   inputName,
@@ -20,7 +22,9 @@ const InputGroup: FC<IInputGroupProps> = ({
   buttonClassName,
   buttonType,
   buttonTitle,
+  inputValue,
   handleAction,
+  handleChange,
 }) => {
   return (
     <>
@@ -33,6 +37,8 @@ const InputGroup: FC<IInputGroupProps> = ({
           aria-describedby={inputGroupId}
           name={inputName}
           style={{ borderRadius: "50px 0 0 50px" }}
+          value={inputValue}
+          onChange={handleChange}
         />
         <button
           className={`btn ${buttonClassName}`}

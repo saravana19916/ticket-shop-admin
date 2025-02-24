@@ -20,6 +20,7 @@ import {
   ButtonSecondary,
 } from "../../../styledComponents/styledButton";
 import { SuccessIcon } from "../../../styledComponents/styledIcons";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 interface IProps {}
 const AddBillBoard: FC<IProps> = ({}) => {
@@ -142,17 +143,15 @@ const AddBillBoard: FC<IProps> = ({}) => {
             >
               {" "}
               Bill Board{" "}
-              <OverlayTrigger
-                placement="top"
-                overlay={
-                  <Tooltip>
+              <CustomTooltip
+                iconMarginBottom="1px"
+                title={
+                  <>
                     <span className="fw-600">Size: </span>958 pixel (w) x 723
                     pixel (h)
-                  </Tooltip>
+                  </>
                 }
-              >
-                <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
-              </OverlayTrigger>
+              />
             </FormLabelStyled>
             <FormFileInputStyled
               onClick={handleFileInputClick}

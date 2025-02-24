@@ -15,6 +15,7 @@ import {
   FormInputDescriptionStyled,
 } from "../../../styledComponents/styledForm";
 import SelectDropDown from "../../../shared/SelectDropDown";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 interface IProductInfoProps {
   errors: FormikErrors<IPricingDetailsProps>;
@@ -73,18 +74,11 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
                   Product Type
-                  <OverlayTrigger
-                    placement="top"
-                    overlay={
-                      <Tooltip>
-                        Pick your listing top from the dropdown menu (i.e :
+                  <CustomTooltip
+                    title="Pick your listing top from the dropdown menu (i.e :
                         Event, Restaurant, Experience, Transportation, Product,
-                        Service )
-                      </Tooltip>
-                    }
-                  >
-                    <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
-                  </OverlayTrigger>
+                        Service )"
+                  />
                 </FormLabelStyled>
                 <SelectDropDown
                   options={productTypes}

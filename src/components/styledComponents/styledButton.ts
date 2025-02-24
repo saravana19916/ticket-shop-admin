@@ -45,8 +45,8 @@ export const IconButtonPrimary = styled(ButtonPrimary)`
 `;
 
 export const LinkButtonPrimary = styled(ButtonPrimary).attrs({ as: Link })`
-  display: inline-flex;
-  align-items: center;
+  // display: inline-flex;
+  // align-items: center;
   text-decoration: none;
 `;
 // Secondary Buttons

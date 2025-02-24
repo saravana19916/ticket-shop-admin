@@ -1,5 +1,5 @@
 import React, { FC, Dispatch, SetStateAction } from "react";
-import ReactModal from 'react-modal';
+import ReactModal from "react-modal";
 import ReactPlayer from "react-player";
 import { useThemeMode } from "../utils/useThemeMode";
 import { useWindowSize } from "react-use";
@@ -12,11 +12,9 @@ interface IVideoPlayerProps {
   setVideoModalIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-
-const VideoPlayer: FC<IVideoPlayerProps> = ({ 
+const VideoPlayer: FC<IVideoPlayerProps> = ({
   videoLink,
   videoModalIsOpen,
-  setVideoLink,
   setVideoModalIsOpen,
 }) => {
   const { isDarkMode } = useThemeMode();
@@ -24,7 +22,7 @@ const VideoPlayer: FC<IVideoPlayerProps> = ({
 
   const modalStyles = {
     overlay: {
-      zIndex: "51"
+      zIndex: "51",
     },
     content: {
       zIndex: "52",
@@ -36,48 +34,52 @@ const VideoPlayer: FC<IVideoPlayerProps> = ({
       transform: "translate(-50%, -50%)",
       borderRadius: "0.75rem",
       padding: "2rem 0 0 0",
-    }
+    },
   };
 
   const closeButtonStyles = {
     position: "absolute",
-    top: "0.5rem",
-    right: "1rem",
-    color: "#FFF"
+    top: "-0.3rem",
+    right: "0rem",
+    color: "#FFF",
   } as React.CSSProperties;
 
-  const handleCloseModal = (e: { stopPropagation: () => void; }) => {
+  const handleCloseModal = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
-    setVideoLink(undefined);
+    // setVideoLink(undefined);
     setVideoModalIsOpen(false);
-  }
+  };
 
   return (
     <>
       <div data-nc-id="VideoPlayer">
-        <ReactModal 
+        <ReactModal
           isOpen={videoModalIsOpen}
           onRequestClose={handleCloseModal}
           style={modalStyles}
         >
           {videoLink && (
             <>
-              <button onClick={handleCloseModal} style={closeButtonStyles}>
+              <button
+                className="btn"
+                onClick={handleCloseModal}
+                style={closeButtonStyles}
+              >
                 <XMarkIcon className="w-6 h-6" aria-hidden="true" />
               </button>
               <ReactPlayer
                 url={videoLink}
-                height='100%'
-                width='100%'
+                height="100%"
+                width="100%"
                 controls={true}
-                className='w-full'
+                className="w-full"
               />
             </>
           )}
         </ReactModal>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default VideoPlayer;

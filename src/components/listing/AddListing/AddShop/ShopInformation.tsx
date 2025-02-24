@@ -16,11 +16,14 @@ import ReactSelect from "react-select";
 import { t } from "i18next";
 import {
   FormInputDescriptionStyled,
+  FormInputGroupLabel,
   FormInputStyled,
+  FormInputWrapper,
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
 import Select from "react-select";
 import SelectDropDown from "../../../shared/SelectDropDown";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 interface IShopInformationProps {
   handleOnChange: (field: string, value: string) => void;
@@ -185,22 +188,11 @@ const ShopInformation: FC<IShopInformationProps> = ({
       <div className="col-12 mb-6">
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
-            Show Name
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
-                  Add the shops you like by filling up the below fields
-                </Tooltip>
-              }
-            >
-              <i
-                style={{
-                  marginBottom: "2px",
-                }}
-                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-              ></i>
-            </OverlayTrigger>
+            Shop Name
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title="Add the shops you like by filling up the below fields"
+            />
           </FormLabelStyled>
           <FormInputStyled
             type="text"
@@ -222,25 +214,14 @@ const ShopInformation: FC<IShopInformationProps> = ({
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
             Shop type
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
-                  Choose the type of store you are presenting your product in
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title="Choose the type of store you are presenting your product in
                   alongside a tag for the shop. Physical store means a store
                   that would sell your products physically without a web page
                   Digital Store, means a store that would sell your products
-                  through a dedicated web page.{" "}
-                </Tooltip>
-              }
-            >
-              <i
-                style={{
-                  marginBottom: "2px",
-                }}
-                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-              ></i>
-            </OverlayTrigger>
+                  through a dedicated web page."
+            />
           </FormLabelStyled>
           <SelectDropDown
             options={ShopType}
@@ -264,25 +245,14 @@ const ShopInformation: FC<IShopInformationProps> = ({
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
             Shop tag/code
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
-                  Choose the type of store you are presenting your product in
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title="Choose the type of store you are presenting your product in
                   alongside a tag for the shop. Physical store means a store
                   that would sell your products physically without a web page
                   Digital Store, means a store that would sell your products
-                  through a dedicated web page.{" "}
-                </Tooltip>
-              }
-            >
-              <i
-                style={{
-                  marginBottom: "2px",
-                }}
-                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-              ></i>
-            </OverlayTrigger>
+                  through a dedicated web page."
+            />
           </FormLabelStyled>
           <FormInputStyled
             type="text"
@@ -356,21 +326,10 @@ const ShopInformation: FC<IShopInformationProps> = ({
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
             Shop Address{" "}
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
-                  Add the shops you like by filling up the below fields.
-                </Tooltip>
-              }
-            >
-              <i
-                style={{
-                  marginBottom: "2px",
-                }}
-                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-              ></i>
-            </OverlayTrigger>
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title="Add the shops you like by filling up the shop address fields."
+            />
           </FormLabelStyled>
           <FormInputStyled
             type="text"
@@ -394,21 +353,10 @@ const ShopInformation: FC<IShopInformationProps> = ({
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
             Point of contact
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
-                  Add the shops you like by filling up the below fields.
-                </Tooltip>
-              }
-            >
-              <i
-                style={{
-                  marginBottom: "2px",
-                }}
-                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-              ></i>
-            </OverlayTrigger>
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title="Add the shops you like by filling up the point of contact fields."
+            />
           </FormLabelStyled>
           <FormInputStyled
             type="text"
@@ -433,21 +381,10 @@ const ShopInformation: FC<IShopInformationProps> = ({
           <FormLabelStyled className="d-flex align-items-center">
             {" "}
             Email Address
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
-                  Add the shops you like by filling up the below fields.{" "}
-                </Tooltip>
-              }
-            >
-              <i
-                style={{
-                  marginBottom: "2px",
-                }}
-                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-              ></i>
-            </OverlayTrigger>
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title="Add the shops you like by filling up the email address fields."
+            />
           </FormLabelStyled>
           <FormInputStyled
             type="email"
@@ -473,21 +410,10 @@ const ShopInformation: FC<IShopInformationProps> = ({
           <FormLabelStyled className="d-flex align-items-center">
             {" "}
             Phone Number
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
-                  Add the shops you like by filling up the below fields.
-                </Tooltip>
-              }
-            >
-              <i
-                style={{
-                  marginBottom: "2px",
-                }}
-                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-              ></i>
-            </OverlayTrigger>
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title="Add the shops you like by filling up the below fields."
+            />
           </FormLabelStyled>
           <FormInputStyled
             type="tel"
@@ -513,31 +439,24 @@ const ShopInformation: FC<IShopInformationProps> = ({
           <FormLabelStyled className="d-flex align-items-center">
             {" "}
             Service Fee{" "}
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
-                  In this section you mention the commercial terms for your
-                  shop.{" "}
-                </Tooltip>
-              }
-            >
-              <i
-                style={{
-                  marginBottom: "2px",
-                }}
-                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-              ></i>
-            </OverlayTrigger>
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title="In this section you mention the commercial terms for your
+                  shop."
+            />
           </FormLabelStyled>
-          <FormInputStyled
-            type="number"
-            className="form-control"
-            placeholder="AED 1500"
-            value={values.shopInformation?.serviceFee || ""}
-            name="serviceFee"
-            onChange={handleChange}
-          />
+          <FormInputWrapper className="w-100">
+            <FormInputStyled
+              type="number"
+              className="form-control"
+              value={values.shopInformation?.serviceFee || ""}
+              name="serviceFee"
+              onChange={handleChange}
+            />
+            <FormInputGroupLabel style={{ color: "#000" }}>
+              AED
+            </FormInputGroupLabel>
+          </FormInputWrapper>
         </Form.Group>
         {errors &&
           touched &&
@@ -552,31 +471,22 @@ const ShopInformation: FC<IShopInformationProps> = ({
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
             Sales Commission{" "}
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
-                  In this section you mention the commercial terms for your
-                  shop.
-                </Tooltip>
-              }
-            >
-              <i
-                style={{
-                  marginBottom: "2px",
-                }}
-                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-              ></i>
-            </OverlayTrigger>
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title="In this section you mention the commercial terms for your
+                  shop."
+            />
           </FormLabelStyled>
-          <FormInputStyled
-            type="number"
-            className="form-control"
-            placeholder="10%"
-            value={values.shopInformation?.salesCommission || ""}
-            name="salesCommission"
-            onChange={handleChange}
-          />
+          <FormInputWrapper className="w-100">
+            <FormInputStyled
+              type="number"
+              className="form-control"
+              value={values.shopInformation?.salesCommission || ""}
+              name="salesCommission"
+              onChange={handleChange}
+            />
+            <FormInputGroupLabel>%</FormInputGroupLabel>
+          </FormInputWrapper>
         </Form.Group>
         {errors &&
           touched &&

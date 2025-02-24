@@ -19,6 +19,7 @@ import {
   StyledInputDiv,
 } from "../../../styledComponents/styledForm";
 import SelectDropDown, { IOptionType } from "../../../shared/SelectDropDown";
+import CustomTooltip from "../../../shared/CustomTooltip";
 interface IAddListingPageOneProps {}
 const languageOptions = [
   { value: "english", label: "English" },
@@ -70,17 +71,11 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                         <Form.Group>
                           <FormLabelStyled className="d-flex align-items-center">
                             Listing name
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip>
-                                  Type your listing name which would be placed
-                                  as the title of your listing.
-                                </Tooltip>
-                              }
-                            >
-                              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
-                            </OverlayTrigger>
+                            <CustomTooltip
+                              iconMarginBottom="1px"
+                              title="Type your listing name which would be placed
+                                  as the title of your listing."
+                            />
                           </FormLabelStyled>{" "}
                           <FormInputStyled
                             type="text"
@@ -106,18 +101,12 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             className="d-flex align-items-center"
                           >
                             Listing Description{" "}
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip>
-                                  In this section, you should provide us with
+                            <CustomTooltip
+                              iconMarginBottom="1px"
+                              title="In this section, you should provide us with
                                   description of your listing, limited to xxxx
-                                  characters.
-                                </Tooltip>
-                              }
-                            >
-                              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
-                            </OverlayTrigger>
+                                  characters."
+                            />
                           </FormLabelStyled>
                           <StyledSunEditor
                             setOptions={{
@@ -144,18 +133,12 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                         <Form.Group>
                           <FormLabelStyled className="d-flex align-items-center">
                             Listing type{" "}
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip>
-                                  Pick your listing top from the dropdown menu
+                            <CustomTooltip
+                              iconMarginBottom="1px"
+                              title="Pick your listing top from the dropdown menu
                                   (i.e : Event, Restaurant, Experience,
-                                  Transportation, Product, Service )
-                                </Tooltip>
-                              }
-                            >
-                              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
-                            </OverlayTrigger>
+                                  Transportation, Product, Service )"
+                            />
                           </FormLabelStyled>
                           <SelectDropDown
                             options={listingType}
@@ -183,18 +166,12 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                         <Form.Group>
                           <FormLabelStyled className="d-flex align-items-center">
                             Listing category{" "}
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip>
-                                  In this section, you choose the category of
+                            <CustomTooltip
+                              iconMarginBottom="1px"
+                              title="In this section, you choose the category of
                                   your listing, so it can be classified
-                                  accordingly in the platform.
-                                </Tooltip>
-                              }
-                            >
-                              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
-                            </OverlayTrigger>
+                                  accordingly in the platform."
+                            />
                           </FormLabelStyled>
                           <SelectDropDown
                             options={listingCategory}
@@ -225,17 +202,11 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                         <Form.Group>
                           <FormLabelStyled className="d-flex align-items-center">
                             Language{" "}
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip>
-                                  In this section, you choose the language of
-                                  the performance or content.
-                                </Tooltip>
-                              }
-                            >
-                              <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
-                            </OverlayTrigger>
+                            <CustomTooltip
+                              iconMarginBottom="1px"
+                              title="In this section, you choose the language of
+                                  the performance or content."
+                            />
                           </FormLabelStyled>
                           <SelectDropDown
                             options={languageOptions}

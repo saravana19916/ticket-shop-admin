@@ -1612,11 +1612,14 @@ li[role="presentation"] .nav-link {
 }
 
 .dark-mode .react-tel-input .form-control {
-  background-color: #1a1a3c;
+  background-color: #282848;
+}
+.dark-mode .react-tel-input .country-list {
+  background-color: #282848;
 }
 
 .dark-mode .react-tel-input .selected-flag {
-  background-color: #1a1a3c;
+  background-color: transparent;
 }
 
 .dark-mode .CountrySelector .react-tel-input .flag-dropdown {
@@ -1882,6 +1885,12 @@ li[role="presentation"] .nav-link {
 
 .react-tel-input .country-list .country.highlight {
   background: #f6f6fb !important;
+}
+.dark-mode .react-tel-input .country-list .country.highlight {
+  background: #303052 !important;
+}
+.dark-mode .react-tel-input .country-list .country:hover{
+	background-color: #303052;
 }
 
 .CountrySelector .flag {
@@ -69922,4 +69931,11 @@ a.fc-event:hover {
 
 .dropdown-toggle::after {
   border: none !important;
+}
+.react-tel-input .flag-dropdown.open .selected-flag {
+  background: transparent !important;
+}
+.custom-phone-input:focus{
+	border-color: #fec9da80 !important;
+    outline: 1px solid #fec9da80 !important;
 }

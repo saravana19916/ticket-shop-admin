@@ -46,6 +46,9 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import CustomToastContainer from "../../shared/CustomToastContainer";
 import Password from "../../shared/password";
+import VerifyOTPModel from "../../guestList/SingleInvitation/VerfiyOTPModel";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 interface socialSignInType {
   title: string;
@@ -603,6 +606,38 @@ const index = () => {
     handleShow();
   };
 
+  const [showVerifyOTP, setShowVerifyOTP] = useState(false);
+  const [userInput, setUserInput] = useState("");
+  const [heading, setHeading] = useState("");
+  const [emailUser, setEmailUser] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+
+  const viewEmailClose = () => setShowVerifyOTP(false);
+  const viewEmailShow = () => {
+    if (emailUser == "") {
+      toast.error("Please enter email id!");
+    } else {
+      setHeading("Email");
+      setUserInput(emailUser);
+      setShowVerifyOTP(true);
+    }
+  };
+  const viewPhoneShow = () => {
+    if (phoneNumber == "") {
+      toast.error("Please enter phone number!");
+    } else {
+      setHeading("Phone number");
+      setUserInput(phoneNumber);
+      setShowVerifyOTP(true);
+    }
+  };
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailUser(event.target.value);
+  };
+  const handlePhoneNumberChange = (phone: string) => {
+    setPhoneNumber(phone);
+  };
+
   useEffect(() => {
     const language = localStorage.getItem("language") || "english";
     setActiveLanguage(language);
@@ -1080,13 +1115,46 @@ const index = () => {
                         buttonClassName="bg-primary text-white  p-3 px-5 border-0"
                         buttonType="submit"
                         buttonTitle={t("verify")}
-                        handleAction={() => {
-                          _handleShowVerifyModal("Email");
-                        }}
+                        handleAction={viewEmailShow}
+                        inputValue={emailUser}
+                        handleChange={handleEmailChange}
                       />
                     </div>
                     <div className="col-12 mb-2">
-                      <InputGroup
+                      <div className="position-relative">
+                        <PhoneInput
+                          country={"us"}
+                          value={phoneNumber}
+                          onChange={(phone) => handlePhoneNumberChange(phone)}
+                          inputStyle={{
+                            width: "100%",
+                            minHeight: "3.55rem !important",
+                            fontSize: "14px",
+                            borderRadius: "50rem",
+                            border: "1px solid #e5e7eb",
+                            outline: "none",
+                            height: "3.4rem",
+                          }}
+                          buttonStyle={{
+                            background: "transparent",
+                            border: "none",
+                            borderRadius: "50rem 0 0 50rem", // Rounded left side of the button
+                          }}
+                          inputClass="form-control bg-light border-0 "
+                        />
+                        <Link
+                          to="#"
+                          className="btn bg-primary text-white  p-3 px-5 border-0 position-absolute top-0 right-0 h-100"
+                          style={{
+                            right: "0",
+                            borderRadius: "0px 50px 50px 0px",
+                          }}
+                          onClick={viewPhoneShow}
+                        >
+                          Verify
+                        </Link>
+                      </div>
+                      {/* <InputGroup
                         inputClassName="p-4 bg-light border-0 ps-5"
                         inputStyle=""
                         inputType="text"
@@ -1098,7 +1166,7 @@ const index = () => {
                         handleAction={() => {
                           _handleShowVerifyModal("Phone");
                         }}
-                      />
+                      /> */}
                     </div>
                     <div className="col-12 my-3 mx-1">
                       <div className="row">
@@ -1250,6 +1318,12 @@ const index = () => {
           </div>
         </div>
       </div>
+      <VerifyOTPModel
+        show={showVerifyOTP}
+        onClose={viewEmailClose}
+        heading={heading}
+        userInput={userInput}
+      />
     </>
   );
 };

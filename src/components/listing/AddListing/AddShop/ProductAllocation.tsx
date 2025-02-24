@@ -1,15 +1,7 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import React, { FC, useState } from "react";
 import { CustomDropdownToggle } from "../../../shared/CustomDropDownToggle";
-import {
-  Button,
-  Dropdown,
-  Form,
-  FormControl,
-  InputGroup,
-  OverlayTrigger,
-  Tooltip,
-} from "react-bootstrap";
+import { Button, Dropdown, Form } from "react-bootstrap";
 import { IAddListingShopProps } from "./type";
 import { ErrorMessage, FormikErrors, FormikTouched } from "formik";
 import {
@@ -19,6 +11,7 @@ import {
   FormStyledPill,
 } from "../../../styledComponents/styledForm";
 import Select from "react-select";
+import CustomTooltip from "../../../shared/CustomTooltip";
 interface IProductAllocationProps {
   handleOnChange: (field: string, value: string | undefined) => void;
   errors: FormikErrors<IAddListingShopProps>;
@@ -155,6 +148,15 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
   };
   return (
     <>
+      <div className="col-12 mb-3">
+        <Form.Label className="fs-5 fw-500 text-black mb-4 d-flex align-items-center">
+          Product allocation
+          <CustomTooltip
+            title="Add the products you like to the shop and define special
+                discount if any"
+          />
+        </Form.Label>
+      </div>
       <div className="col-12 mb-4 table-responsive">
         <table
           className="w-100"
@@ -165,22 +167,6 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
               <th>
                 <FormLabelStyled className="d-flex align-items-center">
                   Products{" "}
-                  <OverlayTrigger
-                    placement="top"
-                    overlay={
-                      <Tooltip>
-                        Add the products you like to the shop and define special
-                        discounts if any.{" "}
-                      </Tooltip>
-                    }
-                  >
-                    <i
-                      style={{
-                        marginBottom: "2px",
-                      }}
-                      className="fe fe-info d-inline-block ms-2 cursor-pointer"
-                    ></i>
-                  </OverlayTrigger>
                 </FormLabelStyled>
               </th>
               <th>

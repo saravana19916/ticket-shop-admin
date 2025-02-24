@@ -2,7 +2,7 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 import React, { FC, Fragment, useState } from "react";
 import Input from "../../shared/input";
 import { Link } from "react-router-dom";
-import { Tab, TabGroup, TabList, TabPanels } from "@headlessui/react";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import {
   Accordion,
   Button,
@@ -16,7 +16,13 @@ import BackBreadCrumb from "../../shared/BackBreadCrumb/BackBreadCrumb";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import SingleGuestListAccordion from "./SingleGuestListAccordion";
-import { SingleGuestInvitationList } from "../helpers";
+import {
+  SingleGuestInvitationFBList,
+  SingleGuestInvitationList,
+  SingleGuestInvitationServiceList,
+  SingleGuestInvitationAddOnsList,
+  SingleGuestInvitationMerchandiseList,
+} from "../helpers";
 import "../guest-list.css";
 import {
   FormInputStyled,
@@ -24,18 +30,52 @@ import {
 } from "../../styledComponents/styledForm";
 import CustomTabButton from "../../shared/CustomTabButton";
 import { LinkButtonPrimary } from "../../styledComponents/styledButton";
-
+import CustomTooltip from "../../shared/CustomTooltip";
+import VerifyOTPModel from "./VerfiyOTPModel";
+import CustomToastContainer from "../../shared/CustomToastContainer";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 interface IProps {}
-const tabList = ["Tickets", "Services", "Add ons", "Mechandise", "F&B"];
+const tabList = ["Tickets", "Services", "Add ons", "Merchandise", "F&B"];
 
 const index: FC<IProps> = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const handleInputChange = (value: any) => {
-    setPhoneNumber(value);
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const [heading, setHeading] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [showEmail, setShowEmail] = useState(false);
+
+  const viewEmailClose = () => setShowEmail(false);
+  const viewEmailShow = () => {
+    if (email == "") {
+      toast.error("Please enter email id!");
+    } else {
+      setHeading("Email");
+      setUserInput(email);
+      setShowEmail(true);
+    }
   };
+  const viewPhoneShow = () => {
+    if (phoneNumber == "") {
+      toast.error("Please enter phone number!");
+    } else {
+      setHeading("Phone number");
+      setUserInput(phoneNumber);
+      setShowEmail(true);
+    }
+  };
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+  const handlePhoneNumberChange = (phone: string) => {
+    setPhoneNumber(phone);
+  };
+
   return (
     <>
+      <CustomToastContainer />
       <div className="p-4">
         <div className="p-0 p-md-5">
           <div className="row">
@@ -51,21 +91,10 @@ const index: FC<IProps> = () => {
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
                       Full Name on the Ticket
-                      <OverlayTrigger
-                        placement="top"
-                        overlay={
-                          <Tooltip>
-                            your name should be similar to your official ID
-                          </Tooltip>
-                        }
-                      >
-                        <i
-                          style={{
-                            marginBottom: "2px",
-                          }}
-                          className="fe fe-info d-inline-block ms-2 cursor-pointer"
-                        ></i>
-                      </OverlayTrigger>
+                      <CustomTooltip
+                        iconMarginBottom="2px"
+                        title="your name should be similar to your official ID"
+                      />
                     </FormLabelStyled>{" "}
                     <FormInputStyled
                       type="text"
@@ -79,22 +108,11 @@ const index: FC<IProps> = () => {
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
                       Organization
-                      <OverlayTrigger
-                        placement="top"
-                        overlay={
-                          <Tooltip>
-                            insert the organization or company this invitation
-                            or issued to
-                          </Tooltip>
-                        }
-                      >
-                        <i
-                          style={{
-                            marginBottom: "2px",
-                          }}
-                          className="fe fe-info d-inline-block ms-2 cursor-pointer"
-                        ></i>
-                      </OverlayTrigger>
+                      <CustomTooltip
+                        iconMarginBottom="2px"
+                        title="insert the organization or company this invitation
+                            or issued to"
+                      />
                     </FormLabelStyled>{" "}
                     <FormInputStyled
                       type="text"
@@ -108,33 +126,25 @@ const index: FC<IProps> = () => {
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
                       Email Address
-                      <OverlayTrigger
-                        placement="top"
-                        overlay={
-                          <Tooltip>
-                            your tickets can be sent to this email address
-                          </Tooltip>
-                        }
-                      >
-                        <i
-                          style={{
-                            marginBottom: "2px",
-                          }}
-                          className="fe fe-info d-inline-block ms-2 cursor-pointer"
-                        ></i>
-                      </OverlayTrigger>
+                      <CustomTooltip
+                        iconMarginBottom="2px"
+                        title="your tickets can be sent to this email address"
+                      />
                     </FormLabelStyled>{" "}
                     <div className="position-relative">
                       <FormInputStyled
-                        type="text"
+                        type="email"
                         placeholder=""
                         className="form-control"
-                        name="organization"
+                        name="email"
+                        value={email}
+                        onChange={handleEmailChange}
                       />
                       <Link
                         to="#"
                         className="btn btn-default btn-pill position-absolute top-50 translate-middle-y"
                         style={{ right: "0.75rem" }}
+                        onClick={viewEmailShow}
                       >
                         Verify
                       </Link>
@@ -145,31 +155,21 @@ const index: FC<IProps> = () => {
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
                       Phone Number
-                      <OverlayTrigger
-                        placement="top"
-                        overlay={
-                          <Tooltip>
-                            your tickets can be sent to this phone number or its
-                            associated whatsapp account.
-                          </Tooltip>
-                        }
-                      >
-                        <i
-                          style={{
-                            marginBottom: "2px",
-                          }}
-                          className="fe fe-info d-inline-block ms-2 cursor-pointer"
-                        ></i>
-                      </OverlayTrigger>
+                      <CustomTooltip
+                        iconMarginBottom="2px"
+                        title="your tickets can be sent to this phone number or its
+                            associated whatsapp account."
+                      />
                     </FormLabelStyled>{" "}
                     <div className="position-relative">
                       <PhoneInput
                         country={"us"}
+                        value={phoneNumber}
+                        onChange={(phone) => handlePhoneNumberChange(phone)}
                         inputStyle={{
                           width: "100%",
                           minHeight: "3.55rem !important",
                           fontSize: "14px",
-                          color: "#000",
                           borderRadius: "50rem",
                           border: "1px solid #e5e7eb",
                           outline: "none",
@@ -186,6 +186,7 @@ const index: FC<IProps> = () => {
                         to="#"
                         className="btn btn-default btn-pill position-absolute top-50 translate-middle-y"
                         style={{ right: "0.75rem" }}
+                        onClick={viewPhoneShow}
                       >
                         Verify
                       </Link>
@@ -251,8 +252,11 @@ const index: FC<IProps> = () => {
               <p className="mb-7">
                 Choose and add the products you would like to allocate to guest
               </p>
-              <TabGroup className="row px-0 py-2">
-                <TabList className="filter-container mb-5">
+              <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
+                <TabList
+                  className="filter-container mb-5"
+                  style={{ margin: "auto" }}
+                >
                   {tabList.map((tabName, idx) => (
                     <Tab as={Fragment} key={idx}>
                       {({ selected }) => (
@@ -267,24 +271,82 @@ const index: FC<IProps> = () => {
                   ))}
                 </TabList>
                 <TabPanels as="div" className="col-12 ">
-                  {/* <AllListings listDetailsData={allListings} />
-          <AllListings listDetailsData={showsListings} />
-          <AllListings listDetailsData={merchandiseListings} />
-          <AllListings listDetailsData={foodAndBeverageListings} />
-          <AllListings listDetailsData={hospitalityListings} />
-          <AllListings listDetailsData={serviceListings} /> */}
+                  <TabPanel>
+                    <div className="mt-6">
+                      <Accordion className="panel-default d-flex flex-column gap-4">
+                        {SingleGuestInvitationList?.map((item, index) => (
+                          <>
+                            <SingleGuestListAccordion
+                              item={item}
+                              index={`${index}`}
+                            />
+                          </>
+                        ))}
+                      </Accordion>
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="mt-6">
+                      <Accordion className="panel-default d-flex flex-column gap-4">
+                        {SingleGuestInvitationServiceList?.map(
+                          (item, index) => (
+                            <>
+                              <SingleGuestListAccordion
+                                item={item}
+                                index={`${index}`}
+                              />
+                            </>
+                          )
+                        )}
+                      </Accordion>
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="mt-6">
+                      <Accordion className="panel-default d-flex flex-column gap-4">
+                        {SingleGuestInvitationAddOnsList?.map((item, index) => (
+                          <>
+                            <SingleGuestListAccordion
+                              item={item}
+                              index={`${index}`}
+                            />
+                          </>
+                        ))}
+                      </Accordion>
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="mt-6">
+                      <Accordion className="panel-default d-flex flex-column gap-4">
+                        {SingleGuestInvitationMerchandiseList?.map(
+                          (item, index) => (
+                            <>
+                              <SingleGuestListAccordion
+                                item={item}
+                                index={`${index}`}
+                              />
+                            </>
+                          )
+                        )}
+                      </Accordion>
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="mt-6">
+                      <Accordion className="panel-default d-flex flex-column gap-4">
+                        {SingleGuestInvitationFBList?.map((item, index) => (
+                          <>
+                            <SingleGuestListAccordion
+                              item={item}
+                              index={`${index}`}
+                            />
+                          </>
+                        ))}
+                      </Accordion>
+                    </div>
+                  </TabPanel>
                 </TabPanels>
               </TabGroup>
-            </div>
-            <div className="mt-6">
-              <Accordion className="panel-default d-flex flex-column gap-4">
-                {SingleGuestInvitationList?.map((item, index) => (
-                  <>
-                    <SingleGuestListAccordion item={item} index={`${index}`} />
-                    {/* <GuestListAccordion item={item} index={`${index}`} /> */}
-                  </>
-                ))}
-              </Accordion>
             </div>
             <div className="d-flex align-items-center justify-content-end">
               <LinkButtonPrimary
@@ -298,6 +360,12 @@ const index: FC<IProps> = () => {
           </div>
         </div>
       </div>
+      <VerifyOTPModel
+        show={showEmail}
+        onClose={viewEmailClose}
+        heading={heading}
+        userInput={userInput}
+      />
     </>
   );
 };

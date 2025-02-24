@@ -1,9 +1,7 @@
 import React, { FC } from "react";
 
 import { Accordion, ProgressBar } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import moment from "moment";
+
 import { ISingleGuestInvitationList } from "../type";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import StyledTicketIndicate from "../../styledComponents/ticket-indicat";
@@ -50,7 +48,13 @@ const SingleGuestListAccordion: FC<IProps> = ({ item, index }) => {
               </div>
 
               <div className="col-12 col-md-5 col-lg-4">
-                <ProgressBar className="h-5 mt-2 mb-2" animated now={item.availabilityPercentage} label={item.availabilityPercentage} variant="green-1" />
+                <ProgressBar
+                  className="h-5 mt-2 mb-2"
+                  animated
+                  now={item.availabilityPercentage}
+                  label={item.availabilityPercentage}
+                  variant="green-1"
+                />
               </div>
               <div className="col-6 ms-auto col-lg-2 d-flex justify-content-around bg-light-gray rounded-pill px-3 py-2 mt-4">
                 <MinusIcon className="w-4 h-4 me-1 mb-1px fw-bold" />
@@ -59,7 +63,9 @@ const SingleGuestListAccordion: FC<IProps> = ({ item, index }) => {
               </div>
               <div className="col-6 col-lg-2 d-flex flex-column align-self-end ms-auto">
                 <h4 className="m-0 fw-bold">AED {item.amount}</h4>
-                <p className="m-0" style={{ fontSize: "10px" }}>net of all taxes</p>
+                <p className="m-0" style={{ fontSize: "10px" }}>
+                  net of all taxes
+                </p>
               </div>
             </div>
           </div>

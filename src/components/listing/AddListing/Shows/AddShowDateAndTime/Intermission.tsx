@@ -25,6 +25,7 @@ import {
   DateTimeCustomInput,
 } from "../../../../styledComponents/styledForm";
 import DateFlatpickr from "../../../../shared/DateFlatpickr";
+import CustomTooltip from "../../../../shared/CustomTooltip";
 interface IIntermission {}
 const Intermission: FC<IIntermission> = ({}) => {
   const [dateTime, setDateTime] = useState<IDateTimeType>({
@@ -79,22 +80,11 @@ const Intermission: FC<IIntermission> = ({}) => {
             /> */}
             <Form.Label className="fs-5 fw-500 text-black mb-4 d-flex align-items-center">
               Intermission{" "}
-              <OverlayTrigger
-                placement="top"
-                overlay={
-                  <Tooltip>
-                    In this section, you can set the intermission time of your
-                    show.
-                  </Tooltip>
-                }
-              >
-                <i
-                  style={{
-                    marginBottom: "2px",
-                  }}
-                  className="fe fe-info d-inline-block ms-2 cursor-pointer"
-                ></i>
-              </OverlayTrigger>
+              <CustomTooltip
+                iconMarginBottom="1px"
+                title="In this section, you can set the intermission time of your
+                    show."
+              />
             </Form.Label>
           </div>
           <div className="row">

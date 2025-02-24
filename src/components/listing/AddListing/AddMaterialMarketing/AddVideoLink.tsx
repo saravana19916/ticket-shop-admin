@@ -8,6 +8,7 @@ import {
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
 import VideoPlayer from "../../../VideoPlayer";
+import { ButtonSecondaryGrey } from "../../../styledComponents/styledButton";
 
 interface IProps {}
 const AddVideoLink: FC<IProps> = () => {
@@ -44,18 +45,34 @@ const AddVideoLink: FC<IProps> = () => {
             />
           </Form.Group>
         </div>
-        <div
-            className="mt-4 border rounded-full font-medium text-black px-6 py-4"
-            style={{
-              borderColor: "#dadbdf",
-              backgroundColor: "#e4e4e4",
-              padding: "13px 30px",
-              borderRadius: "35px",
-              opacity: !videoLink ? 0.65 : 1,
-              pointerEvents: !videoLink ? "none" : "auto",
-            }}
-          >
-          <a href="#" onClick={handlePreview}>
+        <ButtonSecondaryGrey
+          type="button"
+          className="btn mt-4"
+          disabled={!videoLink}
+          onClick={handlePreview}
+        >
+          <>
+            <span>Preview</span>
+            <VideoPlayer
+              videoLink={videoLink}
+              videoModalIsOpen={videoModalIsOpen}
+              setVideoLink={setVideoLink}
+              setVideoModalIsOpen={setVideoModalIsOpen}
+            />
+          </>
+        </ButtonSecondaryGrey>
+        {/* <div
+          className="mt-4 border rounded-full font-medium text-black px-6 py-4"
+          style={{
+            borderColor: "#dadbdf",
+            backgroundColor: "#e4e4e4",
+            padding: "13px 30px",
+            borderRadius: "35px",
+            opacity: !videoLink ? 0.65 : 1,
+            pointerEvents: !videoLink ? "none" : "auto",
+          }}
+        >
+          <span onClick={handlePreview}>
             <span
               style={{
                 color: "#000",
@@ -69,8 +86,8 @@ const AddVideoLink: FC<IProps> = () => {
               setVideoLink={setVideoLink}
               setVideoModalIsOpen={setVideoModalIsOpen}
             />
-          </a>
-        </div>
+          </span>
+        </div> */}
       </div>
     </>
   );

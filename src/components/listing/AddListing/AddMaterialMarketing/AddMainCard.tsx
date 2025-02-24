@@ -20,6 +20,7 @@ import {
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
 import { SuccessIcon } from "../../../styledComponents/styledIcons";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 interface IProps {}
 const AddMainCard: FC<IProps> = ({}) => {
@@ -144,17 +145,15 @@ const AddMainCard: FC<IProps> = ({}) => {
             >
               {" "}
               Main Card{" "}
-              <OverlayTrigger
-                placement="top"
-                overlay={
-                  <Tooltip>
+              <CustomTooltip
+                iconMarginBottom="1px"
+                title={
+                  <>
                     <span className="fw-600">Size: </span>405 pixel (w) x 486
                     pixel (h)
-                  </Tooltip>
+                  </>
                 }
-              >
-                <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
-              </OverlayTrigger>
+              />
             </FormLabelStyled>
             <FormFileInputStyled
               onClick={handleFileInputClick}

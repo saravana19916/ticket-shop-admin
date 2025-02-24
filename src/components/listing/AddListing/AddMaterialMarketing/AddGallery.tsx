@@ -20,6 +20,7 @@ import {
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
 import { SuccessIcon } from "../../../styledComponents/styledIcons";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 interface IProps {}
 const AddGallery: FC<IProps> = ({}) => {
@@ -130,17 +131,15 @@ const AddGallery: FC<IProps> = ({}) => {
               className="d-flex align-items-center"
             >
               Gallery{" "}
-              <OverlayTrigger
-                placement="top"
-                overlay={
-                  <Tooltip>
+              <CustomTooltip
+                iconMarginBottom="1px"
+                title={
+                  <>
                     <span className="fw-600">Size: </span>314 pixel (w) x 150
                     pixel (h)
-                  </Tooltip>
+                  </>
                 }
-              >
-                <i className="fe fe-info d-inline-block ms-2 cursor-pointer"></i>
-              </OverlayTrigger>
+              />
             </FormLabelStyled>
             <FormFileInputStyled
               onClick={handleFileInputClick}

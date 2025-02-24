@@ -6,6 +6,7 @@ import {
   FormLabelStyled,
 } from "../../../../styledComponents/styledForm";
 import DateFlatpickr from "../../../../shared/DateFlatpickr";
+import CustomTooltip from "../../../../shared/CustomTooltip";
 interface IDateTimeType {
   startDateAndTime: Date | null;
   endDateAndTime: Date | null;
@@ -34,21 +35,10 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
         <Form.Group>
           <Form.Label className="fs-5 fw-500 text-black mb-4 d-flex align-items-center">
             General Info
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>
-                  In this section, you can set the date and time of your show.{" "}
-                </Tooltip>
-              }
-            >
-              <i
-                style={{
-                  marginBottom: "2px",
-                }}
-                className="fe fe-info d-inline-block ms-2 cursor-pointer"
-              ></i>
-            </OverlayTrigger>
+            <CustomTooltip
+              iconMarginBottom="1px"
+              title="In this section, you can set the date and time of your show."
+            />
           </Form.Label>
 
           <div className="row">

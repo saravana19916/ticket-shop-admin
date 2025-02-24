@@ -98,7 +98,7 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Code
+                    Shop Tag/Code
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
                     {item.shopInformation?.shopCode}
@@ -106,15 +106,7 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Country
-                  </AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection className="col-8 fw-light">
-                    {item.shopInformation?.country}
-                  </AccordionBodyLeftSection>
-                </div>
-                <div className="fw-semibold d-flex align-items-center row">
-                  <AccordionBodyLeftSection className="col-4">
-                    City
+                    Shop City
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
                     {item.shopInformation?.city}
@@ -122,18 +114,18 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
-                    Address
+                    Shop Country
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
-                    {item.shopInformation?.address}
+                    {item.shopInformation?.country}
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
-                  <AccordionBodyLeftSection className="col-4 fw-light">
-                    Email Address
+                  <AccordionBodyLeftSection className="col-4">
+                    Shop Address
                   </AccordionBodyLeftSection>
-                  <AccordionBodyLeftSection className="col-8 fw-light text-light-blue-1">
-                    {item.shopInformation?.emailAddress}
+                  <AccordionBodyLeftSection className="col-8 fw-light">
+                    {item.shopInformation?.address}
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
@@ -142,6 +134,14 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
                   </AccordionBodyLeftSection>
                   <AccordionBodyLeftSection className="col-8 fw-light">
                     {item.shopInformation?.pointOfContact}
+                  </AccordionBodyLeftSection>
+                </div>
+                <div className="fw-semibold d-flex align-items-center row">
+                  <AccordionBodyLeftSection className="col-4 fw-light">
+                    Email Address
+                  </AccordionBodyLeftSection>
+                  <AccordionBodyLeftSection className="col-8 fw-light text-light-blue-1">
+                    {item.shopInformation?.emailAddress}
                   </AccordionBodyLeftSection>
                 </div>
                 <div className="fw-semibold d-flex align-items-center row">
