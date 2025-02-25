@@ -9,7 +9,6 @@ import {
 import ReactSelect from "react-select";
 import { Formik, Form as FormikForm } from "formik";
 import { listingInfoInitialState, listingInfoValidationSchema } from "./helper";
-import ButtonCustom from "../../../shared/ButtonCustom";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import {
   FormInputStyled,
@@ -20,6 +19,7 @@ import {
 } from "../../../styledComponents/styledForm";
 import SelectDropDown, { IOptionType } from "../../../shared/SelectDropDown";
 import CustomTooltip from "../../../shared/CustomTooltip";
+import { ButtonPrimary } from "../../../styledComponents/styledButton";
 interface IAddListingPageOneProps {}
 const languageOptions = [
   { value: "english", label: "English" },
@@ -79,7 +79,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                           </FormLabelStyled>{" "}
                           <FormInputStyled
                             type="text"
-                            placeholder="type the listing name"
+                            placeholder="Type the listing name"
                             className="form-control"
                             value={values?.listingName || ""}
                             name="listingName"
@@ -211,7 +211,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                           <SelectDropDown
                             options={languageOptions}
                             placeholder="Select Language"
-                            classNamePrefix="Select"
+                            classNamePrefix="Select-multiple"
                             className="mt-1"
                             isMulti={true}
                             multiSelectOnChange={(selectedOptions) => {
@@ -748,18 +748,13 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       {isSeparateUrl && (
                         <div className="col-12 mb-3">
                           <div className="float-end mb-3">
-                            <ButtonCustom
-                              title="Add Info"
-                              className="fs-6"
-                              paddingClassName="p-2 px-5"
-                              icon={
-                                <PlusIcon
-                                  className="w-4 h-4"
-                                  style={{ marginBottom: "1px" }}
-                                />
-                              }
+                            <ButtonPrimary
                               type="submit"
-                            />
+                              className="btn"
+                              style={{ minWidth: "118px" }}
+                            >
+                              Create Info
+                            </ButtonPrimary>
                           </div>
                         </div>
                       )}

@@ -8,7 +8,6 @@ import {
 import { IPricingDetailsProps } from "../../../pricing/AddPricing/type";
 import { pricingDetailsData } from "../../../../commondata/pricingTableData";
 import { toast } from "react-toastify";
-import ButtonCustom from "../../../shared/ButtonCustom";
 import { Accordion, OverlayTrigger, Popover, Tooltip } from "react-bootstrap";
 import ProductAllocationAccordion from "./ProductAllocationAccordion";
 import { color } from "echarts";

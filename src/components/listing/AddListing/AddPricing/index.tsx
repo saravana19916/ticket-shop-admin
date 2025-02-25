@@ -14,7 +14,6 @@ import Pricing from "./Pricing";
 import PricingInclusion from "./PricingInclusion";
 import { pricingDetailsData } from "../../../../commondata/pricingTableData";
 import { toast } from "react-toastify";
-import ButtonCustom from "../../../shared/ButtonCustom";
 import { Accordion, OverlayTrigger, Tooltip } from "react-bootstrap";
 import PricingAccordion from "./PricingAccordion";
 import { color } from "echarts";

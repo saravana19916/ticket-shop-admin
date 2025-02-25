@@ -24,21 +24,16 @@ import { ButtonPrimary } from "../../styledComponents/styledButton";
 import DateFlatpickr from "../../shared/DateFlatpickr";
 import CounterInput from "../../shared/CounterInput";
 import CustomTooltip from "../../shared/CustomTooltip";
+import CustomTabButton from "../../shared/CustomTabButton";
 interface IProps {}
 
 const index: FC<IProps> = () => {
-  const tabList = [
-    "All Listings",
-    "Shows",
-    "Mechandise",
-    "Food & Beverage",
-    "Hospitality",
-    "Services",
-  ];
+  const tabList = ["Tickets", "Services", "Add ons", "Mechandise", "F&B"];
   const tabAddCode = ["Add Manually", "generate automatically"];
   const [chipWidth, setChipWidth] = useState(
     window.innerWidth < 768 ? "50%" : "24%"
   );
+  const [selectedTab, setSelectedTab] = useState<number>(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -215,17 +210,12 @@ const index: FC<IProps> = () => {
                 <>
                   <Tab as={Fragment} key={idx}>
                     {({ selected }) => (
-                      <Button
-                        type="button"
-                        className={`px-7 py-2 rounded-pill ${
-                          selected ? "" : "bg-white text-gray border"
-                        }`}
-                        style={{
-                          backgroundColor: `${selected ? "#ed003b" : ""}`,
-                        }}
-                      >
-                        {tabName}
-                      </Button>
+                      <CustomTabButton
+                        tabName={tabName}
+                        selected={selected}
+                        index={idx}
+                        setSelectedTab={setSelectedTab}
+                      />
                     )}
                   </Tab>
                 </>
@@ -302,17 +292,12 @@ const index: FC<IProps> = () => {
                   <>
                     <Tab as={Fragment} key={idx}>
                       {({ selected }) => (
-                        <Button
-                          type="button"
-                          className={`px-7 py-2 rounded-pill ${
-                            selected ? "" : "bg-white text-gray border"
-                          }`}
-                          style={{
-                            backgroundColor: `${selected ? "#ed003b" : ""}`,
-                          }}
-                        >
-                          {tabName}
-                        </Button>
+                        <CustomTabButton
+                          tabName={tabName}
+                          selected={selected}
+                          index={idx}
+                          setSelectedTab={setSelectedTab}
+                        />
                       )}
                     </Tab>
                   </>

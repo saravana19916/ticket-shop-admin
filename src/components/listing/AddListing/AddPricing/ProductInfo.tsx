@@ -27,6 +27,18 @@ interface IProductInfoProps {
 const ProductInfo: FC<IProductInfoProps> = ({}) => {
   const [color, setColor] = useState("#00D1FF");
   const [showColorPicker, setShowColorPicker] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedServiceOption, setSelectedServiceOption] = useState<
+    string | null
+  >(null);
+
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedCategory(event.target.checked ? event.target.id : null);
+  };
+
+  const handleServiceOptionChange = (e: any) => {
+    setSelectedServiceOption(e.value);
+  };
   const colorPickerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -50,7 +62,11 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
   const serviceFeeOption = [
     {
       label: "Fixed Fee per issued Product",
-      value: "Fixed Fee per issued Product",
+      value: "AED",
+    },
+    {
+      label: "Percentage per issued product",
+      value: "%",
     },
   ];
 
@@ -64,7 +80,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
                 <FormLabelStyled>Product Name</FormLabelStyled>
                 <FormInputStyled
                   type="text"
-                  placeholder="type the product name"
+                  placeholder="Type the product name"
                   className="form-control"
                   name="productName"
                 />
@@ -147,6 +163,8 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
                           id={option.value}
                           name={option.value}
                           value={option.value}
+                          checked={selectedCategory === option.value}
+                          onChange={handleCategoryChange}
                           // checked={values?.contentGrading?.includes(
                           //   option.value
                           // )}
@@ -327,6 +345,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
                       placeholder="Select Fee Option"
                       classNamePrefix="Select"
                       className="mt-1"
+                      onChange={handleServiceOptionChange}
                     />
                   </Form.Group>
                 </div>
@@ -347,7 +366,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
                         className="fw-semibold"
                         style={{ color: "#000", top: "18px" }}
                       >
-                        AED
+                        {selectedServiceOption}
                       </FormInputGroupLabel>
                     </FormInputWrapper>
                   </Form.Group>

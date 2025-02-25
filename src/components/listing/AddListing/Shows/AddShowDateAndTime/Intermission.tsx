@@ -23,6 +23,7 @@ import {
   FormLabelStyled,
   DateTimeInputGroup,
   DateTimeCustomInput,
+  FormStyledContentSection,
 } from "../../../../styledComponents/styledForm";
 import DateFlatpickr from "../../../../shared/DateFlatpickr";
 import CustomTooltip from "../../../../shared/CustomTooltip";
@@ -45,12 +46,63 @@ const Intermission: FC<IIntermission> = ({}) => {
     setChecked(!checked);
     // alert(checked);
   };
+
+  const [showCustomRowAndZones, setShowCustomRowAndZones] =
+    useState<boolean>(false);
   return (
     <>
       <div className="col-12 mb-7">
         <Form.Group>
           <div className="d-flex flex-column">
-            <Form.Group>
+            <div>
+              <FormStyledContentSection>
+                <span className="question">
+                  Would you like to add intermission?
+                </span>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="addSections"
+                    value="yes"
+                    id="addSections"
+                    onChange={() => {
+                      setShowCustomRowAndZones(true);
+                    }}
+                    checked={showCustomRowAndZones}
+                  />
+
+                  <label
+                    className="form-check-label ms-3"
+                    htmlFor="addSections"
+                    style={{ marginTop: "6px", fontSize: "12px" }}
+                  >
+                    Yes
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="donNotAddSections"
+                    name="addSections"
+                    value="no"
+                    checked={!showCustomRowAndZones}
+                    onChange={() => {
+                      setShowCustomRowAndZones(false);
+                    }}
+                  />
+                  <label
+                    htmlFor="donNotAddSections"
+                    className="form-check-label ms-3"
+                    style={{ marginTop: "6px", fontSize: "12px" }}
+                  >
+                    No
+                  </label>
+                </div>
+              </FormStyledContentSection>
+            </div>
+            {/* <Form.Group>
               <label className="custom-switch form-switch me-5 mb-3">
                 <input
                   type="radio"
@@ -61,7 +113,7 @@ const Intermission: FC<IIntermission> = ({}) => {
                 />
                 <span className="custom-switch-indicator custom-switch-indicator-md"></span>
               </label>
-            </Form.Group>
+            </Form.Group> */}
             {/* <Form.Group>
               <label className="custom-switch form-switch mb-3">
                 <input
@@ -78,56 +130,60 @@ const Intermission: FC<IIntermission> = ({}) => {
               handleToggle={handleChange}
               divClassName="mb-3"
             /> */}
-            <Form.Label className="fs-5 fw-500 text-black mb-4 d-flex align-items-center">
-              Intermission{" "}
-              <CustomTooltip
-                iconMarginBottom="1px"
-                title="In this section, you can set the intermission time of your
+          </div>
+          {showCustomRowAndZones && (
+            <>
+              <Form.Label className="fs-5 fw-500 text-black mb-4 d-flex align-items-center">
+                Intermission{" "}
+                <CustomTooltip
+                  iconMarginBottom="1px"
+                  title="In this section, you can set the intermission time of your
                     show."
-              />
-            </Form.Label>
-          </div>
-          <div className="row">
-            <div className="col-12 mb-6">
-              <Form.Group>
-                <FormLabelStyled>Start Time</FormLabelStyled>
-                <DateFlatpickr
-                  value={dateTime?.intermissionStartTime}
-                  onChange={(date) =>
-                    handleDateTimeChange("intermissionStartTime", date)
-                  }
-                  type="time"
-                  placeholder="Enter Start Time"
                 />
-              </Form.Group>
-            </div>
-            <div className="col-12 mb-6">
-              <Form.Group>
-                <FormLabelStyled>End Time</FormLabelStyled>
-                <DateFlatpickr
-                  value={dateTime?.intermissionEndTime}
-                  onChange={(date) =>
-                    handleDateTimeChange("intermissionEndTime", date)
-                  }
-                  type="time"
-                  placeholder="Enter End Time"
-                />
-              </Form.Group>
-            </div>
-            <div className="col-12 mb-6">
-              <Form.Group>
-                <FormLabelStyled htmlFor="showDuration">
-                  Duration (Mins)
-                </FormLabelStyled>
-                <FormInputStyled
-                  type="text"
-                  id="showDuration"
-                  placeholder="Enter Duration"
-                  className="form-control"
-                />
-              </Form.Group>
-            </div>
-          </div>
+              </Form.Label>
+              <div className="row">
+                <div className="col-12 mb-6">
+                  <Form.Group>
+                    <FormLabelStyled>Start Time</FormLabelStyled>
+                    <DateFlatpickr
+                      value={dateTime?.intermissionStartTime}
+                      onChange={(date) =>
+                        handleDateTimeChange("intermissionStartTime", date)
+                      }
+                      type="time"
+                      placeholder="Enter Start Time"
+                    />
+                  </Form.Group>
+                </div>
+                <div className="col-12 mb-6">
+                  <Form.Group>
+                    <FormLabelStyled>End Time</FormLabelStyled>
+                    <DateFlatpickr
+                      value={dateTime?.intermissionEndTime}
+                      onChange={(date) =>
+                        handleDateTimeChange("intermissionEndTime", date)
+                      }
+                      type="time"
+                      placeholder="Enter End Time"
+                    />
+                  </Form.Group>
+                </div>
+                <div className="col-12 mb-6">
+                  <Form.Group>
+                    <FormLabelStyled htmlFor="showDuration">
+                      Duration (Mins)
+                    </FormLabelStyled>
+                    <FormInputStyled
+                      type="text"
+                      id="showDuration"
+                      placeholder="Enter Duration"
+                      className="form-control"
+                    />
+                  </Form.Group>
+                </div>
+              </div>
+            </>
+          )}
         </Form.Group>
       </div>
     </>

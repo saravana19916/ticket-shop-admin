@@ -11,7 +11,6 @@ import {
 import ReactSelect from "react-select";
 import { Formik, Form as FormikForm } from "formik";
 import { listingInfoInitialState, listingInfoValidationSchema } from "./helper";
-import ButtonCustom from "../../../shared/ButtonCustom";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import {
   FormDescriptionStyled,
@@ -22,6 +21,7 @@ import {
 } from "../../../styledComponents/styledForm";
 import SunEditor from "suneditor-react";
 import CustomTooltip from "../../../shared/CustomTooltip";
+import { ButtonPrimary } from "../../../styledComponents/styledButton";
 interface IAddListingPageOneProps {}
 
 const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
@@ -338,18 +338,13 @@ const AddListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       {isSeparateUrl && (
                         <div className="col-12 mb-3">
                           <div className="float-end mb-3">
-                            <ButtonCustom
-                              title="Add Info"
-                              className="fs-6"
-                              paddingClassName="p-2 px-5"
-                              icon={
-                                <PlusIcon
-                                  className="w-4 h-4"
-                                  style={{ marginBottom: "1px" }}
-                                />
-                              }
+                            <ButtonPrimary
                               type="submit"
-                            />
+                              className="btn"
+                              style={{ minWidth: "118px" }}
+                            >
+                              Create Info
+                            </ButtonPrimary>
                           </div>
                         </div>
                       )}

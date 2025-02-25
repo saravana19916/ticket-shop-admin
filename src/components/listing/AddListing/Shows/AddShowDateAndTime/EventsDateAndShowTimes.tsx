@@ -11,7 +11,7 @@ import { IShowDateAndTimeSectionProps } from "../../../../../commondata/showDate
 import { toast } from "react-toastify";
 import { IAddShowDateTimeProps } from "./helper";
 import { FormikErrors, FormikTouched } from "formik";
-import ButtonCustom from "../../../../shared/ButtonCustom";
+import { ButtonPrimary } from "../../../../styledComponents/styledButton";
 
 interface IEventsDateAndShowTimesProps {
   date: any;
@@ -232,15 +232,13 @@ const EventsDateAndShowTimes: FC<IEventsDateAndShowTimesProps> = ({
       </div>
       <div className="col-12">
         <div className="float-end mb-3">
-          <ButtonCustom
-            title={editEventId ? "Update Show" : "Add Show"}
-            className="fs-6"
-            paddingClassName="p-2 px-5"
-            icon={
-              <PlusIcon className="w-4 h-4" style={{ marginBottom: "1px" }} />
-            }
+          <ButtonPrimary
             type="submit"
-          />
+            className="btn"
+            style={{ minWidth: "118px" }}
+          >
+            {editEventId ? "Update" : "Create"} Show
+          </ButtonPrimary>
         </div>
       </div>
     </>

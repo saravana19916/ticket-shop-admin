@@ -24,14 +24,16 @@ import { ButtonPrimary } from "../../styledComponents/styledButton";
 import DateFlatpickr from "../../shared/DateFlatpickr";
 import CounterInput from "../../shared/CounterInput";
 import CustomTooltip from "../../shared/CustomTooltip";
+import CustomTabButton from "../../shared/CustomTabButton";
 interface IProps {}
 
 const index: FC<IProps> = () => {
-  const tabList = ["All Listings", "Shows", "Mechandise", "Food & Beverage", "Hospitality", "Services"];
+  const tabList = ["Tickets", "Services", "Add ons", "Mechandise", "F&B"];
   const tabAddCode = ["Add Manually", "generate automatically"];
   const [chipWidth, setChipWidth] = useState(
     window.innerWidth < 768 ? "50%" : "24%"
   );
+  const [selectedTab, setSelectedTab] = useState<number>(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -207,17 +209,12 @@ const index: FC<IProps> = () => {
                 <>
                   <Tab as={Fragment} key={idx}>
                     {({ selected }) => (
-                      <Button
-                        type="button"
-                        className={`px-7 py-2 rounded-pill ${
-                          selected ? "" : "bg-white text-gray border"
-                        }`}
-                        style={{
-                          backgroundColor: `${selected ? "#ed003b" : ""}`,
-                        }}
-                      >
-                        {tabName}
-                      </Button>
+                      <CustomTabButton
+                        tabName={tabName}
+                        selected={selected}
+                        index={idx}
+                        setSelectedTab={setSelectedTab}
+                      />
                     )}
                   </Tab>
                 </>
@@ -282,12 +279,11 @@ const index: FC<IProps> = () => {
               <span className="fw-600 fs-5">
                 Choose products & define discount amount
                 <CustomTooltip
-              iconMarginBottom="1px"
-              title="In this section you can choose the products you want to apply
+                  iconMarginBottom="1px"
+                  title="In this section you can choose the products you want to apply
               the discount to and define those discounts."
-            />
+                />
               </span>
-
             </div>
             <TabGroup className="row px-0 px-md-2 px-lg-4 px-xl-4 py-2 mt-6">
               <TabList className="filter-container mb-7 px-0">
@@ -295,17 +291,12 @@ const index: FC<IProps> = () => {
                   <>
                     <Tab as={Fragment} key={idx}>
                       {({ selected }) => (
-                        <Button
-                          type="button"
-                          className={`px-7 py-2 rounded-pill ${
-                            selected ? "" : "bg-white text-gray border"
-                          }`}
-                          style={{
-                            backgroundColor: `${selected ? "#ed003b" : ""}`,
-                          }}
-                        >
-                          {tabName}
-                        </Button>
+                        <CustomTabButton
+                          tabName={tabName}
+                          selected={selected}
+                          index={idx}
+                          setSelectedTab={setSelectedTab}
+                        />
                       )}
                     </Tab>
                   </>

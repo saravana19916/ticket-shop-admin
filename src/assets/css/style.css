@@ -69939,3 +69939,11 @@ a.fc-event:hover {
 	border-color: #fec9da80 !important;
     outline: 1px solid #fec9da80 !important;
 }
+.Select-multiple__multi-value{
+	font-weight: 400 !important;
+    font-size: 14px !important;	
+}
+.Select-multiple__multi-value__label{
+	color: #000 !important;
+    font-size: 14px !important;
+}

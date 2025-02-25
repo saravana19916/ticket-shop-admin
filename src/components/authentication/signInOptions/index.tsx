@@ -1144,14 +1144,14 @@ const index = () => {
                         />
                         <Link
                           to="#"
-                          className="btn bg-primary text-white  p-3 px-5 border-0 position-absolute top-0 right-0 h-100"
+                          className="btn bg-primary text-white text-center  p-3 px-5 border-0 position-absolute top-0 right-0 h-100"
                           style={{
                             right: "0",
                             borderRadius: "0px 50px 50px 0px",
                           }}
                           onClick={viewPhoneShow}
                         >
-                          Verify
+                          <span className="d-inline-block mt-1">Verify</span>
                         </Link>
                       </div>
                       {/* <InputGroup

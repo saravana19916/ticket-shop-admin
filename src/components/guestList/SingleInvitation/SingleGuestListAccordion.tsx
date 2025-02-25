@@ -44,7 +44,7 @@ const SingleGuestListAccordion: FC<IProps> = ({ item, index }) => {
                   <i className="fa fa-circle fs-3" aria-hidden="true"></i>
                 </StyledTicketIndicate>
 
-                <h4 className="fw-bold m-0">{item.ticket}</h4>
+                <h4 className="fw-600 m-0 text-black">{item.ticket}</h4>
               </div>
 
               <div className="col-12 col-md-5 col-lg-4">
@@ -62,8 +62,8 @@ const SingleGuestListAccordion: FC<IProps> = ({ item, index }) => {
                 <PlusIcon className="w-4 h-4 me-1 mb-1px fw-bold" />
               </div>
               <div className="col-6 col-lg-2 d-flex flex-column align-self-end ms-auto">
-                <h4 className="m-0 fw-bold">AED {item.amount}</h4>
-                <p className="m-0" style={{ fontSize: "10px" }}>
+                <h4 className="m-0 fw-600 text-black">AED {item.amount}</h4>
+                <p className="m-0 text-black" style={{ fontSize: "10px" }}>
                   net of all taxes
                 </p>
               </div>

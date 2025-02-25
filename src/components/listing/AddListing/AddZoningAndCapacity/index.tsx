@@ -20,7 +20,10 @@ import ZoningAccordion from "./ZoningAccordion";
 import { FormInputDescriptionStyled } from "../../../styledComponents/styledForm";
 import DefineZones from "./DefineZones";
 import AddRowAndZones from "./AddRowAndZones";
-import { ButtonPrimary, ButtonSecondaryDarkGrey } from "../../../styledComponents/styledButton";
+import {
+  ButtonPrimary,
+  ButtonSecondaryDarkGrey,
+} from "../../../styledComponents/styledButton";
 const tabList = ["Design Manually", "Use Design Tool"];
 
 interface IAddZoningAndCapacityProps {}
@@ -110,9 +113,9 @@ const AddZoningAndCapacity: FC<IAddZoningAndCapacityProps> = ({}) => {
                     <AddRowAndZones />
                     <div className="col-12 mb-6 mt-5">
                       <div className="float-end d-flex gap-4">
-                        <ButtonSecondaryDarkGrey type="button" className="btn">
+                        {/* <ButtonSecondaryDarkGrey type="button" className="btn">
                           Add Another Zone
-                        </ButtonSecondaryDarkGrey>
+                        </ButtonSecondaryDarkGrey> */}
                         <ButtonPrimary type="submit" className="btn">
                           Create Zone
                         </ButtonPrimary>

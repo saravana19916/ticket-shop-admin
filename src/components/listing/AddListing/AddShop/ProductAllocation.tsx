@@ -213,6 +213,7 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
                       type="number"
                       className="form-control"
                       name="units"
+                      placeholder="1000"
                     />
                   </td>
                   <td

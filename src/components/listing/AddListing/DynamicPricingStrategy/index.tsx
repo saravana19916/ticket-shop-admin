@@ -13,8 +13,8 @@ import {
   addListingDynamicPricingStrategyInitialValue,
 } from "./helper";
 import { toast } from "react-toastify";
-import ButtonCustom from "../../../shared/ButtonCustom";
 import DynamicPricingAccordion from "./DynamicPricingAccordion";
+import { ButtonPrimary } from "../../../styledComponents/styledButton";
 const index: FC = () => {
   const isAddListingLocation = window.location?.pathname === "/add-listing";
 
@@ -176,19 +176,14 @@ const index: FC = () => {
                     </div>
                     <div className="col-xl-10 col-lg-11 col-12 mb-7">
                       <div className="float-end">
-                        <ButtonCustom
-                          title="Add Strategy"
-                          className="fs-6"
-                          onClick={submitForm}
-                          paddingClassName="p-2 px-5"
-                          icon={
-                            <PlusIcon
-                              className="w-4 h-4"
-                              style={{ marginBottom: "1px" }}
-                            />
-                          }
+                        <ButtonPrimary
                           type="submit"
-                        />
+                          className="btn"
+                          onClick={submitForm}
+                          style={{ minWidth: "118px" }}
+                        >
+                          Create Strategy
+                        </ButtonPrimary>
                       </div>
                     </div>
                     {isSeparateUrl ? (

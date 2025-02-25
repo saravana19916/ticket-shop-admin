@@ -4,7 +4,6 @@ import React, { FC, Fragment, useEffect, useState } from "react";
 import AllListings from "./AllListings";
 import Owl from "../../assets/images/owl.jpg";
 import { useNavigate } from "react-router-dom";
-import ButtonCustom from "../shared/ButtonCustom";
 import LandingPageWrapper from "../shared/LandingPageWrapper";
 import CustomTabButton from "../shared/CustomTabButton";
 import { ButtonPrimary } from "../styledComponents/styledButton";

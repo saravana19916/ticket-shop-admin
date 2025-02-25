@@ -1,6 +1,6 @@
 import { Switch } from "@mui/material";
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 import SwitchReact from "../../shared/SwitchReact";
 import {
   ButtonPrimary,
@@ -15,10 +15,13 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
   show,
   onClose,
 }) => {
-  const [checked, setChecked] = useState(false);
-  const handleChange = () => {
-    setChecked(!checked);
-  };
+  const [isGuestListEnabled, setIsGuestListEnabled] = useState(false);
+  const [isCancellationEnabled, setIsCancellationEnabled] = useState(false);
+  const [isGuestReceiveTicket, setIsGuestReceiveTicket] = useState(false);
+  const [isGuestTransferTicket, setIsGuestTransferTicket] = useState(false);
+  const [isGuestReceiveDigitalTicket, setIsGuestReceiveDigitalTicket] = useState(false);
+  const [isGuestTicketCharges, setIsGuestTicketCharges] = useState(false);
+  const [isOrganizerTicketCharges, setIsOrganizerTicketCharges] = useState(false);
 
   return (
     <>
@@ -53,43 +56,127 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
 
         <Modal.Body>
           <div className="d-flex flex-column gap-4">
-            <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
-              <SwitchReact checked={checked} onChange={handleChange} />
+            <div className="d-flex align-items-center gap-4 rounded-pill px-1 py-2">
+              {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
+              <Form.Group>
+                <label className="custom-switch form-switch me-5 mb-3">
+                  <input
+                    type="radio"
+                    name="custom-switch-radio1"
+                    className="custom-switch-input"
+                    checked={isGuestListEnabled}
+                    onClick={() => setIsGuestListEnabled((prev) => !prev)}
+                  />
+                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                </label>
+              </Form.Group>
               <label className="m-0">
                 Guest list to be used from the total capacity
               </label>
             </div>
             <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
-              <SwitchReact checked={checked} onChange={handleChange} />
+              {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
+              <Form.Group>
+                <label className="custom-switch form-switch me-5 mb-3">
+                  <input
+                    type="radio"
+                    name="custom-switch-radio1"
+                    className="custom-switch-input"
+                    checked={isCancellationEnabled}
+                    onClick={() => setIsCancellationEnabled((prev) => !prev)}
+                  />
+                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                </label>
+              </Form.Group>
               <label className="m-0">
                 If guest does not confirm attendance by 24 hours before event,
                 cancell invitation.
               </label>
             </div>
             <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
-              <SwitchReact checked={checked} onChange={handleChange} />
+              {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
+              <Form.Group>
+                <label className="custom-switch form-switch me-5 mb-3">
+                  <input
+                    type="radio"
+                    name="custom-switch-radio1"
+                    className="custom-switch-input"
+                    checked={isGuestReceiveTicket}
+                    onClick={() => setIsGuestReceiveTicket((prev) => !prev)}
+                  />
+                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                </label>
+              </Form.Group>
               <label className="m-0">
                 Guest to additionally receive tickets as SMS and Whatsapp .
               </label>
             </div>
             <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
-              <SwitchReact checked={checked} onChange={handleChange} />
+              {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
+              <Form.Group>
+                <label className="custom-switch form-switch me-5 mb-3">
+                  <input
+                    type="radio"
+                    name="custom-switch-radio1"
+                    className="custom-switch-input"
+                    checked={isGuestReceiveDigitalTicket}
+                    onClick={() => setIsGuestReceiveDigitalTicket((prev) => !prev)}
+                  />
+                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                </label>
+              </Form.Group>
               <label className="m-0">Guest to receive digital ticket</label>
             </div>
             <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
-              <SwitchReact checked={checked} onChange={handleChange} />
+              {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
+              <Form.Group>
+                <label className="custom-switch form-switch me-5 mb-3">
+                  <input
+                    type="radio"
+                    name="custom-switch-radio1"
+                    className="custom-switch-input"
+                    checked={isGuestTransferTicket}
+                    onClick={() => setIsGuestTransferTicket((prev) => !prev)}
+                  />
+                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                </label>
+              </Form.Group>
               <label className="m-0">
                 Guest to be able to transfer its ticket to someone else.
               </label>
             </div>
             <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
-              <SwitchReact checked={checked} onChange={handleChange} />
+              {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
+              <Form.Group>
+                <label className="custom-switch form-switch me-5 mb-3">
+                  <input
+                    type="radio"
+                    name="custom-switch-radio1"
+                    className="custom-switch-input"
+                    checked={isGuestTicketCharges}
+                    onClick={() => setIsGuestTicketCharges((prev) => !prev)}
+                  />
+                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                </label>
+              </Form.Group>
               <label className="m-0">
                 Guest to pay the ticket transfer charges.
               </label>
             </div>
             <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
-              <SwitchReact checked={checked} onChange={handleChange} />
+              {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
+              <Form.Group>
+                <label className="custom-switch form-switch me-5 mb-3">
+                  <input
+                    type="radio"
+                    name="custom-switch-radio1"
+                    className="custom-switch-input"
+                    checked={isOrganizerTicketCharges}
+                    onClick={() => setIsOrganizerTicketCharges((prev) => !prev)}
+                  />
+                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                </label>
+              </Form.Group>
               <label className="m-0">
                 Organizer to pay the ticket transfer charges.
               </label>

@@ -9,7 +9,6 @@ import Select from "react-select";
 import { IAddLocationProps } from "./type";
 import { addListingLocationValidationSchema } from "./helper";
 import { toast } from "react-toastify";
-import ButtonCustom from "../../../shared/ButtonCustom";
 import {
   FormInputStyled,
   FormLabelStyled,

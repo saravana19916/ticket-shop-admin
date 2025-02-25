@@ -9,6 +9,7 @@ import { allPoliciesList } from "../data";
 import {
   FormInputStyled,
   FormLabelStyled,
+  StyledInputDiv,
   StyledSunEditor,
 } from "../../../../styledComponents/styledForm";
 import { ButtonPrimary } from "../../../../styledComponents/styledButton";
@@ -155,7 +156,7 @@ const index = () => {
                               </Form.Group>
                             </div>
                             <div className="col-12 mb-6">
-                              <Form.Group>
+                              {/* <Form.Group>
                                 <FormLabelStyled>
                                   To Be Visible On{" "}
                                 </FormLabelStyled>
@@ -194,6 +195,56 @@ const index = () => {
                                       </span>
                                     </label>
                                   </div>
+                                </div>
+                                {errors?.toBeVisibleOn &&
+                                  touched?.toBeVisibleOn && (
+                                    <span className="text-danger d-inline-block ms-5 mt-1 fs-11px">
+                                      {errors?.toBeVisibleOn}
+                                    </span>
+                                  )}
+                              </Form.Group> */}
+                              <Form.Group>
+                                <FormLabelStyled>
+                                  To Be Visible On
+                                </FormLabelStyled>
+                                <div className="row">
+                                  {[
+                                    {
+                                      id: "event-page",
+                                      label: "Event Page",
+                                      value: "EventPage",
+                                    },
+                                    {
+                                      id: "digital-ticket",
+                                      label: "Digital Ticket",
+                                      value: "DigitalTicket",
+                                    },
+                                  ].map((option) => (
+                                    <div
+                                      className="col-lg-4 col-md-6 col-12 g-3 ps-4"
+                                      key={option.id}
+                                    >
+                                      <StyledInputDiv className="form-check">
+                                        <input
+                                          className="form-check-input"
+                                          type="checkbox"
+                                          id={option.value}
+                                          name={option.value}
+                                          value={option.value}
+                                        />
+                                        <label
+                                          htmlFor={option.value}
+                                          className="form-check-label ms-3"
+                                          style={{
+                                            marginTop: "7px",
+                                            fontSize: "12px",
+                                          }}
+                                        >
+                                          {option.label}
+                                        </label>
+                                      </StyledInputDiv>
+                                    </div>
+                                  ))}
                                 </div>
                                 {errors?.toBeVisibleOn &&
                                   touched?.toBeVisibleOn && (

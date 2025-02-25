@@ -17,7 +17,6 @@ import {
 import { IAddListingShopProps } from "./type";
 import { shopTableData } from "../../../../commondata/shopTableData";
 import { toast } from "react-toastify";
-import ButtonCustom from "../../../shared/ButtonCustom";
 import ShopsAccordion from "./ShopsAccordion";
 import { FormInputDescriptionStyled } from "../../../styledComponents/styledForm";
 import {
@@ -171,9 +170,9 @@ const AddShops: FC<IAddShopsProps> = () => {
                     </div>
                     <div className="col-12 mb-6">
                       <div className="float-end d-flex gap-4">
-                        <ButtonSecondaryDarkGrey type="button" className="btn">
+                        {/* <ButtonSecondaryDarkGrey type="button" className="btn">
                           Add Another Shop
-                        </ButtonSecondaryDarkGrey>
+                        </ButtonSecondaryDarkGrey> */}
                         <ButtonPrimary
                           type="submit"
                           className="btn"

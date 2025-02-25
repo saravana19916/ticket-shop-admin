@@ -4,9 +4,11 @@ import {
   FormInputStyled,
   FormLabelStyled,
 } from "../../../../styledComponents/styledForm";
-import { ButtonSecondary } from "../../../../styledComponents/styledButton";
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+} from "../../../../styledComponents/styledButton";
 import { Form, InputGroup, FormControl } from "react-bootstrap";
-import ButtonCustom from "../../../../shared/ButtonCustom";
 type ModelAddDesignZonesProps = {
   show: boolean;
   onClose: () => void;
@@ -63,13 +65,13 @@ const ModelAddDesignZones: React.FC<ModelAddDesignZonesProps> = ({
           <ButtonSecondary type="button" className="btn" onClick={onClose}>
             Cancel{" "}
           </ButtonSecondary>
-          <ButtonCustom
-            title="Add"
-            className="fs-6"
-            paddingClassName="p-2 px-6"
+          <ButtonPrimary
             type="submit"
-            onClick={onClose}
-          />
+            className="btn"
+            style={{ minWidth: "118px" }}
+          >
+            Add Zone
+          </ButtonPrimary>
         </Modal.Footer>
       </Modal>
     </>

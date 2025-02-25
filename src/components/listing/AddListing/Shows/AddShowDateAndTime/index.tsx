@@ -19,7 +19,6 @@ import {
 import moment from "moment";
 import GeneralInfo from "./GeneralInfo";
 import Intermission from "./Intermission";
-import ButtonCustom from "../../../../shared/ButtonCustom";
 import ShowDateAndTimeAccordion from "./ShowDateAndTimeAccordion";
 import "../../../../guestList/guest-list.css";
 import { ButtonPrimary } from "../../../../styledComponents/styledButton";
