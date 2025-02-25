@@ -417,7 +417,7 @@ export const Sidebar = () => {
                   <a
                     key={index}
                     href="#"
-                    className={`list-group-item list-group-item-action ${
+                    className={`mb-5 list-group-item list-group-item-action ${
                       event.identifier === selectedUser.identifier
                         ? "active border-lg"
                         : ""

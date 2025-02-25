@@ -33,7 +33,7 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
         centered={true}
         size="lg"
       >
-        <Modal.Header className="d-flex align-items-center justify-content-between">
+        <Modal.Header className="d-flex align-items-center justify-content-left">
           <Modal.Title>
             <h6 className="fw-600 fs-5 p-3 modal-title">Guest List Setting</h6>
           </Modal.Title>
@@ -56,125 +56,156 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
 
         <Modal.Body>
           <div className="d-flex flex-column gap-4">
-            <div className="d-flex align-items-center gap-4 rounded-pill px-1 py-2">
+          <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
-              <Form.Group>
-                <label className="custom-switch form-switch me-5 mb-3">
+              <Form.Group className="d-flex align-items-center gap-3">
+                <label className="custom-switch form-switch me-5 ">
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="custom-switch-radio1"
                     className="custom-switch-input"
                     checked={isGuestListEnabled}
                     onClick={() => setIsGuestListEnabled((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                      borderColor: "#ff003e33",
+                    }}></span>
                 </label>
               </Form.Group>
               <label className="m-0">
                 Guest list to be used from the total capacity
               </label>
             </div>
-            <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
-              {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
-              <Form.Group>
-                <label className="custom-switch form-switch me-5 mb-3">
+            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
+              <Form.Group className="d-flex align-items-center gap-3">
+                <label className="custom-switch form-switch me-5">
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="custom-switch-radio1"
                     className="custom-switch-input"
                     checked={isCancellationEnabled}
+                    style={{
+                      borderColor: "#ff003e33",
+                    }}
                     onClick={() => setIsCancellationEnabled((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                      borderColor: "#ff003e33",
+                    }}></span>
                 </label>
               </Form.Group>
               <label className="m-0">
-                If guest does not confirm attendance by 24 hours before event,
-                cancell invitation.
+                If guest does not confirm attendance by 24 hours before event, cancel invitation.
               </label>
             </div>
-            <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
+
+            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
-              <Form.Group>
-                <label className="custom-switch form-switch me-5 mb-3">
+              <Form.Group className="d-flex align-items-center gap-3">
+                <label className="custom-switch form-switch me-5 ">
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="custom-switch-radio1"
                     className="custom-switch-input"
                     checked={isGuestReceiveTicket}
+                    style={{
+                      borderColor: "#ff003e33",
+                    }}
                     onClick={() => setIsGuestReceiveTicket((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                      borderColor: "#ff003e33",
+                    }}></span>
                 </label>
               </Form.Group>
               <label className="m-0">
                 Guest to additionally receive tickets as SMS and Whatsapp .
               </label>
             </div>
-            <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
+            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
-              <Form.Group>
-                <label className="custom-switch form-switch me-5 mb-3">
+              <Form.Group className="d-flex align-items-center gap-3">
+                <label className="custom-switch form-switch me-5 ">
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="custom-switch-radio1"
                     className="custom-switch-input"
                     checked={isGuestReceiveDigitalTicket}
+                    style={{
+                      borderColor: "#ff003e33",
+                    }}
                     onClick={() => setIsGuestReceiveDigitalTicket((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                      borderColor: "#ff003e33",
+                    }}></span>
                 </label>
               </Form.Group>
               <label className="m-0">Guest to receive digital ticket</label>
             </div>
-            <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
+            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
-              <Form.Group>
-                <label className="custom-switch form-switch me-5 mb-3">
+              <Form.Group className="d-flex align-items-center gap-3">
+                <label className="custom-switch form-switch me-5 ">
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="custom-switch-radio1"
                     className="custom-switch-input"
                     checked={isGuestTransferTicket}
+                    style={{
+                      borderColor: "#ff003e33",
+                    }}
                     onClick={() => setIsGuestTransferTicket((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                      borderColor: "#ff003e33",
+                    }}></span>
                 </label>
               </Form.Group>
               <label className="m-0">
                 Guest to be able to transfer its ticket to someone else.
               </label>
             </div>
-            <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
+            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
-              <Form.Group>
-                <label className="custom-switch form-switch me-5 mb-3">
+              <Form.Group className="d-flex align-items-center gap-3">
+                <label className="custom-switch form-switch me-5 ">
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="custom-switch-radio1"
                     className="custom-switch-input"
                     checked={isGuestTicketCharges}
+                    style={{
+                      borderColor: "#ff003e33",
+                    }}
                     onClick={() => setIsGuestTicketCharges((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                      borderColor: "#ff003e33",
+                    }}></span>
                 </label>
               </Form.Group>
               <label className="m-0">
                 Guest to pay the ticket transfer charges.
               </label>
             </div>
-            <div className="d-flex align-items-center gap-4 bg-light-gray rounded-pill px-1 py-2">
+            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
-              <Form.Group>
-                <label className="custom-switch form-switch me-5 mb-3">
+              <Form.Group className="d-flex align-items-center gap-3">
+                <label className="custom-switch form-switch me-5 ">
                   <input
-                    type="radio"
+                   type="checkbox"
                     name="custom-switch-radio1"
                     className="custom-switch-input"
                     checked={isOrganizerTicketCharges}
+                    style={{
+                      borderColor: "#ff003e33",
+                    }}
                     onClick={() => setIsOrganizerTicketCharges((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
+                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                      borderColor: "#ff003e33",
+                    }}></span>
                 </label>
               </Form.Group>
               <label className="m-0">
@@ -188,12 +219,14 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
             type="button"
             className="btn "
             onClick={onClose}
+            style={{ minWidth: "118px" }}
           >
             <span className="d-none d-md-block">Close</span>
           </ButtonSecondary>
           <ButtonPrimary
             type="button"
             className="btn"
+            style={{ minWidth: "118px" }}
           >
             <i
               className="fa fa-arrow-right d-block d-md-none"

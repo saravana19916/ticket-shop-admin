@@ -100,11 +100,20 @@ const index: FC<IProps> = () => {
       },
     }),
   };
-  const handleDeleteChip = () => {
-    console.info("You clicked the delete icon.");
-  };
 
   const [count, setCount] = useState(1);
+  // Initial barcode list (example barcodes)
+  const [barcodes, setBarcodes] = useState(
+    [...Array(10)].map((_, index) => `ABC2024${index + 1}`)
+  );
+
+  // Handle chip deletion
+  const handleDeleteChip = (chipToDelete: string) => {
+    setBarcodes((prevBarcodes) =>
+      prevBarcodes.filter((barcode) => barcode !== chipToDelete)
+    );
+  };
+
   return (
     <>
       {/* <div className="center-container">
@@ -121,20 +130,23 @@ const index: FC<IProps> = () => {
           <form className="row g-3">
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Campaign name</FormLabelStyled>
+                <FormLabelStyled>Campaign name <CustomTooltip
+                  iconMarginBottom="1px"
+                  title="Define a name for your campaign so you can differentiate it."
+                /></FormLabelStyled>
                 <FormInputStyled
                   type="text"
                   className="form-control"
                   placeholder="Enter Campaign name"
                 />
-                <FormInputDescriptionStyled>
-                  Define a name for your campaign so you can differentiate it.
-                </FormInputDescriptionStyled>
               </Form.Group>
             </div>
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Discount Type</FormLabelStyled>
+                <FormLabelStyled>Discount Type<CustomTooltip
+                  iconMarginBottom="1px"
+                  title="Define a name for your campaign so you can differentiate it."
+                /></FormLabelStyled>
                 <Select
                   options={listingType}
                   placeholder="Select Type"
@@ -142,54 +154,54 @@ const index: FC<IProps> = () => {
                   className="mb-2"
                   styles={customStyles}
                 />
-                <FormInputDescriptionStyled>
-                  Define a name for your campaign so you can differentiate it.
-                </FormInputDescriptionStyled>
               </Form.Group>
             </div>
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Start date & time</FormLabelStyled>
+                <FormLabelStyled>Start date & time<CustomTooltip
+                  iconMarginBottom="1px"
+                  title="Define the date and time for your campaign to start."
+                /></FormLabelStyled>
                 <DateFlatpickr
                   type="datetime"
                   placeholder=""
                   value={null}
                   onChange={() => {}}
                 />
-                <FormInputDescriptionStyled>
-                  Define the date and time for your campaign to start.
-                </FormInputDescriptionStyled>
               </Form.Group>
             </div>
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Expiry date & time</FormLabelStyled>
+                <FormLabelStyled>Expiry date & time<CustomTooltip
+                  iconMarginBottom="1px"
+                  title=" Define the date and time for your campaign to end and codes to
+                  expire ."
+                /></FormLabelStyled>
                 <DateFlatpickr
                   type="datetime"
                   placeholder=""
                   value={null}
                   onChange={() => {}}
                 />
-                <FormInputDescriptionStyled>
-                  Define the date and time for your campaign to end and codes to
-                  expire .
-                </FormInputDescriptionStyled>
               </Form.Group>
             </div>
             <div className="col-12 col-md-6 mb-6">
-              <FormLabelStyled>Number of Codes</FormLabelStyled>
+              <FormLabelStyled>Number of Codes<CustomTooltip
+                  iconMarginBottom="1px"
+                  title="Define the number of unique codes you like to create"
+                /></FormLabelStyled>
               <CounterInput
                 count={count}
                 onIncrement={() => setCount(count + 1)}
                 onDecrement={() => setCount(count - 1)}
               />
-              <FormInputDescriptionStyled>
-                Define the number of unique codes you like to create
-              </FormInputDescriptionStyled>
             </div>
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Usage time per code</FormLabelStyled>
+                <FormLabelStyled>Usage time per code<CustomTooltip
+                  iconMarginBottom="1px"
+                  title=" Define the number of times each code can be used."
+                /></FormLabelStyled>
                 <Select
                   options={listingType}
                   placeholder="Select"
@@ -197,9 +209,6 @@ const index: FC<IProps> = () => {
                   className="mb-2"
                   styles={customStyles}
                 />
-                <FormInputDescriptionStyled>
-                  Define the number of times each code can be used.
-                </FormInputDescriptionStyled>
               </Form.Group>
             </div>
           </form>
@@ -250,6 +259,7 @@ const index: FC<IProps> = () => {
               padding: "40px",
               borderRadius: "10px",
               backgroundColor: "#fafbfc",
+              width: "100%",
             }}
           >
             <span
@@ -261,11 +271,12 @@ const index: FC<IProps> = () => {
               Generated Barcodes
             </span>
             <div className="d-flex align-items-center gap-3 flex-wrap">
-              {[...Array(10)].map((_, index) => (
+              {barcodes.map((barcode) => (
                 <Chip
-                  key={index}
-                  label="ABC20241"
+                  key={barcode}
+                  label={barcode}
                   variant="outlined"
+                  onDelete={() => handleDeleteChip(barcode)}
                   style={{
                     width: chipWidth,
                     height: "40px",
