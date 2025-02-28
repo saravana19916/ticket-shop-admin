@@ -21,6 +21,7 @@ const CheckMark = styled.span`
 `;
 
 const CustomOption = (props: any) => {
+  console.log('custom');
   const { data, isSelected, innerRef, innerProps } = props;
 
   return (

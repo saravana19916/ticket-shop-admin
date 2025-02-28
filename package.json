@@ -83,6 +83,7 @@
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-dual-listbox": "^5.0.2",
+    "react-feather": "^2.0.10",
     "react-filepond": "^7.1.2",
     "react-flatpickr": "^3.10.13",
     "react-form-stepper": "^2.0.3",

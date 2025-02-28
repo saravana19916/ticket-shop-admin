@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Select, { ActionMeta, MultiValue, SingleValue } from "react-select";
 import CustomOption from "./CustomOptions";
+import CustomDropdownIndicator from "./CustomDropdownIndicator";
 
 export interface IOptionType {
   value: string | number | boolean;
@@ -40,14 +41,6 @@ const Index: FC<IProps> = ({
       color: "#000",
       fontWeight: "400",
       fontSize: "14px",
-    }),
-    indicatorSeparator: (provided: any) => ({
-      ...provided,
-      display: "none",
-    }),
-    dropdownIndicator: (provided: any) => ({
-      ...provided,
-      color: "#777",
     }),
     control: (provided: any, state: any) => ({
       ...provided,
@@ -124,7 +117,7 @@ const Index: FC<IProps> = ({
           Array.isArray(selectedValue) &&
           selectedValue.some((sel) => sel.value === option.value)
         }
-        components={{ Option: CustomOption }}
+        components={{ Option: CustomOption, DropdownIndicator: CustomDropdownIndicator }}
       />
     );
   }
@@ -144,6 +137,7 @@ const Index: FC<IProps> = ({
         Array.isArray(selectedValue) &&
         selectedValue.some((sel) => sel.value === option.value)
       }
+      components={{ Option: CustomOption, DropdownIndicator: CustomDropdownIndicator }}
     />
   );
 };

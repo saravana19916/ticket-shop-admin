@@ -21,14 +21,6 @@ const BaseButton = styled.button`
       display: none;
     }
   }
-
-  span {
-    display: none;
-
-    @media (min-width: 768px) {
-      display: block;
-    }
-  }
 `;
 
 export const ButtonPrimary = styled(BaseButton)`
