@@ -175,9 +175,7 @@ const AddPricing: FC<IAddPricingProps> = () => {
                           className="btn"
                           style={{ minWidth: "118px" }}
                         >
-                          {values?.id === 0
-                            ? "Create Product"
-                            : "Update Product"}{" "}
+                          {values?.id === 0 ? "Add" : "Update"}{" "}
                         </ButtonPrimary>
                       </div>
                     </div>

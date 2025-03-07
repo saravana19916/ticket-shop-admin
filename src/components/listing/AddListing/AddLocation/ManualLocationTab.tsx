@@ -14,6 +14,9 @@ import {
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
 import { ButtonPrimary } from "../../../styledComponents/styledButton";
+import CustomTooltip from "../../../shared/CustomTooltip";
+import SelectDropDown from "../../../shared/SelectDropDown";
+
 interface IProps {}
 const ManualLocationTab: FC<IProps> = ({}) => {
   const customStyles = {
@@ -163,7 +166,13 @@ const ManualLocationTab: FC<IProps> = ({}) => {
             <FormikForm>
               <div className="col-12 mb-7 mt-3 pe-0">
                 <Form.Group>
-                  <FormLabelStyled>Location Name</FormLabelStyled>
+                  <FormLabelStyled>
+                    Location Name
+                    <CustomTooltip
+                      iconMarginBottom="2px"
+                      title="Location Name"
+                    />
+                  </FormLabelStyled>
                   <FormInputStyled
                     type="text"
                     placeholder="Enter location or destination name"
@@ -181,7 +190,13 @@ const ManualLocationTab: FC<IProps> = ({}) => {
               </div>
               <div className="col-12 mb-7 pe-0">
                 <Form.Group>
-                  <FormLabelStyled>Location Website</FormLabelStyled>
+                  <FormLabelStyled>
+                    Location Website
+                    <CustomTooltip
+                      iconMarginBottom="2px"
+                      title="Location Website"
+                    />
+                  </FormLabelStyled>
                   <FormInputStyled
                     type="text"
                     placeholder="Enter location website"
@@ -201,20 +216,20 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                 <Form.Group>
                   <div className="row">
                     <div className="col-xl-4 col-12 mb-7 pe-0">
-                      <FormLabelStyled>Country</FormLabelStyled>
-                      <Select
+                      <FormLabelStyled>
+                        Country
+                        <CustomTooltip iconMarginBottom="2px" title="Country" />
+                      </FormLabelStyled>
+                      <SelectDropDown
                         isSearchable
-                        styles={customStyles}
                         options={countriesList}
                         placeholder={"Country"}
-                        value={
+                        selectedValue={
                           sliceCountry?.find(
                             (option: any) => option.value == values.countryId
                           ) || null
                         }
                         onChange={(e: any) => {
-                          console.log(e, "eeee");
-
                           setFieldValue("countryId", e?.value);
                           handleCountryChange();
                         }}
@@ -228,12 +243,15 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                       )}
                     </div>
                     <div className="col-xl-4 col-12 mb-7 pe-0">
-                      <FormLabelStyled>City </FormLabelStyled>
-                      <Select
+                      <FormLabelStyled>
+                        City
+                        <CustomTooltip iconMarginBottom="2px" title="City" />
+                      </FormLabelStyled>
+                      <SelectDropDown
                         isSearchable
                         options={cityData}
-                        placeholder={"City"}
-                        value={
+                        placeholder="City"
+                        selectedValue={
                           cityData?.find(
                             (option: any) => option.value === values?.cityId
                           ) || null
@@ -243,7 +261,6 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                         }}
                         onInputChange={filterCities}
                         className="city-default fs-12px from-control placeholder-danger-subtle"
-                        styles={customStyles}
                       />
                       {errors?.cityId && touched?.cityId && (
                         <span className="text-danger d-inline-block ms-5 mt-1 fs-11px">
@@ -252,7 +269,13 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                       )}
                     </div>
                     <div className="col-xl-4 col-12 mb-7 pe-0">
-                      <FormLabelStyled>Zip Code </FormLabelStyled>
+                      <FormLabelStyled>
+                        Zip Code
+                        <CustomTooltip
+                          iconMarginBottom="2px"
+                          title="Zip Code"
+                        />
+                      </FormLabelStyled>
 
                       <FormInputStyled
                         type="text"
@@ -273,7 +296,10 @@ const ManualLocationTab: FC<IProps> = ({}) => {
               </div>
               <div className="col-12 mb-7 pe-0">
                 <Form.Group>
-                  <FormLabelStyled>Address </FormLabelStyled>
+                  <FormLabelStyled>
+                    Address
+                    <CustomTooltip iconMarginBottom="2px" title="Address" />
+                  </FormLabelStyled>
                   <FormInputStyled
                     type="text"
                     placeholder="Enter your complete address here"
@@ -296,7 +322,7 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                     className="btn"
                     style={{ minWidth: "118px" }}
                   >
-                    Create Location
+                    Add
                   </ButtonPrimary>
                 </div>
               </div>

@@ -51,6 +51,10 @@ export const ButtonSecondary = styled(BaseButton)`
     background-color: #f3f4f6;
     color: #374151;
   }
+  .dark-mode & {
+    color: #ffffff;
+    background: transparent;
+  }
 `;
 
 export const ButtonSecondaryGrey = styled(ButtonSecondary)`
@@ -77,14 +81,14 @@ export const ButtonSuccess = styled(BaseButton)`
 `;
 
 export const ButtonActive = styled(BaseButton)`
-  background-color: #00ff00;
-  border-color: #00ff00;
+  background-color: #16d9c6;
+  border-color: #16d9c6;
   font-size: 12px;
   padding: 8px 32px;
   min-width: 130px;
 `;
 
 export const ButtonNotActive = styled(ButtonActive)`
-  background-color: #00dcfa;
-  border-color: #00dcfa;
+  background-color: #baf1e4;
+  border-color: #baf1e4;
 `;

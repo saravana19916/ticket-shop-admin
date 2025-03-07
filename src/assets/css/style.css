@@ -1523,6 +1523,15 @@ li[role="presentation"] .nav-link {
 }
 
 .dark-mode .Select__control {
+  background-color: #282848 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dark-mode .Select-multiple__control {
+  background-color: #282848 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .Select-multiple__menu {
   background-color: #1a1a3c !important;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -1889,8 +1898,8 @@ li[role="presentation"] .nav-link {
 .dark-mode .react-tel-input .country-list .country.highlight {
   background: #303052 !important;
 }
-.dark-mode .react-tel-input .country-list .country:hover{
-	background-color: #303052;
+.dark-mode .react-tel-input .country-list .country:hover {
+  background-color: #303052;
 }
 
 .CountrySelector .flag {
@@ -2992,7 +3001,9 @@ th {
 .transparent-mode .Select__single-value {
   color: #fff !important;
 }
-
+.dark-mode .Select__single-value {
+  color: #fff !important;
+}
 .transparent-mode .Select2__single-value {
   color: #fff;
 }
@@ -69935,15 +69946,27 @@ a.fc-event:hover {
 .react-tel-input .flag-dropdown.open .selected-flag {
   background: transparent !important;
 }
-.custom-phone-input:focus{
-	border-color: #fec9da80 !important;
-    outline: 1px solid #fec9da80 !important;
+.custom-phone-input:focus {
+  border-color: #fec9da80 !important;
+  outline: 1px solid #fec9da80 !important;
 }
-.Select-multiple__multi-value{
-	font-weight: 400 !important;
-    font-size: 14px !important;	
+.Select-multiple__multi-value {
+  font-weight: 400 !important;
+  font-size: 14px !important;
 }
-.Select-multiple__multi-value__label{
-	color: #000 !important;
-    font-size: 14px !important;
+.Select-multiple__multi-value__label {
+  color: #000 !important;
+  font-size: 14px !important;
+}
+.flatpickr-time input::selection {
+  background: #ffe5eb;
+}
+.dark-mode .flatpickr-time input::selection {
+  background: #ed003b;
+}
+.dark-mode .Select-multiple__multi-value {
+  color: #fff !important;
+}
+.dark-mode .Select-multiple__multi-value__label {
+  color: #fff !important;
 }

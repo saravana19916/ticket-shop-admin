@@ -7,6 +7,12 @@ import {
 } from "../../../../styledComponents/styledForm";
 import DateFlatpickr from "../../../../shared/DateFlatpickr";
 import CustomTooltip from "../../../../shared/CustomTooltip";
+import SelectDropDown from "../../../../shared/SelectDropDown";
+const languageOptions = [
+  { value: "english", label: "English" },
+  { value: "arabic", label: "Arabic" },
+  { value: "spanish", label: "Spanish" },
+];
 interface IDateTimeType {
   startDateAndTime: Date | null;
   endDateAndTime: Date | null;
@@ -15,6 +21,8 @@ interface IDateTimeType {
 }
 interface IGeneralInfo {}
 const GeneralInfo: FC<IGeneralInfo> = ({}) => {
+  const [selectedLanguage, setSelectedLanguage] = useState<any>([]);
+
   const [dateTime, setDateTime] = useState<IDateTimeType>({
     startDateAndTime: null,
     endDateAndTime: null,
@@ -44,7 +52,10 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
           <div className="row">
             <div className="col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled htmlFor="showName">Show Name</FormLabelStyled>
+                <FormLabelStyled htmlFor="showName">
+                  Show Name
+                  <CustomTooltip iconMarginBottom="1px" title="Show Name" />
+                </FormLabelStyled>
                 <FormInputStyled
                   type="text"
                   className="form-control"
@@ -55,7 +66,13 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
             </div>
             <div className="col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Start Date & Time</FormLabelStyled>
+                <FormLabelStyled>
+                  Start Date & Time
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title="Start Date & Time"
+                  />
+                </FormLabelStyled>
                 <DateFlatpickr
                   value={dateTime?.startDateAndTime}
                   onChange={(date) =>
@@ -68,7 +85,13 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
             </div>
             <div className="col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>End Date & Time</FormLabelStyled>
+                <FormLabelStyled>
+                  End Date & Time
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title="End Date & Time"
+                  />
+                </FormLabelStyled>
                 <DateFlatpickr
                   value={dateTime?.endDateAndTime}
                   onChange={(date) =>
@@ -83,6 +106,10 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
               <Form.Group>
                 <FormLabelStyled htmlFor="showDuration">
                   Duration (Mins)
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title="Duration (Mins)"
+                  />
                 </FormLabelStyled>
                 <FormInputStyled
                   type="text"
@@ -96,6 +123,10 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
               <Form.Group>
                 <FormLabelStyled htmlFor="doorOpenTime">
                   Doors Open Time
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title="Doors Open Time"
+                  />
                 </FormLabelStyled>
                 <DateFlatpickr
                   value={dateTime?.doorOpenTime}
@@ -111,6 +142,10 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
               <Form.Group>
                 <FormLabelStyled htmlFor="doorCloseTime">
                   Doors Close Time
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title="Doors Close Time"
+                  />
                 </FormLabelStyled>
                 <DateFlatpickr
                   value={dateTime?.doorCloseTime}
@@ -124,12 +159,23 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
             </div>
             <div className="col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled htmlFor="language">Language</FormLabelStyled>
-                <FormInputStyled
-                  type="text"
-                  placeholder="Enter Language"
-                  className="form-control"
-                  name="listingName"
+                <FormLabelStyled htmlFor="language">
+                  Show Language
+                  <CustomTooltip iconMarginBottom="1px" title="Show Language" />
+                </FormLabelStyled>
+                <SelectDropDown
+                  options={languageOptions}
+                  placeholder="Select Language"
+                  classNamePrefix="Select-multiple"
+                  className="mt-1"
+                  isMulti={true}
+                  multiSelectOnChange={(selectedOptions) => {
+                    const selectedValues = selectedOptions?.map(
+                      (option) => option.value
+                    );
+                    setSelectedLanguage(selectedOptions);
+                  }}
+                  selectedValue={selectedLanguage}
                 />
               </Form.Group>
             </div>

@@ -116,8 +116,12 @@ const AddZoningAndCapacity: FC<IAddZoningAndCapacityProps> = ({}) => {
                         {/* <ButtonSecondaryDarkGrey type="button" className="btn">
                           Add Another Zone
                         </ButtonSecondaryDarkGrey> */}
-                        <ButtonPrimary type="submit" className="btn">
-                          Create Zone
+                        <ButtonPrimary
+                          type="submit"
+                          className="btn"
+                          style={{ minWidth: "118px" }}
+                        >
+                          Add
                         </ButtonPrimary>
                       </div>
                     </div>

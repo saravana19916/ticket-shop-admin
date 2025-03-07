@@ -14,6 +14,15 @@ const OptionWrapper = styled.div<{ isSelected: boolean }>`
   &:hover {
     background-color: #fec9da80;
   }
+
+  .dark-mode & {
+    color: #ffffff;
+    background: #1a1a3c;
+  }
+  .dark-mode &:hover {
+    color: #000;
+    background: #fec9da80;
+  }
 `;
 const CheckMark = styled.span`
   color: #ed003b;
@@ -21,7 +30,6 @@ const CheckMark = styled.span`
 `;
 
 const CustomOption = (props: any) => {
-  console.log('custom');
   const { data, isSelected, innerRef, innerProps } = props;
 
   return (
@@ -30,7 +38,10 @@ const CustomOption = (props: any) => {
       {isSelected && (
         <>
           <CheckMark>
-            <i className="bi bi-check-lg d-inline-block me-2" style={{ strokeWidth: "4px" }}></i>
+            <i
+              className="bi bi-check-lg d-inline-block me-2"
+              style={{ strokeWidth: "4px" }}
+            ></i>
           </CheckMark>
           {/* <StyledInputDiv className="form-check">
             <input

@@ -6,11 +6,11 @@ import AddDynamicPricing from "../components/dynamicPricing/AddDynamicPricing";
 import AddMarketingMaterial from "../components/marketingMaterial/AddMarketingMaterial";
 import AddPolicies from "../components/listing/AddListing/Policies/AddPolicies";
 import AddZones from "../components/listing/AddListing/AddZoningAndCapacity/AddZones/AddZones";
+import AddMyProductAllocation from "../components/ProductAllocation/AddProductAllocation";
 
 const CardsDesign = lazy(
   () => import("../components/apps/cardsdesign/cardsdesign")
 );
-const Chat = lazy(() => import("../components/apps/chat/chat"));
 const Charts = lazy(() => import("../components/apps/charts/charts"));
 const ContentScrollbar = lazy(
   () => import("../components/apps/contentscrollbar/contentscrollbar")
@@ -131,6 +131,7 @@ const Info = lazy(() => import("../components/info"));
 const AddInfo = lazy(() => import("../components/info/AddInfo"));
 const Location = lazy(() => import("../components/location"));
 const Zoning = lazy(() => import("../components/zoningAndCapacity"));
+const ProductAllocation = lazy(() => import("../components/ProductAllocation"));
 const MarketingMaterial = lazy(() => import("../components/marketingMaterial"));
 const DynamicPricing = lazy(() => import("../components/dynamicPricing"));
 const Rules = lazy(() => import("../components/rules"));
@@ -268,9 +269,7 @@ const MailCompose = lazy(
 );
 const MailInbox = lazy(() => import("../components/pages/mailinbox/mailinbox"));
 const MailRead = lazy(() => import("../components/pages/mailread/mailread"));
-const NotificationList = lazy(
-  () => import("../components/pages/notificationlist/notificationlist")
-);
+const NotificationList = lazy(() => import("../components/notification"));
 const Profile = lazy(() => import("../components/pages/profile/profile"));
 const DataTable = lazy(
   () => import("../components/pages/tables/datatable/datatable")
@@ -323,6 +322,8 @@ const Widgets = lazy(() => import("../components/apps/widgets/widgets"));
 const FormInputSpinners = lazy(
   () => import("../components/pages/forms/forminputspinners/forminputspinners")
 );
+
+const Chat = lazy(() => import("../components/chat/chat"));
 
 export const RouterData = [
   { path: `${import.meta.env.BASE_URL}dashboard`, element: <Dashboard /> },
@@ -422,6 +423,14 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}add-zoning-and-capacity`,
     element: <AddZones />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}my-product-allocation`,
+    element: <ProductAllocation />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}add-product-allocation`,
+    element: <AddMyProductAllocation />,
   },
   {
     path: `${import.meta.env.BASE_URL}edit-zoning-and-capacity/:id`,
@@ -877,5 +886,9 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}pages/tables/defaulttables`,
     element: <DefaultTable />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}/chats`,
+    element: <Chat />,
   },
 ];

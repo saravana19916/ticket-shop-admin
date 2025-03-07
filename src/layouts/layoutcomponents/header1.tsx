@@ -944,7 +944,7 @@ const Header1 = () => {
                           </div>
                           <div className="dropdown-divider m-0"></div>
                           <Dropdown.Item
-                            href="#"
+                            href="/chats"
                             className="text-center p-3 text-muted"
                           >
                             See all Messages

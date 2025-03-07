@@ -77,7 +77,10 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
           <div className="row">
             <div className="col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Product Name</FormLabelStyled>
+                <FormLabelStyled>
+                  Product Name
+                  <CustomTooltip title="Product Name" />
+                </FormLabelStyled>
                 <FormInputStyled
                   type="text"
                   placeholder="Type the product name"
@@ -106,16 +109,19 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
             </div>
             <div className="col-12 mb-7">
               <Form.Group>
-                <FormLabelStyled>Product Description</FormLabelStyled>
+                <FormLabelStyled>
+                  Product Description
+                  <CustomTooltip title="Product Description" />
+                </FormLabelStyled>
                 <StyledSunEditor
                   setOptions={{
                     font: ["Poppins"],
-                    defaultStyle: "font-family: Poppins;",
+                    defaultStyle: "font-family: Poppins; font-size: 12px;",
                     height: "260px",
                     buttonList: [
                       ["undo", "redo"],
                       ["bold", "italic", "underline", "strike"],
-                      ["list", "align", "fontSize"],
+                      ["list", "align"],
                     ],
                   }}
                 />
@@ -123,7 +129,10 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
             </div>
             <div className="col-12 mb-6 mt-5">
               <Form.Group>
-                <FormLabelStyled>Category</FormLabelStyled>
+                <FormLabelStyled>
+                  Category
+                  <CustomTooltip title="Category" />
+                </FormLabelStyled>
                 <div className="row">
                   {[
                     {
@@ -197,7 +206,10 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
             </div>
             <div className="col-12 mb-7 mt-5">
               <Form.Group>
-                <FormLabelStyled>Age Limit</FormLabelStyled>
+                <FormLabelStyled>
+                  Age Limit
+                  <CustomTooltip title="Age Limit" />
+                </FormLabelStyled>
                 <div className="row">
                   {[
                     { value: "openAge2", label: "Open Age (+2)" },
@@ -250,6 +262,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
                   Net Price
+                  <CustomTooltip title="Net Price" />
                 </FormLabelStyled>
                 <FormInputStyled
                   type="text"
@@ -262,6 +275,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
                   Transaction Currency
+                  <CustomTooltip title="Transaction Currency" />
                 </FormLabelStyled>
                 <SelectDropDown
                   options={[
@@ -276,7 +290,8 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
             <div className="col-12 col-xl-6 mb-7">
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
-                  VAT TAX
+                  VAT Tax
+                  <CustomTooltip title="VAT Tax" />
                 </FormLabelStyled>
                 <FormInputWrapper className="w-100">
                   <FormInputStyled
@@ -291,7 +306,8 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
             <div className="col-12 col-xl-6 mb-7">
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
-                  Entertainment TAX
+                  Entertainment Tax
+                  <CustomTooltip title="Entertainment Tax" />
                 </FormLabelStyled>
                 <FormInputWrapper className="w-100">
                   <FormInputStyled
@@ -306,7 +322,8 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
             <div className="col-12 col-xl-6 mb-7">
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
-                  Other Taxes
+                  C/T Tax
+                  <CustomTooltip title="C/T Tax" />
                 </FormLabelStyled>
                 <FormInputWrapper className="w-100">
                   <FormInputStyled
@@ -322,6 +339,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
                   Other Taxes
+                  <CustomTooltip title="Other Taxes" />
                 </FormLabelStyled>
                 <FormInputWrapper className="w-100">
                   <FormInputStyled
@@ -339,6 +357,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
                       Service Fee Option{" "}
+                      <CustomTooltip title="Service Fee Option" />
                     </FormLabelStyled>
                     <SelectDropDown
                       options={serviceFeeOption}
@@ -353,6 +372,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
                       Service fee per Ticket{" "}
+                      <CustomTooltip title="Service fee per Ticket" />
                     </FormLabelStyled>
                     <FormInputWrapper className="w-100">
                       <FormInputStyled
@@ -364,7 +384,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
                       />
                       <FormInputGroupLabel
                         className="fw-semibold"
-                        style={{ color: "#000", top: "18px" }}
+                        style={{ color: "#000", top: "15px" }}
                       >
                         {selectedServiceOption}
                       </FormInputGroupLabel>
@@ -374,8 +394,16 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               </FormStyledContentSectionUndesignedForFields>
             </div>
             <div className="col-12 mb-1 p-0">
-              <FormStyledContentSectionUndesignedForFields>
-                <FormLabelStyled>Final Product Price to Buyer </FormLabelStyled>
+              <FormStyledContentSectionUndesignedForFields
+                style={{ backgroundColor: "#fec9da80" }}
+              >
+                <FormLabelStyled>
+                  Final Product Price to Buyer
+                  <CustomTooltip
+                    title="This price does not include other banking charges, process fees
+                and levies."
+                  />
+                </FormLabelStyled>
                 <FormInputWrapper
                   style={{
                     width: "48%",
@@ -390,18 +418,12 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
                   />
                   <FormInputGroupLabel
                     className="fw-semibold"
-                    style={{ color: "#000", top: "18px" }}
+                    style={{ color: "#000", top: "15px" }}
                   >
                     AED
                   </FormInputGroupLabel>
                 </FormInputWrapper>
               </FormStyledContentSectionUndesignedForFields>
-            </div>
-            <div className="col-12 mb-3">
-              <FormInputDescriptionStyled className="ms-4">
-                This price does not include other banking charges, process fees
-                and levies.
-              </FormInputDescriptionStyled>
             </div>
           </div>
         </Form.Group>

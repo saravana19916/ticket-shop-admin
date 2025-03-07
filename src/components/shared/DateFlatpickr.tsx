@@ -57,6 +57,7 @@ const StyledDateFlatpickr = styled.div`
 `;
 
 interface DateFlatpickrProps {
+  id?: any;
   value: Date | null | string;
   onChange: (date: Date | null) => void;
   type?: "date" | "datetime" | "time";
@@ -64,6 +65,7 @@ interface DateFlatpickrProps {
 }
 
 const DateFlatpickr: React.FC<DateFlatpickrProps> = ({
+  id,
   value,
   onChange,
   type = "date",
@@ -87,6 +89,7 @@ const DateFlatpickr: React.FC<DateFlatpickrProps> = ({
   return (
     <StyledDateFlatpickr>
       <Flatpickr
+        id={id}
         className="form-control"
         value={value}
         onChange={(selectedDates: Date[]) => onChange(selectedDates[0] || null)}

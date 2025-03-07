@@ -141,7 +141,7 @@ const ProductAllocationAccordion: FC<IProps> = ({ index }) => {
                   <AccordionBodyLeftSection
                     className="col-8 fw-light"
                     style={{
-                      color: status === "active" ? "#00ff00" : "#45bced",
+                      color: status === "active" ? "#16d9c6" : "#BAF1E4",
                     }}
                   >
                     Created - {status === "active" ? "Active" : "Inactive"}

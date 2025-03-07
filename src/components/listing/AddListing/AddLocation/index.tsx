@@ -15,6 +15,7 @@ import {
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
 import { ButtonPrimary } from "../../../styledComponents/styledButton";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 const mapContainerStyle = {
   width: "100%",
@@ -67,7 +68,13 @@ const AddLocationForListing: FC = () => {
                 <TabPanel>
                   <div className="col-12 mb-7 mt-6 pe-0">
                     <Form.Group>
-                      <FormLabelStyled>Search from Google</FormLabelStyled>
+                      <FormLabelStyled>
+                        Search from Google
+                        <CustomTooltip
+                          iconMarginBottom="2px"
+                          title="Search from Google"
+                        />
+                      </FormLabelStyled>
                       <FormInputWrapper className="w-100">
                         <FormInputStyled
                           type="text"
@@ -102,7 +109,13 @@ const AddLocationForListing: FC = () => {
                   </div>
                   <div className="col-12 mb-7 pe-0">
                     <Form.Group>
-                      <FormLabelStyled>Location Website</FormLabelStyled>
+                      <FormLabelStyled>
+                        Location Website
+                        <CustomTooltip
+                          iconMarginBottom="2px"
+                          title="Location Website"
+                        />
+                      </FormLabelStyled>
                       <FormInputStyled
                         type="text"
                         value={formValues.locationWebsite}
@@ -120,7 +133,7 @@ const AddLocationForListing: FC = () => {
                         className="btn"
                         style={{ minWidth: "118px" }}
                       >
-                        Create Location
+                        Add
                       </ButtonPrimary>
                     </div>
                   </div>

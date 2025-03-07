@@ -237,7 +237,7 @@ const AddListingPageOne: FC<IAddListingPageOneProps> = ({}) => {
                             className="btn "
                             style={{ minWidth: "118px" }}
                           >
-                            Create Show
+                            Add
                           </ButtonPrimary>
                         </div>
                       </div>

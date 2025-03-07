@@ -7,6 +7,7 @@ import {
   AccordionBodyTop,
   AccordionBodyLeftSection,
   AccordionButton,
+  AccordionButton2,
 } from "../../../styledComponents/accordion";
 import { IAddListingShopProps } from "./type";
 import {
@@ -175,7 +176,7 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
                   <AccordionBodyLeftSection
                     className="col-8 fw-light"
                     style={{
-                      color: status === "active" ? "#00ff00" : "#45bced",
+                      color: status === "active" ? "#16d9c6" : "#BAF1E4",
                     }}
                   >
                     Created - {status === "active" ? "Active" : "Inactive"}
@@ -198,42 +199,42 @@ const ShowDateAndTimeAccordion: FC<IProps> = ({ item, index, status }) => {
                 Product Included
               </span>
               <div className="d-flex align-items-center gap-3 justify-content-start my-4 flex-wrap">
-                <AccordionButton
+                <AccordionButton2
                   className="btn px-6 py-2 fs-10px"
-                  style={{ minWidth: "150px", backgroundColor: "#fff" }}
+                  style={{ minWidth: "150px" }}
                 >
                   Sliver Ticket
-                </AccordionButton>
-                <AccordionButton
+                </AccordionButton2>
+                <AccordionButton2
                   className="btn px-6 py-2 fs-10px"
-                  style={{ minWidth: "150px", backgroundColor: "#fff" }}
+                  style={{ minWidth: "150px" }}
                 >
                   Bronze Ticket
-                </AccordionButton>
-                <AccordionButton
+                </AccordionButton2>
+                <AccordionButton2
                   className="btn px-6 py-2 fs-10px"
-                  style={{ minWidth: "150px", backgroundColor: "#fff" }}
+                  style={{ minWidth: "150px" }}
                 >
                   Gold Ticket
-                </AccordionButton>
-                <AccordionButton
+                </AccordionButton2>
+                <AccordionButton2
                   className="btn px-6 py-2 fs-10px"
-                  style={{ minWidth: "150px", backgroundColor: "#fff" }}
+                  style={{ minWidth: "150px" }}
                 >
                   Sliver Ticket
-                </AccordionButton>
-                <AccordionButton
+                </AccordionButton2>
+                <AccordionButton2
                   className="btn px-6 py-2 fs-10px"
-                  style={{ minWidth: "150px", backgroundColor: "#fff" }}
+                  style={{ minWidth: "150px" }}
                 >
                   Bronze Ticket
-                </AccordionButton>
-                <AccordionButton
+                </AccordionButton2>
+                <AccordionButton2
                   className="btn px-6 py-2 fs-10px"
-                  style={{ minWidth: "150px", backgroundColor: "#fff" }}
+                  style={{ minWidth: "150px" }}
                 >
                   Gold Ticket
-                </AccordionButton>
+                </AccordionButton2>
               </div>
             </div>
           </AccordionBodyTop>

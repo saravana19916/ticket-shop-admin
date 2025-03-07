@@ -144,6 +144,7 @@ const index = () => {
                             type="submit"
                             className="btn rounded-pill p-2 px-4 float-end fs-6 text-white bg-primary-1"
                             disabled={isAddingShop}
+                            style={{ minWidth: "118px" }}
                           >
                             {isAddingShop ? (
                               <>
@@ -160,16 +161,16 @@ const index = () => {
                               <>
                                 {isEditShop ? (
                                   <>
-                                    <i className="bi bi-pencil-square w-5 h-5 me-2"></i>
+                                    {/* <i className="bi bi-pencil-square w-5 h-5 me-2"></i> */}
                                   </>
                                 ) : (
                                   <>
-                                    <PlusIcon className="w-5 h-5 me-2" />
+                                    {/* <PlusIcon className="w-5 h-5 me-2" /> */}
                                   </>
                                 )}
                               </>
                             )}{" "}
-                            {isEditShop ? "Update Shop" : "Publish Shop"}
+                            {isEditShop ? "Update" : "Add"}
                           </button>
                         </div>
                       </div>

@@ -7,6 +7,8 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "@heroicons/react/24/outline";
+import NoDataFound from "../../shared/NoDataFound";
+import { salesByProductDemo } from "../../../commondata/dashboarddata";
 
 interface IProps {
   activeCurrency: any;
@@ -16,12 +18,15 @@ const SalesByProduct: FC<IProps> = ({ salesByProduct, activeCurrency }) => {
   const ITEMS_PER_PAGE = 5;
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-
+  const [dataDemo, setDataDemo] = useState<ISalesByProduct[]>();
   useEffect(() => {
     const pages = salesByProduct
       ? Math.ceil(salesByProduct.length / ITEMS_PER_PAGE)
       : 1;
     setTotalPages(pages);
+    if (!salesByProduct) {
+      setDataDemo(salesByProductDemo);
+    }
   }, [salesByProduct]);
 
   const currentData = salesByProduct?.slice(
@@ -48,71 +53,149 @@ const SalesByProduct: FC<IProps> = ({ salesByProduct, activeCurrency }) => {
             Sales by Product
           </Card.Title>
         </Card.Header>
-        <Card.Body className="d-flex flex-column px-4">
-          <table className="table table-borderless">
-            <thead className="border-0">
-              <tr>
-                <th>
-                  <span className="badge rounded-pill py-2 px-3 px-xl-4 fw-semibold text-capitalize fs-12px badge-bg-gray">
-                    Sort By <ChevronDownIcon className="h-4 w-4 ms-3" />
-                  </span>
-                </th>
-                <th className="text-center fw-semibold text-capitalize">
-                  Unit
-                </th>
-                <th className="text-end fw-semibold text-capitalize">Value</th>
-              </tr>
-            </thead>
-            <tbody className="border-0">
-              {currentData?.map((l, index) => (
-                <tr
-                  className="border-bottom"
-                  key={index + 1 * Math.random() * 100}
-                >
-                  <td className="d-flex gap-3 align-items-center fw-600">
-                    <div
-                      className="d-flex align-items-center justify-content-center text-white"
-                      style={{
-                        width: "24px",
-                        height: "24px",
-                        borderRadius: "6px",
-                        backgroundColor: "#000",
-                      }}
+        <Card.Body className="d-flex flex-column px-4 justify-content-center">
+          {currentData && currentData?.length > 0 ? (
+            <>
+              <table className="table table-borderless">
+                <thead className="border-0">
+                  <tr>
+                    <th>
+                      <span className="badge rounded-pill py-2 px-3 px-xl-4 fw-semibold text-capitalize fs-12px badge-bg-gray">
+                        Sort By <ChevronDownIcon className="h-4 w-4 ms-3" />
+                      </span>
+                    </th>
+                    <th className="text-center fw-semibold text-capitalize">
+                      Unit
+                    </th>
+                    <th className="text-end fw-semibold text-capitalize">
+                      Value
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="border-0">
+                  {currentData?.map((l, index) => (
+                    <tr
+                      className="border-bottom"
+                      key={index + 1 * Math.random() * 100}
                     >
-                      {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
-                    </div>
-                    <span className="text-start">{l.name}</span>
-                  </td>
-                  <td className="fw-600">{l.sold}</td>
-                  <td className="fw-600 text-end">
-                    {activeCurrency}{" "}
-                    {l.revenue ? roundToNearestWhole(l.revenue) : 0}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="d-flex justify-content-evenly align-items-center mt-auto pb-5">
-            <ChevronLeftIcon
-              onClick={handlePrevPage}
-              className={`h-4 w-4 ${
-                currentPage === 1
-                  ? "text-black-50"
-                  : "text-black cursor-pointer"
-              }`}
-            />
-            <span>
-              Page <span className="fw-600">{currentPage}</span> of {totalPages}
-            </span>
-            <ChevronRightIcon
-              onClick={handleNextPage}
-              className={`h-4 w-4 ${
-                currentPage === totalPages
-                  ? "text-black-50"
-                  : "text-black cursor-pointer"
-              }`}
-            />
-          </div>
+                      <td className="d-flex gap-3 align-items-center fw-600">
+                        <div
+                          className="d-flex align-items-center justify-content-center text-white"
+                          style={{
+                            width: "24px",
+                            height: "24px",
+                            borderRadius: "6px",
+                            backgroundColor: "#000",
+                          }}
+                        >
+                          {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
+                        </div>
+                        <span className="text-start">{l.name}</span>
+                      </td>
+                      <td className="fw-600">{l.sold}</td>
+                      <td className="fw-600 text-end">
+                        {activeCurrency}{" "}
+                        {l.revenue ? roundToNearestWhole(l.revenue) : 0}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="d-flex justify-content-evenly align-items-center mt-auto pb-5">
+                <ChevronLeftIcon
+                  onClick={handlePrevPage}
+                  className={`h-4 w-4 ${
+                    currentPage === 1
+                      ? "text-black-50"
+                      : "text-black cursor-pointer"
+                  }`}
+                />
+                <span>
+                  Page <span className="fw-600">{currentPage}</span> of{" "}
+                  {totalPages}
+                </span>
+                <ChevronRightIcon
+                  onClick={handleNextPage}
+                  className={`h-4 w-4 ${
+                    currentPage === totalPages
+                      ? "text-black-50"
+                      : "text-black cursor-pointer"
+                  }`}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <table className="table table-borderless">
+                <thead className="border-0">
+                  <tr>
+                    <th>
+                      <span className="badge rounded-pill py-2 px-3 px-xl-4 fw-semibold text-capitalize fs-12px badge-bg-gray">
+                        Sort By <ChevronDownIcon className="h-4 w-4 ms-3" />
+                      </span>
+                    </th>
+                    <th className="text-center fw-semibold text-capitalize">
+                      Unit
+                    </th>
+                    <th className="text-end fw-semibold text-capitalize">
+                      Value
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="border-0">
+                  {dataDemo?.map((l, index) => (
+                    <tr
+                      className="border-bottom"
+                      key={index + 1 * Math.random() * 100}
+                    >
+                      <td className="d-flex gap-3 align-items-center fw-600">
+                        <div
+                          className="d-flex align-items-center justify-content-center text-white"
+                          style={{
+                            width: "24px",
+                            height: "24px",
+                            borderRadius: "6px",
+                            backgroundColor: "#000",
+                          }}
+                        >
+                          {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
+                        </div>
+                        <span className="text-start">{l.name}</span>
+                      </td>
+                      <td className="fw-600">{l.sold}</td>
+                      <td className="fw-600 text-end">
+                        {activeCurrency}{" "}
+                        {l.revenue ? roundToNearestWhole(l.revenue) : 0}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="d-flex justify-content-evenly align-items-center mt-auto pb-5">
+                <ChevronLeftIcon
+                  onClick={handlePrevPage}
+                  className={`h-4 w-4 ${
+                    currentPage === 1
+                      ? "text-black-50"
+                      : "text-black cursor-pointer"
+                  }`}
+                />
+                <span>
+                  Page <span className="fw-600">{currentPage}</span> of{" "}
+                  {totalPages}
+                </span>
+                <ChevronRightIcon
+                  onClick={handleNextPage}
+                  className={`h-4 w-4 ${
+                    currentPage === totalPages
+                      ? "text-black-50"
+                      : "text-black cursor-pointer"
+                  }`}
+                />
+              </div>
+              {/* <NoDataFound /> */}
+            </>
+          )}
         </Card.Body>
       </Card>
     </div>

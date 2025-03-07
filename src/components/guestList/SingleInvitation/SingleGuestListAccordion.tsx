@@ -80,9 +80,7 @@ const SingleGuestListAccordion: FC<IProps> = ({ item, index }) => {
             {/* Price Section */}
             <div className="col-6 col-lg-2 d-flex flex-column align-self-end ms-auto">
               <h4 className="m-0 fw-600 text-black">AED {item.amount}</h4>
-              <p className="m-0 text-black" style={{ fontSize: "10px" }}>
-                net of all taxes
-              </p>
+              <p className="m-0 text-black fs-10px">net of all taxes</p>
             </div>
           </div>
         </div>

@@ -39,8 +39,8 @@ const VideoPlayer: FC<IVideoPlayerProps> = ({
 
   const closeButtonStyles = {
     position: "absolute",
-    top: "-0.3rem",
-    right: "0rem",
+    top: "0.1rem",
+    right: "1.2rem",
     color: "#FFF",
   } as React.CSSProperties;
 
@@ -72,7 +72,7 @@ const VideoPlayer: FC<IVideoPlayerProps> = ({
                 height="100%"
                 width="100%"
                 controls={true}
-                className="w-full"
+                className="w-full mt-4"
               />
             </>
           )}

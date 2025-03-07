@@ -45,17 +45,17 @@ const VerifyOTPModel: React.FC<VerifyOTPModelProps> = ({
         keyboard={false}
         centered={true}
       >
-        <Modal.Header>
-          <Modal.Title className="w-100 text-center">
+        <Modal.Header className="p-6">
+          <Modal.Title className="w-100 text-center m-0">
             <span className="fw-600 fs-4 text-center">
-              Verify your {heading}
+              Verify Your {heading}
             </span>
           </Modal.Title>
-          <span className="d-flex ms-auto" onClick={onClose}>
+          <span className="d-flex ms-auto fs-4" onClick={onClose}>
             <i className="fe fe-x ms-auto"></i>
           </span>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="py-7">
           <div className="d-flex flex-column text-center gap-4">
             <div>
               {/* <span className="fw-600 fs-4">Verify your email</span> */}

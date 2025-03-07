@@ -11,7 +11,7 @@ interface IProps {
 }
 const SalesVsAttendance: FC<IProps> = ({ sales, absent, attend }) => {
   const totalCount =
-    (sales?.unit || 0) + (attend?.unit || 0) + (absent?.unit || 0);
+    (sales?.unit || 100) + (attend?.unit || 95) + (absent?.unit || 5);
   return (
     <>
       <div className="mb-5 tile-min-max-width d-flex">
@@ -29,9 +29,9 @@ const SalesVsAttendance: FC<IProps> = ({ sales, absent, attend }) => {
                   {
                     name: "Sales vs Attendance",
                     data: [
-                      sales?.unit || 0,
-                      attend?.unit || 0,
-                      absent?.unit || 0,
+                      sales?.unit || 100,
+                      attend?.unit || 95,
+                      absent?.unit || 5,
                     ],
                   },
                 ]}
@@ -54,7 +54,8 @@ const SalesVsAttendance: FC<IProps> = ({ sales, absent, attend }) => {
                 className="avatar avatar-md text-white text-center me-2 rounded-2"
                 style={{ backgroundColor: "#51B1DF" }}
               >
-                {sales?.percentage ? roundToNearestWhole(sales.percentage) : 0}%
+                {sales?.percentage ? roundToNearestWhole(sales.percentage) : 95}
+                %
               </div>
               <div className="d-flex flex-column">
                 <span className="fw-600 fs-6">Sales</span>
@@ -63,7 +64,7 @@ const SalesVsAttendance: FC<IProps> = ({ sales, absent, attend }) => {
               <div className="ms-auto my-auto">
                 <p className="fw-600 fs-6">
                   {" "}
-                  {sales?.unit ? sales.unit : 0} / {totalCount || 0}
+                  {sales?.unit ? sales.unit : 100} / {totalCount || 0}
                 </p>
               </div>
             </div>
@@ -83,7 +84,7 @@ const SalesVsAttendance: FC<IProps> = ({ sales, absent, attend }) => {
               </div>
               <div className="ms-auto my-auto">
                 <p className="fw-600 fs-6">
-                  {attend?.unit ? attend.unit : 0} / {totalCount || 0}
+                  {attend?.unit ? attend.unit : 95} / {totalCount || 0}
                 </p>
               </div>
             </div>
@@ -103,7 +104,7 @@ const SalesVsAttendance: FC<IProps> = ({ sales, absent, attend }) => {
               </div>
               <div className="ms-auto my-auto">
                 <p className="fw-600 fs-6">
-                  {absent?.unit ? absent.unit : 0} / {totalCount || 0}
+                  {absent?.unit ? absent.unit : 5} / {totalCount || 0}
                 </p>
               </div>
             </div>

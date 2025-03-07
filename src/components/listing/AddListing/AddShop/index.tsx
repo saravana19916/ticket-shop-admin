@@ -177,8 +177,9 @@ const AddShops: FC<IAddShopsProps> = () => {
                           type="submit"
                           className="btn"
                           onClick={submitForm}
+                          style={{ minWidth: "118px" }}
                         >
-                          {editId ? "Update Shop" : "Create Shop"}
+                          {editId ? "Update" : "Add"}
                         </ButtonPrimary>
                       </div>
                     </div>

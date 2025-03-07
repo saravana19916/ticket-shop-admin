@@ -34,11 +34,37 @@ import CustomTooltip from "../../shared/CustomTooltip";
 import VerifyOTPModel from "./VerfiyOTPModel";
 import CustomToastContainer from "../../shared/CustomToastContainer";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import DateFlatpickr from "../../shared/DateFlatpickr";
+
 interface IProps {}
-const tabList = ["All Listings", "Shows", "Mechandise", "Food & Beverage", "Hospitality", "Services"];
+const tabList = [
+  "All Listings",
+  "Shows",
+  "Mechandise",
+  "Food & Beverage",
+  "Hospitality",
+  "Services",
+];
+
+interface IDateTimeType {
+  showDate: Date | null;
+  showTime: Date | null;
+}
 
 const index: FC<IProps> = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
+  const [dateTime, setDateTime] = useState<IDateTimeType>({
+    showDate: null,
+    showTime: null,
+  });
+  const handleDateTimeChange = (type: string, value: Date | null) => {
+    setDateTime((prev) => {
+      return {
+        ...prev,
+        [type]: value,
+      };
+    });
+  };
   // const [phoneNumber, setPhoneNumber] = useState("");
   const [userInput, setUserInput] = useState("");
   const [heading, setHeading] = useState("");
@@ -87,6 +113,38 @@ const index: FC<IProps> = () => {
             </div>
             <div>
               <form className="row g-3">
+                <div className="col-12 col-md-6 mb-5">
+                  <Form.Group>
+                    <FormLabelStyled className="d-flex align-items-center">
+                      Show Date
+                      <CustomTooltip iconMarginBottom="2px" title="Show Date" />
+                    </FormLabelStyled>{" "}
+                    <DateFlatpickr
+                      value={dateTime?.showDate}
+                      onChange={(date) =>
+                        handleDateTimeChange("showDate", date)
+                      }
+                      type="date"
+                      placeholder="Select Date"
+                    />
+                  </Form.Group>
+                </div>
+                <div className="col-12 col-md-6 mb-5">
+                  <Form.Group>
+                    <FormLabelStyled>
+                      Show Time
+                      <CustomTooltip title="Show Time" />
+                    </FormLabelStyled>
+                    <DateFlatpickr
+                      value={dateTime?.showTime}
+                      onChange={(date) =>
+                        handleDateTimeChange("showTime", date)
+                      }
+                      type="time"
+                      placeholder="Select Time"
+                    />
+                  </Form.Group>
+                </div>
                 <div className="col-12 col-md-6 mb-5">
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
@@ -198,6 +256,10 @@ const index: FC<IProps> = () => {
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
                       Nationality
+                      <CustomTooltip
+                        iconMarginBottom="2px"
+                        title="Nationality"
+                      />
                     </FormLabelStyled>{" "}
                     <FormInputStyled
                       type="text"
@@ -211,6 +273,10 @@ const index: FC<IProps> = () => {
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
                       Place of Residence
+                      <CustomTooltip
+                        iconMarginBottom="2px"
+                        title="Place of Residence"
+                      />
                     </FormLabelStyled>{" "}
                     <FormInputStyled
                       type="text"
@@ -224,6 +290,7 @@ const index: FC<IProps> = () => {
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
                       Gender
+                      <CustomTooltip iconMarginBottom="2px" title="Gender" />
                     </FormLabelStyled>{" "}
                     <FormInputStyled
                       type="text"
@@ -237,6 +304,7 @@ const index: FC<IProps> = () => {
                   <Form.Group>
                     <FormLabelStyled className="d-flex align-items-center">
                       Age
+                      <CustomTooltip iconMarginBottom="2px" title="Age" />
                     </FormLabelStyled>{" "}
                     <FormInputStyled
                       type="text"
@@ -328,6 +396,20 @@ const index: FC<IProps> = () => {
                             </>
                           )
                         )}
+                      </Accordion>
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="mt-6">
+                      <Accordion className="panel-default d-flex flex-column gap-4">
+                        {SingleGuestInvitationFBList?.map((item, index) => (
+                          <>
+                            <SingleGuestListAccordion
+                              item={item}
+                              index={`${index}`}
+                            />
+                          </>
+                        ))}
                       </Accordion>
                     </div>
                   </TabPanel>

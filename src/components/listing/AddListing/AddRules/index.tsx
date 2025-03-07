@@ -3,6 +3,7 @@ import { PlusIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { Form, FormControl } from "react-bootstrap";
 import { FormInputStyled } from "../../../styledComponents/styledForm";
 import { ButtonPrimary } from "../../../styledComponents/styledButton";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 const index = () => {
   const isAddListingLocation = window.location?.pathname === "/add-listing";
@@ -43,6 +44,9 @@ const index = () => {
                   <Form.Group className="border-dark mb-3">
                     <Form.Label className="fs-5 fw-500 mb-3 text-black">
                       Add Rules
+                      <CustomTooltip
+                        title="Add Rules"
+                      />
                     </Form.Label>
                   </Form.Group>
                 </div>

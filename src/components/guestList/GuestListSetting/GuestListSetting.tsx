@@ -19,9 +19,11 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
   const [isCancellationEnabled, setIsCancellationEnabled] = useState(false);
   const [isGuestReceiveTicket, setIsGuestReceiveTicket] = useState(false);
   const [isGuestTransferTicket, setIsGuestTransferTicket] = useState(false);
-  const [isGuestReceiveDigitalTicket, setIsGuestReceiveDigitalTicket] = useState(false);
+  const [isGuestReceiveDigitalTicket, setIsGuestReceiveDigitalTicket] =
+    useState(false);
   const [isGuestTicketCharges, setIsGuestTicketCharges] = useState(false);
-  const [isOrganizerTicketCharges, setIsOrganizerTicketCharges] = useState(false);
+  const [isOrganizerTicketCharges, setIsOrganizerTicketCharges] =
+    useState(false);
 
   return (
     <>
@@ -46,17 +48,20 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginTop: '-10px'
+              marginTop: "-10px",
             }}
             onClick={onClose}
           >
-            <i className="fe fe-x"></i>
+            <i className="fe fe-x fs-4"></i>
           </span>
         </Modal.Header>
 
         <Modal.Body>
           <div className="d-flex flex-column gap-4">
-          <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
+            <div
+              className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3"
+              style={{ backgroundColor: "#F4F5F5" }}
+            >
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
               <Form.Group className="d-flex align-items-center gap-3">
                 <label className="custom-switch form-switch me-5 ">
@@ -65,18 +70,27 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
                     name="custom-switch-radio1"
                     className="custom-switch-input"
                     checked={isGuestListEnabled}
+                    style={{
+                      borderColor: "#ff003e33",
+                    }}
                     onClick={() => setIsGuestListEnabled((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                  <span
+                    className="custom-switch-indicator custom-switch-indicator-md cursor-pointer"
+                    style={{
                       borderColor: "#ff003e33",
-                    }}></span>
+                    }}
+                  ></span>
                 </label>
               </Form.Group>
               <label className="m-0">
                 Guest list to be used from the total capacity
               </label>
             </div>
-            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
+            <div
+              className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3"
+              style={{ backgroundColor: "#F4F5F5" }}
+            >
               <Form.Group className="d-flex align-items-center gap-3">
                 <label className="custom-switch form-switch me-5">
                   <input
@@ -89,17 +103,24 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
                     }}
                     onClick={() => setIsCancellationEnabled((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                  <span
+                    className="custom-switch-indicator custom-switch-indicator-md cursor-pointer"
+                    style={{
                       borderColor: "#ff003e33",
-                    }}></span>
+                    }}
+                  ></span>
                 </label>
               </Form.Group>
               <label className="m-0">
-                If guest does not confirm attendance by 24 hours before event, cancel invitation.
+                If guest does not confirm attendance by 24 hours before event,
+                cancel invitation.
               </label>
             </div>
 
-            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
+            <div
+              className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3"
+              style={{ backgroundColor: "#F4F5F5" }}
+            >
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
               <Form.Group className="d-flex align-items-center gap-3">
                 <label className="custom-switch form-switch me-5 ">
@@ -113,16 +134,22 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
                     }}
                     onClick={() => setIsGuestReceiveTicket((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                  <span
+                    className="custom-switch-indicator custom-switch-indicator-md cursor-pointer"
+                    style={{
                       borderColor: "#ff003e33",
-                    }}></span>
+                    }}
+                  ></span>
                 </label>
               </Form.Group>
               <label className="m-0">
                 Guest to additionally receive tickets as SMS and Whatsapp .
               </label>
             </div>
-            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
+            <div
+              className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3"
+              style={{ backgroundColor: "#F4F5F5" }}
+            >
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
               <Form.Group className="d-flex align-items-center gap-3">
                 <label className="custom-switch form-switch me-5 ">
@@ -134,16 +161,24 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
                     style={{
                       borderColor: "#ff003e33",
                     }}
-                    onClick={() => setIsGuestReceiveDigitalTicket((prev) => !prev)}
+                    onClick={() =>
+                      setIsGuestReceiveDigitalTicket((prev) => !prev)
+                    }
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                  <span
+                    className="custom-switch-indicator custom-switch-indicator-md cursor-pointer"
+                    style={{
                       borderColor: "#ff003e33",
-                    }}></span>
+                    }}
+                  ></span>
                 </label>
               </Form.Group>
               <label className="m-0">Guest to receive digital ticket</label>
             </div>
-            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
+            <div
+              className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3"
+              style={{ backgroundColor: "#F4F5F5" }}
+            >
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
               <Form.Group className="d-flex align-items-center gap-3">
                 <label className="custom-switch form-switch me-5 ">
@@ -157,16 +192,22 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
                     }}
                     onClick={() => setIsGuestTransferTicket((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                  <span
+                    className="custom-switch-indicator custom-switch-indicator-md cursor-pointer"
+                    style={{
                       borderColor: "#ff003e33",
-                    }}></span>
+                    }}
+                  ></span>
                 </label>
               </Form.Group>
               <label className="m-0">
                 Guest to be able to transfer its ticket to someone else.
               </label>
             </div>
-            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
+            <div
+              className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3"
+              style={{ backgroundColor: "#F4F5F5" }}
+            >
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
               <Form.Group className="d-flex align-items-center gap-3">
                 <label className="custom-switch form-switch me-5 ">
@@ -180,21 +221,27 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
                     }}
                     onClick={() => setIsGuestTicketCharges((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                  <span
+                    className="custom-switch-indicator custom-switch-indicator-md cursor-pointer"
+                    style={{
                       borderColor: "#ff003e33",
-                    }}></span>
+                    }}
+                  ></span>
                 </label>
               </Form.Group>
               <label className="m-0">
                 Guest to pay the ticket transfer charges.
               </label>
             </div>
-            <div className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3" style={{ backgroundColor: "#F4F5F5" }}>
+            <div
+              className="d-flex align-items-center justify-content-left rounded-pill px-3 py-3"
+              style={{ backgroundColor: "#F4F5F5" }}
+            >
               {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
               <Form.Group className="d-flex align-items-center gap-3">
                 <label className="custom-switch form-switch me-5 ">
                   <input
-                   type="checkbox"
+                    type="checkbox"
                     name="custom-switch-radio1"
                     className="custom-switch-input"
                     checked={isOrganizerTicketCharges}
@@ -203,9 +250,12 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
                     }}
                     onClick={() => setIsOrganizerTicketCharges((prev) => !prev)}
                   />
-                  <span className="custom-switch-indicator custom-switch-indicator-md" style={{
+                  <span
+                    className="custom-switch-indicator custom-switch-indicator-md cursor-pointer"
+                    style={{
                       borderColor: "#ff003e33",
-                    }}></span>
+                    }}
+                  ></span>
                 </label>
               </Form.Group>
               <label className="m-0">
@@ -231,7 +281,7 @@ const GuestListSetting: React.FC<GuestListSettingProps> = ({
             <i
               className="fa fa-arrow-right d-block d-md-none"
               aria-hidden="true"
-            ></i>{" "}
+            ></i>
             <span>Save</span>
           </ButtonPrimary>
         </Modal.Footer>

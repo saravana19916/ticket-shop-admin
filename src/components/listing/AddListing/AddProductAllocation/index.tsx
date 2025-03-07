@@ -89,6 +89,9 @@ const AddPricing: FC<IAddPricingProps> = () => {
       }
     }
   };
+  const isSeparateUrl =
+    window.location?.pathname === "/add-product-allocation" ||
+    window.location?.pathname.startsWith("/edit-product-allocation/");
 
   return (
     <>
@@ -125,7 +128,9 @@ const AddPricing: FC<IAddPricingProps> = () => {
         {({ values, errors, touched, setFieldValue }) => (
           <>
             <Form
-              className={`row px-0 px-md-2 px-lg-4 px-xl-6 mx-xl-3 mx-0 mx-md-1 mx-lg-3 `}
+              className={`row px-0 px-md-2 px-lg-4 px-xl-6 mx-xl-3 mx-0 mx-md-1 mx-lg-3 ${
+                isSeparateUrl ? "mt-7" : ""
+              }`}
             >
               <div className="card border p-4 rounded-16px">
                 <div className="p-0 p-md-5">
@@ -166,9 +171,7 @@ const AddPricing: FC<IAddPricingProps> = () => {
                           className="btn"
                           style={{ minWidth: "118px" }}
                         >
-                          {values?.id === 0
-                            ? "Create Allocation"
-                            : "Update Allocation"}{" "}
+                          {values?.id === 0 ? "Add" : "Update"}{" "}
                         </ButtonPrimary>
                       </div>
                     </div>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
 export const SuccessIcon = styled.i`
-  color: #00ff00;
+  color: #16d9c6;
 `;

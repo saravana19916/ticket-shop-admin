@@ -25,10 +25,21 @@ import DateFlatpickr from "../../shared/DateFlatpickr";
 import CounterInput from "../../shared/CounterInput";
 import CustomTooltip from "../../shared/CustomTooltip";
 import CustomTabButton from "../../shared/CustomTabButton";
+import SelectDropDown from "../../shared/SelectDropDown";
 interface IProps {}
+const discountType = [
+  {
+    value: "By Order",
+    label: "By Order",
+  },
+  {
+    value: "By Product",
+    label: "By Product",
+  },
+];
 
 const index: FC<IProps> = () => {
-  const tabList = ["Tickets", "Services", "Add ons", "Mechandise", "F&B"];
+  const tabList = ["Tickets", "Services", "Add ons", "Merchandise", "F&B"];
   const tabAddCode = ["Add Manually", "generate automatically"];
   const [chipWidth, setChipWidth] = useState(
     window.innerWidth < 768 ? "50%" : "24%"
@@ -130,10 +141,13 @@ const index: FC<IProps> = () => {
           <form className="row g-3">
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Campaign name <CustomTooltip
-                  iconMarginBottom="1px"
-                  title="Define a name for your campaign so you can differentiate it."
-                /></FormLabelStyled>
+                <FormLabelStyled>
+                  Campaign name{" "}
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title="Define a name for your campaign so you can differentiate it."
+                  />
+                </FormLabelStyled>
                 <FormInputStyled
                   type="text"
                   className="form-control"
@@ -143,25 +157,30 @@ const index: FC<IProps> = () => {
             </div>
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Discount Type<CustomTooltip
-                  iconMarginBottom="1px"
-                  title="Define a name for your campaign so you can differentiate it."
-                /></FormLabelStyled>
-                <Select
-                  options={listingType}
-                  placeholder="Select Type"
+                <FormLabelStyled>
+                  Discount Type
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title="Define a name for your campaign so you can differentiate it."
+                  />
+                </FormLabelStyled>
+                <SelectDropDown
+                  options={discountType}
+                  placeholder="Select Discount Type"
                   classNamePrefix="Select"
                   className="mb-2"
-                  styles={customStyles}
                 />
               </Form.Group>
             </div>
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Start date & time<CustomTooltip
-                  iconMarginBottom="1px"
-                  title="Define the date and time for your campaign to start."
-                /></FormLabelStyled>
+                <FormLabelStyled>
+                  Start date & time
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title="Define the date and time for your campaign to start."
+                  />
+                </FormLabelStyled>
                 <DateFlatpickr
                   type="datetime"
                   placeholder=""
@@ -172,11 +191,14 @@ const index: FC<IProps> = () => {
             </div>
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Expiry date & time<CustomTooltip
-                  iconMarginBottom="1px"
-                  title=" Define the date and time for your campaign to end and codes to
+                <FormLabelStyled>
+                  Expiry date & time
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title=" Define the date and time for your campaign to end and codes to
                   expire ."
-                /></FormLabelStyled>
+                  />
+                </FormLabelStyled>
                 <DateFlatpickr
                   type="datetime"
                   placeholder=""
@@ -186,10 +208,13 @@ const index: FC<IProps> = () => {
               </Form.Group>
             </div>
             <div className="col-12 col-md-6 mb-6">
-              <FormLabelStyled>Number of Codes<CustomTooltip
+              <FormLabelStyled>
+                Number of Codes
+                <CustomTooltip
                   iconMarginBottom="1px"
                   title="Define the number of unique codes you like to create"
-                /></FormLabelStyled>
+                />
+              </FormLabelStyled>
               <CounterInput
                 count={count}
                 onIncrement={() => setCount(count + 1)}
@@ -198,16 +223,18 @@ const index: FC<IProps> = () => {
             </div>
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Usage time per code<CustomTooltip
-                  iconMarginBottom="1px"
-                  title=" Define the number of times each code can be used."
-                /></FormLabelStyled>
-                <Select
+                <FormLabelStyled>
+                  Usage time per code
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title=" Define the number of times each code can be used."
+                  />
+                </FormLabelStyled>
+                <SelectDropDown
                   options={listingType}
-                  placeholder="Select"
+                  placeholder="Select Usage Time Per Code"
                   classNamePrefix="Select"
                   className="mb-2"
-                  styles={customStyles}
                 />
               </Form.Group>
             </div>
@@ -253,39 +280,44 @@ const index: FC<IProps> = () => {
           {/* <button className="btn btn-primary btn-pill mt-3 px-6 py-2 fw-semibold fs-6">
                 Generate barcodes
               </button> */}
-          <div
-            className="d-flex gap-4 flex-column px-5"
-            style={{
-              padding: "40px",
-              borderRadius: "10px",
-              backgroundColor: "#fafbfc",
-              width: "100%",
-            }}
-          >
-            <span
-              className="fw-600 fs-6"
-              style={{
-                color: "#000000",
-              }}
-            >
-              Generated Barcodes
-            </span>
-            <div className="d-flex align-items-center gap-3 flex-wrap">
-              {barcodes.map((barcode) => (
-                <Chip
-                  key={barcode}
-                  label={barcode}
-                  variant="outlined"
-                  onDelete={() => handleDeleteChip(barcode)}
+          <div className="row">
+            <div className="col-12">
+              <div
+                className="d-flex gap-4 flex-column px-5"
+                style={{
+                  padding: "40px",
+                  borderRadius: "10px",
+                  backgroundColor: "#fafbfc",
+                  width: "100%",
+                }}
+              >
+                <span
+                  className="fw-600 fs-6"
                   style={{
-                    width: chipWidth,
-                    height: "40px",
-                    justifyContent: "space-between",
+                    color: "#000000",
                   }}
-                />
-              ))}
+                >
+                  Generated Barcodes
+                </span>
+                <div className="d-flex align-items-center gap-3 flex-wrap">
+                  {barcodes.map((barcode) => (
+                    <Chip
+                      key={barcode}
+                      label={barcode}
+                      variant="outlined"
+                      onDelete={() => handleDeleteChip(barcode)}
+                      style={{
+                        width: chipWidth,
+                        height: "40px",
+                        justifyContent: "space-between",
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
+
           <div>
             <div className="d-flex flex-column gap-3 mb-7 mt-7">
               <span className="fw-600 fs-5">
@@ -315,7 +347,7 @@ const index: FC<IProps> = () => {
                 ))}
               </TabList>
               <TabPanels>
-                <div className="d-flex flex-column gap-3 mt-6">
+                <div className="d-flex flex-column gap-3 mt-5">
                   <div
                     className="row align-items-center w-100 px-5 py-4"
                     style={{
@@ -516,9 +548,16 @@ const index: FC<IProps> = () => {
                       </InputGroup>
                     </div>
                   </div>
-                  <button className="btn btn-primary btn-pill mt-6 ms-auto">
-                    Apply
-                  </button>
+                  <div className="row px-1 py-4">
+                    <div className="col-12">
+                      <ButtonPrimary
+                        className="btn mt-6 float-end"
+                        style={{ minWidth: "118px" }}
+                      >
+                        Apply
+                      </ButtonPrimary>
+                    </div>
+                  </div>
                 </div>
               </TabPanels>
             </TabGroup>

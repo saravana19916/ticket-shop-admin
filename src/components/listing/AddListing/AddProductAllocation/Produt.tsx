@@ -13,6 +13,7 @@ import {
 import { SketchPicker } from "react-color";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import SelectDropDown from "../../../shared/SelectDropDown";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 interface IProductInfoProps {
   errors: FormikErrors<IPricingDetailsProps>;
@@ -126,7 +127,12 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
           <div className="row">
             <div className="col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Select Product</FormLabelStyled>
+                <FormLabelStyled>
+                  Select Product
+                  <CustomTooltip
+                    title="Select Product"
+                  />
+                </FormLabelStyled>
                 <SelectDropDown
                   options={productTypes}
                   placeholder="Select Product"
@@ -138,7 +144,12 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
             </div>
             <div className="col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Zone</FormLabelStyled>
+                <FormLabelStyled>
+                  Zone
+                  <CustomTooltip
+                    title="Zone"
+                  />
+                </FormLabelStyled>
                 <SelectDropDown
                   options={zoneTypes}
                   placeholder="Select Zone"
@@ -149,7 +160,12 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
             </div>
             <div className="col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Section or Row</FormLabelStyled>
+                <FormLabelStyled>
+                  Section or Row
+                  <CustomTooltip
+                    title="Section or Row"
+                  />
+                </FormLabelStyled>
                 <SelectDropDown
                   options={sectionTypes}
                   placeholder="Select Section or Row"
@@ -160,7 +176,12 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
             </div>
             <div className="col-12 mb-7">
               <Form.Group>
-                <FormLabelStyled>Has access to</FormLabelStyled>
+                <FormLabelStyled>
+                  Has access to
+                  <CustomTooltip
+                    title="Has access to"
+                  />
+                </FormLabelStyled>
                 <div className="row">
                   {[
                     {
@@ -216,7 +237,12 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
             </div>
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Entrance Gate</FormLabelStyled>
+                <FormLabelStyled>
+                  Entrance Gate
+                  <CustomTooltip
+                    title="Entrance Gate"
+                  />
+                </FormLabelStyled>
                 <FormInputStyled
                   type="text"
                   placeholder="Type Entrance Gate"
@@ -227,7 +253,12 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
             </div>
             <div className="col-12 col-md-6 mb-6">
               <Form.Group>
-                <FormLabelStyled>Color Tag</FormLabelStyled>
+                <FormLabelStyled>
+                  Color Tag
+                  <CustomTooltip
+                    title="Color Tag"
+                  />
+                </FormLabelStyled>
                 <FormDivStyled
                   ref={colorPickerRef}
                   className="form-control d-flex align-middle"

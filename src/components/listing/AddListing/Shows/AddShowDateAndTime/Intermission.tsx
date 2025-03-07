@@ -54,7 +54,7 @@ const Intermission: FC<IIntermission> = ({}) => {
       <div className="col-12 mb-7">
         <Form.Group>
           <div className="d-flex flex-column">
-            <div>
+            <div className="mb-6">
               <FormStyledContentSection>
                 <span className="question">
                   Would you like to add intermission?
@@ -144,7 +144,12 @@ const Intermission: FC<IIntermission> = ({}) => {
               <div className="row">
                 <div className="col-12 mb-6">
                   <Form.Group>
-                    <FormLabelStyled>Start Time</FormLabelStyled>
+                    <FormLabelStyled>
+                      Start Time
+                      <CustomTooltip
+                        title="Start Time"
+                      />
+                    </FormLabelStyled>
                     <DateFlatpickr
                       value={dateTime?.intermissionStartTime}
                       onChange={(date) =>
@@ -157,7 +162,12 @@ const Intermission: FC<IIntermission> = ({}) => {
                 </div>
                 <div className="col-12 mb-6">
                   <Form.Group>
-                    <FormLabelStyled>End Time</FormLabelStyled>
+                    <FormLabelStyled>
+                      End Time
+                      <CustomTooltip
+                        title="End Time"
+                      />
+                    </FormLabelStyled>
                     <DateFlatpickr
                       value={dateTime?.intermissionEndTime}
                       onChange={(date) =>
@@ -172,6 +182,9 @@ const Intermission: FC<IIntermission> = ({}) => {
                   <Form.Group>
                     <FormLabelStyled htmlFor="showDuration">
                       Duration (Mins)
+                      <CustomTooltip
+                        title="Duration (Mins)"
+                      />
                     </FormLabelStyled>
                     <FormInputStyled
                       type="text"

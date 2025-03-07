@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import LandingPageWrapper from "../shared/LandingPageWrapper";
 
-import InfoList from "./InfoList";
 import { LinkButtonPrimary } from "../styledComponents/styledButton";
+import ProductAllocationList from "./ProductAllocationList";
 
 const index = () => {
   const [itemsPerRow, setItemsPerRow] = useState<number | null>(0);
@@ -10,8 +10,9 @@ const index = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const getItemsPerRow = () => {
-    const rows = document.querySelectorAll("#myInfoList > *");
-    const rowWidth = document.querySelector("#myInfoList")?.clientWidth || 0;
+    const rows = document.querySelectorAll("#myProductAllocationList > *");
+    const rowWidth =
+      document.querySelector("#myProductAllocationList")?.clientWidth || 0;
     let totalWidth = 0;
     let count = 0;
 
@@ -44,22 +45,26 @@ const index = () => {
       setMaxWidth("");
     }
   }, [itemsPerRow, isMobile]);
-
   return (
     <>
       <LandingPageWrapper>
         <div className="row" style={{ maxWidth }}>
           <div className="col-6 mb-3">
-            <p className="fw-600 fs-26px text-black mb-3">My Info</p>
+            <p className="fw-600 fs-26px text-black mb-3">
+              My Product Allocation
+            </p>
           </div>
           <div className="col-6 mb-3">
-            <LinkButtonPrimary className="float-end mt-2 btn" to="/add-info">
-              <span>Add Info</span>
+            <LinkButtonPrimary
+              className="float-end mt-2 btn"
+              to="/add-product-allocation"
+            >
+              <span>Add Product Allocation</span>
             </LinkButtonPrimary>
           </div>
         </div>
         <div className="row">
-          <InfoList />
+          <ProductAllocationList />
         </div>
       </LandingPageWrapper>
     </>

@@ -12,6 +12,7 @@ import {
 } from "../../../styledComponents/styledForm";
 import Select from "react-select";
 import CustomTooltip from "../../../shared/CustomTooltip";
+import CustomDropdownIndicator from "../../../shared/SelectDropDown/CustomDropdownIndicator";
 interface IProductAllocationProps {
   handleOnChange: (field: string, value: string | undefined) => void;
   errors: FormikErrors<IAddListingShopProps>;
@@ -39,75 +40,12 @@ const productsList = [
   { id: 4, ticketName: "Silver Ticket", price: 199 },
 ];
 const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
-  const customStyles = {
-    singleValue: (provided: any) => ({
-      ...provided,
-      color: "#000",
-      fontWeight: "400",
-      fontSize: "14px",
-    }),
-    indicatorSeparator: (provided: any) => ({
-      ...provided,
-      display: "none",
-    }),
-    dropdownIndicator: (provided: any) => ({
-      ...provided,
-      color: "#777",
-    }),
-    control: (provided: any, state: any) => ({
-      ...provided,
-      padding: "4px",
-      paddingLeft: "14px",
-      borderRadius: "50px",
-      borderColor: state.isFocused ? "#fec9da80" : "#e5e7eb",
-      outline: state.isFocused ? "1px solid #fec9da80" : "none",
-      boxShadow: "null",
-      "&:focus": {
-        borderColor: "#fec9da80",
-        outline: "1px solid #fec9da80",
-      },
-      "&:focus-within": {
-        borderColor: "#fec9da80",
-        outline: "1px solid #fec9da80",
-      },
-    }),
-    menu: (provided: any) => ({
-      ...provided,
-      borderRadius: "8px",
-    }),
-    multiValue: (provided: any) => ({
-      ...provided,
-      color: "#000",
-      fontWeight: "500",
-      fontSize: "18px",
-      margin: "0px",
-      padding: "0px",
-      backgroundColor: "",
-    }),
-    option: (provided: any, state: any) => ({
-      ...provided,
-      backgroundColor: state.isSelected ? "#ED003B" : "transparent",
-      color: state.isSelected ? "#fff" : provided.color,
-      cursor: "pointer",
-      transition: "background-color 0.2s ease",
-      "&:hover": {
-        backgroundColor: state.isSelected ? "#ED003B" : "#fec9da80",
-      },
-    }),
-  };
   const customStylesForGroup = {
-    control: (provided: any) => ({
+    placeholder: (provided: any) => ({
       ...provided,
-      border: "none",
-      boxShadow: "none",
-      backgroundColor: "transparent",
-      borderRadius: "0",
-      // borderRight: "1px solid #e5e7eb",
-      padding: "4px 12px",
-      outline: "none",
-      // "&:hover": {
-      //   borderRight: "1px solid #b3b3b3",
-      // },
+      ".dark-mode &": {
+        color: "#626281",
+      },
     }),
     singleValue: (provided: any) => ({
       ...provided,
@@ -115,15 +53,35 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
       margin: 0,
       padding: 0,
       fontSize: "14px",
+      ".dark-mode &": {
+        color: "#fff",
+      },
+    }),
+    control: (provided: any) => ({
+      ...provided,
+      border: "none",
+      boxShadow: "none",
+      backgroundColor: "transparent",
+      borderRadius: "0",
+      padding: "4px 12px",
+      outline: "none",
+      ".dark-mode &": {
+        background: "#282848 !important",
+        borderColor: "#282848 !important",
+
+        "&:hover": {
+          borderColor: "#282848 !important",
+        },
+      },
+    }),
+    menu: (provided: any) => ({
+      ...provided,
+      borderRadius: "8px",
     }),
     dropdownIndicator: (provided: any) => ({
       ...provided,
       color: "#777",
       padding: "0 8px",
-    }),
-    menu: (provided: any) => ({
-      ...provided,
-      borderRadius: "8px",
     }),
     option: (provided: any, state: any) => ({
       ...provided,
@@ -211,7 +169,7 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
                   >
                     <FormInputStyled
                       type="number"
-                      className="form-control"
+                      className="form-control special-input"
                       name="units"
                       placeholder="1000"
                     />
@@ -238,11 +196,14 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
                             }}
                             styles={customStylesForGroup}
                             menuPortalTarget={document.body}
-                            classNamePrefix="react-select"
+                            classNamePrefix="Select"
                             options={[
                               { label: "$", value: "$" },
                               { label: "%", value: "%" },
                             ]}
+                            components={{
+                              DropdownIndicator: CustomDropdownIndicator,
+                            }}
                           />
                         </div>
 

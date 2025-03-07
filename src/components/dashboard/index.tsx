@@ -137,21 +137,23 @@ const dashboards: FC<IDashboardProps> = () => {
   return (
     <>
       <Modal
-        className="modal fade"
         show={show}
         onHide={handleShow}
-        centered
-        contentClassName="rounded-5"
+        backdrop="static"
+        keyboard={false}
+        centered={true}
       >
-        <Modal.Header>
-          <Modal.Title as="h6" className="fw-600 fs-5">
-            {t("chooseCurrency")}
+        <Modal.Header className="p-6">
+          <Modal.Title className="w-100 text-center m-0">
+            <span className="fw-600 fs-4 text-center">
+              {t("chooseCurrency")}
+            </span>
           </Modal.Title>
-          <span className="d-flex ms-auto cursor-pointer" onClick={handleShow}>
-            <i className="fe fe-x ms-auto fs-4"></i>
+          <span className="d-flex ms-auto fs-4" onClick={handleShow}>
+            <i className="fe fe-x ms-auto"></i>
           </span>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="py-7">
           <div className="row ">
             <div className="col-12">
               <div className="row">
@@ -197,7 +199,16 @@ const dashboards: FC<IDashboardProps> = () => {
             </div>
           </div>
         </Modal.Body>
+        {/* <Modal.Footer>
+          <Button variant="light" className="btn-pill" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" className="btn-pill">
+            Confirm
+          </Button>
+        </Modal.Footer> */}
       </Modal>
+
       <div className="row p-0 p-md-2 p-lg-4 p-xl-4">
         <div className="col-12 mb-2 d-flex d-md-none align-items-center justify-content-between">
           <span className="fw-semibold">{selectedEvent?.display_date}</span>

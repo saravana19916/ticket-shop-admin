@@ -96,9 +96,13 @@ const index: FC<IProps> = () => {
                       />
                       <div className="col-12 mb-3 mt-5">
                         <div className="float-end mb-3">
-                          <ButtonPrimary type="submit" className="btn">
-                            <PlusIcon className="w-4 h-4 me-3 mb-1px" />
-                            Add Product
+                          <ButtonPrimary
+                            type="submit"
+                            className="btn"
+                            style={{ minWidth: "118px" }}
+                          >
+                            {/* <PlusIcon className="w-4 h-4 me-3 mb-1px" /> */}
+                            Add
                           </ButtonPrimary>
                         </div>
                       </div>

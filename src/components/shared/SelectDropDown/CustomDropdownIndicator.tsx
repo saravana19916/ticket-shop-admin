@@ -15,4 +15,7 @@ export default CustomDropdownIndicator;
 
 const ChevronIcon = styled(ChevronDown)`
   color: #777;
+  .dark-mode & {
+    color: #fff;
+  }
 `;

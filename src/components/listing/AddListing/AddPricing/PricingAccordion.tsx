@@ -6,6 +6,7 @@ import {
   AccordionBodyTop,
   AccordionBodyLeftSection,
   AccordionButton,
+  AccordionButton2,
 } from "../../../styledComponents/accordion";
 import { IPricingDetailsProps } from "../../../pricing/AddPricing/type";
 
@@ -66,7 +67,7 @@ const PricingAccordion: FC<IProps> = ({ index }) => {
             }}
           >
             <div className="col-12">
-              <h4 >Details</h4>
+              <h4>Details</h4>
               <div className="d-flex flex-column gap-1 fs-6">
                 <div className="fw-semibold d-flex align-items-center row">
                   <AccordionBodyLeftSection className="col-4">
@@ -188,7 +189,7 @@ const PricingAccordion: FC<IProps> = ({ index }) => {
                   <AccordionBodyLeftSection
                     className="col-8 fw-light"
                     style={{
-                      color: status === "active" ? "#00ff00" : "#45bced",
+                      color: status === "active" ? "#16d9c6" : "#BAF1E4",
                     }}
                   >
                     Created - {status === "active" ? "Active" : "Inactive"}
@@ -213,13 +214,15 @@ const PricingAccordion: FC<IProps> = ({ index }) => {
               <div className="d-flex align-items-center gap-3 justify-content-start my-4 flex-wrap">
                 {inclusions.map((item, index) => (
                   <>
-                    <AccordionButton
+                    <AccordionButton2
                       key={index}
                       className="btn px-6 py-2 fs-10px"
-                      style={{ minWidth: "150px", backgroundColor: "#fff" }}
+                      style={{
+                        minWidth: "150px",
+                      }}
                     >
                       {item}
-                    </AccordionButton>
+                    </AccordionButton2>
                   </>
                 ))}
               </div>

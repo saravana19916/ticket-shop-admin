@@ -55,7 +55,7 @@ const index: FC<ILiveAnalyticsProps> = ({ currentEventId }) => {
                   <div className="mt-2">
                     <h6 className="fw-semibold fs-6">In Queue</h6>
                     <h2 className="mb-0 number-font">
-                      {liveAnalytics?.in_queue || 0}
+                      {liveAnalytics?.in_queue || 95}
                     </h2>
                   </div>
                   <div className="ms-auto mb-3 opacity-25">
@@ -97,7 +97,7 @@ const index: FC<ILiveAnalyticsProps> = ({ currentEventId }) => {
                   <div className="mt-2">
                     <h6 className="fw-semibold fs-6">Store Visitor</h6>
                     <h2 className="mb-0 number-font">
-                      {liveAnalytics?.store_visitor || 0}
+                      {liveAnalytics?.store_visitor || 100}
                     </h2>
                   </div>
                   <div
@@ -142,7 +142,7 @@ const index: FC<ILiveAnalyticsProps> = ({ currentEventId }) => {
                   <div className="mt-2">
                     <h6 className="fw-semibold fs-6">Pending carts</h6>
                     <h2 className="mb-0 number-font">
-                      {liveAnalytics?.pending_carts || 0}
+                      {liveAnalytics?.pending_carts || 1200}
                     </h2>
                   </div>
                   <div className="ms-auto mb-3 me-3">
@@ -184,7 +184,7 @@ const index: FC<ILiveAnalyticsProps> = ({ currentEventId }) => {
                   <div className="mt-2">
                     <h6 className="fw-semibold fs-6">Reserved</h6>
                     <h2 className="mb-0 number-font">
-                      {liveAnalytics?.reserved || 0}
+                      {liveAnalytics?.reserved || 190}
                     </h2>
                   </div>
                   <div className="ms-auto mb-4 mt-3">

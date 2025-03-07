@@ -1,9 +1,10 @@
 import { ErrorMessage, Formik, Form as FormikForm } from "formik";
 import { Accordion, Form } from "react-bootstrap";
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { IOptionProps } from "../../../../../commondata/addListingPageOne";
 import { useParams, useNavigate } from "react-router-dom";
+import CustomTooltip from "../../../../shared/CustomTooltip";
 
 import { allPoliciesList } from "../data";
 import {
@@ -16,66 +17,22 @@ import { ButtonPrimary } from "../../../../styledComponents/styledButton";
 import { IPoliciesDetailsProps } from "../PoliciesLists";
 import PoliciesAccordion from "./PoliciesAccordion";
 const policiesToVisible: IOptionProps[] = [
-  { value: "Website", label: "Website" },
-  { value: "Mobile App", label: "Mobile App" },
-  { value: "E-commerce Platform", label: "E-commerce Platform" },
+  {
+    id: "event-page",
+    label: "Event Page",
+    value: "eventPage",
+  },
+  {
+    id: "digital-ticket",
+    label: "Digital Ticket",
+    value: "digitalTicket",
+  },
 ];
-const customStyles = {
-  singleValue: (provided: any) => ({
-    ...provided,
-    color: "#000",
-    fontWeight: "400",
-    fontSize: "14px",
-  }),
-  indicatorSeparator: (provided: any) => ({
-    ...provided,
-    display: "none",
-  }),
-  dropdownIndicator: (provided: any) => ({
-    ...provided,
-    color: "#777",
-  }),
-  control: (provided: any, state: any) => ({
-    ...provided,
-    padding: "3px",
-    paddingLeft: "14px",
-    borderRadius: "50px",
-    borderColor: state.isFocused ? "#fec9da80" : "#e5e7eb",
-    outline: state.isFocused ? "1px solid #fec9da80" : "none",
-    boxShadow: "null",
-    "&:focus": {
-      borderColor: "#fec9da80",
-      outline: "1px solid #fec9da80",
-    },
-    "&:focus-within": {
-      borderColor: "#fec9da80",
-      outline: "1px solid #fec9da80",
-    },
-  }),
-  menu: (provided: any) => ({
-    ...provided,
-    borderRadius: "8px",
-  }),
-  multiValue: (provided: any) => ({
-    ...provided,
-    color: "#000",
-    fontWeight: "500",
-    fontSize: "18px",
-    margin: "0px",
-    padding: "0px",
-    backgroundColor: "",
-  }),
-  option: (provided: any, state: any) => ({
-    ...provided,
-    backgroundColor: state.isSelected ? "#ED003B" : "transparent",
-    color: state.isSelected ? "#fff" : provided.color,
-    cursor: "pointer",
-    transition: "background-color 0.2s ease",
-    "&:hover": {
-      backgroundColor: state.isSelected ? "#ED003B" : "#fec9da80",
-    },
-  }),
-};
+interface IToBeVisibleOn {
+  [key: string]: boolean;
+  eventPage: boolean;
+  digitalTicket: boolean;
+}
 const index = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -102,6 +59,19 @@ const index = () => {
   const isSeparateUrl =
     window.location?.pathname === "/add-policy" ||
     window.location?.pathname.startsWith("/edit-policy/");
+  const [toVisibleOn, setToVisibleOn] = useState<IToBeVisibleOn>({
+    eventPage: true,
+    digitalTicket: true,
+  });
+  const handleToBeVisibleOn = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, checked } = event?.target;
+    setToVisibleOn((prev) => {
+      return {
+        ...prev,
+        [name]: checked,
+      };
+    });
+  };
 
   return (
     <>
@@ -139,7 +109,10 @@ const index = () => {
                           <div className="row">
                             <div className="col-12 mb-6">
                               <Form.Group>
-                                <FormLabelStyled>Policy Name</FormLabelStyled>
+                                <FormLabelStyled>
+                                  Policy Name
+                                  <CustomTooltip title="Policy Name" />
+                                </FormLabelStyled>
                                 <FormInputStyled
                                   type="text"
                                   placeholder="Enter name"
@@ -156,70 +129,13 @@ const index = () => {
                               </Form.Group>
                             </div>
                             <div className="col-12 mb-6">
-                              {/* <Form.Group>
-                                <FormLabelStyled>
-                                  To Be Visible On{" "}
-                                </FormLabelStyled>
-                                <div className="row">
-                                  <div className="col-lg-4 col-md-6 col-12">
-                                    <label
-                                      className="custom-control custom-checkbox-md"
-                                      htmlFor="eventPage"
-                                    >
-                                      <input
-                                        id="eventPage"
-                                        type="checkbox"
-                                        className="custom-control-input"
-                                        name="eventPage"
-                                        defaultValue="eventPage"
-                                      />
-                                      <span className="custom-control-label">
-                                        Event Page
-                                      </span>
-                                    </label>
-                                  </div>
-                                  <div className="col-lg-4 col-md-6 col-12">
-                                    <label
-                                      className="custom-control custom-checkbox-md"
-                                      htmlFor="digitalTicket"
-                                    >
-                                      <input
-                                        id="digitalTicket"
-                                        type="checkbox"
-                                        className="custom-control-input"
-                                        name="digitalTicket"
-                                        defaultValue="digitalTicket"
-                                      />
-                                      <span className="custom-control-label">
-                                        Digital Ticket
-                                      </span>
-                                    </label>
-                                  </div>
-                                </div>
-                                {errors?.toBeVisibleOn &&
-                                  touched?.toBeVisibleOn && (
-                                    <span className="text-danger d-inline-block ms-5 mt-1 fs-11px">
-                                      {errors?.toBeVisibleOn}
-                                    </span>
-                                  )}
-                              </Form.Group> */}
                               <Form.Group>
                                 <FormLabelStyled>
                                   To Be Visible On
+                                  <CustomTooltip title="To Be Visible On" />
                                 </FormLabelStyled>
                                 <div className="row">
-                                  {[
-                                    {
-                                      id: "event-page",
-                                      label: "Event Page",
-                                      value: "EventPage",
-                                    },
-                                    {
-                                      id: "digital-ticket",
-                                      label: "Digital Ticket",
-                                      value: "DigitalTicket",
-                                    },
-                                  ].map((option) => (
+                                  {policiesToVisible.map((option) => (
                                     <div
                                       className="col-lg-4 col-md-6 col-12 g-3 ps-4"
                                       key={option.id}
@@ -231,6 +147,10 @@ const index = () => {
                                           id={option.value}
                                           name={option.value}
                                           value={option.value}
+                                          checked={
+                                            toVisibleOn[option.value] || false
+                                          }
+                                          onChange={handleToBeVisibleOn}
                                         />
                                         <label
                                           htmlFor={option.value}
@@ -258,16 +178,18 @@ const index = () => {
                               <Form.Group>
                                 <FormLabelStyled htmlFor="policyText">
                                   Policy Text{" "}
+                                  <CustomTooltip title="Policy Text" />
                                 </FormLabelStyled>
                                 <StyledSunEditor
                                   setOptions={{
                                     font: ["Poppins"],
-                                    defaultStyle: "font-family: Poppins;",
+                                    defaultStyle:
+                                      "font-family: Poppins; font-size: 12px;",
                                     height: "260px",
                                     buttonList: [
                                       ["undo", "redo"],
                                       ["bold", "italic", "underline", "strike"],
-                                      ["list", "align", "fontSize"],
+                                      ["list", "align"],
                                     ],
                                   }}
                                 />
@@ -280,8 +202,12 @@ const index = () => {
                             </div>
                             <div className="col-12 mb-5">
                               <div className="float-end mb-5">
-                                <ButtonPrimary type="submit" className="btn">
-                                  {id ? "Update Policy" : "Create Policy"}{" "}
+                                <ButtonPrimary
+                                  type="submit"
+                                  className="btn"
+                                  style={{ minWidth: "118px" }}
+                                >
+                                  {id ? "Update" : "Add"}{" "}
                                 </ButtonPrimary>
                               </div>
                             </div>

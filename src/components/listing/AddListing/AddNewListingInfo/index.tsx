@@ -70,7 +70,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       <div className="col-12 mb-7">
                         <Form.Group>
                           <FormLabelStyled className="d-flex align-items-center">
-                            Listing name
+                            Listing Name
                             <CustomTooltip
                               iconMarginBottom="1px"
                               title="Type your listing name which would be placed
@@ -111,12 +111,13 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                           <StyledSunEditor
                             setOptions={{
                               font: ["Poppins"],
-                              defaultStyle: "font-family: Poppins;",
+                              defaultStyle:
+                                "font-family: Poppins; font-size: 12px;",
                               height: "260px",
                               buttonList: [
                                 ["undo", "redo"],
                                 ["bold", "italic", "underline", "strike"],
-                                ["list", "align", "fontSize"],
+                                ["list", "align"],
                               ],
                             }}
                           />
@@ -132,7 +133,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       <div className="col-12 mb-7">
                         <Form.Group>
                           <FormLabelStyled className="d-flex align-items-center">
-                            Listing type{" "}
+                            Listing Type{" "}
                             <CustomTooltip
                               iconMarginBottom="1px"
                               title="Pick your listing top from the dropdown menu
@@ -165,7 +166,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       <div className="col-12 mb-7">
                         <Form.Group>
                           <FormLabelStyled className="d-flex align-items-center">
-                            Listing category{" "}
+                            Listing Category{" "}
                             <CustomTooltip
                               iconMarginBottom="1px"
                               title="In this section, you choose the category of
@@ -281,7 +282,13 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
 
                       <div className="col-12 mb-6">
                         <Form.Group>
-                          <FormLabelStyled>Suitabilities</FormLabelStyled>
+                          <FormLabelStyled>
+                            Suitabilities
+                            <CustomTooltip
+                              iconMarginBottom="2px"
+                              title="Suitabilities"
+                            />
+                          </FormLabelStyled>
                           <div className="row">
                             {[
                               { value: "family", label: "Family" },
@@ -349,7 +356,13 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
 
                       <div className="col-12 mb-6">
                         <Form.Group>
-                          <FormLabelStyled>Content Grading</FormLabelStyled>
+                          <FormLabelStyled>
+                            Content Grading
+                            <CustomTooltip
+                              iconMarginBottom="2px"
+                              title="Content Grading"
+                            />
+                          </FormLabelStyled>
                           <div className="row">
                             {[
                               {
@@ -433,7 +446,13 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                       </div>
                       <div className="col-12 mb-7">
                         <Form.Group>
-                          <FormLabelStyled>Age Limit</FormLabelStyled>
+                          <FormLabelStyled>
+                            Age Limit
+                            <CustomTooltip
+                              iconMarginBottom="2px"
+                              title="Age Limit"
+                            />
+                          </FormLabelStyled>
                           <div className="row">
                             {[
                               { value: "openAge2", label: "Open Age (+2)" },
@@ -493,7 +512,13 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
 
                       <div className="col-12 mb-7">
                         <Form.Group>
-                          <FormLabelStyled>Facilities</FormLabelStyled>
+                          <FormLabelStyled>
+                            Facilities
+                            <CustomTooltip
+                              iconMarginBottom="2px"
+                              title="Facilities"
+                            />
+                          </FormLabelStyled>
                           <div className="row">
                             {[
                               {

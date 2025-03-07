@@ -9,6 +9,7 @@ import {
 } from "../../../styledComponents/styledForm";
 import VideoPlayer from "../../../VideoPlayer";
 import { ButtonSecondaryGrey } from "../../../styledComponents/styledButton";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 interface IProps {}
 const AddVideoLink: FC<IProps> = () => {
@@ -36,7 +37,13 @@ const AddVideoLink: FC<IProps> = () => {
       <div className="d-flex gap-4 align-items-center flex-wrap">
         <div className="flex-grow-1 mb-2">
           <Form.Group>
-            <FormLabelStyled>Video Link</FormLabelStyled>
+            <FormLabelStyled>
+              Video Link
+              <CustomTooltip
+                iconMarginBottom="2px"
+                title="Video Link"
+              />
+            </FormLabelStyled>
             <FormInputStyled
               type="text"
               className="form-control py-4"

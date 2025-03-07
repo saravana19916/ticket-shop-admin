@@ -1,4 +1,5 @@
 export interface IOptionProps {
+  [key: string]: string;
   value: string;
   label: string;
   isDisabled?: any;

@@ -50,6 +50,13 @@ export const FormInputStyled = styled.input`
     -webkit-appearance: none;
     margin: 0;
   }
+  &.special-input {
+    background-color: #f3f4f5; /* Light mode */
+
+    .dark-mode & {
+      background-color: #282848; /* Dark mode */
+    }
+  }
 `;
 export const FormDivStyled = styled.div`
   ${commonStyles}
@@ -98,6 +105,11 @@ export const FormInputDescriptionStyled = styled.span`
   color: #6b7280;
   margin-top: 12px;
   display: block;
+`;
+export const FormInputRequired = styled.span`
+  color: #e00036;
+  font-weight: semibold;
+  padding-left: 0.25rem;
 `;
 
 export const DateTimeInputGroup = styled.div<DateTimeInputGroupProps>`
@@ -193,7 +205,7 @@ export const FormGroupStyled = styled.div`
     width: 100%;
 
     .dark-mode & {
-      border-color: #e5e7eb;
+      border-color: #40405c;
       background: #333;
     }
 
@@ -216,6 +228,10 @@ export const FormGroupStyled = styled.div`
       flex: 1;
       border-left: 1px solid #e5e7eb;
       padding: 0 12px;
+      .dark-mode & {
+        border-left: 1px solid #40405c;
+        background-color: #282848;
+      }
     }
 
     input {
@@ -266,6 +282,11 @@ export const FormStyledPill = styled.div`
   .fw-normal {
     font-weight: 400; /* Normal font weight for span */
   }
+  .dark-mode & {
+    background-color: #282848;
+    border: 1px solid #282848;
+    color: #fff;
+  }
 `;
 
 export const FormStyledContentSection = styled.div`
@@ -276,11 +297,18 @@ export const FormStyledContentSection = styled.div`
   background: #fafbfc; /* Light background color */
   border-radius: 16px; /* Rounded corners */
 
+  .dark-mode & {
+    background: #1a1a3c;
+  }
+
   .question {
     font-size: 0.857rem;
     font-weight: 600;
     color: #121826;
     margin-right: 1rem;
+    .dark-mode & {
+      color: #ffffff;
+    }
   }
   input {
     width: 20px;
@@ -305,6 +333,9 @@ export const FormStyledContentSectionUndesignedForFields = styled.div`
   padding: 2rem;
   background: #fafbfc; /* Light background color */
   border-radius: 16px; /* Rounded corners */
+  .dark-mode & {
+    background: #1a1a3c;
+  }
 `;
 
 export const StyledCountButton = styled.div`
@@ -360,3 +391,5 @@ export const StyledInputDiv = styled.div`
     color: #121826;
   }
 `;
+
+export const StyledToggleButton = styled.span``;

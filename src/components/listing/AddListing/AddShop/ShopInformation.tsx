@@ -24,6 +24,8 @@ import {
 import Select from "react-select";
 import SelectDropDown from "../../../shared/SelectDropDown";
 import CustomTooltip from "../../../shared/CustomTooltip";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 interface IShopInformationProps {
   handleOnChange: (field: string, value: string) => void;
@@ -213,7 +215,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
       <div className="col-xl-6 col-12 mb-6">
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
-            Shop type
+            Shop Type
             <CustomTooltip
               iconMarginBottom="1px"
               title="Choose the type of store you are presenting your product in
@@ -244,7 +246,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
       <div className="col-xl-6 col-12 mb-6 ">
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
-            Shop tag/code
+            Shop Tag/Code
             <CustomTooltip
               iconMarginBottom="1px"
               title="Choose the type of store you are presenting your product in
@@ -274,7 +276,10 @@ const ShopInformation: FC<IShopInformationProps> = ({
       </div>
       <div className="col-xl-6 col-12 mb-6">
         <Form.Group>
-          <FormLabelStyled>Shop Country</FormLabelStyled>
+          <FormLabelStyled>
+            Shop Country
+            <CustomTooltip iconMarginBottom="1px" title="Shop Country" />
+          </FormLabelStyled>
           <SelectDropDown
             options={countriesList}
             placeholder="Select Shop Country"
@@ -303,7 +308,10 @@ const ShopInformation: FC<IShopInformationProps> = ({
       </div>
       <div className="col-xl-6 col-12 mb-6">
         <Form.Group>
-          <FormLabelStyled>Shop city</FormLabelStyled>
+          <FormLabelStyled>
+            Shop City
+            <CustomTooltip iconMarginBottom="1px" title="Shop city" />
+          </FormLabelStyled>
           <SelectDropDown
             options={cityData}
             placeholder="Select Shop city"
@@ -352,7 +360,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
       <div className="col-12 mb-6">
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
-            Point of contact
+            Point of Contact
             <CustomTooltip
               iconMarginBottom="1px"
               title="Add the shops you like by filling up the point of contact fields."
@@ -415,14 +423,29 @@ const ShopInformation: FC<IShopInformationProps> = ({
               title="Add the shops you like by filling up the below fields."
             />
           </FormLabelStyled>
-          <FormInputStyled
-            type="tel"
-            className="form-control"
-            placeholder="Enter phone number"
-            value={values.shopInformation?.phoneNumber || ""}
-            name="phoneNumber"
-            onChange={handleChange}
-          />
+          <div className="position-relative">
+            <PhoneInput
+              country={"us"}
+              placeholder="Enter phone number"
+              value={values.shopInformation?.phoneNumber || ""}
+              onChange={() => handleChange}
+              inputStyle={{
+                width: "100%",
+                minHeight: "3.55rem !important",
+                fontSize: "14px",
+                borderRadius: "50rem",
+                border: "1px solid #e5e7eb",
+                outline: "none",
+                height: "3.4rem",
+              }}
+              buttonStyle={{
+                background: "transparent",
+                border: "none",
+                borderRadius: "50rem 0 0 50rem",
+              }}
+              inputClass="custom-phone-input"
+            />
+          </div>
         </Form.Group>
 
         {errors &&

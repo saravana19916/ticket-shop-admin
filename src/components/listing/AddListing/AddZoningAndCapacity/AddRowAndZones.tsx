@@ -9,6 +9,7 @@ import {
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Form } from "react-bootstrap";
 import Select from "react-select";
+import SelectDropDown from "../../../shared/SelectDropDown";
 
 interface IProps {}
 const TypeOptions = [
@@ -191,20 +192,18 @@ const AddRowAndZones: FC<IProps> = ({}) => {
               <>
                 <div className="col-lg-4 col-12 mb-6 pe-0">
                   <Form.Group>
-                    <FormLabelStyled>Type</FormLabelStyled>
-                    <Select
-                      id="dropdown-basic"
+                    <FormLabelStyled className="fs-12px">Type</FormLabelStyled>
+                    <SelectDropDown
                       options={TypeOptions}
                       placeholder="Select Type"
                       classNamePrefix="Select"
                       className="mb-2"
-                      styles={customStyles}
                     />
                   </Form.Group>
                 </div>
                 <div className="col-lg-4 col-12 mb-6 pe-0">
                   <Form.Group>
-                    <FormLabelStyled>Name</FormLabelStyled>
+                    <FormLabelStyled className="fs-12px">Name</FormLabelStyled>
                     <FormInputStyled
                       type="text"
                       className="form-control"
@@ -215,7 +214,9 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                 </div>
                 <div className="col-lg-2 col-md-6 col-12 mb-6 pe-0">
                   <Form.Group>
-                    <FormLabelStyled>On Sale</FormLabelStyled>
+                    <FormLabelStyled className="fs-12px">
+                      On Sale
+                    </FormLabelStyled>
                     <FormInputStyled
                       type="number"
                       className="form-control"
@@ -225,7 +226,9 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                 </div>
                 <div className="col-lg-2 col-md-6 col-12 mb-6 pe-0">
                   <Form.Group>
-                    <FormLabelStyled>Blocked</FormLabelStyled>
+                    <FormLabelStyled className="fs-12px">
+                      Blocked
+                    </FormLabelStyled>
                     <FormInputStyled
                       type="number"
                       className="form-control"
@@ -235,7 +238,7 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                 </div>
                 <div className="col-lg-2 col-md-6 col-12 mb-6 pe-0">
                   <Form.Group>
-                    <FormLabelStyled>Tag</FormLabelStyled>
+                    <FormLabelStyled className="fs-12px">Tag</FormLabelStyled>
                     <FormInputStyled
                       type="text"
                       className="form-control"
@@ -245,7 +248,9 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                 </div>
                 <div className="col-lg-2 col-md-6 col-12 mb-6 pe-0">
                   <Form.Group>
-                    <FormLabelStyled>Starting No</FormLabelStyled>
+                    <FormLabelStyled className="fs-12px">
+                      Starting No
+                    </FormLabelStyled>
                     <FormInputStyled
                       type="number"
                       className="form-control"
@@ -255,7 +260,9 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                 </div>
                 <div className="col-lg-2 col-md-6 col-12 mb-6 pe-0">
                   <Form.Group>
-                    <FormLabelStyled>Ending No</FormLabelStyled>
+                    <FormLabelStyled className="fs-12px">
+                      Ending No
+                    </FormLabelStyled>
                     <FormInputStyled
                       type="number"
                       className="form-control"
@@ -265,14 +272,14 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                 </div>
                 <div className="col-lg-6 col-12 mb-6 pe-0">
                   <Form.Group>
-                    <FormLabelStyled>Allocation order</FormLabelStyled>
-                    <Select
-                      id="dropdown-basic"
+                    <FormLabelStyled className="fs-12px">
+                      Allocation order
+                    </FormLabelStyled>
+                    <SelectDropDown
                       options={AllocationOrderOptions}
                       placeholder="Select Allocation Order"
                       classNamePrefix="Select"
                       className="mb-2"
-                      styles={customStyles}
                     />
                   </Form.Group>
                 </div>

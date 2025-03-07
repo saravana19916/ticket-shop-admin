@@ -116,7 +116,7 @@ export const SingleGuestInvitationList: ISingleGuestInvitationList[] = [
     ticket: "Bronze Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 30.2,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -134,7 +134,7 @@ export const SingleGuestInvitationList: ISingleGuestInvitationList[] = [
     ticket: "Silver Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 30.2,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -152,7 +152,7 @@ export const SingleGuestInvitationList: ISingleGuestInvitationList[] = [
     ticket: "Gold Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 30.2,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -170,7 +170,7 @@ export const SingleGuestInvitationList: ISingleGuestInvitationList[] = [
     ticket: "Platinum Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 30.2,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -188,7 +188,7 @@ export const SingleGuestInvitationList: ISingleGuestInvitationList[] = [
     ticket: "VIP Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 30.2,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -206,7 +206,7 @@ export const SingleGuestInvitationList: ISingleGuestInvitationList[] = [
     ticket: "VIP Lounge",
     availability: "420 from 1500",
     availabilityPercentage: 30.2,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -226,7 +226,7 @@ export const SingleGuestInvitationServiceList: ISingleGuestInvitationList[] = [
     ticket: "Bronze Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 50.2,
-    count: 2,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -244,7 +244,7 @@ export const SingleGuestInvitationServiceList: ISingleGuestInvitationList[] = [
     ticket: "Silver Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 30.9,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -262,7 +262,7 @@ export const SingleGuestInvitationServiceList: ISingleGuestInvitationList[] = [
     ticket: "Gold Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 10.2,
-    count: 9,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -280,7 +280,7 @@ export const SingleGuestInvitationServiceList: ISingleGuestInvitationList[] = [
     ticket: "Platinum Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 39.2,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -300,7 +300,7 @@ export const SingleGuestInvitationAddOnsList: ISingleGuestInvitationList[] = [
     ticket: "Bronze Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 30.2,
-    count: 2,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -318,7 +318,7 @@ export const SingleGuestInvitationAddOnsList: ISingleGuestInvitationList[] = [
     ticket: "Silver Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 38.9,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -336,7 +336,7 @@ export const SingleGuestInvitationAddOnsList: ISingleGuestInvitationList[] = [
     ticket: "Gold Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 19.2,
-    count: 1,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -354,7 +354,7 @@ export const SingleGuestInvitationAddOnsList: ISingleGuestInvitationList[] = [
     ticket: "Platinum Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 19.2,
-    count: 1,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -375,7 +375,7 @@ export const SingleGuestInvitationMerchandiseList: ISingleGuestInvitationList[] 
       ticket: "Bronze Ticket",
       availability: "420 from 1500",
       availabilityPercentage: 50.2,
-      count: 2,
+      count: 0,
       amount: 69.0,
       ageLimit: "above 2 years of age",
       inclusions: [
@@ -393,7 +393,7 @@ export const SingleGuestInvitationMerchandiseList: ISingleGuestInvitationList[] 
       ticket: "Silver Ticket",
       availability: "420 from 1500",
       availabilityPercentage: 30.9,
-      count: 4,
+      count: 0,
       amount: 69.0,
       ageLimit: "above 2 years of age",
       inclusions: [
@@ -411,7 +411,7 @@ export const SingleGuestInvitationMerchandiseList: ISingleGuestInvitationList[] 
       ticket: "Gold Ticket",
       availability: "420 from 1500",
       availabilityPercentage: 10.2,
-      count: 9,
+      count: 0,
       amount: 69.0,
       ageLimit: "above 2 years of age",
       inclusions: [
@@ -429,7 +429,7 @@ export const SingleGuestInvitationMerchandiseList: ISingleGuestInvitationList[] 
       ticket: "Platinum Ticket",
       availability: "420 from 1500",
       availabilityPercentage: 39.2,
-      count: 4,
+      count: 0,
       amount: 69.0,
       ageLimit: "above 2 years of age",
       inclusions: [
@@ -449,7 +449,7 @@ export const SingleGuestInvitationFBList: ISingleGuestInvitationList[] = [
     ticket: "Bronze Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 88.2,
-    count: 7,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -467,7 +467,7 @@ export const SingleGuestInvitationFBList: ISingleGuestInvitationList[] = [
     ticket: "Silver Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 33.9,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -485,7 +485,7 @@ export const SingleGuestInvitationFBList: ISingleGuestInvitationList[] = [
     ticket: "Gold Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 10.2,
-    count: 8,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [
@@ -503,7 +503,7 @@ export const SingleGuestInvitationFBList: ISingleGuestInvitationList[] = [
     ticket: "Platinum Ticket",
     availability: "420 from 1500",
     availabilityPercentage: 39.2,
-    count: 4,
+    count: 0,
     amount: 69.0,
     ageLimit: "above 2 years of age",
     inclusions: [

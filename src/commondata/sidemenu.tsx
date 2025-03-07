@@ -1174,6 +1174,13 @@ export const MENUITEMS = [
             title: "Info",
           },
           {
+            path: `${import.meta.env.BASE_URL}my-marketing-material`,
+            type: "link",
+            active: false,
+            selected: false,
+            title: "Marketing Material",
+          },
+          {
             path: `${import.meta.env.BASE_URL}my-locations`,
             type: "link",
             active: false,
@@ -1192,7 +1199,7 @@ export const MENUITEMS = [
             type: "link",
             active: false,
             selected: false,
-            title: "Products",
+            title: "Product & Pricing",
           },
           {
             path: `${import.meta.env.BASE_URL}my-zoning-and-capacity`,
@@ -1202,25 +1209,18 @@ export const MENUITEMS = [
             title: "Zoning & Capacity",
           },
           {
+            path: `${import.meta.env.BASE_URL}my-product-allocation`,
+            type: "link",
+            active: false,
+            selected: false,
+            title: "Product Allocation",
+          },
+          {
             path: `${import.meta.env.BASE_URL}my-shops`,
             type: "link",
             active: false,
             selected: false,
             title: "Shops",
-          },
-          // {
-          //   path: `${import.meta.env.BASE_URL}my-dynamic-pricing`,
-          //   type: "link",
-          //   active: false,
-          //   selected: false,
-          //   title: "Dynamic Pricing",
-          // },
-          {
-            path: `${import.meta.env.BASE_URL}my-marketing-material`,
-            type: "link",
-            active: false,
-            selected: false,
-            title: "Marketing Material",
           },
           {
             path: `${import.meta.env.BASE_URL}my-rules`,
@@ -2429,7 +2429,7 @@ const promotionsUrl = [
   "/promotions",
   "/generate-barcode",
   "/generate-discountcode",
-  "/promotions-import"
+  "/promotions-import",
 ];
 
 export const SIDE_MENU_ITEM_ONE = [

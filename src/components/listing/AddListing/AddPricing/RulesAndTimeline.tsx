@@ -17,6 +17,7 @@ import {
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
 import DateFlatpickr from "../../../shared/DateFlatpickr";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 interface IPricingAndCapacityProps {
   errors: FormikErrors<IPricingDetailsProps>;
@@ -52,7 +53,10 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
           <div className="row">
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Minimum order</FormLabelStyled>
+                <FormLabelStyled>
+                  Minimum Order
+                  <CustomTooltip title="Minimum Order" />
+                </FormLabelStyled>
                 <FormInputStyled
                   min={1}
                   value={values?.rulesAndTimeline?.minOrder || ""}
@@ -70,18 +74,13 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
                     </span>
                   )}
               </Form.Group>
-              {errors &&
-                touched &&
-                touched?.rulesAndTimeline?.minOrder &&
-                errors?.rulesAndTimeline?.minOrder && (
-                  <span className="text-danger d-inline-block ms-5">
-                    {errors?.rulesAndTimeline?.minOrder}
-                  </span>
-                )}
             </div>
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Maximum order</FormLabelStyled>
+                <FormLabelStyled>
+                  Maximum Order
+                  <CustomTooltip title="Maximum Order" />
+                </FormLabelStyled>
                 <FormInputStyled
                   min={1}
                   value={values?.rulesAndTimeline?.maxOrder || ""}
@@ -99,18 +98,13 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
                     </span>
                   )}
               </Form.Group>
-              {errors &&
-                touched &&
-                touched?.rulesAndTimeline?.maxOrder &&
-                errors?.rulesAndTimeline?.maxOrder && (
-                  <span className="text-danger d-inline-block ms-5">
-                    {errors?.rulesAndTimeline?.maxOrder}
-                  </span>
-                )}
             </div>
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Number of Access/Entires</FormLabelStyled>
+                <FormLabelStyled>
+                  Number of Access/Entires
+                  <CustomTooltip title="Number of Access/Entires" />
+                </FormLabelStyled>
                 <FormInputStyled
                   type="text"
                   placeholder="Enter Access"
@@ -131,7 +125,10 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
             </div>
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Number of Authorized Scan</FormLabelStyled>
+                <FormLabelStyled>
+                  Number of Authorized Scan
+                  <CustomTooltip title="Number of Authorized Scan" />
+                </FormLabelStyled>
                 <FormInputStyled
                   type="text"
                   placeholder="Enter Scan"
@@ -152,7 +149,10 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
             </div>
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Sale Start Date & Time</FormLabelStyled>
+                <FormLabelStyled>
+                  Sale Start Date & Time
+                  <CustomTooltip title="Sale Start Date & Time" />
+                </FormLabelStyled>
                 <DateFlatpickr
                   value={
                     values.rulesAndTimeline?.salesStartDate
@@ -178,7 +178,10 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
 
             <div className="col-xl-6 col-12 mb-6">
               <Form.Group>
-                <FormLabelStyled>Sale End Date & Time</FormLabelStyled>
+                <FormLabelStyled>
+                  Sale End Date & Time
+                  <CustomTooltip title="Sale End Date & Time" />
+                </FormLabelStyled>
                 <DateFlatpickr
                   value={
                     values.rulesAndTimeline?.salesEndDate

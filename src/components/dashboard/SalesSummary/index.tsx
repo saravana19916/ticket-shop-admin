@@ -67,7 +67,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                     <h6 className="fw-semibold fs-6">Total Sales</h6>
                     <h2 className="mb-0 number-font">
                       <NumberDisplay
-                        value={salesSummaryData?.total_sales || 0}
+                        value={salesSummaryData?.total_sales || 392}
                       />
                     </h2>
                   </div>
@@ -112,7 +112,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                     <h6 className="fw-semibold fs-6">Total Costs</h6>
                     <h2 className="mb-0 number-font">
                       <NumberDisplay
-                        value={salesSummaryData?.total_costs || 0}
+                        value={salesSummaryData?.total_costs || 188}
                       />
                     </h2>
                   </div>
@@ -152,7 +152,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                     <h6 className="fw-semibold fs-6">Total Revenue</h6>
                     <h2 className="mb-0 number-font">
                       <NumberDisplay
-                        value={salesSummaryData?.total_revenue || 0}
+                        value={salesSummaryData?.total_revenue || 120}
                       />
                     </h2>
                   </div>
@@ -192,7 +192,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                     <h6 className="fw-semibold fs-6">Total Clearing</h6>
                     <h2 className="mb-0 number-font">
                       <NumberDisplay
-                        value={salesSummaryData?.total_clearing || 0}
+                        value={salesSummaryData?.total_clearing || 981}
                       />
                     </h2>
                   </div>
@@ -238,7 +238,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                       ? roundToNearestWhole(
                           salesSummaryData?.digital_sale?.percentage
                         )
-                      : 0}
+                      : 17}
                     %
                   </div>
                   <div className="d-flex flex-column justify-content-center">
@@ -254,7 +254,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                         ? roundToNearestWhole(
                             salesSummaryData?.digital_sale?.value
                           )
-                        : 0}
+                        : 1714}
                     </p>
                   </div>
                 </div>
@@ -267,7 +267,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                       ? roundToNearestWhole(
                           salesSummaryData?.physical_sales?.percentage
                         )
-                      : 0}
+                      : 71}
                     %
                   </div>
                   <div className="d-flex flex-column justify-content-center">
@@ -283,7 +283,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                         ? roundToNearestWhole(
                             salesSummaryData?.physical_sales?.value
                           )
-                        : 0}
+                        : 208612}
                     </p>
                   </div>
                 </div>
@@ -306,13 +306,13 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                         name: "Sales by Phase",
                         data: [
                           salesSummaryData?.sales_by?.phases?.pre_sale?.value ||
-                            0,
+                            134,
                           salesSummaryData?.sales_by?.phases?.early_bird
-                            ?.value || 0,
+                            ?.value || 198,
                           salesSummaryData?.sales_by?.phases?.general?.value ||
-                            0,
+                            90,
                           salesSummaryData?.sales_by?.phases?.last_minute
-                            ?.value || 0,
+                            ?.value || 18,
                         ],
                       },
                     ]}
@@ -340,7 +340,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                           salesSummaryData?.sales_by?.phases?.pre_sale
                             ?.percentage
                         )
-                      : 0}
+                      : 34}
                     %
                   </div>
                   <div className="d-flex flex-column justify-content-center">
@@ -350,7 +350,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                     <p className="fw-600 fs-6 mb-0">
                       {salesSummaryData?.sales_by?.phases?.pre_sale?.value
                         ? salesSummaryData?.sales_by?.phases?.pre_sale?.value
-                        : 0}
+                        : 134}
                     </p>
                   </div>
                 </div>
@@ -364,7 +364,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                           salesSummaryData?.sales_by?.phases?.early_bird
                             ?.percentage
                         )
-                      : 0}
+                      : 8}
                     %
                   </div>
                   <div className="d-flex flex-column justify-content-center">
@@ -374,7 +374,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                     <p className="fw-600 fs-6 mb-0">
                       {salesSummaryData?.sales_by?.phases?.early_bird?.value
                         ? salesSummaryData?.sales_by?.phases?.early_bird?.value
-                        : 0}{" "}
+                        : 198}{" "}
                     </p>
                   </div>
                 </div>
@@ -388,7 +388,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                           salesSummaryData?.sales_by?.phases?.general
                             ?.percentage
                         )
-                      : 0}
+                      : 64}
                     %
                   </div>
                   <div className="d-flex flex-column justify-content-center">
@@ -398,7 +398,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                     <p className="fw-600 fs-6 mb-0">
                       {salesSummaryData?.sales_by?.phases?.general?.value
                         ? salesSummaryData?.sales_by?.phases?.general?.value
-                        : 0}
+                        : 252}
                     </p>
                   </div>
                 </div>
@@ -412,7 +412,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                           salesSummaryData?.sales_by?.phases?.last_minute
                             ?.percentage
                         )
-                      : 0}
+                      : 9}
                     %
                   </div>
                   <div className="d-flex flex-column justify-content-center">
@@ -422,7 +422,7 @@ const salesSummary: FC<ISalesSummaryProps> = ({
                     <p className="fs-6 fw-600 mb-0">
                       {salesSummaryData?.sales_by?.phases?.last_minute?.value
                         ? salesSummaryData?.sales_by?.phases?.last_minute?.value
-                        : 0}
+                        : 18}
                     </p>
                   </div>
                 </div>

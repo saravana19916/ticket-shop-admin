@@ -6,6 +6,7 @@ import {
   FormLabelStyled,
 } from "../../../styledComponents/styledForm";
 import SelectDropDown from "../../../shared/SelectDropDown";
+import CustomTooltip from "../../../shared/CustomTooltip";
 
 interface IProps {}
 
@@ -70,7 +71,12 @@ const DefineZones = () => {
       </div>
       <div className="col-lg-6 col-12 mb-6 pe-0">
         <Form.Group>
-          <FormLabelStyled>Name</FormLabelStyled>
+          <FormLabelStyled>
+            Name
+            <CustomTooltip
+              title="Name"
+            />
+          </FormLabelStyled>
           <FormInputStyled
             type="text"
             className="form-control"
@@ -80,7 +86,12 @@ const DefineZones = () => {
       </div>
       <div className="col-lg-6 col-12 mb-6 pe-0">
         <Form.Group>
-          <FormLabelStyled>Format</FormLabelStyled>
+          <FormLabelStyled>
+            Format
+            <CustomTooltip
+              title="Format"
+            />
+          </FormLabelStyled>
           <SelectDropDown
             options={FormatOptions}
             placeholder="Select Format"
@@ -91,7 +102,12 @@ const DefineZones = () => {
       </div>
       <div className="col-lg-6 col-12 mb-6 pe-0">
         <Form.Group>
-          <FormLabelStyled>Selection</FormLabelStyled>
+          <FormLabelStyled>
+            Selection
+            <CustomTooltip
+              title="Selection"
+            />
+          </FormLabelStyled>
           <SelectDropDown
             options={SelectionOptions}
             placeholder="Select Selection"
@@ -102,7 +118,12 @@ const DefineZones = () => {
       </div>
       <div className="col-lg-6 col-12 mb-6 pe-0">
         <Form.Group>
-          <FormLabelStyled>Type</FormLabelStyled>
+          <FormLabelStyled>
+            Type
+            <CustomTooltip
+              title="Type"
+            />
+          </FormLabelStyled>
           <SelectDropDown
             options={typeOptions}
             placeholder="Select Type"
@@ -113,7 +134,12 @@ const DefineZones = () => {
       </div>
       <div className="col-xl-4 col-12 mb-6 pe-0">
         <Form.Group>
-          <FormLabelStyled>Total Capacity</FormLabelStyled>
+          <FormLabelStyled>
+            Total Capacity
+            <CustomTooltip
+              title="Total Capacity"
+            />
+          </FormLabelStyled>
           <FormInputStyled
             type="number"
             className="form-control"
@@ -123,7 +149,12 @@ const DefineZones = () => {
       </div>
       <div className="col-xl-4 col-12 mb-6 pe-0">
         <Form.Group>
-          <FormLabelStyled>On Sale Cap</FormLabelStyled>
+          <FormLabelStyled>
+            On Sale Cap
+            <CustomTooltip
+              title="On Sale Cap"
+            />
+          </FormLabelStyled>
           <FormInputStyled
             type="number"
             className="form-control"
@@ -133,7 +164,12 @@ const DefineZones = () => {
       </div>
       <div className="col-xl-4 col-12 mb-6 pe-0">
         <Form.Group>
-          <FormLabelStyled>Blocked Cap</FormLabelStyled>
+          <FormLabelStyled>
+            Blocked Cap
+            <CustomTooltip
+              title="Blocked Cap"
+            />
+          </FormLabelStyled>
           <FormInputStyled
             type="number"
             className="form-control"

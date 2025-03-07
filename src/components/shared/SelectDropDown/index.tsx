@@ -1,5 +1,10 @@
 import React, { FC } from "react";
-import Select, { ActionMeta, MultiValue, SingleValue } from "react-select";
+import Select, {
+  ActionMeta,
+  InputActionMeta,
+  MultiValue,
+  SingleValue,
+} from "react-select";
 import CustomOption from "./CustomOptions";
 import CustomDropdownIndicator from "./CustomDropdownIndicator";
 
@@ -10,6 +15,7 @@ export interface IOptionType {
 
 interface IProps {
   isMulti?: boolean;
+  isSearchable?: boolean;
   selectedValue?: IOptionType | IOptionType[] | null;
   multiSelectOnChange?: (
     newValue: MultiValue<IOptionType>,
@@ -23,6 +29,9 @@ interface IProps {
   classNamePrefix?: string;
   className?: string;
   placeholder?: string;
+  onInputChange?:
+    | ((newValue: string, actionMeta: InputActionMeta) => void)
+    | undefined;
 }
 
 const Index: FC<IProps> = ({
@@ -34,13 +43,24 @@ const Index: FC<IProps> = ({
   classNamePrefix,
   className,
   placeholder,
+  onInputChange,
+  isSearchable,
 }) => {
   const customStyles = {
+    placeholder: (provided: any) => ({
+      ...provided,
+      ".dark-mode &": {
+        color: "#626281",
+      },
+    }),
     singleValue: (provided: any) => ({
       ...provided,
       color: "#000",
       fontWeight: "400",
       fontSize: "14px",
+      ".dark-mode &": {
+        color: "#fff",
+      },
     }),
     control: (provided: any, state: any) => ({
       ...provided,
@@ -58,6 +78,10 @@ const Index: FC<IProps> = ({
         borderColor: "#fec9da80",
         outline: "1px solid #fec9da80",
       },
+      ".dark-mode &": {
+        background: "#282848 !important",
+        borderColor: "rgba(255, 255, 255, 0.1) !important",
+      },
     }),
     menu: (provided: any) => ({
       ...provided,
@@ -71,6 +95,15 @@ const Index: FC<IProps> = ({
       margin: "0px",
       padding: "0px",
       backgroundColor: "",
+      ".dark-mode &": {
+        color: "#fff",
+      },
+    }),
+    multiValueLabel: (provided: any) => ({
+      ...provided,
+      ".dark-mode &": {
+        color: "#fff",
+      },
     }),
     option: (provided: any, state: any) => {
       if (isMulti) {
@@ -117,7 +150,12 @@ const Index: FC<IProps> = ({
           Array.isArray(selectedValue) &&
           selectedValue.some((sel) => sel.value === option.value)
         }
-        components={{ Option: CustomOption, DropdownIndicator: CustomDropdownIndicator }}
+        components={{
+          Option: CustomOption,
+          DropdownIndicator: CustomDropdownIndicator,
+        }}
+        onInputChange={onInputChange}
+        isSearchable={isSearchable}
       />
     );
   }
@@ -137,7 +175,9 @@ const Index: FC<IProps> = ({
         Array.isArray(selectedValue) &&
         selectedValue.some((sel) => sel.value === option.value)
       }
-      components={{ Option: CustomOption, DropdownIndicator: CustomDropdownIndicator }}
+      components={{
+        DropdownIndicator: CustomDropdownIndicator,
+      }}
     />
   );
 };

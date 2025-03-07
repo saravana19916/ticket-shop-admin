@@ -15,6 +15,18 @@ import Select from "react-select";
 import moment from "moment";
 import { toast } from "react-toastify";
 import { ISharedAccessDataProps } from ".";
+import {
+  FormInputDescriptionStyled,
+  FormInputRequired,
+  FormInputStyled,
+  FormLabelStyled,
+} from "../../styledComponents/styledForm";
+import CustomTooltip from "../../shared/CustomTooltip";
+import DateFlatpickr from "../../shared/DateFlatpickr";
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+} from "../../styledComponents/styledButton";
 
 interface IShareAccessModal {
   show: boolean;
@@ -35,6 +47,11 @@ const languages: Language[] = [
   { value: "es", label: "Spanish" },
   // Add more languages as needed
 ];
+const ticketTypeDropdown: any = [
+  { value: "1", label: "Type 1" },
+  { value: "2", label: "Type 2" },
+  { value: "3", label: "Type 3" },
+];
 
 const ShareAccessModal: FC<IShareAccessModal> = ({
   handleClose,
@@ -43,6 +60,63 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
   data,
   editData,
 }) => {
+  const customStyles = {
+    singleValue: (provided: any) => ({
+      ...provided,
+      color: "#000",
+      fontWeight: "400",
+      fontSize: "14px",
+    }),
+    indicatorSeparator: (provided: any) => ({
+      ...provided,
+      display: "none",
+    }),
+    dropdownIndicator: (provided: any) => ({
+      ...provided,
+      color: "#777",
+    }),
+    control: (provided: any, state: any) => ({
+      ...provided,
+      padding: "3px",
+      paddingLeft: "14px",
+      borderRadius: "50px",
+      borderColor: state.isFocused ? "#fec9da80" : "#e5e7eb",
+      outline: state.isFocused ? "1px solid #fec9da80" : "none",
+      boxShadow: "null",
+      "&:focus": {
+        borderColor: "#fec9da80",
+        outline: "1px solid #fec9da80",
+      },
+      "&:focus-within": {
+        borderColor: "#fec9da80",
+        outline: "1px solid #fec9da80",
+      },
+    }),
+    menu: (provided: any) => ({
+      ...provided,
+      borderRadius: "8px",
+    }),
+    multiValue: (provided: any) => ({
+      ...provided,
+      color: "#000",
+      fontWeight: "500",
+      fontSize: "18px",
+      margin: "0px",
+      padding: "0px",
+      backgroundColor: "",
+    }),
+    option: (provided: any, state: any) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? "#ED003B" : "transparent",
+      color: state.isSelected ? "#fff" : provided.color,
+      cursor: "pointer",
+      transition: "background-color 0.2s ease",
+      "&:hover": {
+        backgroundColor: state.isSelected ? "#ED003B" : "#fec9da80",
+      },
+    }),
+  };
+
   const [expiryDate, setExpiryDate] = useState("");
   const [id, setId] = useState<number | null | string>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<
@@ -107,8 +181,8 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
     }
   }, [editData]);
 
-  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputDate = event.target.value;
+  const handleDateChange = (value: any) => {
+    const inputDate = value;
     const year = new Date(inputDate).getFullYear();
 
     if (year.toString().length <= 4) {
@@ -222,10 +296,27 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
     setDate();
   };
 
+  const handleChangeTicketType = (e: any) => {
+    setTicketType(e?.value);
+  };
   return (
     <>
-      <Modal show={show} onHide={() => handleClose(false)} centered>
-        <ModalHeader className="d-flex align-items-center justify-content-between border-0 mt-3">
+      <Modal show={show} onHide={() => handleClose(false)} centered size="lg">
+        <Modal.Header className="p-6">
+          <Modal.Title className="w-100 text-center m-0">
+            <span className="fw-600 fs-4 text-center">Share</span>
+          </Modal.Title>
+          <span
+            className="d-flex ms-auto fs-4"
+            onClick={() => {
+              handleClose(false);
+              setDate();
+            }}
+          >
+            <i className="fe fe-x ms-auto"></i>
+          </span>
+        </Modal.Header>
+        {/* <ModalHeader className="d-flex align-items-center justify-content-between border-0 mt-3">
           <ModalTitle className="fw-semibold fs-5">Share</ModalTitle>
           <div
             className="btn btn-close fs-14px"
@@ -234,7 +325,7 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
               setDate();
             }}
           ></div>
-        </ModalHeader>
+        </ModalHeader> */}
         <ModalBody className="pb-0">
           <div className="row">
             <div className="col-12 mb-3">
@@ -243,7 +334,24 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
                 sharing data.
               </div>
             </div>
-            <div className="col-lg-6 col-12 mb-3">
+            <div className="col-12 col-lg-6 mb-3">
+              <Form.Group>
+                <FormLabelStyled
+                  htmlFor="fullName"
+                  className="d-flex align-items-center"
+                >
+                  Full name <FormInputRequired>*</FormInputRequired>
+                </FormLabelStyled>
+                <FormInputStyled
+                  type="text"
+                  id="fullName"
+                  className="form-control"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+              </Form.Group>
+            </div>
+            {/* <div className="col-lg-6 col-12 mb-3">
               <label htmlFor="fullName" className="fw-semibold mb-0 ms-3">
                 Full name *
               </label>
@@ -254,8 +362,40 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
               />
+            </div> */}
+            <div className="col-12 col-lg-6 mb-3">
+              <Form.Group>
+                <FormLabelStyled
+                  htmlFor="cellPhone"
+                  className="d-flex align-items-center"
+                >
+                  Cellphone <FormInputRequired>*</FormInputRequired>
+                </FormLabelStyled>
+                <div className="position-relative">
+                  <PhoneInput
+                    country={"us"}
+                    onChange={(phone) => setCellPhone(phone)}
+                    value={cellPhone}
+                    inputStyle={{
+                      width: "100%",
+                      minHeight: "3.55rem !important",
+                      fontSize: "14px",
+                      borderRadius: "50rem",
+                      border: "1px solid #e5e7eb",
+                      outline: "none",
+                      height: "3.4rem",
+                    }}
+                    buttonStyle={{
+                      background: "transparent",
+                      border: "none",
+                      borderRadius: "50rem 0 0 50rem",
+                    }}
+                    inputClass="custom-phone-input"
+                  />
+                </div>
+              </Form.Group>
             </div>
-            <div className="col-lg-6 col-12 mb-3">
+            {/* <div className="col-lg-6 col-12 mb-3">
               <label htmlFor="cellPhone" className="fw-semibold mb-0 ms-3">
                 Cellphone *
               </label>
@@ -273,8 +413,22 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
                   value={cellPhone}
                 />
               </Form>
+            </div> */}
+            <div className="col-12 col-lg-6 mb-3">
+              <Form.Group>
+                <FormLabelStyled htmlFor="expiryDate">
+                  Expiry Date <FormInputRequired>*</FormInputRequired>
+                </FormLabelStyled>
+                <DateFlatpickr
+                  id="expiryDate"
+                  value={expiryDate}
+                  onChange={(date) => handleDateChange(date)}
+                  // onBlur={handleDateBlur}
+                  type="date"
+                />
+              </Form.Group>
             </div>
-            <div className="col-lg-6 col-12 mb-3">
+            {/* <div className="col-lg-6 col-12 mb-3">
               <label htmlFor="expiryDate" className="fw-semibold mb-0 ms-3">
                 Expiry Date *
               </label>
@@ -305,9 +459,25 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
                   onClick={() => document.getElementById("expiryDate")?.focus()}
                 ></i>
               </div>
+            </div> */}
+            <div className="col-12 col-lg-6 mb-3">
+              <Form.Group>
+                <FormLabelStyled
+                  htmlFor="company"
+                  className="d-flex align-items-center"
+                >
+                  Company
+                </FormLabelStyled>
+                <FormInputStyled
+                  type="text"
+                  id="company"
+                  className="form-control"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                />
+              </Form.Group>
             </div>
-
-            <div className="col-lg-6 col-12 mb-3">
+            {/* <div className="col-lg-6 col-12 mb-3">
               <label htmlFor="company" className="fw-semibold mb-0 ms-3">
                 Company
               </label>
@@ -318,8 +488,31 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
               />
+            </div> */}
+            <div className="col-12 col-lg-6 mb-3">
+              <Form.Group>
+                <FormLabelStyled htmlFor="ticketTypes">
+                  Ticket types
+                </FormLabelStyled>
+                <Select
+                  id="ticketTypes"
+                  options={ticketTypeDropdown}
+                  placeholder="Select Type"
+                  classNamePrefix="Select"
+                  styles={customStyles}
+                  className="mt-1"
+                  value={ticketTypeDropdown?.find(
+                    (l: any) => l.value === ticketType
+                  )}
+                  onChange={(e: any) => handleChangeTicketType(e)}
+                />
+                <FormInputDescriptionStyled>
+                  If no ticket type is selected all ticket types will be shared
+                  with this link
+                </FormInputDescriptionStyled>
+              </Form.Group>
             </div>
-            <div className="col-12 mb-3">
+            {/* <div className="col-12 mb-3">
               <label htmlFor="ticketTypes" className="fw-semibold mb-0 ms-3">
                 Ticket types
               </label>
@@ -338,8 +531,28 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
                 If no ticket type is selected all ticket types will be shared
                 with this link
               </span>
+            </div> */}
+            <div className="col-12 col-lg-6 mb-3">
+              <Form.Group>
+                <FormLabelStyled htmlFor="language">
+                  Language <FormInputRequired>*</FormInputRequired>
+                </FormLabelStyled>
+                <Select
+                  id="language"
+                  options={languages.map((lang) => ({
+                    ...lang,
+                    label: `${getFlagEmoji(lang.value)} ${lang.label}`,
+                  }))}
+                  placeholder="Language"
+                  classNamePrefix="Select"
+                  styles={customStyles}
+                  className="mt-1"
+                  value={selectedLanguage}
+                  onChange={handleLanguageChange}
+                />
+              </Form.Group>
             </div>
-            <div className="col-12 mb-3">
+            {/* <div className="col-12 mb-3">
               <label htmlFor="language" className="fw-semibold mb-0 ms-3">
                 Language *
               </label>
@@ -363,10 +576,43 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
                   }),
                 }}
               />
-            </div>
+            </div> */}
           </div>
         </ModalBody>
-        <ModalFooter className="gap-3 border-0">
+        <Modal.Footer className="modal-footer">
+          <ButtonSecondary
+            style={{ minWidth: "118px " }}
+            type="button"
+            className="btn "
+            onClick={() => {
+              handleClose(false);
+              setDate();
+            }}
+          >
+            <span className="d-none d-md-block">Close</span>
+          </ButtonSecondary>
+          <ButtonPrimary
+            style={{ minWidth: "118px " }}
+            type="button"
+            className="btn"
+            onClick={() => {
+              if (id) {
+                handleUpdate();
+              } else {
+                handleAdd();
+              }
+              handleClose(false);
+              setDate();
+            }}
+          >
+            <i
+              className="fa fa-arrow-right d-block d-md-none"
+              aria-hidden="true"
+            ></i>{" "}
+            {id ? "Update" : "Add"}
+          </ButtonPrimary>
+        </Modal.Footer>
+        {/* <ModalFooter className="gap-3 border-0">
           <div
             className="text-primary fw-semibold cursor-pointer"
             onClick={() => {
@@ -391,7 +637,7 @@ const ShareAccessModal: FC<IShareAccessModal> = ({
           >
             {id ? "Update" : "Add"}
           </Button>
-        </ModalFooter>
+        </ModalFooter> */}
       </Modal>
     </>
   );
