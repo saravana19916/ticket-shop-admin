@@ -1,0 +1,31 @@
+.custom-button {
+    background-color: #d1eaff !important;
+    color: #226099 !important;
+    border: 1px solid #d1eaff !important;
+}
+
+.timeline-icon {
+    width: 35px;
+    height: 30px;
+    background-color: #6e6e6e;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.timeline-icon.active {
+    background-color: #226099;
+    color: white;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 14px; /* Align with icon center */
+    top: 30px;
+    height: 100%;
+    width: 2px;
+    background-color: #e9ecef;
+}
