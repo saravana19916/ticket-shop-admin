@@ -29,6 +29,16 @@ const discountType = [
     label: "By Product",
   },
 ];
+const usageTimePerCodeOptions = [
+  {
+    value: "One Time",
+    label: "One Time",
+  },
+  {
+    value: "Unlimited Times",
+    label: "Unlimited Times",
+  },
+];
 
 const index: FC<IProps> = () => {
   const tabList = ["Tickets", "Services", "Add ons", "Merchandise", "F&B"];
@@ -222,7 +232,7 @@ const index: FC<IProps> = () => {
                   />
                 </FormLabelStyled>
                 <SelectDropDown
-                  options={listingType}
+                  options={usageTimePerCodeOptions}
                   placeholder="Select Usage Time Per Code"
                   classNamePrefix="Select"
                   className="mb-2"

@@ -7,6 +7,12 @@ import AddMarketingMaterial from "../components/marketingMaterial/AddMarketingMa
 import AddPolicies from "../components/listing/AddListing/Policies/AddPolicies";
 import AddZones from "../components/listing/AddListing/AddZoningAndCapacity/AddZones/AddZones";
 import AddMyProductAllocation from "../components/ProductAllocation/AddProductAllocation";
+import Orders from "../components/orders";
+import OrderDetails from "../components/orders/OrderDetails";
+import Scanning from "../components/scanning";
+import Tickets from "../components/Tickets";
+import TicketsDesigner from "../components/Tickets/TicketsDesigner";
+import ScanningDetails from "../components/scanning/ScanningDetails";
 
 const CardsDesign = lazy(
   () => import("../components/apps/cardsdesign/cardsdesign")
@@ -495,6 +501,34 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}seating-plan`,
     element: <SeatsIoDesigner />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}orders`,
+    element: <Orders />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}view-order/:id`,
+    element: <OrderDetails />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}scanning`,
+    element: <Scanning />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}scanning`,
+    element: <Scanning />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}view-scanning/:id`,
+    element: <ScanningDetails />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}tickets`,
+    element: <Tickets />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}tickets-designer`,
+    element: <TicketsDesigner />,
   },
   {
     path: `${import.meta.env.BASE_URL}apps/carddesigns`,

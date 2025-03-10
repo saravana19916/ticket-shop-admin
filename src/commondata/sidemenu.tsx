@@ -1236,6 +1236,32 @@ export const MENUITEMS = [
             selected: false,
             title: "Policies",
           },
+          // {
+          //   path: `${import.meta.env.BASE_URL}seating-plan`,
+          //   type: "link",
+          //   active: false,
+          //   selected: false,
+          //   title: "Seat Plan",
+          // },
+        ],
+      },
+      {
+        path: `${import.meta.env.BASE_URL}orders`,
+        icon: "fe fe-file",
+        type: "link",
+        active: false,
+        selected: false,
+        title: "Order",
+      },
+      {
+        title: "Designer",
+        icon: "fe fe-layers",
+        type: "sub",
+        Name: "",
+        Names: "",
+        active: false,
+        selected: false,
+        children: [
           {
             path: `${import.meta.env.BASE_URL}seating-plan`,
             type: "link",
@@ -1243,33 +1269,15 @@ export const MENUITEMS = [
             selected: false,
             title: "Seat Plan",
           },
+          {
+            path: `${import.meta.env.BASE_URL}tickets`,
+            type: "link",
+            active: false,
+            selected: false,
+            title: "Tickets",
+          },
         ],
       },
-      // {
-      //   title: "Designer",
-      //   icon: "fe fe-layers",
-      //   type: "sub",
-      //   Name: "",
-      //   Names: "",
-      //   active: false,
-      //   selected: false,
-      //   children: [
-      //     {
-      //       path: `${import.meta.env.BASE_URL}seating-plan`,
-      //       type: "link",
-      //       active: false,
-      //       selected: false,
-      //       title: "Seat Plan",
-      //     },
-      //     {
-      //       path: `${import.meta.env.BASE_URL}dashboard`,
-      //       type: "link",
-      //       active: false,
-      //       selected: false,
-      //       title: "Tickets",
-      //     },
-      //   ],
-      // },
       {
         title: "Marketing",
         icon: "fe fe-dollar-sign",
@@ -1347,7 +1355,7 @@ export const MENUITEMS = [
         selected: false,
         children: [
           {
-            path: `${import.meta.env.BASE_URL}`,
+            path: `${import.meta.env.BASE_URL}scanning`,
             type: "link",
             active: false,
             selected: false,
