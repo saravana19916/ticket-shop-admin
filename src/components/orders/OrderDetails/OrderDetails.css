@@ -6,7 +6,7 @@
 
 .timeline-icon {
     width: 35px;
-    height: 30px;
+    height: 35px;
     background-color: #6e6e6e;
     color: #ffffff;
     border-radius: 50%;
@@ -23,9 +23,27 @@
 
 .timeline-line {
     position: absolute;
-    left: 14px; /* Align with icon center */
-    top: 30px;
+    left: 17px;
+    top: 35px;
     height: 100%;
     width: 2px;
     background-color: #e9ecef;
 }
+
+.custom-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: black; /* Adjust color */
+    cursor: pointer;
+  }
+
+  .dropdown-divider {
+    border-top: 1px solid black !important;
+  }

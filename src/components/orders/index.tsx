@@ -8,13 +8,19 @@ import {
   ArrowDownTrayIcon,
   WifiIcon
 } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 
 const index = () => {
+  const navigate = useNavigate();
   const orders = [
     { order_number: 7237614364, name: "Chidchanok", products: "1", revenue: "$5.00", status: "Completed", purchased: "07-02-2023 12:18" },
     { order_number: 'X434983228', name: "Nina", products: "1", revenue: "$5.00", status: "Completed", purchased: "07-02-2023 12:17" },
     { order_number: 'NE58647592', name: "Ahmed ahmed", products: "1", revenue: "$0.00", status: "Completed", purchased: "20-12-2022" },
   ];
+
+  const handleViewDetails = () => {
+    navigate(`${import.meta.env.BASE_URL}view-order/1`);
+  };
 
   return (
     <>
@@ -86,7 +92,7 @@ const index = () => {
                         ...
                       </Dropdown.Toggle>
                       <Dropdown.Menu className="z-10">
-                        <Dropdown.Item><Eye size={20} className="me-2 mb-2" /> View details</Dropdown.Item>
+                        <Dropdown.Item  onClick={handleViewDetails}><Eye size={20} className="me-2 mb-2" /> View details</Dropdown.Item>
                         <Dropdown.Item><Mail size={20} className="me-2 mb-2" /> Resend</Dropdown.Item>
                         <Dropdown.Item><i className="bi bi-fingerprint fs-3 me-2 mb-2"></i>Reset personalisation</Dropdown.Item>
                         <Dropdown.Item><Slash size={20} className="me-2" /> Cancel</Dropdown.Item>
