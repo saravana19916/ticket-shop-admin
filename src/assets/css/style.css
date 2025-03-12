@@ -69970,3 +69970,10 @@ a.fc-event:hover {
 .dark-mode .Select-multiple__multi-value__label {
   color: #fff !important;
 }
+.dark-mode .sketch-picker{
+	background: #1A1A3C !important;
+}
+.dark-mode [id^="rc-editable-input-"] {
+    background: transparent !important;
+    color: #fff !important;
+}

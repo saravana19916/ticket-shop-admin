@@ -29,6 +29,8 @@ interface IProps {
   classNamePrefix?: string;
   className?: string;
   placeholder?: string;
+
+  fontSize?: string;
   onInputChange?:
     | ((newValue: string, actionMeta: InputActionMeta) => void)
     | undefined;
@@ -45,6 +47,7 @@ const Index: FC<IProps> = ({
   placeholder,
   onInputChange,
   isSearchable,
+  fontSize = "14px",
 }) => {
   const customStyles = {
     placeholder: (provided: any) => ({
@@ -57,7 +60,7 @@ const Index: FC<IProps> = ({
       ...provided,
       color: "#000",
       fontWeight: "400",
-      fontSize: "14px",
+      fontSize: fontSize,
       ".dark-mode &": {
         color: "#fff",
       },
@@ -67,7 +70,7 @@ const Index: FC<IProps> = ({
       padding: "4.8px",
       paddingLeft: "14px",
       borderRadius: "50px",
-      borderColor: state.isFocused ? "#fec9da80" : "#e5e7eb",
+      borderColor: state.isFocused ? "#fec9da80" : "#d1d5db",
       outline: state.isFocused ? "1px solid #fec9da80" : "none",
       boxShadow: "none",
       "&:focus": {

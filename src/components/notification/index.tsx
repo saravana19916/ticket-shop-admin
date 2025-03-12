@@ -1,18 +1,18 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Container, Button, Badge } from "react-bootstrap";
-import PageHeader from "../../layouts/layoutcomponents/pageheader";
+// import PageHeader from "../../layouts/layoutcomponents/pageheader";
 import { Imagesdata } from "../../commondata/commonimages";
 
 interface NotificationListProps {}
 
 const NotificationList: FC<NotificationListProps> = () => (
   <div className="">
-    <PageHeader
+    {/* <PageHeader
       titles="Notifications List"
       active="Notifications List"
       items={["Pages"]}
-    />
+    /> */}
     <Container>
       <ul className="notification">
         <li>

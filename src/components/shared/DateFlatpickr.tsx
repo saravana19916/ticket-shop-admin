@@ -13,7 +13,7 @@ const StyledDateFlatpickr = styled.div`
   & input {
     font-size: 1rem;
     padding: 12px 12px 12px 20px;
-    border-color: #e5e7eb;
+    border-color: #d1d5db;
     font-weight: 400;
     color: #000;
     border-radius: 50px;
@@ -21,14 +21,14 @@ const StyledDateFlatpickr = styled.div`
     width: 100%;
 
     .dark-mode & {
-      border-color: #e5e7eb;
+      border-color: #d1d5db;
       color: #fff;
     }
 
     &:hover {
       border-color: #b3b3b3;
       .dark-mode & {
-        border-color: #e5e7eb;
+        border-color: #d1d5db;
       }
     }
 

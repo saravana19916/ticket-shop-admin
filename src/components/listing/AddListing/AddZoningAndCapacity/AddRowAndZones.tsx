@@ -5,6 +5,7 @@ import {
   FormLabelStyled,
   FormStyledContentSection,
   StyledCountButton,
+  StyledInputDiv,
 } from "../../../styledComponents/styledForm";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Form } from "react-bootstrap";
@@ -109,7 +110,7 @@ const AddRowAndZones: FC<IProps> = ({}) => {
           <span className="question">
             Would you like to add more sections/rows to your Zone?
           </span>
-          <div className="form-check">
+          <StyledInputDiv className="form-check">
             <input
               className="form-check-input"
               type="checkbox"
@@ -121,16 +122,18 @@ const AddRowAndZones: FC<IProps> = ({}) => {
               }}
               checked={showCustomRowAndZones}
             />
-
             <label
-              className="form-check-label ms-3"
               htmlFor="addSections"
-              style={{ marginTop: "6px", fontSize: "12px" }}
+              className="form-check-label ms-3"
+              style={{
+                marginTop: "7px",
+                fontSize: "12px",
+              }}
             >
               Yes
             </label>
-          </div>
-          <div className="form-check">
+          </StyledInputDiv>
+          <StyledInputDiv className="form-check">
             <input
               className="form-check-input"
               type="checkbox"
@@ -145,11 +148,14 @@ const AddRowAndZones: FC<IProps> = ({}) => {
             <label
               htmlFor="donNotAddSections"
               className="form-check-label ms-3"
-              style={{ marginTop: "6px", fontSize: "12px" }}
+              style={{
+                marginTop: "7px",
+                fontSize: "12px",
+              }}
             >
               No
             </label>
-          </div>
+          </StyledInputDiv>
         </FormStyledContentSection>
       </div>
       {showCustomRowAndZones ? (
@@ -198,6 +204,7 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                       placeholder="Select Type"
                       classNamePrefix="Select"
                       className="mb-2"
+                      fontSize="12px"
                     />
                   </Form.Group>
                 </div>
@@ -206,7 +213,7 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                     <FormLabelStyled className="fs-12px">Name</FormLabelStyled>
                     <FormInputStyled
                       type="text"
-                      className="form-control"
+                      className="form-control fs-12"
                       name="zoneName"
                       placeholder="Section/Row Name"
                     />
@@ -219,7 +226,7 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                     </FormLabelStyled>
                     <FormInputStyled
                       type="number"
-                      className="form-control"
+                      className="form-control fs-12"
                       name="onSale"
                     />
                   </Form.Group>
@@ -231,7 +238,7 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                     </FormLabelStyled>
                     <FormInputStyled
                       type="number"
-                      className="form-control"
+                      className="form-control fs-12"
                       name="blocked"
                     />
                   </Form.Group>
@@ -241,7 +248,7 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                     <FormLabelStyled className="fs-12px">Tag</FormLabelStyled>
                     <FormInputStyled
                       type="text"
-                      className="form-control"
+                      className="form-control fs-12"
                       name="onSale"
                     />
                   </Form.Group>
@@ -253,7 +260,7 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                     </FormLabelStyled>
                     <FormInputStyled
                       type="number"
-                      className="form-control"
+                      className="form-control fs-12"
                       name="blocked"
                     />
                   </Form.Group>
@@ -265,7 +272,7 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                     </FormLabelStyled>
                     <FormInputStyled
                       type="number"
-                      className="form-control"
+                      className="form-control fs-12"
                       name="blocked"
                     />
                   </Form.Group>
@@ -279,7 +286,8 @@ const AddRowAndZones: FC<IProps> = ({}) => {
                       options={AllocationOrderOptions}
                       placeholder="Select Allocation Order"
                       classNamePrefix="Select"
-                      className="mb-2"
+                      className="mb-2 fs-12"
+                      fontSize="12px"
                     />
                   </Form.Group>
                 </div>

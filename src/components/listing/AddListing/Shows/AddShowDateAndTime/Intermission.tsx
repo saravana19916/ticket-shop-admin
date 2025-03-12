@@ -24,6 +24,7 @@ import {
   DateTimeInputGroup,
   DateTimeCustomInput,
   FormStyledContentSection,
+  StyledInputDiv,
 } from "../../../../styledComponents/styledForm";
 import DateFlatpickr from "../../../../shared/DateFlatpickr";
 import CustomTooltip from "../../../../shared/CustomTooltip";
@@ -59,7 +60,7 @@ const Intermission: FC<IIntermission> = ({}) => {
                 <span className="question">
                   Would you like to add intermission?
                 </span>
-                <div className="form-check">
+                <StyledInputDiv className="form-check">
                   <input
                     className="form-check-input"
                     type="checkbox"
@@ -71,16 +72,18 @@ const Intermission: FC<IIntermission> = ({}) => {
                     }}
                     checked={showCustomRowAndZones}
                   />
-
                   <label
-                    className="form-check-label ms-3"
                     htmlFor="addSections"
-                    style={{ marginTop: "6px", fontSize: "12px" }}
+                    className="form-check-label ms-3"
+                    style={{
+                      marginTop: "7px",
+                      fontSize: "12px",
+                    }}
                   >
                     Yes
                   </label>
-                </div>
-                <div className="form-check">
+                </StyledInputDiv>
+                <StyledInputDiv className="form-check">
                   <input
                     className="form-check-input"
                     type="checkbox"
@@ -93,13 +96,16 @@ const Intermission: FC<IIntermission> = ({}) => {
                     }}
                   />
                   <label
-                    htmlFor="donNotAddSections"
+                    htmlFor="addSections"
                     className="form-check-label ms-3"
-                    style={{ marginTop: "6px", fontSize: "12px" }}
+                    style={{
+                      marginTop: "7px",
+                      fontSize: "12px",
+                    }}
                   >
                     No
                   </label>
-                </div>
+                </StyledInputDiv>
               </FormStyledContentSection>
             </div>
             {/* <Form.Group>
@@ -146,9 +152,7 @@ const Intermission: FC<IIntermission> = ({}) => {
                   <Form.Group>
                     <FormLabelStyled>
                       Start Time
-                      <CustomTooltip
-                        title="Start Time"
-                      />
+                      <CustomTooltip title="Start Time" />
                     </FormLabelStyled>
                     <DateFlatpickr
                       value={dateTime?.intermissionStartTime}
@@ -164,9 +168,7 @@ const Intermission: FC<IIntermission> = ({}) => {
                   <Form.Group>
                     <FormLabelStyled>
                       End Time
-                      <CustomTooltip
-                        title="End Time"
-                      />
+                      <CustomTooltip title="End Time" />
                     </FormLabelStyled>
                     <DateFlatpickr
                       value={dateTime?.intermissionEndTime}
@@ -182,9 +184,7 @@ const Intermission: FC<IIntermission> = ({}) => {
                   <Form.Group>
                     <FormLabelStyled htmlFor="showDuration">
                       Duration (Mins)
-                      <CustomTooltip
-                        title="Duration (Mins)"
-                      />
+                      <CustomTooltip title="Duration (Mins)" />
                     </FormLabelStyled>
                     <FormInputStyled
                       type="text"

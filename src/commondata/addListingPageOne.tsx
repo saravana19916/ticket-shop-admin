@@ -143,3 +143,11 @@ export const productData: IProductDataProps[] = [
     ],
   },
 ];
+export const scanUserType: IOptionProps[] = [
+  { value: "testevent123", label: "testevent123" },
+  { value: "arcadiamus", label: "arcadiamus" },
+  { value: "arcadiamus1", label: "arcadiamus1" },
+  { value: "arcadiamus2", label: "arcadiamus2" },
+  { value: "arcadiamus3", label: "arcadiamus3" },
+  { value: "arcadiamus4", label: "arcadiamus4" },
+];

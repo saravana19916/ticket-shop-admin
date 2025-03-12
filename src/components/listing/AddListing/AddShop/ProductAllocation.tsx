@@ -7,6 +7,7 @@ import { ErrorMessage, FormikErrors, FormikTouched } from "formik";
 import {
   FormGroupStyled,
   FormInputStyled,
+  FormInputUnitsStyled,
   FormLabelStyled,
   FormStyledPill,
 } from "../../../styledComponents/styledForm";
@@ -167,7 +168,7 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
                       minWidth: "80px",
                     }}
                   >
-                    <FormInputStyled
+                    <FormInputUnitsStyled
                       type="number"
                       className="form-control special-input"
                       name="units"

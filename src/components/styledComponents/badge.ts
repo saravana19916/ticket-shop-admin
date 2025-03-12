@@ -76,3 +76,11 @@ export const WhiteBadge = styled(ActiveBadge)<BadgeProps>`
       min-width: ${props.minWidth};
     `}
 `;
+
+export const SuccessBadge = styled.span`
+  border-radius: 8px;
+  border: 1px solid #7ed4ad; /* Added 'solid' for proper border */
+  background-color: #d3f1df;
+  color: #118b50;
+  padding: 2px 10px;
+`;

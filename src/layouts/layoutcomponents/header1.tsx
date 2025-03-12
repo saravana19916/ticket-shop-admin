@@ -240,7 +240,7 @@ const Header1 = () => {
         <CustomToastContainer />
         {/* <AccountsSwitch show={show} handleClose={handleClose} /> */}
         <div className="header sticky app-header header1">
-          <div className="container-fluid main-container">
+          <div className="container-fluid main-container custom-container">
             <div className="d-flex">
               <div className="d-flex align-items-center">
                 <Link

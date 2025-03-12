@@ -2,21 +2,24 @@ import styled, { css } from "styled-components";
 import SunEditor from "suneditor-react";
 const commonStyles = css`
   font-size: 1rem;
-  border-color: #e5e7eb;
+  // border-color: #e5e7eb;
+  border-color: #d1d5db;
   font-weight: 400;
   color: #000;
   border-radius: 50px;
   margin-bottom: 0.5rem;
 
   .dark-mode & {
-    border-color: #e5e7eb;
+    // border-color: #e5e7eb;
+    border-color: #d1d5db;
     color: #fff;
   }
 
   &:hover {
     border-color: #b3b3b3;
     .dark-mode & {
-      border-color: #e5e7eb;
+      // border-color: #e5e7eb;
+      border-color: #d1d5db;
     }
   }
 
@@ -56,6 +59,36 @@ export const FormInputStyled = styled.input`
     .dark-mode & {
       background-color: #282848; /* Dark mode */
     }
+  }
+  .dark-mode & {
+    color: #ffffff !important;
+  }
+`;
+
+export const FormInputUnitsStyled = styled.input`
+  ${commonStyles}
+  padding: 12px 12px 12px 20px;
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  &::placeholder {
+    opacity: 0.25;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &.special-input {
+    background-color: #f3f4f5; /* Light mode */
+
+    .dark-mode & {
+      background-color: #282848; /* Dark mode */
+    }
+  }
+  .dark-mode & {
+    color: #ffffff !important;
   }
 `;
 export const FormDivStyled = styled.div`
@@ -98,6 +131,9 @@ export const FormInputGroupLabel = styled.span`
   top: 13px;
   font-size: 1rem;
   color: #888;
+  .dark-mode & {
+    color: #ffffff !important;
+  }
 `;
 
 export const FormInputDescriptionStyled = styled.span`
@@ -378,7 +414,7 @@ export const StyledInputDiv = styled.div`
   input {
     width: 20px;
     height: 20px;
-    border: 1px solid #e1e4e7;
+    border: 1px solid #d1d5db;
     margin-right: 1rem;
     accent-color: #e00036;
     border-radius: 4px;

@@ -31,6 +31,15 @@ export const ButtonPrimary = styled(BaseButton)`
     background-color: #e00036;
   }
 `;
+export const ButtonPrimaryLight = styled(BaseButton)`
+  background-color: #fcd4dc;
+  border-color: #fcd4dc;
+  color: #ed003b;
+
+  &:hover {
+    background-color: #ed003b;
+  }
+`;
 
 export const IconButtonPrimary = styled(ButtonPrimary)`
   padding: 10px 12px;

@@ -434,7 +434,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
                 minHeight: "3.55rem !important",
                 fontSize: "14px",
                 borderRadius: "50rem",
-                border: "1px solid #e5e7eb",
+                border: "1px solid #d1d5db",
                 outline: "none",
                 height: "3.4rem",
               }}

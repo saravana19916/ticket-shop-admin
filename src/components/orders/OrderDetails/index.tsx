@@ -48,7 +48,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
         <h4>
           {title}{" "}
           {isActive && (
-            <a href="#" className="text-primary" onClick={onClick}>
+            <a href="#" className="text-primary small" onClick={onClick}>
               more
             </a>
           )}
@@ -128,7 +128,7 @@ const OrderDetails = () => {
             <Card.Body>
               <div className="d-flex justify-content-between">
                 <h3>Contact</h3>
-                <a href="#more" className="text-blue fw-semibold">
+                <a href="#more" className="text-primary fw-semibold">
                   more
                 </a>
               </div>
@@ -278,7 +278,7 @@ const OrderDetails = () => {
           <div className="d-flex justify-content-between mt-3">
             <Button
               variant="link"
-              className="text-muted text-decoration-none"
+              className="text-primary text-decoration-none"
               onClick={handleClose}
             >
               Close
@@ -313,7 +313,7 @@ const OrderDetails = () => {
                 </span>
               </div>
 
-              <span className="text-muted ms-4" style={{ marginLeft: "43px" }}>
+              <span className="text-muted small ms-4" style={{ marginLeft: "43px" }}>
                 February 7, 2023 - 10:18 AM
               </span>
             </div>

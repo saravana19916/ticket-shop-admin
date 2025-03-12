@@ -97,33 +97,33 @@ export const salesByTimeDemo: ISalesByTime[] = [
     unit: 17,
     value: "3100",
   },
-  {
-    name: 6,
-    unit: 8,
-    value: "17200",
-  },
-  {
-    name: 7,
-    unit: 3,
-    value: "3437",
-  },
 ];
 
 export const salesByPaymentTypeDemo: IPaymentType[] = [
   {
-    name: null,
+    name: "UPI",
     unit: 95,
     value: "262344",
   },
   {
-    name: null,
+    name: "Debit Card",
     unit: 30,
     value: "11",
   },
   {
-    name: null,
+    name: "Paypal",
     unit: 10,
     value: "23",
+  },
+  {
+    name: "Apple Pay",
+    unit: 19,
+    value: "29",
+  },
+  {
+    name: "Credit Card",
+    unit: 10,
+    value: "22",
   },
 ];
 
@@ -138,12 +138,21 @@ export const salesSummaryDemo: ISalesSummary[] = [
     revenue: "69529.68",
   },
   {
-    name: "VIP",
+    name: "GOLD",
     type: "1",
     percentage: "144",
     capacity: 100,
     sold: 144,
     available: -44,
+    revenue: "69529.68",
+  },
+  {
+    name: "Complementary 1",
+    type: "2",
+    percentage: "50",
+    capacity: 90,
+    sold: 46,
+    available: 44,
     revenue: "69529.68",
   },
 ];

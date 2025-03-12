@@ -94,7 +94,7 @@ const Totals: FC<IFinancialSummaryTotalProps> = ({}) => {
         >
           <div className="row">
             <div className="col-md-3 col-12 pe-0">
-              <Card.Body className="card-body-custom ">
+              <Card.Body className="card-body-custom h-100">
                 <Card.Title as="h3" className="text-dark">
                   Total
                 </Card.Title>
@@ -110,8 +110,8 @@ const Totals: FC<IFinancialSummaryTotalProps> = ({}) => {
               </Card.Body>
             </div>
             <div className="col-md-9 col=12 ps-md-0 ps-3 ">
-              <Card.Body className="px-0 pb-0 table-responsive">
-                <table className="table table-borderless">
+              <Card.Body className="px-0 pb-0 table-responsive h-100">
+                <table className="table table-borderless h-100">
                   <thead className="border-0">
                     <tr>
                       <th className=" text-start fw-semibold text-capitalize pb-5 ps-6">

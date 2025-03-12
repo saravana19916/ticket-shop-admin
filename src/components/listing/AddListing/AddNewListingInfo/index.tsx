@@ -236,7 +236,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                           <span className="question">
                             Does the event have subtitles in the local language?
                           </span>
-                          <div className="form-check">
+                          <StyledInputDiv className="form-check">
                             <input
                               className="form-check-input"
                               type="checkbox"
@@ -248,16 +248,18 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                                 setFieldValue("subtitles", e.target.value)
                               }
                             />
-
                             <label
-                              className="form-check-label ms-3"
                               htmlFor="addSubtitles"
-                              style={{ marginTop: "6px", fontSize: "12px" }}
+                              className="form-check-label ms-3"
+                              style={{
+                                marginTop: "7px",
+                                fontSize: "12px",
+                              }}
                             >
                               Yes
                             </label>
-                          </div>
-                          <div className="form-check">
+                          </StyledInputDiv>
+                          <StyledInputDiv className="form-check">
                             <input
                               className="form-check-input"
                               type="checkbox"
@@ -272,11 +274,14 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             <label
                               htmlFor="donNotAddSubtitles"
                               className="form-check-label ms-3"
-                              style={{ marginTop: "6px", fontSize: "12px" }}
+                              style={{
+                                marginTop: "7px",
+                                fontSize: "12px",
+                              }}
                             >
                               No
                             </label>
-                          </div>
+                          </StyledInputDiv>
                         </FormStyledContentSection>
                       </div>
 
