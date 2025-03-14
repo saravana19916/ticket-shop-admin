@@ -22,6 +22,8 @@ import {
   FaFingerprint,
 } from "react-icons/fa";
 import "./OrderDetails.css";
+import { ButtonPrimaryLight } from "../../styledComponents/styledButton";
+import { SuccessBadge } from "../../styledComponents/badge";
 
 interface TimelineItemProps {
   icon: React.ReactNode;
@@ -71,58 +73,51 @@ const OrderDetails = () => {
   };
 
   return (
-    <Container className="mt-4">
-      <Card>
-        <Card.Body>
-          <Row>
-            <Col md={12}>
-              <h4>
-                Order <strong>7237614364</strong>{" "}
-                <Badge bg="success">Completed</Badge>
-              </h4>
-              <p>
-                Created on Monday 19 December 2022 / Last change: (Tuesday 07
-                February 2023)
-              </p>
-            </Col>
-            <Col
-              md={12}
-              className="d-flex flex-column flex-md-row gap-2 col-md-12"
-            >
-              <Button
-                className="custom-button me-2 rounded-3"
-                onClick={() => handleShow("resendEmail")}
-              >
-                <FaEnvelope className="me-2" /> Resend order
-              </Button>
+    <Row className="mt-5">
+      <Row className="mt-5">
+        <Col md={12}>
+          <h4>
+            Order <strong>7237614364</strong>{" "}
+            <SuccessBadge className="ms-3">Completed</SuccessBadge>
+          </h4>
+          <p>
+            Created on Monday 19 December 2022 / Last change: (Tuesday 07
+            February 2023)
+          </p>
+        </Col>
+        <Col md={12} className="d-flex flex-column flex-md-row gap-2 col-md-12">
+          <ButtonPrimaryLight
+            className="btn"
+            onClick={() => handleShow("resendEmail")}
+          >
+            Resend order
+          </ButtonPrimaryLight>
 
-              <Button className="custom-button me-2 rounded-3" disabled>
-                <FaFingerprint className="me-2" /> Reset personalisation
-              </Button>
+          <ButtonPrimaryLight className="btn">
+            <FaFingerprint className="me-2" /> Reset personalisation
+          </ButtonPrimaryLight>
 
-              <Dropdown className="custom-button rounded-3 text-center">
-                <Dropdown.Toggle className="custom-button rounded-3">
-                  ... More options
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#download">
-                    <FaDownload className="me-2 my-3" /> Download order
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#copy">
-                    <FaLink className="me-2 my-3" /> Copy link
-                  </Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item href="#cancel" className="text-danger">
-                    <FaBan className="me-2 my-3" /> Cancel order
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
+          <Dropdown>
+            <Dropdown.Toggle as={ButtonPrimaryLight} className="btn">
+              ... More options
+            </Dropdown.Toggle>
+            <Dropdown.Menu className="shadow">
+              <Dropdown.Item href="#download">
+                <FaDownload className="me-2 my-1" /> Download order
+              </Dropdown.Item>
+              <Dropdown.Item href="#copy">
+                <FaLink className="me-2 my-1" /> Copy link
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item href="#cancel" className="text-danger">
+                <FaBan className="me-2 my-1" /> Cancel order
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Col>
+      </Row>
 
-      <Row className="mt-3">
+      <Row className="mt-5">
         <Col md={8}>
           <Card>
             <Card.Body>
@@ -155,7 +150,7 @@ const OrderDetails = () => {
               <Row className="align-items-center">
                 <Col md={8} xs={12}>
                   <div className="d-flex align-items-center">
-                    <FaTicketAlt className="me-2 text-secondary" />
+                  <FaTicketAlt className="me-2 text-secondary" size={24} />
                     <div>
                       <strong>Standard Ticket +21</strong>
                       <p
@@ -313,7 +308,10 @@ const OrderDetails = () => {
                 </span>
               </div>
 
-              <span className="text-muted small ms-4" style={{ marginLeft: "43px" }}>
+              <span
+                className="text-muted small ms-4"
+                style={{ marginLeft: "43px" }}
+              >
                 February 7, 2023 - 10:18 AM
               </span>
             </div>
@@ -361,7 +359,7 @@ const OrderDetails = () => {
           </div>
         </Modal.Body>
       </Modal>
-    </Container>
+    </Row>
   );
 };
 
