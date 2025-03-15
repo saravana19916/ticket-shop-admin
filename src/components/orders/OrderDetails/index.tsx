@@ -24,6 +24,7 @@ import {
 import "./OrderDetails.css";
 import { ButtonPrimaryLight } from "../../styledComponents/styledButton";
 import { SuccessBadge } from "../../styledComponents/badge";
+import { useNavigate } from "react-router-dom";
 
 interface TimelineItemProps {
   icon: React.ReactNode;
@@ -43,16 +44,19 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   onClick,
 }) => {
   return (
-    <div className="d-flex position-relative mb-4">
+    <div className="d-flex position-relative mb-4" style={{ fontSize: "12px" }}>
       <div className="timeline-icon">{icon}</div>
       {!hideLine && <div className="timeline-line"></div>}
       <div className="ms-3 mb-5">
-        <h4>
+        <h4 style={{ fontSize: "12px" }}>
           {title}{" "}
           {isActive && (
-            <a href="#" className="text-primary small" onClick={onClick}>
+            <span
+              className="text-primary small custom-more-text"
+              onClick={onClick}
+            >
               more
-            </a>
+            </span>
           )}
         </h4>
         <p className="text-muted small mb-0">{date}</p>
@@ -62,6 +66,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
 };
 
 const OrderDetails = () => {
+  const navigate = useNavigate();
   const [activeModal, setActiveModal] = useState<string | null>(null);
 
   const handleShow = (modalType: string) => {
@@ -72,12 +77,16 @@ const OrderDetails = () => {
     setActiveModal(null);
   };
 
+  const handleBack = () => {
+    navigate(`${import.meta.env.BASE_URL}orders`);
+  };
+
   return (
     <Row className="mt-5">
-      <Row className="mt-5">
+      <Row className="mt-5" style={{ fontSize: "12px" }}>
         <Col md={12}>
           <h4>
-            Order <strong>7237614364</strong>{" "}
+            Order <strong style={{ fontSize: "16px", fontWeight: 600 }}>7237614364</strong>{" "}
             <SuccessBadge className="ms-3">Completed</SuccessBadge>
           </h4>
           <p>
@@ -114,15 +123,18 @@ const OrderDetails = () => {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
+          <ButtonPrimaryLight className="btn"  onClick={handleBack}>
+              Back
+          </ButtonPrimaryLight>
         </Col>
       </Row>
 
-      <Row className="mt-5">
+      <Row className="mt-5" style={{ fontSize: "12px" }}>
         <Col md={8}>
-          <Card>
+          <Card className="mt-3 p-5 border border-gray-300 shadow-md">
             <Card.Body>
               <div className="d-flex justify-content-between">
-                <h3>Contact</h3>
+                <h3 style={{ fontSize: "14px", fontWeight: 600 }}>Contact</h3>
                 <a href="#more" className="text-primary fw-semibold">
                   more
                 </a>
@@ -144,13 +156,13 @@ const OrderDetails = () => {
             </Card.Body>
           </Card>
 
-          <Card className="mt-3 p-3">
+          <Card className="mt-3 p-5 border border-gray-300 shadow-md">
             <Card.Body>
-              <h3 className="mb-4">Order of 1 ticket</h3>
+              <h3 className="mb-4" style={{ fontSize: "14px", fontWeight: 600 }}>Order of 1 ticket</h3>
               <Row className="align-items-center">
                 <Col md={8} xs={12}>
                   <div className="d-flex align-items-center">
-                  <FaTicketAlt className="me-2 text-secondary" size={24} />
+                  <FaTicketAlt className="me-2 text-black" size={35} />
                     <div>
                       <strong>Standard Ticket +21</strong>
                       <p
@@ -175,9 +187,9 @@ const OrderDetails = () => {
                     </Col>
                     <Col md={4} xs={4}>
                       <Dropdown>
-                        <Dropdown.Toggle variant="link" className="p-0">
-                          <FaEllipsisH className="text-secondary" />
-                        </Dropdown.Toggle>
+                      <Dropdown.Toggle as={ButtonPrimaryLight} className="btn">
+                        <FaEllipsisH />
+                      </Dropdown.Toggle>
                         <Dropdown.Menu align="end">
                           <Dropdown.Item href="#download">
                             Download Ticket
@@ -192,7 +204,7 @@ const OrderDetails = () => {
                 </Col>
               </Row>
 
-              <h3 className="mt-5">Additional details</h3>
+              <h3 className="mt-5" style={{ fontSize: "12px", fontWeight: 600 }}>Additional details</h3>
               <Table borderless>
                 <tbody>
                   <tr>
@@ -213,8 +225,8 @@ const OrderDetails = () => {
           </Card>
         </Col>
         <Col md={4}>
-          <Card className="p-3">
-            <h3 className="mt-5 mb-5">History</h3>
+          <Card className="mt-3 border border-gray-300 shadow-md" style={{ fontSize: "12px" , padding: '42px'}}>
+            <h3 className="mt-5 mb-5"  style={{ fontSize: "14px", fontWeight: 600 }}>History</h3>
             <TimelineItem
               icon={<FaEnvelope />}
               title="E-mail sent"
@@ -301,19 +313,15 @@ const OrderDetails = () => {
                 <div className="timeline-icon">
                   <FaDollarSign />
                 </div>
-                <span>
-                  {activeModal === "paymentCompleted"
-                    ? "Pay One - Payment completed"
-                    : "Pay One - Payment started"}
-                </span>
+                <div className="d-flex flex-column">
+                  <span>
+                    {activeModal === "paymentCompleted"
+                      ? "Pay One - Payment completed"
+                      : "Pay One - Payment started"}
+                  </span>
+                  <span className="text-muted small">February 7, 2023 - 10:18 AM</span>
+                </div>
               </div>
-
-              <span
-                className="text-muted small ms-4"
-                style={{ marginLeft: "43px" }}
-              >
-                February 7, 2023 - 10:18 AM
-              </span>
             </div>
 
             <button
