@@ -234,6 +234,8 @@ const Header1 = () => {
       toast.error("Please enter Email Id");
     }
   };
+  const [darkTheme, setDarkTheme] = useState(false);
+
   return (
     <>
       <div className="">
@@ -979,64 +981,95 @@ const Header1 = () => {
                             className="avatar  profile-user brround cover-image"
                           />
                         </Dropdown.Toggle>
-                        <Dropdown.Menu className="dropdown-menu-end dropdown-menu-arrow">
-                          <div className="drop-heading">
-                            <div className="text-center">
-                              <h5 className="text-dark mb-0 fs-14 fw-semibold">
-                                {authUser?.user?.profile?.first_name}{" "}
-                                {authUser?.user?.profile?.last_name}
-                              </h5>
-                              <small className="text-muted">
-                                {authUser?.user?.email}
-                              </small>
+                        <Dropdown.Menu className="dropdown-menu-end dropdown-menu-arrow" style={{ width: "235px", padding: "25px" }}>
+                          <div className="profile-sidebar">
+                            <div className="profile-header d-flex align-items-center text-center">
+                              <img
+                                src={Imagesdata("users21")}
+                                alt="profile-user"
+                                className="avatar profile-user brround cover-image me-2"
+                              />
+                              <div>
+                                <h5 className="text-dark mb-0 fs-14 fw-semibold">
+                                  {authUser?.user?.profile?.first_name}{" "}
+                                  {authUser?.user?.profile?.last_name}
+                                </h5>
+                                <small className="text-muted">
+                                  {authUser?.user?.location}
+                                </small>
+                              </div>
+                            </div>
+                            <hr className="my-4" style={{ borderTop: "1px solid #494949" }} />
+
+                            <ul className="profile-menu">
+                              <li>
+                                <Dropdown.Item href="#">
+                                  <i className="dropdown-icon fe fe-user"></i>{" "}
+                                  My Account
+                                </Dropdown.Item>
+                              </li>
+                              <li>
+                                <Dropdown.Item href="#">
+                                  <i className="dropdown-icon fe fe-list"></i>{" "}
+                                  My Listings
+                                </Dropdown.Item>
+                              </li>
+                              <li>
+                                <Dropdown.Item href="#">
+                                  <i className="dropdown-icon fe fe-settings"></i>{" "}
+                                  Settings
+                                </Dropdown.Item>
+                              </li>
+                              <li>
+                                <Dropdown.Item href="#">
+                                  <i className="dropdown-icon fe fe-credit-card"></i>{" "}
+                                  Finance
+                                </Dropdown.Item>
+                              </li>
+                              <li>
+                                <Dropdown.Item href="#">
+                                  <i className="dropdown-icon fe fe-file-text"></i>{" "}
+                                  Legal
+                                </Dropdown.Item>
+                              </li>
+                              <li>
+                                <Dropdown.Item href="#">
+                                  <i className="dropdown-icon fe fe-bell"></i>{" "}
+                                  Notifications
+                                </Dropdown.Item>
+                              </li>
+                              <li>
+                                <Dropdown.Item href="#">
+                                  <i className="dropdown-icon fe fe-message-square"></i>{" "}
+                                  Chat
+                                </Dropdown.Item>
+                              </li>
+                            </ul>
+                            <hr className="my-4" style={{ borderTop: "1px solid #494949" }} />
+
+                            <div className="profile-footer">
+                            <div className="form-check form-switch d-flex justify-content-between align-items-center">
+                              <span>Dark Theme</span>
+                              <input
+                                className="form-check-input"
+                                type="checkbox"
+                                role="switch"
+                                checked={darkTheme}
+                                onChange={() => setDarkTheme(!darkTheme)}
+                                style={{ marginLeft: "100px" }}
+                              />
+                            </div>
+                              <Dropdown.Item href="#" style={{ borderBottom: "none" }}>
+                                <i className="dropdown-icon fe fe-help-circle"></i>{" "}
+                                Helps
+                              </Dropdown.Item>
+                              <Dropdown.Item
+                                onClick={handleLogout}
+                              >
+                                <i className="dropdown-icon fe fe-log-out"></i> Logout
+                              </Dropdown.Item>
                             </div>
                           </div>
-                          <div className="dropdown-divider m-0"></div>
-                          <Dropdown.Item
-                            href={`${import.meta.env.BASE_URL}pages/profile/`}
-                          >
-                            <i className="dropdown-icon fe fe-user"></i>
-                            Profile
-                          </Dropdown.Item>
-                          {/*<Dropdown.Item href={
-                                                `${
-                                                    import
-                                                        .meta
-                                                        .env
-                                                        .BASE_URL
-                                                }pages/mailinbox/`
-                                            }>
-                                                <i className="dropdown-icon fe fe-mail"></i>
-                                                Inbox
-                                                <span className="badge bg-danger rounded-pill float-end">
-                                                    5
-                                                </span>
-                                            </Dropdown.Item>
-                                            <Dropdown.Item href={
-                                                `${
-                                                    import
-                                                        .meta
-                                                        .env
-                                                        .BASE_URL
-                                                }authentication/lockscreen/`
-                                            }>
-                                                <i className="dropdown-icon fe fe-lock"></i>
-                                                {" "}
-                                                Lockscreen
-                                            </Dropdown.Item>*/}
-                          <Dropdown.Item
-                            href={`${import.meta.env.BASE_URL}`}
-                            onClick={(e) => handleLogout(e)}
-                          >
-                            <i className="dropdown-icon fe fe-alert-circle"></i>{" "}
-                            Sign out
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            onClick={() => setShowNewsletterModal(true)}
-                          >
-                            <i className="dropdown-icon fe fe-send"></i>{" "}
-                            Newsletter
-                          </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                     </div>
