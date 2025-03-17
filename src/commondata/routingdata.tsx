@@ -11,7 +11,7 @@ import Orders from "../components/orders";
 import OrderDetails from "../components/orders/OrderDetails";
 import Scanning from "../components/scanning";
 import Tickets from "../components/Tickets";
-import TicketsDesigner from "../components/Tickets/TicketsDesigner";
+import TicketsDesigner from "../components/Tickets/DesignTickets";
 import ScanningDetails from "../components/scanning/ScanningDetails";
 
 const CardsDesign = lazy(
@@ -527,7 +527,7 @@ export const RouterData = [
     element: <Tickets />,
   },
   {
-    path: `${import.meta.env.BASE_URL}tickets-designer`,
+    path: `${import.meta.env.BASE_URL}/design-ticket`,
     element: <TicketsDesigner />,
   },
   {

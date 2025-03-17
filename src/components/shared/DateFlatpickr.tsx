@@ -60,7 +60,7 @@ interface DateFlatpickrProps {
   id?: any;
   value: Date | null | string;
   onChange: (date: Date | null) => void;
-  type?: "date" | "datetime" | "time";
+  type?: "date" | "datetime" | "time" | "range";
   placeholder?: string;
 }
 
@@ -73,6 +73,12 @@ const DateFlatpickr: React.FC<DateFlatpickrProps> = ({
 }) => {
   const options = {
     date: { enableTime: false, noCalendar: false, dateFormat: "Y-m-d" },
+    range: {
+      enableTime: false,
+      noCalendar: false,
+      dateFormat: "Y-m-d",
+      mode: "range",
+    },
     datetime: {
       enableTime: true,
       noCalendar: false,

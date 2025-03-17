@@ -51,7 +51,10 @@ const index = () => {
             <p className="fw-600 fs-26px text-black mb-3">My Tickets Design</p>
           </div>
           <div className="col-6 mb-3">
-            <LinkButtonPrimary className="float-end mt-2 btn" to="/add-info">
+            <LinkButtonPrimary
+              className="float-end mt-2 btn"
+              to="/design-ticket"
+            >
               <span>Add Design</span>
             </LinkButtonPrimary>
           </div>

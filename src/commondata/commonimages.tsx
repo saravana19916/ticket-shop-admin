@@ -194,7 +194,14 @@ import tourImage from "../assets/images/tourImage.jpg";
 import locationMap from "../assets/images/locationMap.svg";
 import duplicate from "../assets/images/duplicate.svg";
 import trashcan from "../assets/images/trashcan.svg";
-
+import ticketPDF from "../assets/images/ticket-pdf.png";
+import ticketMobile from "../assets/images/ticket-mobile.png";
+import StandardFront from "../assets/images/Standard-front.png";
+import StandardBack from "../assets/images/Standard-back.jpg";
+import VIPVerticalFront from "../assets/images/VIP-vertical-front.png";
+import VIPVerticalBack from "../assets/images/VIP-vertical-back.png";
+import VIPHorizFront from "../assets/images/VIP-Horiz-front.png";
+import VIPHorizBack from "../assets/images/VIP-Horiz-back.png";
 export const Imagesdata = (data: any) => {
   const img: any = {
     users15,
@@ -392,6 +399,14 @@ export const Imagesdata = (data: any) => {
     locationMap,
     trashcan,
     duplicate,
+    ticketPDF,
+    ticketMobile,
+    StandardFront,
+    StandardBack,
+    VIPVerticalFront,
+    VIPVerticalBack,
+    VIPHorizFront,
+    VIPHorizBack,
   };
 
   return img[data];
