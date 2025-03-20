@@ -1254,6 +1254,14 @@ export const MENUITEMS = [
         title: "Order",
       },
       {
+        path: `${import.meta.env.BASE_URL}accounts`,
+        icon: "fe fe-file",
+        type: "link",
+        active: false,
+        selected: false,
+        title: "Accounts",
+      },
+      {
         title: "Designer",
         icon: "fe fe-layers",
         type: "sub",

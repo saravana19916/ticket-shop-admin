@@ -7,6 +7,8 @@ import AddMarketingMaterial from "../components/marketingMaterial/AddMarketingMa
 import AddPolicies from "../components/listing/AddListing/Policies/AddPolicies";
 import AddZones from "../components/listing/AddListing/AddZoningAndCapacity/AddZones/AddZones";
 import AddMyProductAllocation from "../components/ProductAllocation/AddProductAllocation";
+import Accounts from "../components/accounts";
+import AddProject from "../components/accounts/AddListing";
 import Orders from "../components/orders";
 import OrderDetails from "../components/orders/OrderDetails";
 import Scanning from "../components/scanning";
@@ -510,6 +512,15 @@ export const RouterData = [
     path: `${import.meta.env.BASE_URL}view-order/:id`,
     element: <OrderDetails />,
   },
+  {
+    path: `${import.meta.env.BASE_URL}accounts`,
+    element: <Accounts />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}accounts/add-listing`,
+    element: <AddProject />,
+  },
+
   {
     path: `${import.meta.env.BASE_URL}scanning`,
     element: <Scanning />,
