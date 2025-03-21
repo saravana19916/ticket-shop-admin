@@ -1015,10 +1015,9 @@ const Header1 = () => {
                                 </Dropdown.Item>
                               </li>
                               <li>
-                                <Dropdown.Item href="#">
-                                  <i className="dropdown-icon fe fe-settings"></i>{" "}
-                                  Settings
-                                </Dropdown.Item>
+                              <Dropdown.Item as={Link} to="/settings">
+                                <i className="dropdown-icon fe fe-settings"></i> Settings
+                              </Dropdown.Item>
                               </li>
                               <li>
                                 <Dropdown.Item href="#">

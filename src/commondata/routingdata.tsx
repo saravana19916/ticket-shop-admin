@@ -8,6 +8,7 @@ import AddPolicies from "../components/listing/AddListing/Policies/AddPolicies";
 import AddZones from "../components/listing/AddListing/AddZoningAndCapacity/AddZones/AddZones";
 import AddMyProductAllocation from "../components/ProductAllocation/AddProductAllocation";
 import Accounts from "../components/accounts";
+import ProfileSettings from "../components/settings";
 import AddProject from "../components/accounts/AddListing";
 import Orders from "../components/orders";
 import OrderDetails from "../components/orders/OrderDetails";
@@ -515,6 +516,10 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}accounts`,
     element: <Accounts />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}settings`,
+    element: <ProfileSettings />,
   },
   {
     path: `${import.meta.env.BASE_URL}accounts/add-listing`,
