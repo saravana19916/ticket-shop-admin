@@ -1,22 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path';
 
-// https://vitejs.dev/config/
-export default defineConfig(
-{
+export default defineConfig({
   plugins: [react()],
-  build: {
-  chunkSizeWarningLimit: 50000,
-  },
   define: {
-    'process.env': {}
+    'process.env': {}, // ✅ Ensures `process` is available globally
   },
   server: {
-    host: true,
-    watch: {
-      followSymlinks: false,
-    }
+    host: true, // ✅ Allows access from local network
   },
   base: '/',
+  resolve: {
+    alias: {
+      '@': '/src', // ✅ Enables cleaner imports (e.g., `@/components/MyComponent`)
+    },
+  },
 })

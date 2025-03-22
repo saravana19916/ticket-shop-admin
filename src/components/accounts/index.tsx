@@ -69,46 +69,45 @@ const index: FC<IListingProps> = ({}) => {
 
   useEffect(() => {
     if (itemsPerRow !== null && !isMobile) {
-      setMaxWidth(`${itemsPerRow * 450}px`);
+      setMaxWidth(itemsPerRow ? `${itemsPerRow * 450}px` : "1350px");
     } else {
       setMaxWidth("");
     }
+
   }, [itemsPerRow, isMobile]);
   return (
     <>
-      <LandingPageWrapper>
-        <div className="row">
-          <div className="col-12 mb-3">
-            <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
-              <TabList
-                className="filter-container mb-7"
-                style={{ margin: "auto" }}
-              >
-                {tabList.map((tabName, idx) => (
-                  <Tab as={Fragment} key={idx}>
-                    {({ selected }) => (
-                      <>
-                        <CustomTabButton
-                          tabName={tabName}
-                          selected={selected}
-                          index={idx}
-                          setSelectedTab={setSelectedTab}
-                        />
-                      </>
-                    )}
-                  </Tab>
-                ))}
-              </TabList>
-              <TabPanels as="div" className="col-12">
-                <MyProfile />
-                <CompanyInfo  />
-                <SocialMedia />
-                <PreviousProjects />
-              </TabPanels>
-            </TabGroup>
-          </div>
+      <div className="row">
+        <div className="col-12 mb-3">
+          <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
+            <TabList
+              className="filter-container mb-7"
+              style={{ margin: "auto" }}
+            >
+              {tabList.map((tabName, idx) => (
+                <Tab as={Fragment} key={idx}>
+                  {({ selected }) => (
+                    <>
+                      <CustomTabButton
+                        tabName={tabName}
+                        selected={selected}
+                        index={idx}
+                        setSelectedTab={setSelectedTab}
+                      />
+                    </>
+                  )}
+                </Tab>
+              ))}
+            </TabList>
+            <TabPanels as="div" className="col-12">
+              <MyProfile />
+              <CompanyInfo  />
+              <SocialMedia />
+              <PreviousProjects />
+            </TabPanels>
+          </TabGroup>
         </div>
-      </LandingPageWrapper>
+      </div>
     </>
   );
 };

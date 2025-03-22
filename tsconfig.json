@@ -21,7 +21,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "routers"],
   "exclue": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

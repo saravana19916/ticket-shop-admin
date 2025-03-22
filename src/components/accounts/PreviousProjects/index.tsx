@@ -1,11 +1,26 @@
-import { Tab, TabGroup, TabList, TabPanels, Button, TabPanel } from "@headlessui/react";
+import {
+  Tab,
+  TabGroup,
+  TabList,
+  TabPanels,
+  Button,
+  TabPanel,
+} from "@headlessui/react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import React, { FC, Fragment, useEffect, useState } from "react";
 import AllListings from "../AllListings";
 import Owl from "../../../assets/images/owl.jpg";
 import { useNavigate } from "react-router-dom";
 import CustomTabButton from "../../shared/CustomTabButton";
+import {
+  DEMO_CAR_LISTINGS,
+  DEMO_EXPERIENCES_LISTINGS,
+  DEMO_STAY_LISTINGS,
+} from "../../../data/listings";
 import { ButtonPrimary } from "../../styledComponents/styledButton";
+
+import StayCard from "../StayCard";
+import { Col } from "react-bootstrap";
 
 interface IListingProps {}
 const tabList = ["Events", "Experiences", "Cars"];
@@ -84,9 +99,9 @@ const allListings: IListDetailsProps[] = [
 
 const index: FC<IListingProps> = ({}) => {
   const navigate = useNavigate();
-const _handleAddListing = () => {
-  navigate("/accounts/add-listing");
-};
+  const _handleAddListing = () => {
+    navigate("/accounts/add-listing");
+  };
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const [itemsPerRow, setItemsPerRow] = useState<number | null>(0);
   const [maxWidth, setMaxWidth] = useState<string>("");
@@ -97,7 +112,6 @@ const _handleAddListing = () => {
     const rowWidth = document.querySelector("#myListings")?.clientWidth || 0;
     let totalWidth = 0;
     let count = 0;
-
     rows.forEach((item) => {
       const itemWidth = item.clientWidth;
       totalWidth += itemWidth;
@@ -110,7 +124,7 @@ const _handleAddListing = () => {
     setItemsPerRow(count);
   };
   useEffect(() => {
-    getItemsPerRow();
+    setTimeout(getItemsPerRow, 100);
     const screenWidth = window.innerWidth;
     setIsMobile(screenWidth < 899);
     const handleResize = () => getItemsPerRow();
@@ -122,57 +136,62 @@ const _handleAddListing = () => {
 
   useEffect(() => {
     if (itemsPerRow !== null && !isMobile) {
-      setMaxWidth(`${itemsPerRow * 450}px`);
+      setMaxWidth(itemsPerRow ? `${itemsPerRow * 450}px` : "1350px;");
     } else {
       setMaxWidth("");
     }
   }, [itemsPerRow, isMobile]);
+
   return (
     <>
-        <TabPanel>
+      <TabPanel>
         <div className="row" style={{ maxWidth }}>
-        <div className="col-6 mb-6">
-          <p className="fw-600 fs-26px text-black mb-3">My Listings</p>
-        </div>
-        <div className="col-6 mb-6">
-          <ButtonPrimary
-            type="button"
-            className="float-end mt-2 btn"
-            onClick={_handleAddListing}
-          >
-            <span>Add Listing</span>
-          </ButtonPrimary>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-12 mb-3">
-          <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
-            <TabList
-              className="filter-container mb-7"
-              style={{ margin: "auto" }}
+          <div className="col-6 mb-6">
+            <p className="fw-600 fs-26px text-black mb-3">Previous Listings</p>
+          </div>
+          <div className="col-6 mb-6">
+            <ButtonPrimary
+              type="button"
+              className="float-end mt-2 btn"
+              onClick={_handleAddListing}
             >
-              {tabList.map((tabName, idx) => (
-                <Tab as={Fragment} key={idx}>
-                  {({ selected }) => (
-                    <>
-                      <CustomTabButton
-                        tabName={tabName}
-                        selected={selected}
-                        index={idx}
-                        setSelectedTab={setSelectedTab}
-                      />
-                    </>
-                  )}
-                </Tab>
-              ))}
-            </TabList>
-            <TabPanels as="div" className="col-12">
-              <AllListings listDetailsData={allListings} />
-            </TabPanels>
-          </TabGroup>
+              <span>Add Listing</span>
+            </ButtonPrimary>
+          </div>
         </div>
-      </div>
-        </TabPanel>
+        <div className="row">
+          <div className="col-12 mb-3">
+            <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
+              <TabList
+                className="filter-container mb-7"
+                style={{ margin: "auto" }}
+              >
+                {tabList.map((tabName, idx) => (
+                  <Tab as={Fragment} key={idx}>
+                    {({ selected }) => (
+                      <>
+                        <CustomTabButton
+                          tabName={tabName}
+                          selected={selected}
+                          index={idx}
+                          setSelectedTab={setSelectedTab}
+                        />
+                      </>
+                    )}
+                  </Tab>
+                ))}
+              </TabList>
+              <TabPanels as="div" className="row d-flex justify-content-start">
+              {DEMO_STAY_LISTINGS.filter((_, i) => i < 8).map((stay) => (
+                <Col key={stay.id} md={4}> {/* 3 cards per row (4 columns each in md screens) */}
+                  <StayCard key={stay.id} data={stay} />
+              </Col>
+                  ))}
+              </TabPanels>
+            </TabGroup>
+          </div>
+        </div>
+      </TabPanel>
     </>
   );
 };

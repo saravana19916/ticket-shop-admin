@@ -92,6 +92,7 @@ import media16 from "../assets/images/media/16.jpg";
 import media26 from "../assets/images/media/26.jpg";
 import logodark from "../assets/images/brand/logo-dark.png";
 import logo from "../assets/images/brand/logo.png";
+import event from "../assets/images/event/event.jpeg";
 import logoRounded from "../assets/images/brand/logoRounded.png";
 import icondark from "../assets/images/brand/icon-dark.png";
 import product3 from "../assets/images/products/3.jpg";
@@ -294,6 +295,7 @@ export const Imagesdata = (data: any) => {
     media17,
     logodark,
     logo,
+    event,
     logoRounded,
     icondark,
     media34,
