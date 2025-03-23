@@ -21,7 +21,7 @@ const StartRating: FC<StartRatingProps> = ({
         <StarIcon className="w-5 h-5 text-warning" />
       </div>
       <span className="fw-medium">{point}</span>
-      <span className="text-secondary">({reviewCount})</span>
+      <span className="text-gray">({reviewCount})</span>
     </div>
   );
 };

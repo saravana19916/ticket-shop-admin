@@ -73,19 +73,19 @@ export default function GallerySlider({
           {index > 0 && (
             <Button
               variant="light"
-              className="position-absolute start-0 top-50 translate-middle-y"
+              className="rounded-circle d-flex align-items-center justify-content-center p-3 border-0 shadow position-absolute top-50 start-0 m-3 btn btn-light"
               onClick={() => changePhotoId(index - 1)}
             >
-              <ChevronLeft size={24} />
+              <ChevronLeft size={12} />
             </Button>
           )}
           {index + 1 < images.length && (
             <Button
               variant="light"
-              className="position-absolute end-0 top-50 translate-middle-y"
+              className="rounded-circle d-flex align-items-center justify-content-center p-3 border-0 shadow position-absolute top-50 end-0 m-3 btn btn-light"
               onClick={() => changePhotoId(index + 1)}
             >
-              <ChevronRight size={24} />
+              <ChevronRight size={12} />
             </Button>
           )}
         </>
