@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import { Accordion } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -6,9 +6,11 @@ import styled from "styled-components";
 import moment from "moment";
 import { IPromotionsDiscountCampaigns } from "./type";
 import { AccordionButton } from "../styledComponents/accordion";
+import TimeLineModal from "../shared/TimeLineModal";
 interface IProps {
   index: string;
   item: IPromotionsDiscountCampaigns;
+  selectedTap?: number;
 }
 const AccordionH2Light = styled.span`
   color: #6d727f;
@@ -61,7 +63,79 @@ const TableBodyCell = styled.td`
 `;
 const TableBody = styled.tbody``;
 
-const AccordionPromotionsDiscountCampaigns: FC<IProps> = ({ index, item }) => {
+const AccordionPromotionsDiscountCampaigns: FC<IProps> = ({
+  index,
+  item,
+  selectedTap,
+}) => {
+  const [showWorkflow, setShowWorkflow] = useState(false);
+  const viewWorkflowClose = () => setShowWorkflow(false);
+
+  const timelineDataDiscount = [
+    {
+      status: "Discount Code Issues",
+      date: "09 July 2023",
+      assignee: "Adam Berry",
+      color: "#6f42c1",
+    },
+    {
+      status: "Discount Code Delivered",
+      date: "05 July 2023",
+      assignee: "Victoria",
+      color: "#0dcaf0",
+    },
+    {
+      status: "Discount Code Accepted",
+      date: "25 June 2023",
+      assignee: "Victoria",
+      color: "#20c997",
+    },
+    {
+      status: "Discount Code Used",
+      date: "14 June 2023",
+      assignee: "Petey Cruiser",
+      color: "#ffc107",
+    },
+    {
+      status: "Discount Code Cancelled",
+      date: "29 June 2023",
+      assignee: "Petey Cruiser",
+      color: "#dc3545",
+    },
+  ];
+  const timelineDataBarcode = [
+    {
+      status: "Barcode Issues",
+      date: "09 July 2023",
+      assignee: "Adam Berry",
+      color: "#6f42c1",
+    },
+    {
+      status: "Barcode Delivered",
+      date: "05 July 2023",
+      assignee: "Victoria",
+      color: "#0dcaf0",
+    },
+    {
+      status: "Barcode Accepted",
+      date: "25 June 2023",
+      assignee: "Victoria",
+      color: "#20c997",
+    },
+    {
+      status: "Barcode Used",
+      date: "14 June 2023",
+      assignee: "Petey Cruiser",
+      color: "#ffc107",
+    },
+    {
+      status: "Barcode Cancelled",
+      date: "29 June 2023",
+      assignee: "Petey Cruiser",
+      color: "#dc3545",
+    },
+  ];
+
   return (
     <>
       <Accordion.Item
@@ -268,6 +342,9 @@ const AccordionPromotionsDiscountCampaigns: FC<IProps> = ({ index, item }) => {
             <AccordionButton
               className="btn px-6 py-2"
               style={{ minWidth: "168px" }}
+              onClick={() => {
+                setShowWorkflow(true);
+              }}
             >
               View Workflow
             </AccordionButton>
@@ -292,6 +369,20 @@ const AccordionPromotionsDiscountCampaigns: FC<IProps> = ({ index, item }) => {
           </div>
         </Accordion.Body>
       </Accordion.Item>
+      <TimeLineModal
+        show={showWorkflow}
+        onClose={viewWorkflowClose}
+        timelineData={
+          selectedTap == 0 ? timelineDataDiscount : timelineDataBarcode
+        }
+        modalTitle={
+          selectedTap == 0 ? "Discount Campaign Status" : "Barcode  Status"
+        }
+        otherAction={[
+          { icon: "edit", onClick: () => {} },
+          { icon: "delete", onClick: () => {} },
+        ]}
+      />
     </>
   );
 };

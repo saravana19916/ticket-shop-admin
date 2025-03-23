@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 
 import { Accordion } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { IGuestList } from "../type";
 import styled from "styled-components";
 import moment from "moment";
 import { AccordionButton } from "../../styledComponents/accordion";
+import TimeLineModal from "../../shared/TimeLineModal";
 
 interface IProps {
   item: IGuestList;
@@ -37,6 +38,42 @@ const AccordionBodyTop = styled.div`
 `;
 
 const GuestListAccordion: FC<IProps> = ({ item, index }) => {
+  const [showWorkflow, setShowWorkflow] = useState(false);
+  const viewWorkflowClose = () => setShowWorkflow(false);
+
+  const timelineData = [
+    {
+      status: "Ticket Issues",
+      date: "09 July 2023",
+      assignee: "Adam Berry",
+      color: "#6f42c1",
+    },
+    {
+      status: "Ticket Delivered",
+      date: "05 July 2023",
+      assignee: "Victoria",
+      color: "#0dcaf0",
+    },
+    {
+      status: "Ticket Accepted",
+      date: "25 June 2023",
+      assignee: "Victoria",
+      color: "#20c997",
+    },
+    {
+      status: "Ticket Used",
+      date: "14 June 2023",
+      assignee: "Petey Cruiser",
+      color: "#ffc107",
+    },
+    {
+      status: "Ticket Cancelled",
+      date: "29 June 2023",
+      assignee: "Petey Cruiser",
+      color: "#dc3545",
+    },
+  ];
+
   return (
     <>
       <Accordion.Item
@@ -292,6 +329,9 @@ const GuestListAccordion: FC<IProps> = ({ item, index }) => {
             <AccordionButton
               className="btn px-6 py-2"
               style={{ minWidth: "168px" }}
+              onClick={() => {
+                setShowWorkflow(true);
+              }}
             >
               View Workflow
             </AccordionButton>
@@ -310,6 +350,16 @@ const GuestListAccordion: FC<IProps> = ({ item, index }) => {
           </div>
         </Accordion.Body>
       </Accordion.Item>
+      <TimeLineModal
+        show={showWorkflow}
+        onClose={viewWorkflowClose}
+        timelineData={timelineData}
+        modalTitle="Bulk Guest Invitation Status"
+        otherAction={[
+          { icon: "edit", onClick: () => {} },
+          { icon: "delete", onClick: () => {} },
+        ]}
+      />
     </>
   );
 };

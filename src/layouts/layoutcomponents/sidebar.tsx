@@ -49,7 +49,6 @@ export const Sidebar = () => {
   const [eventsList, setEventsList] = useState<IEventDetails[]>([]);
   const [showChooseEventModal, setShowChooseEventModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState<IEventDetails>(event);
-
   useEffect(() => {
     history.push(location.pathname); // add  history to history  stack for current location.pathname to prevent multiple history calls innerWidth  and innerWidth calls from  multiple users. This is important because the history stack is not always empty when the user clicks  the history
     if (history.length > 2) {
@@ -77,6 +76,26 @@ export const Sidebar = () => {
     ) {
       clearMenuActive();
     }
+    const checkSidenavState = () => {
+      setIsSidenavToggled(document.body.classList.contains("sidenav-toggled"));
+      setIsSidenavOpen(
+        document.body.classList.contains("sidenav-toggled-open")
+      );
+    };
+
+    document.body.addEventListener("mouseenter", checkSidenavState);
+    document.body.addEventListener("mouseleave", checkSidenavState);
+    document.body.addEventListener("mouseover", checkSidenavState);
+    document.body.addEventListener("mouseout", checkSidenavState);
+
+    checkSidenavState();
+
+    return () => {
+      document.body.removeEventListener("mouseenter", checkSidenavState);
+      document.body.removeEventListener("mouseleave", checkSidenavState);
+      document.body.removeEventListener("mouseover", checkSidenavState);
+      document.body.removeEventListener("mouseout", checkSidenavState);
+    };
   }, []);
   useEffect(() => {
     const extractedArray = eventData?.user?.events?.map(
@@ -106,7 +125,8 @@ export const Sidebar = () => {
 
     extractedArray && setEventsList([event, ...extractedArray]);
   }, [eventData]);
-
+  const [isSidenavToggled, setIsSidenavToggled] = useState(false);
+  const [isSidenavOpen, setIsSidenavOpen] = useState(false);
   useEffect(() => {
     const eventDataString = sessionStorage.getItem("response");
     const eventData: any | null = eventDataString
@@ -364,29 +384,44 @@ export const Sidebar = () => {
           >
             <div className="col-12 p-3 text-center">
               <div
-                className="border border-primary bg-white btn-pill d-flex align-items-center gap-3 py-3 cursor-pointer"
+                className={`border border-primary bg-white btn-pill d-flex align-items-center gap-3 py-3 cursor-pointer 
+    ${isSidenavToggled && !isSidenavOpen ? "justify-content-center" : ""}`}
                 onClick={handleShowChooseEventModal}
               >
-                <div className="bg-primary-circle"></div>
-                <span className="text-dark fw-600 text-truncate w-75">
+                {/* Circle icon, only shown if sidebar is expanded */}
+                {!isSidenavToggled || isSidenavOpen ? (
+                  <div className="bg-primary-circle"></div>
+                ) : null}
+
+                <span className="text-dark fw-600 text-truncate w-75 text-center">
                   <span
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title={selectedUser?.identifier}
                   >
-                    {selectedUser?.identifier}
-                  </span>{" "}
-                  <span
-                    className="fw-normal d-block w-100 text-truncate"
-                    style={{ fontSize: "12px" }}
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title={`${selectedUser?.displayDate}, Dubai`}
-                  >
-                    {selectedUser?.displayDate}, Dubai
+                    {isSidenavToggled && !isSidenavOpen
+                      ? selectedUser?.identifier?.charAt(0) // Show only first letter if sidenav-toggled
+                      : selectedUser?.identifier}{" "}
                   </span>
+
+                  {/* Show date & location only if sidebar is expanded */}
+                  {!isSidenavToggled || isSidenavOpen ? (
+                    <span
+                      className="fw-normal d-block w-100 text-truncate"
+                      style={{ fontSize: "12px" }}
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title={`${selectedUser?.displayDate}, Dubai`}
+                    >
+                      {selectedUser?.displayDate}, Dubai
+                    </span>
+                  ) : null}
                 </span>
-                <ChevronDownIcon className="w-4 h-4 dropdown-icon-dark" />
+
+                {/* Chevron icon only if sidebar is expanded */}
+                {!isSidenavToggled || isSidenavOpen ? (
+                  <ChevronDownIcon className="w-4 h-4 dropdown-icon-dark" />
+                ) : null}
               </div>
             </div>
           </div>

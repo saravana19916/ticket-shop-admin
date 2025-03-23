@@ -612,7 +612,10 @@ const index = () => {
   const [emailUser, setEmailUser] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
 
-  const viewEmailClose = () => setShowVerifyOTP(false);
+  const handleVerificationModalClose = () => {
+    setShowVerifyOTP(false);
+    setUserInput("");
+  };
   const viewEmailShow = () => {
     if (emailUser == "") {
       toast.error("Please enter email id!");
@@ -646,33 +649,7 @@ const index = () => {
   return (
     <>
       <div className="custom-container">
-        <VerificationModal
-          showVerifyModal={showVerifyModal}
-          handleShowVerifyModal={_handleShowVerifyModal}
-          verifyType={verifyType}
-          handleOtpChange={_handleOtpChange}
-          handleOtpVerify={_handleOtpVerify}
-          verifyPhoneOtp={verifyPhoneOtp}
-          verifyEmailOtp={verifyEmailOtp}
-          otpError={otpError}
-        />
         <CustomToastContainer />
-        {/* <Toaster
-          position="top-right"
-          toastOptions={{
-            success: {
-              style: {
-                background: "#06D001",
-              },
-            },
-            error: {
-              style: {
-                background: "red",
-                color: "#fff",
-              },
-            },
-          }}
-        /> */}
         <div className="container-login100">
           <div className="row mt-6 w-100">
             <div className="col-6 d-flex gap-3 align-items-center">
@@ -1320,7 +1297,7 @@ const index = () => {
       </div>
       <VerifyOTPModel
         show={showVerifyOTP}
-        onClose={viewEmailClose}
+        onClose={handleVerificationModalClose}
         heading={heading}
         userInput={userInput}
       />

@@ -981,7 +981,10 @@ const Header1 = () => {
                             className="avatar  profile-user brround cover-image"
                           />
                         </Dropdown.Toggle>
-                        <Dropdown.Menu className="dropdown-menu-end dropdown-menu-arrow" style={{ width: "235px", padding: "25px" }}>
+                        <Dropdown.Menu
+                          className="dropdown-menu-end dropdown-menu-arrow"
+                          style={{ width: "235px", padding: "25px" }}
+                        >
                           <div className="profile-sidebar">
                             <div className="profile-header d-flex align-items-center text-center">
                               <img
@@ -999,73 +1002,82 @@ const Header1 = () => {
                                 </small>
                               </div>
                             </div>
-                            <hr className="my-4" style={{ borderTop: "1px solid #494949" }} />
+                            <hr
+                              className="my-4"
+                              style={{ borderTop: "1px solid #494949" }}
+                            />
 
                             <ul className="profile-menu">
                               <li>
-                                <Dropdown.Item href="#">
+                                <Dropdown.Item href="/accounts">
                                   <i className="dropdown-icon fe fe-user"></i>{" "}
                                   My Account
                                 </Dropdown.Item>
                               </li>
                               <li>
-                                <Dropdown.Item href="#">
+                                <Dropdown.Item href="/listings">
                                   <i className="dropdown-icon fe fe-list"></i>{" "}
                                   My Listings
                                 </Dropdown.Item>
                               </li>
                               <li>
-                              <Dropdown.Item as={Link} to="/settings">
-                                <i className="dropdown-icon fe fe-settings"></i> Settings
-                              </Dropdown.Item>
+                                <Dropdown.Item as={Link} to="/settings">
+                                  <i className="dropdown-icon fe fe-settings"></i>{" "}
+                                  Settings
+                                </Dropdown.Item>
                               </li>
                               <li>
-                                <Dropdown.Item href="#">
+                                <Dropdown.Item href="/finance">
                                   <i className="dropdown-icon fe fe-credit-card"></i>{" "}
                                   Finance
                                 </Dropdown.Item>
                               </li>
                               <li>
-                                <Dropdown.Item href="#">
-                                  <i className="dropdown-icon fe fe-file-text"></i>{" "}
-                                  Legal
+                                <Dropdown.Item href="/legal">
+                                  <i className="dropdown-icon fa-solid fa-scale-balanced"></i>
+                                  &nbsp; Legal
                                 </Dropdown.Item>
                               </li>
                               <li>
                                 <Dropdown.Item href="#">
-                                  <i className="dropdown-icon fe fe-bell"></i>{" "}
+                                  <i className="dropdown-icon bx bx-bell fs-5"></i>{" "}
                                   Notifications
                                 </Dropdown.Item>
                               </li>
                               <li>
                                 <Dropdown.Item href="#">
-                                  <i className="dropdown-icon fe fe-message-square"></i>{" "}
+                                  <i className="dropdown-icon bx bx-chat fs-5"></i>{" "}
                                   Chat
                                 </Dropdown.Item>
                               </li>
                             </ul>
-                            <hr className="my-4" style={{ borderTop: "1px solid #494949" }} />
+                            <hr
+                              className="my-4"
+                              style={{ borderTop: "1px solid #494949" }}
+                            />
 
                             <div className="profile-footer">
-                            <div className="form-check form-switch d-flex justify-content-between align-items-center">
-                              <span>Dark Theme</span>
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                role="switch"
-                                checked={darkTheme}
-                                onChange={() => setDarkTheme(!darkTheme)}
-                                style={{ marginLeft: "100px" }}
-                              />
-                            </div>
-                              <Dropdown.Item href="#" style={{ borderBottom: "none" }}>
+                              <div className="form-check form-switch d-flex justify-content-between align-items-center">
+                                <span>Dark Theme</span>
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  role="switch"
+                                  checked={darkTheme}
+                                  onChange={() => setDarkTheme(!darkTheme)}
+                                  style={{ marginLeft: "100px" }}
+                                />
+                              </div>
+                              <Dropdown.Item
+                                href="#"
+                                style={{ borderBottom: "none" }}
+                              >
                                 <i className="dropdown-icon fe fe-help-circle"></i>{" "}
                                 Helps
                               </Dropdown.Item>
-                              <Dropdown.Item
-                                onClick={handleLogout}
-                              >
-                                <i className="dropdown-icon fe fe-log-out"></i> Logout
+                              <Dropdown.Item onClick={handleLogout}>
+                                <i className="dropdown-icon fe fe-log-out"></i>{" "}
+                                Logout
                               </Dropdown.Item>
                             </div>
                           </div>

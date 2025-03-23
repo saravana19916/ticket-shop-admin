@@ -84,6 +84,7 @@ const index: FC<IProps> = () => {
                   <AccordionPromotionsDiscountCampaigns
                     item={item}
                     index={`${index}`}
+                    selectedTap={selectedTab}
                   />
                 </>
               ))}

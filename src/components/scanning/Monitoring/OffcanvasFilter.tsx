@@ -15,15 +15,15 @@ const OffcanvasFilter = ({
 }) => {
   return (
     <Offcanvas placement="end" show={show} onHide={onClose}>
-      <Offcanvas.Header>
-        <Offcanvas.Title className="fs-4 fw-semibold">Filter</Offcanvas.Title>
+      <Offcanvas.Header closeButton>
+        <Offcanvas.Title className="fs-4 fw-semibold pt-3">Filter</Offcanvas.Title>
         <span className="d-flex ms-auto" onClick={onClose}>
-          <i className="fe fe-x ms-auto"></i>
+          <i className="fe fe-x ms-auto fs-4"></i>
         </span>
       </Offcanvas.Header>
       <Offcanvas.Body>
         <div className="row">
-          <div className="col-12 mb-4">
+          <div className="col-12 mb-5">
             <Form.Group>
               <FormLabelStyled>Between</FormLabelStyled>
               <DateFlatpickr
@@ -34,7 +34,7 @@ const OffcanvasFilter = ({
               />
             </Form.Group>
           </div>
-          <div className="col-12 mb-4">
+          <div className="col-12 mb-5">
             <Form.Group>
               <FormLabelStyled>Scan Service</FormLabelStyled>
               <SelectDropDown
@@ -45,7 +45,7 @@ const OffcanvasFilter = ({
               />
             </Form.Group>
           </div>
-          <div className="col-12 mb-4">
+          <div className="col-12 mb-5">
             <Form.Group>
               <FormLabelStyled>Ticket pool</FormLabelStyled>
               <SelectDropDown
@@ -59,7 +59,7 @@ const OffcanvasFilter = ({
         </div>
         <ButtonPrimary
           type="submit"
-          className="btn"
+          className="btn mt-3"
           style={{ minWidth: "118px" }}
         >
           <Filter className="w-5 h-5" /> Filter

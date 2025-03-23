@@ -89,28 +89,34 @@ const PhysicalTicket = () => {
   return (
     <>
       <div className="d-flex flex-column gap-5 align-items-start">
-        <div className="d-flex flex-column gap-1">
-          <label className="fs-5 fw-500 text-black form-label">
-            Choose Template
-          </label>
-          <p>Choose the template you like to apply to your tickets, </p>
-        </div>
+        <Form.Label className="fs-5 fw-500 text-black d-flex align-items-center">
+          Choose Template
+          <CustomTooltip
+            iconMarginBottom="3px"
+            title="Choose the template you like to apply to your tickets"
+          />
+        </Form.Label>
+
         <div className="row">
           {ticketOptions.map(({ id, label, price, desc }) => (
             <div key={id} className="col-6">
-              <div className="d-flex align-items-center gap-3 mb-4">
+              <div className="d-flex align-items-center gap-3 mb-5">
                 <SwitchReact
                   checked={checked === id}
                   onChange={() => handleChange(id)}
+                  hideLabel
                 />
-                <span
-                  className={
-                    checked === id
-                      ? "text-primary fw-semibold"
-                      : "text-gray fw-semibold"
-                  }
-                >
-                  {label}
+                <span>
+                  <span
+                    className={
+                      checked === id
+                        ? "text-primary fw-semibold"
+                        : "text-gray fw-semibold"
+                    }
+                  >
+                    {label}
+                  </span>
+                  <CustomTooltip title={desc} />
                 </span>
                 <span
                   style={{
@@ -124,9 +130,7 @@ const PhysicalTicket = () => {
                   $ {price} per unit
                 </span>
               </div>
-              <p className={checked === id ? "text-primary" : "text-gray"}>
-                {desc}
-              </p>
+
               {id == 1 && (
                 <>
                   <div
@@ -228,39 +232,40 @@ const PhysicalTicket = () => {
             </div>
           ))}
         </div>
-        <div className="d-flex flex-column gap-1">
-          <label className="fs-5 fw-500 text-black form-label">
-            Template Info
-          </label>
-          <p>Choose the template you like to apply to your tickets.</p>
+        <Form.Label className="fs-5 fw-500 text-black d-flex align-items-center">
+          Template Info
+          <CustomTooltip
+            iconMarginBottom="3px"
+            title="Choose the template you like to apply to your tickets"
+          />
+        </Form.Label>
+        <div className="col-xl-8 col-lg-9 col-12 p-0">
+          <Form.Group>
+            <FormLabelStyled className="d-flex align-items-center">
+              Template Name
+            </FormLabelStyled>
+            <FormInputStyled
+              type="text"
+              placeholder="Give a name to your template"
+              className="form-control"
+              value=""
+            />
+          </Form.Group>
         </div>
-        <div className="row">
-          <div className="col-12 mb-4">
-            <Form.Group>
-              <FormLabelStyled className="d-flex align-items-center">
-                Template Name
-              </FormLabelStyled>
-              <FormInputStyled
-                type="text"
-                placeholder="Give a name to your template"
-                className="form-control"
-                value=""
-              />
-            </Form.Group>
-          </div>
-          <div className="col-12 mb-4">
-            <Form.Group>
-              <FormLabelStyled className="d-flex align-items-center">
-                Link Tickets
-              </FormLabelStyled>
-              <SelectDropDown
-                options={productTypes}
-                placeholder="Select Type"
-                classNamePrefix="Select"
-                className="mt-1"
-              />
-            </Form.Group>
-          </div>
+        <div className="col-xl-8 col-lg-9 col-12 p-0">
+          <Form.Group>
+            <FormLabelStyled className="d-flex align-items-center">
+              Link Tickets
+            </FormLabelStyled>
+            <SelectDropDown
+              options={productTypes}
+              placeholder="Select Type"
+              classNamePrefix="Select"
+              className="mt-1"
+            />
+          </Form.Group>
+        </div>
+        <div className="col-xl-8 col-lg-9 col-12 p-0">
           <ListingImage />
         </div>
         <div className="d-flex flex-column gap-1">
@@ -268,118 +273,111 @@ const PhysicalTicket = () => {
             <SwitchReact
               checked={checkedCustomize}
               onChange={handleChangeCustomize}
+              hideLabel
             />
-            <label className="fs-5 fw-500 text-black form-label">
+            <Form.Label className="fs-5 fw-500 text-black d-flex align-items-center">
               Customize Template
-            </label>
+              <CustomTooltip
+                title="In this section you can customize your ticket even future at an
+            additional cost."
+              />
+            </Form.Label>
           </div>
-          <p>
-            In this section you can customize your ticket even future at an
-            additional cost.
-          </p>
         </div>
-        <div className="row">
-          <div className="col-6">
-            <Form.Group>
-              <FormLabelStyled>
-                Front Border Color
-                <CustomTooltip title="$ 1.00 per unit" />
-              </FormLabelStyled>
-              <FormDivStyled
-                ref={colorPickerRef}
-                className="form-control d-flex align-middle"
-                onClick={() => setShowColorPicker(true)}
+        <div className="col-xl-8 col-lg-9 col-12 p-0">
+          <Form.Group>
+            <FormLabelStyled>
+              Front Border Color
+              <CustomTooltip title="Charge: there are no additional charges for choice of the color pallets." />
+            </FormLabelStyled>
+            <FormDivStyled
+              ref={colorPickerRef}
+              className="form-control d-flex align-middle"
+              onClick={() => setShowColorPicker(true)}
+            >
+              <div
+                className=""
+                onClick={() => setShowColorPicker(!showColorPicker)}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  gap: "10px",
+                }}
               >
                 <div
-                  className=""
-                  onClick={() => setShowColorPicker(!showColorPicker)}
                   style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    cursor: "pointer",
-                    gap: "10px",
+                    width: "24px",
+                    height: "24px",
+                    backgroundColor: color,
+                    borderRadius: "50%",
                   }}
-                >
-                  <div
-                    style={{
-                      width: "24px",
-                      height: "24px",
-                      backgroundColor: color,
-                      borderRadius: "50%",
-                    }}
+                />
+              </div>
+              <span className="d-inline-block ms-auto pe-3 pt-1">
+                <i className="bi bi-chevron-down"></i>
+              </span>
+              {showColorPicker && (
+                <div style={{ position: "absolute", zIndex: 100 }}>
+                  <SketchPicker
+                    color={color}
+                    onChange={(updatedColor) => setColor(updatedColor.hex)}
                   />
                 </div>
-                <span className="d-inline-block ms-auto pe-3 pt-1">
-                  <i className="bi bi-chevron-down"></i>
-                </span>
-                {showColorPicker && (
-                  <div style={{ position: "absolute", zIndex: 100 }}>
-                    <SketchPicker
-                      color={color}
-                      onChange={(updatedColor) => setColor(updatedColor.hex)}
-                    />
-                  </div>
-                )}
-              </FormDivStyled>
-            </Form.Group>
-          </div>
-          <div className="col-6">
-            <Form.Group>
-              <FormLabelStyled>
-                Back Background Color
-                <CustomTooltip title="$ 1.00 per unit" />
-              </FormLabelStyled>
-              <FormDivStyled
-                ref={colorPickerRef}
-                className="form-control d-flex align-middle"
-                onClick={() => setShowColorPicker(true)}
+              )}
+            </FormDivStyled>
+          </Form.Group>
+        </div>
+        <div className="col-xl-8 col-lg-9 col-12 p-0">
+          <Form.Group>
+            <FormLabelStyled>
+              Back Background Color
+              <CustomTooltip title="Charge: there are no additional charges for choice of the color pallets." />
+            </FormLabelStyled>
+            <FormDivStyled
+              ref={colorPickerRef}
+              className="form-control d-flex align-middle"
+              onClick={() => setShowColorPicker(true)}
+            >
+              <div
+                className=""
+                onClick={() => setShowColorPicker(!showColorPicker)}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  gap: "10px",
+                }}
               >
                 <div
-                  className=""
-                  onClick={() => setShowColorPicker(!showColorPicker)}
                   style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    cursor: "pointer",
-                    gap: "10px",
+                    width: "24px",
+                    height: "24px",
+                    backgroundColor: color,
+                    borderRadius: "50%",
                   }}
-                >
-                  <div
-                    style={{
-                      width: "24px",
-                      height: "24px",
-                      backgroundColor: color,
-                      borderRadius: "50%",
-                    }}
+                />
+              </div>
+              <span className="d-inline-block ms-auto pe-3 pt-1">
+                <i className="bi bi-chevron-down"></i>
+              </span>
+              {showColorPicker && (
+                <div style={{ position: "absolute", zIndex: 100 }}>
+                  <SketchPicker
+                    color={color}
+                    onChange={(updatedColor) => setColor(updatedColor.hex)}
                   />
                 </div>
-                <span className="d-inline-block ms-auto pe-3 pt-1">
-                  <i className="bi bi-chevron-down"></i>
-                </span>
-                {showColorPicker && (
-                  <div style={{ position: "absolute", zIndex: 100 }}>
-                    <SketchPicker
-                      color={color}
-                      onChange={(updatedColor) => setColor(updatedColor.hex)}
-                    />
-                  </div>
-                )}
-              </FormDivStyled>
-            </Form.Group>
-          </div>
-          <div className="col-12 mb-4">
-            <span>
-              <strong>Charge : </strong>
-              there are no additional charges for choice of the color pallets.
-            </span>
-          </div>
-          <div>
-            <AdvertisementBanner />
-            <span>
-              <strong>Charge : </strong>
-              an additional fee of USD 15.00 per each ticket applies.
-            </span>
-          </div>
+              )}
+            </FormDivStyled>
+          </Form.Group>
+        </div>
+        <div className="col-xl-8 col-lg-9 col-12 p-0">
+          <AdvertisementBanner />
+          <span className="fs-12px">
+            <strong>Charge : </strong>
+            an additional fee of USD 15.00 per each ticket applies.
+          </span>
         </div>
         <div className="row">
           <div className="col-12 mb-4">

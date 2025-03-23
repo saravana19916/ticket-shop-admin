@@ -20,7 +20,7 @@ import {
   FormInputStyled,
   FormLabelStyled,
   FormStyledContentSection,
-  StyledInputDiv
+  StyledInputDiv,
 } from "../../styledComponents/styledForm";
 import { ButtonPrimary } from "../../styledComponents/styledButton";
 import DateFlatpickr from "../../shared/DateFlatpickr";
@@ -54,19 +54,19 @@ const discountApplication = [
   {
     value: "in percent",
     label: "In Percentage (%)",
-  }
+  },
 ];
 
 const index: FC<IProps> = () => {
   const tabList = ["Tickets", "Services", "Add ons", "Merchandise", "F&B"];
-  const tabAddCode = ["Add Manually", "generate automatically"];
   const [chipWidth, setChipWidth] = useState(
     window.innerWidth < 768 ? "50%" : "24%"
   );
   const [selectedTab, setSelectedTab] = useState<number>(0);
 
   const [showProductDetails, setShowProductDetails] = useState<boolean>(true);
-  const [showDiscountManually, setShowDiscountManually] = useState<boolean>(true);
+  const [showDiscountManually, setShowDiscountManually] =
+    useState<boolean>(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -248,57 +248,59 @@ const index: FC<IProps> = () => {
               </Form.Group>
             </div>
 
-            <div className="col-12 mb-6 mt-4">
-              <FormStyledContentSection>
-                <span className="question">
+            <div className="col-12 mb-8 mt-6">
+              <FormStyledContentSection className="row">
+                <span className="question col-lg-8 col-md-5">
                   How would like to apply the discounts?
                 </span>
-                <StyledInputDiv className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    name="addSections"
-                    value="onproducts"
-                    id="addSections"
-                    onChange={() => {
-                      setShowProductDetails(true);
-                    }}
-                    checked={showProductDetails}
-                  />
-                  <label
-                    htmlFor="addSections"
-                    className="form-check-label ms-3"
-                    style={{
-                      marginTop: "7px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    on Products
-                  </label>
-                </StyledInputDiv>
-                <StyledInputDiv className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    id="donNotAddSections"
-                    name="addSections"
-                    value="onorders"
-                    checked={!showProductDetails}
-                    onChange={() => {
-                      setShowProductDetails(false);
-                    }}
-                  />
-                  <label
-                    htmlFor="addSections"
-                    className="form-check-label ms-3"
-                    style={{
-                      marginTop: "7px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    on Orders
-                  </label>
-                </StyledInputDiv>
+                <div className="col-lg-3 col-md-7 d-flex justify-between">
+                  <StyledInputDiv className="form-check w-50">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      name="onProducts"
+                      value="onProducts"
+                      id="onProducts"
+                      onChange={() => {
+                        setShowProductDetails(true);
+                      }}
+                      checked={showProductDetails}
+                    />
+                    <label
+                      htmlFor="onProducts"
+                      className="form-check-label ms-3"
+                      style={{
+                        marginTop: "7px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      On Products
+                    </label>
+                  </StyledInputDiv>
+                  <StyledInputDiv className="form-check w-50">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      id="onOrders"
+                      name="onOrders"
+                      value="onOrders"
+                      checked={!showProductDetails}
+                      onChange={() => {
+                        setShowProductDetails(false);
+                      }}
+                    />
+                    <label
+                      htmlFor="onOrders"
+                      className="form-check-label ms-3"
+                      style={{
+                        marginTop: "7px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      On Orders
+                    </label>
+                  </StyledInputDiv>
+                </div>
               </FormStyledContentSection>
             </div>
 
@@ -545,9 +547,7 @@ const index: FC<IProps> = () => {
               <>
                 <div className="col-12 col-md-6 mb-6">
                   <Form.Group>
-                    <FormLabelStyled>
-                      Discount Application
-                    </FormLabelStyled>
+                    <FormLabelStyled>Discount Application</FormLabelStyled>
                     <SelectDropDown
                       options={discountApplication}
                       placeholder="Select discount application"
@@ -559,76 +559,71 @@ const index: FC<IProps> = () => {
 
                 <div className="col-12 col-md-6 mb-6">
                   <Form.Group>
-                    <FormLabelStyled>
-                      Discount Value
-                    </FormLabelStyled>
-                    <FormInputStyled
-                      type="text"
-                      className="form-control"
-                      value="100"
-                    />
+                    <FormLabelStyled>Discount Value</FormLabelStyled>
+                    <FormInputStyled type="text" className="form-control" />
                   </Form.Group>
                 </div>
               </>
             )}
-
-            <div className="col-12 mb-6 mt-8">
-              <FormStyledContentSection>
-                <span className="question">
+            <div className="col-12 mb-8 mt-8">
+              <FormStyledContentSection className="row">
+                <span className="question col-lg-8 col-md-5">
                   How would like to create your Discount Code?
                 </span>
-                <StyledInputDiv className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    name="addSections"
-                    value="discountManually"
-                    id="addSections"
-                    onChange={() => {
-                      setShowDiscountManually(true);
-                    }}
-                    checked={showDiscountManually}
-                  />
-                  <label
-                    htmlFor="addSections"
-                    className="form-check-label ms-3"
-                    style={{
-                      marginTop: "7px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Manually
-                  </label>
-                </StyledInputDiv>
-                <StyledInputDiv className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    id="donNotAddSections"
-                    name="addSections"
-                    value="discountAutomatically"
-                    checked={!showDiscountManually}
-                    onChange={() => {
-                      setShowDiscountManually(false);
-                    }}
-                  />
-                  <label
-                    htmlFor="addSections"
-                    className="form-check-label ms-3"
-                    style={{
-                      marginTop: "7px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Automatically
-                  </label>
-                </StyledInputDiv>
+                <div className="col-lg-3 col-md-7 d-flex justify-between">
+                  <StyledInputDiv className="form-check w-50">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      name="manually"
+                      value="discountManually"
+                      id="manually"
+                      onChange={() => {
+                        setShowDiscountManually(true);
+                      }}
+                      checked={showDiscountManually}
+                    />
+                    <label
+                      htmlFor="manually"
+                      className="form-check-label ms-3"
+                      style={{
+                        marginTop: "7px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      Manually
+                    </label>
+                  </StyledInputDiv>
+                  <StyledInputDiv className="form-check w-50">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      id="automatically"
+                      name="automatically"
+                      value="discountAutomatically"
+                      checked={!showDiscountManually}
+                      onChange={() => {
+                        setShowDiscountManually(false);
+                      }}
+                    />
+                    <label
+                      htmlFor="automatically"
+                      className="form-check-label ms-3"
+                      style={{
+                        marginTop: "7px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      Automatically
+                    </label>
+                  </StyledInputDiv>
+                </div>
               </FormStyledContentSection>
             </div>
 
             {showDiscountManually && (
               <>
-                <div className="col-12 mb-6 mt-4">
+                <div className="col-12 mb-8 mt-4">
                   <div className="row">
                     <div className="col-10">
                       <Form.Group>

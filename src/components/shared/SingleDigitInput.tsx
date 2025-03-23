@@ -1,10 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 
 interface SingleDigitInputProps {
   value: string;
   onChange: (value: string) => void;
 }
+
 const StyledInput = styled.input`
   width: 4rem;
   height: 5rem;
@@ -22,22 +23,25 @@ const StyledInput = styled.input`
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 `;
 
-function SingleDigitInput({ value, onChange }: SingleDigitInputProps) {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    if (value === "" || /^[0-9]$/.test(value)) {
-      onChange(value);
-    }
-  };
+const SingleDigitInput = forwardRef<HTMLInputElement, SingleDigitInputProps>(
+  ({ value, onChange }, ref) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
+      if (value === "" || /^[0-9]$/.test(value)) {
+        onChange(value);
+      }
+    };
 
-  return (
-    <StyledInput
-      type="text"
-      value={value}
-      onInput={handleChange}
-      maxLength={1}
-    />
-  );
-}
+    return (
+      <StyledInput
+        ref={ref} // Pass ref for autofocus support
+        type="text"
+        value={value}
+        onChange={handleChange}
+        maxLength={1}
+      />
+    );
+  }
+);
 
 export default SingleDigitInput;

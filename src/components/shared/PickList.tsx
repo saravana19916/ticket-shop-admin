@@ -3,15 +3,12 @@ import styled, { css } from "styled-components";
 
 const PickListContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: 20px;
 `;
 
 const ListContainer = styled.div`
   width: 100%;
-  height: 25rem;
-  //   border: 1px solid #ccc;
-  overflow-y: auto;
   padding: 5px;
 `;
 
@@ -19,6 +16,7 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-self: center;
 `;
 
 const ListItem = styled.div<{ selected: boolean }>`

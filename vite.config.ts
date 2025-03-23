@@ -4,15 +4,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   define: {
-    'process.env': {}, // ✅ Ensures `process` is available globally
+    'process.env': {},
   },
   server: {
-    host: true, // ✅ Allows access from local network
+    host: true,
   },
   base: '/',
   resolve: {
     alias: {
-      '@': '/src', // ✅ Enables cleaner imports (e.g., `@/components/MyComponent`)
+      '@': '/src',
     },
   },
 })

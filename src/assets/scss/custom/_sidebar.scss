@@ -13,6 +13,14 @@
   width: 22px;
   height: 22px;
 }
+.sidenav-toggled .bg-primary-circle {
+  display: none !important;
+}
+
+.sidenav-toggled.sidenav-toggled-open .bg-primary-circle {
+  display: block !important;
+}
+
 .dark-mode {
   .sidebar-dropdown-border {
     border-color: #fff !important;

@@ -59,7 +59,7 @@ export default function GallerySlider({
             >
               <Image
                 src={img}
-                className="img-fluid rounded-3  h-200"
+                className="img-fluid rounded-3  h-200 w-100"
                 alt="Gallery Image"
               />
             </motion.div>

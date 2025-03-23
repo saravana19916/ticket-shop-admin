@@ -12,14 +12,12 @@ import {
 } from "react-bootstrap";
 import { FaDownload, FaLink, FaBan, FaInfoCircle } from "react-icons/fa";
 import {
-  FaTicketAlt,
-  FaEllipsisH,
   FaEnvelope,
   FaCheckCircle,
-  FaClock,
   FaStar,
   FaDollarSign,
   FaFingerprint,
+  FaEllipsisH,
 } from "react-icons/fa";
 import "./OrderDetails.css";
 import { ButtonPrimaryLight } from "../../styledComponents/styledButton";
@@ -28,7 +26,11 @@ import { useNavigate } from "react-router-dom";
 import ResendOrderModal from "../ResendOrderModal";
 import { ChevronLeft } from "react-feather";
 import CustomDropdownMenu from "../../shared/CustomDropdownMenu";
-
+import PaymentCompletedModal from "./PaymentCompletedModal";
+export type IOrderDetailsModalType =
+  | "resendEmail"
+  | "paymentCompleted"
+  | "paymentStarted";
 interface TimelineItemProps {
   icon: React.ReactNode;
   title: string;
@@ -47,22 +49,22 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   onClick,
 }) => {
   return (
-    <div className="d-flex position-relative mb-4" style={{ fontSize: "12px" }}>
+    <div className="d-flex position-relative mb-6">
       <div className="timeline-icon">{icon}</div>
       {!hideLine && <div className="timeline-line"></div>}
-      <div className="ms-3 mb-5">
-        <h4 style={{ fontSize: "12px" }}>
+      <div className="ms-4 mb-5">
+        <span className="fs-6">
           {title}{" "}
           {isActive && (
             <span
-              className="text-primary small custom-more-text"
+              className="text-primary fs-12px custom-more-text cursor-pointer d-inline-block ms-1"
               onClick={onClick}
             >
               more
             </span>
           )}
-        </h4>
-        <p className="text-muted small mb-0">{date}</p>
+        </span>
+        <p className="text-muted fs-12px mb-0">{date}</p>
       </div>
     </div>
   );
@@ -70,9 +72,11 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
 
 const OrderDetails = () => {
   const navigate = useNavigate();
-  const [activeModal, setActiveModal] = useState<string | null>(null);
+  const [activeModal, setActiveModal] = useState<IOrderDetailsModalType | null>(
+    null
+  );
 
-  const handleShow = (modalType: string) => {
+  const handleShow = (modalType: IOrderDetailsModalType) => {
     setActiveModal(modalType);
   };
 
@@ -136,32 +140,40 @@ const OrderDetails = () => {
                   itemName: "Cancel order",
                 },
               ]}
-              dropdownName="... More options"
+              dropdownName={
+                <>
+                  <span>More Options</span>
+                </>
+              }
             />
           </div>
         </Col>
       </Row>
 
-      <Row className="mt-5" style={{ fontSize: "12px" }}>
+      <Row className="mt-5">
         <Col md={8}>
           <Card className="mt-3 p-5 border border-gray-300 shadow-md">
             <Card.Body>
               <div className="d-flex justify-content-between">
-                <h3 style={{ fontSize: "14px", fontWeight: 600 }}>Contact</h3>
-                <a href="#more" className="text-primary fw-semibold">
+                <h3 className="fs-16px fw-600 mb-5">Contact</h3>
+                <span className="text-primary fw-semibold cursor-pointer">
                   more
-                </a>
+                </span>
               </div>
-              <Row className="mt-2">
+              <Row className="mt-2 ms-2 g-3">
                 <Col md={6}>
                   <p className="mb-1">Email</p>
                   <p className="fw-semibold">chidchanok_14844@hotmail.com</p>
-                  <p className="mb-1">First name</p>
-                  <p className="fw-semibold">Chidchanok</p>
                 </Col>
                 <Col md={6}>
                   <p className="mb-1">Mobile number</p>
                   <p className="fw-semibold">+97433650253</p>
+                </Col>
+                <Col md={6}>
+                  <p className="mb-1">First name</p>
+                  <p className="fw-semibold">Chidchanok</p>
+                </Col>
+                <Col md={6}>
                   <p className="mb-1">Last name</p>
                   <p className="fw-semibold">Jindamaneephan</p>
                 </Col>
@@ -171,16 +183,14 @@ const OrderDetails = () => {
 
           <Card className="mt-3 p-5 border border-gray-300 shadow-md">
             <Card.Body>
-              <h3
-                className="mb-4"
-                style={{ fontSize: "14px", fontWeight: 600 }}
-              >
-                Order of 1 ticket
-              </h3>
+              <h3 className="fs-16px fw-600 mb-5">Order of 1 ticket</h3>
               <Row className="align-items-center">
                 <Col md={8} xs={12}>
                   <div className="d-flex align-items-center">
-                    <FaTicketAlt className="me-2 text-black" size={35} />
+                    <i
+                      className="bi bi-ticket-perforated me-4"
+                      style={{ fontSize: "36px" }}
+                    ></i>
                     <div>
                       <strong>Standard Ticket +21</strong>
                       <p
@@ -204,40 +214,41 @@ const OrderDetails = () => {
                       </p>
                     </Col>
                     <Col md={4} xs={4}>
-                      <Dropdown>
-                        <Dropdown.Toggle
-                          as={ButtonPrimaryLight}
-                          className="btn"
-                        >
-                          <FaEllipsisH />
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu align="end">
-                          <Dropdown.Item>Download Ticket</Dropdown.Item>
-                          <Dropdown.Item>Request Refund</Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
+                      <CustomDropdownMenu
+                        dropDownType="ButtonPrimaryLight"
+                        menuItems={[
+                          {
+                            onClick: () => {},
+                            itemName: "Download Ticket",
+                          },
+                          {
+                            onClick: () => {},
+                            itemName: "Request Refund",
+                          },
+                        ]}
+                        dropdownName={
+                          <>
+                            <FaEllipsisH />
+                          </>
+                        }
+                      />
                     </Col>
                   </Row>
                 </Col>
               </Row>
 
-              <h3
-                className="mt-5"
-                style={{ fontSize: "12px", fontWeight: 600 }}
-              >
-                Additional details
-              </h3>
-              <Table borderless>
+              <h3 className="mt-5 fs-6 fw-600">Additional details</h3>
+              <Table>
                 <tbody>
                   <tr>
                     <td className="text-start">$ Discount</td>
-                    <td className="text-end text-danger">-$49.00</td>
+                    <td className="text-center text-danger">-$49.00</td>
                   </tr>
                   <tr>
-                    <td className="text-end">
+                    <td className="text-start border-0">
                       <strong>Total</strong>
                     </td>
-                    <td className="text-end">
+                    <td className="text-center border-0">
                       <strong>$5.00</strong>
                     </td>
                   </tr>
@@ -251,12 +262,7 @@ const OrderDetails = () => {
             className="mt-3 border border-gray-300 shadow-md"
             style={{ fontSize: "12px", padding: "42px" }}
           >
-            <h3
-              className="mt-5 mb-5"
-              style={{ fontSize: "14px", fontWeight: 600 }}
-            >
-              History
-            </h3>
+            <h3 className="fs-16px fw-600 mb-6">History</h3>
             <TimelineItem
               icon={<FaEnvelope />}
               title="E-mail sent"
@@ -302,79 +308,11 @@ const OrderDetails = () => {
         handleClose={handleClose}
         show={activeModal === "resendEmail"}
       />
-
+      <PaymentCompletedModal
+        handleClose={handleClose}
+        activeModal={activeModal}
+      />
       {/* Payment Completed Modal */}
-      <Modal
-        show={
-          activeModal === "paymentCompleted" || activeModal === "paymentStarted"
-        }
-        onHide={handleClose}
-        centered
-        size="lg"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title className="d-flex align-items-center justify-content-between gap-2 my-4 w-100">
-            <div className="d-flex flex-column gap-1">
-              <div className="d-flex align-items-center gap-2">
-                <div className="timeline-icon">
-                  <FaDollarSign />
-                </div>
-                <div className="d-flex flex-column">
-                  <span>
-                    {activeModal === "paymentCompleted"
-                      ? "Pay One - Payment completed"
-                      : "Pay One - Payment started"}
-                  </span>
-                  <span className="text-muted small">
-                    February 7, 2023 - 10:18 AM
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              className="custom-close"
-              onClick={handleClose}
-              style={{ marginTop: "20px" }}
-            >
-              ×
-            </button>
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="my-5">
-          <div className="p-3">
-            <div className="row">
-              <div className="col-md-4">
-                <strong>Status</strong>
-                <p>Success</p>
-              </div>
-              <div className="col-md-4">
-                <strong>Created</strong>
-                <p>December 19, 2022 8:21 PM</p>
-              </div>
-              <div className="col-md-4">
-                <strong>Last update</strong>
-                <p>February 7, 2023 10:18 AM</p>
-              </div>
-            </div>
-            <div className="row mt-3">
-              <div className="col-md-4">
-                <strong>Balance</strong> <FaInfoCircle className="text-muted" />
-                <p>$5.00</p>
-              </div>
-              <div className="col-md-4">
-                <strong>Payment method</strong>
-                <p>Pay One</p>
-              </div>
-              <div className="col-md-4">
-                <strong>Payment service provider</strong>
-                <p>POQ</p>
-              </div>
-            </div>
-          </div>
-        </Modal.Body>
-      </Modal>
     </>
   );
 };

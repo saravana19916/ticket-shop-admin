@@ -13,7 +13,7 @@ const LevelOfInformation = () => {
   };
   return (
     <>
-      <div className="row">
+      <div className="row gap-5">
         <div>
           <label className="fs-5 fw-500 text-black form-label">
             Level of information
@@ -41,8 +41,7 @@ const LevelOfInformation = () => {
         </div>
         <div className="col-12 mb-6 mt-5">
           <Form.Group>
-            {/* <FormLabelStyled>Level</FormLabelStyled> */}
-            <div className="row">
+            <div className="d-flex align-items-center gap-5">
               {[
                 {
                   id: "high",
@@ -65,32 +64,13 @@ const LevelOfInformation = () => {
                   value: "None",
                 },
               ].map((option) => (
-                <div
-                  className="col-lg-4 col-md-6 col-12 g-3 ps-4"
-                  key={option.id}
-                >
-                  <StyledInputDiv className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id={option.value}
-                      name={option.value}
-                      value={option.value}
-                      checked={selectedLevel === option.value}
-                      onChange={handleLevelChange}
-                    />
-                    <label
-                      htmlFor={option.value}
-                      className="form-check-label ms-3"
-                      style={{
-                        marginTop: "7px",
-                        fontSize: "12px",
-                      }}
-                    >
-                      {option.label}
-                    </label>
-                  </StyledInputDiv>
-                </div>
+                <Form.Check
+                  type="radio"
+                  name="levelOfInformation"
+                  id={option.id}
+                  label={option.label}
+                  value={option.value}
+                />
               ))}
             </div>
           </Form.Group>

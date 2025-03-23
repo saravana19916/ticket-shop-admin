@@ -1,139 +1,136 @@
-import { Tab, TabGroup, TabList, TabPanels, Button, TabPanel } from "@headlessui/react";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { TabPanel } from "@headlessui/react";
 import React, { FC, Fragment, useEffect, useState } from "react";
-import AllListings from "../AllListings";
-import Owl from "../../../assets/images/owl.jpg";
-import { useNavigate } from "react-router-dom";
-import CustomTabButton from "../../shared/CustomTabButton";
 import { ButtonPrimary } from "../../styledComponents/styledButton";
+import { Button, Form, ListGroup } from "react-bootstrap";
+import {
+  FormInputStyled,
+  FormLabelStyled,
+  StyledInputDiv,
+} from "../../styledComponents/styledForm";
+import Password from "../../shared/password";
+import CustomTooltip from "../../shared/CustomTooltip";
+import styled from "styled-components";
 
-interface IListingProps {}
-const tabList = ["Events", "Experiences", "Cars"];
-export interface IListDetailsProps {
-  type: string;
-  img: any;
-  show: string;
-  name: string;
-  from: string;
-  to: string;
-  location: string;
-  status: string;
-}
-const allListings: IListDetailsProps[] = [
-  {
-    type: "Events",
-    img: Owl,
-    show: "Show 1",
-    name: "Cirque du Soleil Bazzar",
-    from: "2023-12-18T15:30:00Z",
-    to: "2023-12-18T16:30:00Z",
-    location: "Dubai Opera House, UAE",
-    status: "Live",
-  },
-  {
-    type: "Experiences",
-    img: Owl,
-    show: "Show 1",
-    name: "Premium Merch Pack",
-    from: "2023-12-18T12:30:00Z",
-    to: "2023-12-18T13:30:00Z",
-    location: "Dubai Opera House, UAE",
-    status: "Offline",
-  },
-  {
-    type: "Experiences",
-    img: Owl,
-    show: "Show 1",
-    name: "Meet & Greet",
-    from: "2023-12-18T15:30:00Z",
-    to: "2023-12-18T16:30:00Z",
-    location: "Dubai Opera House, UAE",
-    status: "Draft",
-  },
-  {
-    type: "Events",
-    img: Owl,
-    show: "Show 2",
-    name: "Cirque du Soleil Bazzar",
-    from: "2023-12-18T19:30:00Z",
-    to: "2023-12-18T20:30:00Z",
-    location: "Dubai Opera House, UAE",
-    status: "Live",
-  },
-  {
-    type: "Events",
-    img: Owl,
-    show: "Show 3",
-    name: "Cirque du Soleil Bazzar",
-    from: "2023-12-18T13:30:00Z",
-    to: "2023-12-18T14:30:00Z",
-    location: "Dubai Opera House, UAE",
-    status: "Live",
-  },
-  {
-    type: "Cars",
-    img: Owl,
-    show: "Show 4",
-    name: "Cirque du Soleil Bazzar",
-    from: "2023-12-18T12:30:00Z",
-    to: "2023-12-18T13:30:00Z",
-    location: "Dubai Opera House, UAE",
-    status: "Live",
-  },
+const ListItem = styled(ListGroup.Item)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .device-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logout-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+`;
+interface ISecurityProps {}
+
+const recentLogins = [
+  { device: "MacBook Pro", lastUsed: "March 20, 2025 - 10:45 AM" },
+  { device: "iPhone 13", lastUsed: "March 19, 2025 - 9:30 PM" },
+  { device: "Windows PC", lastUsed: "March 18, 2025 - 4:15 PM" },
 ];
 
-const index: FC<IListingProps> = ({}) => {
-  const navigate = useNavigate();
-const _handleAddListing = () => {
-  navigate("/accounts/add-listing");
-};
-  const [selectedTab, setSelectedTab] = useState<number>(0);
-  const [itemsPerRow, setItemsPerRow] = useState<number | null>(0);
-  const [maxWidth, setMaxWidth] = useState<string>("");
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  const getItemsPerRow = () => {
-    const rows = document.querySelectorAll("#myListings > *");
-    const rowWidth = document.querySelector("#myListings")?.clientWidth || 0;
-    let totalWidth = 0;
-    let count = 0;
-
-    rows.forEach((item) => {
-      const itemWidth = item.clientWidth;
-      totalWidth += itemWidth;
-      if (totalWidth > rowWidth) {
-        return;
-      }
-      count++;
-    });
-
-    setItemsPerRow(count);
+const index: FC<ISecurityProps> = ({}) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
   };
-  useEffect(() => {
-    getItemsPerRow();
-    const screenWidth = window.innerWidth;
-    setIsMobile(screenWidth < 899);
-    const handleResize = () => getItemsPerRow();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
-  useEffect(() => {
-    if (itemsPerRow !== null && !isMobile) {
-      setMaxWidth(`${itemsPerRow * 450}px`);
-    } else {
-      setMaxWidth("");
-    }
-  }, [itemsPerRow, isMobile]);
   return (
     <>
-    <TabPanel>
-      <div className="row" id="Role">
-        Tab Security
-      </div>
-    </TabPanel>
+      <TabPanel>
+        <div className="row" id="Security">
+          <div className="col-lg-9 col-12 mb-7">
+            <Form.Group>
+              <FormLabelStyled>Username</FormLabelStyled>
+              <FormInputStyled
+                type="text"
+                className="form-control"
+                placeholder="Enter Username"
+                value=""
+              />
+            </Form.Group>
+          </div>
+          <div className="col-lg-9 col-12 mb-7">
+            <Form.Group>
+              <FormLabelStyled>Password</FormLabelStyled>
+              <div className="position-relative">
+                <FormInputStyled
+                  type={isPasswordVisible ? "text" : "password"}
+                  className="form-control"
+                  placeholder="Enter Username"
+                />
+                <i
+                  onClick={togglePasswordVisibility}
+                  className={`position-absolute top-50 translate-middle-y align-middle fs-6 cursor-pointer ${
+                    isPasswordVisible ? "ri-eye-line" : "ri-eye-off-line"
+                  }`}
+                  style={{ right: "20px " }}
+                ></i>
+              </div>
+            </Form.Group>
+          </div>
+          <div className="col-lg-9 col-12 mb-7">
+            <Form.Group>
+              <StyledInputDiv className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="Authentication"
+                  name="Authentication"
+                  value="Authentication"
+                />
+                <label
+                  htmlFor="Authentication"
+                  className="form-check-label ms-3"
+                >
+                  Enable Two Factor Authentication
+                  <CustomTooltip
+                    iconMarginBottom="1px"
+                    title="Two Factor Authentication with Email or Phone OTP"
+                  />
+                </label>
+              </StyledInputDiv>
+            </Form.Group>
+          </div>
+          <div className="col-lg-9 col-12 mb-7">
+            <h5>Recent Login Activity</h5>
+            <ListGroup>
+              {recentLogins.map((login, index) => (
+                <ListItem key={index}>
+                  <div className="device-info">
+                    <strong>{login.device}</strong>
+                    <small>{login.lastUsed}</small>
+                  </div>
+                  <Button variant="outline-primary">Log Out</Button>
+                </ListItem>
+              ))}
+            </ListGroup>
+          </div>
+          <div className="col-lg-9 col-12 mb-7 pe-0">
+            <div className="float-end">
+              <ButtonPrimary
+                type="submit"
+                className="btn"
+                style={{ minWidth: "118px" }}
+              >
+                Submit
+              </ButtonPrimary>
+            </div>
+          </div>
+        </div>
+      </TabPanel>
     </>
   );
 };

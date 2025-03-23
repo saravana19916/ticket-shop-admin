@@ -16,6 +16,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import { Sidebar1 } from "./layoutcomponents/sidebar1";
 import { Sidebar } from "./layoutcomponents/sidebar";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "boxicons/css/boxicons.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 interface AppProps {}
 const queryClient = new QueryClient();
 

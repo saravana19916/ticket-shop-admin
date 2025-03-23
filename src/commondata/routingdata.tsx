@@ -16,6 +16,10 @@ import Scanning from "../components/scanning";
 import Tickets from "../components/Tickets";
 import TicketsDesigner from "../components/Tickets/DesignTickets";
 import ScanningDetails from "../components/scanning/ScanningDetails";
+import Finance from "../components/finance";
+import InvoiceDetail from "../components/finance/Invoice-Detail";
+import AddRole from "../components/settings/AddRole";
+import Legal from "../components/legal";
 
 const CardsDesign = lazy(
   () => import("../components/apps/cardsdesign/cardsdesign")
@@ -522,21 +526,28 @@ export const RouterData = [
     element: <ProfileSettings />,
   },
   {
+    path: `${import.meta.env.BASE_URL}add-role`,
+    element: <AddRole />,
+  },
+  {
     path: `${import.meta.env.BASE_URL}accounts/add-listing`,
     element: <AddProject />,
   },
-
   {
     path: `${import.meta.env.BASE_URL}scanning`,
     element: <Scanning />,
   },
   {
-    path: `${import.meta.env.BASE_URL}scanning`,
-    element: <Scanning />,
+    path: `${import.meta.env.BASE_URL}finance`,
+    element: <Finance />,
   },
   {
     path: `${import.meta.env.BASE_URL}view-scanning/:id`,
     element: <ScanningDetails />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}invoice-detail/:id`,
+    element: <InvoiceDetail />,
   },
   {
     path: `${import.meta.env.BASE_URL}tickets`,
@@ -545,6 +556,10 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}/design-ticket`,
     element: <TicketsDesigner />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}/legal`,
+    element: <Legal />,
   },
   {
     path: `${import.meta.env.BASE_URL}apps/carddesigns`,

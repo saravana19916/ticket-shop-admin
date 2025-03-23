@@ -1284,6 +1284,27 @@ export const MENUITEMS = [
             selected: false,
             title: "Tickets",
           },
+          {
+            path: `${import.meta.env.BASE_URL}dashboard`,
+            type: "link",
+            active: false,
+            selected: false,
+            title: "SMS",
+          },
+          {
+            path: `${import.meta.env.BASE_URL}dashboard`,
+            type: "link",
+            active: false,
+            selected: false,
+            title: "Email",
+          },
+          {
+            path: `${import.meta.env.BASE_URL}dashboard`,
+            type: "link",
+            active: false,
+            selected: false,
+            title: "Whatsapp Message",
+          },
         ],
       },
       {

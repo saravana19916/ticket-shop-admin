@@ -59,7 +59,7 @@ const StyledDateFlatpickr = styled.div`
 interface DateFlatpickrProps {
   id?: any;
   value: Date | null | string;
-  onChange: (date: Date | null) => void;
+  onChange: (date: Date | null | any) => void;
   type?: "date" | "datetime" | "time" | "range";
   placeholder?: string;
 }
