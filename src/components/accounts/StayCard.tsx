@@ -53,26 +53,26 @@ const StayCard: FC<StayCardProps> = ({
         />
         {saleOff && (
           <Badge bg="danger" className="position-absolute top-0 start-0 m-3">
-            Sale
+            -10% today
           </Badge>
         )}
       </div>
       <Card.Body>
+        <Card.Text className="text-muted">
+          {listingCategory.name} · {bedrooms} beds
+        </Card.Text>
         <div className="d-flex align-items-center mb-2">
           {isAds && (
             <Badge bg="success" className="me-2">
               ADS
             </Badge>
           )}
-          <Card.Title className="mb-0">
+          <Card.Title className="mb-0  text-truncate">
             <Link to={href} className="text-decoration-none text-dark">
               {title}
             </Link>
           </Card.Title>
         </div>
-        <Card.Text className="text-muted">
-          {listingCategory.name} · {bedrooms} beds
-        </Card.Text>
         <Card.Text className="text-muted small">
           <i className="bi bi-geo-alt"></i> {address}
         </Card.Text>

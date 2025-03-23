@@ -183,10 +183,10 @@ const index: FC<IListingProps> = ({}) => {
               </TabList>
               <TabPanels as="div" className="row d-flex justify-content-start">
               {DEMO_STAY_LISTINGS.filter((_, i) => i < 8).map((stay) => (
-                <Col key={stay.id} md={4}> {/* 3 cards per row (4 columns each in md screens) */}
-                  <StayCard key={stay.id} data={stay} />
-              </Col>
-                  ))}
+                <Col key={stay.id} md={3}>
+                    <StayCard key={stay.id} data={stay} />
+                </Col>
+              ))}
               </TabPanels>
             </TabGroup>
           </div>

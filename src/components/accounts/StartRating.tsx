@@ -14,16 +14,14 @@ const StartRating: FC<StartRatingProps> = ({
 }) => {
   return (
     <div
-      className={`nc-StartRating flex items-center space-x-1 text-sm  ${className}`}
+      className={`nc-StartRating d-flex align-items-center gap-1 text-sm ${className}`}
       data-nc-id="StartRating"
     >
-      <div className="pb-[2px]">
-        <StarIcon className="w-5 h-5 text-orange-500" />
+      <div className="pb-1">
+        <StarIcon className="w-5 h-5 text-warning" />
       </div>
-      <span className="font-medium ">{point}</span>
-      <span className="text-neutral-500 dark:text-neutral-400">
-        ({reviewCount})
-      </span>
+      <span className="fw-medium">{point}</span>
+      <span className="text-secondary">({reviewCount})</span>
     </div>
   );
 };
