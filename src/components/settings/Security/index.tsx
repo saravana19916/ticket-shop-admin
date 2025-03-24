@@ -69,7 +69,7 @@ const index: FC<ISecurityProps> = ({}) => {
                 <FormInputStyled
                   type={isPasswordVisible ? "text" : "password"}
                   className="form-control"
-                  placeholder="Enter Username"
+                  placeholder="Enter Password"
                 />
                 <i
                   onClick={togglePasswordVisibility}

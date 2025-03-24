@@ -1,20 +1,23 @@
 import React, { FC, useState } from "react";
 import CustomTab2 from "../shared/CustomTab2";
+import ContactDetails from "./ContactDetails";
+import Contract from "./Contract";
+import Documentation from "./Documentation/index";
 const tabsData = [
   {
     key: "documentation",
     label: "Documentation",
-    content: <p>Wishlist content here...</p>,
+    content: <Documentation />,
   },
   {
     key: "contact",
     label: "Contact Details",
-    content: <p>Account Password content here...</p>,
+    content: <ContactDetails />,
   },
   {
     key: "contracts",
     label: "Contracts",
-    content: <p>Contact Details content here...</p>,
+    content: <Contract />,
   },
 ];
 interface IProps {}

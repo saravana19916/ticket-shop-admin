@@ -84,3 +84,28 @@ export const SuccessBadge = styled.span`
   color: #118b50;
   padding: 2px 10px;
 `;
+export const DangerBadge = styled.span`
+  border-radius: 8px;
+  border: 1px solid #f5a6a6;
+  background-color: #fbeaea;
+  color: #d9534f;
+  padding: 2px 10px;
+`;
+export const WaringBadge = styled.span`
+  border-radius: 8px;
+  border: 1px solid #e0b97c;
+  background-color: #fdf4e3;
+  color: #c09853;
+  padding: 2px 10px;
+  font-weight: 500;
+`;
+
+export const SaleOffBadge = styled.span`
+  border-radius: 50px;
+  min-width: 100px;
+  border: 1px solid #ED003B;
+  background-color: #ED003B;
+  color: #fff;
+  padding: 2px 10px;
+  font-weight: 500;
+`;

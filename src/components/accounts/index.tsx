@@ -1,22 +1,19 @@
-import { Tab, TabGroup, TabList, TabPanels, Button } from "@headlessui/react";
-import { PlusIcon } from "@heroicons/react/24/outline";
-import React, { FC, Fragment, useEffect, useState } from "react";
+import { Tab, TabGroup, TabList, TabPanels } from "@headlessui/react";
+import { FC, Fragment, useEffect, useState } from "react";
 import MyProfile from "./MyProfile";
 import CompanyInfo from "./CompanyInfo";
 import SocialMedia from "./SocialMedia";
 import PreviousProjects from "./PreviousProjects";
-import Owl from "../../assets/images/owl.jpg";
 import { useNavigate } from "react-router-dom";
 import LandingPageWrapper from "../shared/LandingPageWrapper";
 import CustomTabButton from "../shared/CustomTabButton";
-import { ButtonPrimary } from "../styledComponents/styledButton";
 
 interface IListingProps {}
 const tabList = [
   "My Profile",
   "Company Info",
-  "Social Media",
-  "Previous Projects"
+  // "Social Media",
+  "Previous Projects",
 ];
 export interface IListDetailsProps {
   type: string;
@@ -27,6 +24,15 @@ export interface IListDetailsProps {
   to: string;
   location: string;
   status: string;
+  isLiked: boolean;
+  price: number;
+  reviewPoint: number;
+  reviewCount: number;
+  categoryName: string;
+  bedCount: number;
+  isAds: boolean;
+  title: string;
+  address: string;
 }
 
 const index: FC<IListingProps> = ({}) => {
@@ -69,15 +75,14 @@ const index: FC<IListingProps> = ({}) => {
 
   useEffect(() => {
     if (itemsPerRow !== null && !isMobile) {
-      setMaxWidth(itemsPerRow ? `${itemsPerRow * 450}px` : "1350px");
+      setMaxWidth(`${itemsPerRow * 450}px`);
     } else {
       setMaxWidth("");
     }
-
   }, [itemsPerRow, isMobile]);
   return (
     <>
-      <div className="row">
+      <div className="row mt-8">
         <div className="col-12 mb-3">
           <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
             <TabList
@@ -101,9 +106,9 @@ const index: FC<IListingProps> = ({}) => {
             </TabList>
             <TabPanels as="div" className="col-12">
               <MyProfile />
-              <CompanyInfo  />
-              <SocialMedia />
-              <PreviousProjects />
+              <CompanyInfo />
+              {/* <SocialMedia /> */}
+                <PreviousProjects />
             </TabPanels>
           </TabGroup>
         </div>

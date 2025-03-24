@@ -1,26 +1,18 @@
-import {
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanels,
-  Button,
-  TabPanel,
-} from "@headlessui/react";
+import { Tab, TabGroup, TabList, TabPanels, Button, TabPanel } from "@headlessui/react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import React, { FC, Fragment, useEffect, useState } from "react";
 import AllListings from "../AllListings";
-import Owl from "../../../assets/images/owl.jpg";
+import Account from "../../../assets/images/accounts/account1.jpeg";
+import Account2 from "../../../assets/images/accounts/account2.jpg";
+import Account3 from "../../../assets/images/accounts/account3.jpg";
+import Account4 from "../../../assets/images/accounts/account4.jpg";
+import Account5 from "../../../assets/images/accounts/account5.jpg";
+import Account6 from "../../../assets/images/accounts/account6.jpg";
+import Account7 from "../../../assets/images/accounts/account7.jpg";
+import Account8 from "../../../assets/images/accounts/account8.jpg";
 import { useNavigate } from "react-router-dom";
 import CustomTabButton from "../../shared/CustomTabButton";
-import {
-  DEMO_CAR_LISTINGS,
-  DEMO_EXPERIENCES_LISTINGS,
-  DEMO_STAY_LISTINGS,
-} from "../../../data/listings";
 import { ButtonPrimary } from "../../styledComponents/styledButton";
-
-import StayCard from "../StayCard";
-import { Col } from "react-bootstrap";
 
 interface IListingProps {}
 const tabList = ["Events", "Experiences", "Cars"];
@@ -33,75 +25,176 @@ export interface IListDetailsProps {
   to: string;
   location: string;
   status: string;
+  isLiked: boolean;
+  price: number;
+  reviewPoint: number;
+  reviewCount: number;
+  categoryName: string;
+  bedCount: number;
+  isAds: boolean;
+  title: string;
+  address: string;
 }
 const allListings: IListDetailsProps[] = [
   {
-    type: "Events",
-    img: Owl,
+    type: "-10% today",
+    img: Account,
     show: "Show 1",
     name: "Cirque du Soleil Bazzar",
     from: "2023-12-18T15:30:00Z",
     to: "2023-12-18T16:30:00Z",
     location: "Dubai Opera House, UAE",
     status: "Live",
+    isLiked: false,
+    price: 26,
+    reviewPoint: 4.8,
+    reviewCount: 28,
+    categoryName: 'Entire cabin',
+    bedCount: 10,
+    isAds: true,
+    title: 'Best Western Cedars',
+    address: '1 Anzinger Court'
   },
   {
-    type: "Experiences",
-    img: Owl,
+    type: "-10% today",
+    img: Account2,
     show: "Show 1",
     name: "Premium Merch Pack",
     from: "2023-12-18T12:30:00Z",
     to: "2023-12-18T13:30:00Z",
     location: "Dubai Opera House, UAE",
     status: "Offline",
+    isLiked: false,
+    price: 250,
+    reviewPoint: 4.4,
+    reviewCount: 198,
+    categoryName: 'Entire cabin',
+    bedCount: 6,
+    isAds: false,
+    title: 'Bell By Greene King inns',
+    address: '32923 Judy Hill'
   },
   {
-    type: "Experiences",
-    img: Owl,
+    type: "",
+    img: Account3,
     show: "Show 1",
     name: "Meet & Greet",
     from: "2023-12-18T15:30:00Z",
     to: "2023-12-18T16:30:00Z",
     location: "Dubai Opera House, UAE",
     status: "Draft",
+    isLiked: true,
+    price: 278,
+    reviewPoint: 3.6,
+    reviewCount: 16,
+    categoryName: 'Entire cabin',
+    bedCount: 9,
+    isAds: false,
+    title: 'Half Moon, Sherborne By',
+    address: '6731 Killdeer Park'
   },
   {
-    type: "Events",
-    img: Owl,
+    type: "",
+    img: Account4,
     show: "Show 2",
     name: "Cirque du Soleil Bazzar",
     from: "2023-12-18T19:30:00Z",
     to: "2023-12-18T20:30:00Z",
     location: "Dubai Opera House, UAE",
     status: "Live",
+    isLiked: false,
+    price: 40,
+    reviewPoint: 4.8,
+    reviewCount: 34,
+    categoryName: 'Entire cabin',
+    bedCount: 7,
+    isAds: false,
+    title: 'White Horse Hotel By Greene',
+    address: '35 Sheman Park'
   },
   {
-    type: "Events",
-    img: Owl,
+    type: "",
+    img: Account5,
     show: "Show 3",
     name: "Cirque du Soleil Bazzar",
     from: "2023-12-18T13:30:00Z",
     to: "2023-12-18T14:30:00Z",
     location: "Dubai Opera House, UAE",
     status: "Live",
+    isLiked: false,
+    price: 147,
+    reviewPoint: 3.4,
+    reviewCount: 340,
+    categoryName: 'Entire cabin',
+    bedCount: 3,
+    isAds: false,
+    title: 'Ship And Castle Hotel',
+    address: '3 Creast Line Park'
   },
   {
-    type: "Cars",
-    img: Owl,
+    type: "",
+    img: Account6,
     show: "Show 4",
     name: "Cirque du Soleil Bazzar",
     from: "2023-12-18T12:30:00Z",
     to: "2023-12-18T13:30:00Z",
     location: "Dubai Opera House, UAE",
     status: "Live",
+    isLiked: false,
+    price: 90,
+    reviewPoint: 3.8,
+    reviewCount: 508,
+    categoryName: 'Entire cabin',
+    bedCount: 7,
+    isAds: false,
+    title: 'The Windmill Family &',
+    address: '55974 Waxwing Junction'
+  },
+  {
+    type: "-10% today",
+    img: Account7,
+    show: "Show 3",
+    name: "Cirque du Soleil Bazzar",
+    from: "2023-12-18T13:30:00Z",
+    to: "2023-12-18T14:30:00Z",
+    location: "Dubai Opera House, UAE",
+    status: "Live",
+    isLiked: false,
+    price: 282,
+    reviewPoint: 3,
+    reviewCount: 481,
+    categoryName: 'Entire cabin',
+    bedCount: 2,
+    isAds: false,
+    title: 'Unicorn, Gunthorpe By',
+    address: '79361 Chinook Place'
+  },
+  {
+    type: "",
+    img: Account8,
+    show: "Show 4",
+    name: "Cirque du Soleil Bazzar",
+    from: "2023-12-18T12:30:00Z",
+    to: "2023-12-18T13:30:00Z",
+    location: "Dubai Opera House, UAE",
+    status: "Live",
+    isLiked: false,
+    price: 79,
+    reviewPoint: 3.9,
+    reviewCount: 188,
+    categoryName: 'Entire cabin',
+    bedCount: 7,
+    isAds: false,
+    title: 'Holiday Inn Express Ramsgate',
+    address: '6 Chive Avenue'
   },
 ];
 
 const index: FC<IListingProps> = ({}) => {
   const navigate = useNavigate();
-  const _handleAddListing = () => {
-    navigate("/accounts/add-listing");
-  };
+const _handleAddListing = () => {
+  navigate("/accounts/add-listing");
+};
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const [itemsPerRow, setItemsPerRow] = useState<number | null>(0);
   const [maxWidth, setMaxWidth] = useState<string>("");
@@ -112,6 +205,7 @@ const index: FC<IListingProps> = ({}) => {
     const rowWidth = document.querySelector("#myListings")?.clientWidth || 0;
     let totalWidth = 0;
     let count = 0;
+
     rows.forEach((item) => {
       const itemWidth = item.clientWidth;
       totalWidth += itemWidth;
@@ -141,7 +235,6 @@ const index: FC<IListingProps> = ({}) => {
       setMaxWidth("");
     }
   }, [itemsPerRow, isMobile]);
-
   return (
     <>
       <TabPanel>
@@ -181,12 +274,8 @@ const index: FC<IListingProps> = ({}) => {
                   </Tab>
                 ))}
               </TabList>
-              <TabPanels as="div" className="row d-flex justify-content-start">
-              {DEMO_STAY_LISTINGS.filter((_, i) => i < 8).map((stay) => (
-                <Col key={stay.id} md={3}>
-                    <StayCard key={stay.id} data={stay} />
-                </Col>
-              ))}
+              <TabPanels as="div" className="col-12">
+                <AllListings listDetailsData={allListings} />
               </TabPanels>
             </TabGroup>
           </div>

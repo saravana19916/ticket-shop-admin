@@ -12,12 +12,7 @@ import CustomTabButton from "../shared/CustomTabButton";
 import { ButtonPrimary } from "../styledComponents/styledButton";
 
 interface IListingProps {}
-const tabList = [
-  "General",
-  "User",
-  "Roles",
-  "Security"
-];
+const tabList = ["General", "User", "Roles", "Security"];
 export interface IListDetailsProps {
   type: string;
   img: any;
@@ -76,39 +71,37 @@ const index: FC<IListingProps> = ({}) => {
   }, [itemsPerRow, isMobile]);
   return (
     <>
-      <LandingPageWrapper>
-        <div className="row">
-          <div className="col-12 mb-3">
-            <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
-              <TabList
-                className="filter-container mb-7"
-                style={{ margin: "auto" }}
-              >
-                {tabList.map((tabName, idx) => (
-                  <Tab as={Fragment} key={idx}>
-                    {({ selected }) => (
-                      <>
-                        <CustomTabButton
-                          tabName={tabName}
-                          selected={selected}
-                          index={idx}
-                          setSelectedTab={setSelectedTab}
-                        />
-                      </>
-                    )}
-                  </Tab>
-                ))}
-              </TabList>
-              <TabPanels as="div" className="col-12">
-                <General />
-                <User  />
-                <Roles />
-                <Security />
-              </TabPanels>
-            </TabGroup>
-          </div>
+      <div className="row mt-8">
+        <div className="col-12 mb-3">
+          <TabGroup className="row px-0 py-2" selectedIndex={selectedTab}>
+            <TabList
+              className="filter-container mb-7"
+              style={{ margin: "auto" }}
+            >
+              {tabList.map((tabName, idx) => (
+                <Tab as={Fragment} key={idx}>
+                  {({ selected }) => (
+                    <>
+                      <CustomTabButton
+                        tabName={tabName}
+                        selected={selected}
+                        index={idx}
+                        setSelectedTab={setSelectedTab}
+                      />
+                    </>
+                  )}
+                </Tab>
+              ))}
+            </TabList>
+            <TabPanels as="div" className="col-12">
+              <General />
+              <User />
+              <Roles />
+              <Security />
+            </TabPanels>
+          </TabGroup>
         </div>
-      </LandingPageWrapper>
+      </div>
     </>
   );
 };

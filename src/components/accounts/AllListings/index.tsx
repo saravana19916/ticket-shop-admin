@@ -5,7 +5,10 @@ import { Card, Dropdown } from "react-bootstrap";
 import { IListDetailsProps } from "..";
 import ResponsiveTile from "../../styledComponents/tiles";
 import { toast } from "react-toastify";
-import { WhiteBadge, NotActiveBadge, ActiveBadge } from "../../styledComponents/badge";
+import { SaleOffBadge, SuccessBadge } from "../../styledComponents/badge";
+import BtnLikeIcon from "../BtnLikeIcon";
+import StartRating from "../StartRating";
+import { Link } from "react-router-dom";
 interface IAllListingProps {
   listDetailsData: IListDetailsProps[];
 }
@@ -19,31 +22,21 @@ const index: FC<IAllListingProps> = ({ listDetailsData }) => {
     <>
       <TabPanel>
         <div className="row" id="myListings">
-          {listDetailsData?.map((l: IListDetailsProps) => (
-            <>
-              <ResponsiveTile>
+          {listDetailsData?.map((l: IListDetailsProps, index: number) => (
+            <div key={index} className="col-12 col-xl-3 mb-4 d-flex">
+              <ResponsiveTile className="w-100">
                 <Card
-                  className="overflow-hidden position-relative"
+                  className="overflow-hidden position-relative w-90"
                   style={{
                     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
                   }}
                 >
                   <div className="position-absolute d-flex justify-content-between mx-4 my-4">
-                    <WhiteBadge className="badge p-2">{l.type}</WhiteBadge>
+                    <SaleOffBadge className="badge p-1">{l.type}</SaleOffBadge>
                   </div>
 
                   <div className="position-absolute end-0 d-flex justify-content-between mx-4 my-4">
-                    {l?.status == "draft" ? (
-                      <>
-                        <NotActiveBadge className="badge p-2">
-                          Not Active
-                        </NotActiveBadge>
-                      </>
-                    ) : (
-                      <>
-                        <ActiveBadge className="badge p-2">Active</ActiveBadge>
-                      </>
-                    )}
+                    <BtnLikeIcon isLiked={l.isLiked}></BtnLikeIcon>
                   </div>
 
                   <img
@@ -53,61 +46,37 @@ const index: FC<IAllListingProps> = ({ listDetailsData }) => {
                     height={252}
                   ></img>
                   <Card.Body className="p-3 py-5">
-                    <div className="d-flex justify-content-between">
-                      <div className="col-9">
-                        <small className="fw-semibold d-line-block mb-1 fs-10px">
-                          {l.show}
-                        </small>
-                        <h3 className="fw-bold mb-1 fs-1rem">{l.name}</h3>
-                        <div className="mb-1 mt-2 fs-10px">
-                          <span>{moment(l.from).format("DD MMMM YYYY")}</span> |{" "}
-                          <span>{moment(l.from).format("HH:MM")}</span>{" "}
-                          <span>to</span>{" "}
-                          <span>{moment(l.to).format("HH:MM")}</span>
-                        </div>
-                        <div className="fs-10px">
-                          <span>{l.location}</span>
-                        </div>
-                      </div>
-                      <div className="col-3 d-flex flex-column gap-2 mt-2 align-items-end">
-                        <span className="position-absolute d-flex">
-                          <Dropdown>
-                            <Dropdown.Toggle
-                              variant="link"
-                              id="dropdown-basic"
-                              className="text-black dark:text-white"
-                              style={{
-                                background: "none",
-                                border: "none",
-                                fontSize: "24px",
-                                textDecoration: "none",
-                              }}
-                            >
-                              ...
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                              <Dropdown.Item>Share Link</Dropdown.Item>
-                              <Dropdown.Item>Edit</Dropdown.Item>
-                              <Dropdown.Item>Generate</Dropdown.Item>
-                              <Dropdown.Item>Copy</Dropdown.Item>
-                              {l.status === "Draft" ? (
-                                <>
-                                  <Dropdown.Item>Activate</Dropdown.Item>
-                                </>
-                              ) : (
-                                <>
-                                  <Dropdown.Item>Deactivate</Dropdown.Item>
-                                </>
-                              )}
-                            </Dropdown.Menu>
-                          </Dropdown>
-                        </span>
-                      </div>
+                    <Card.Text className="text-muted">
+                      {l.categoryName} · {l.bedCount} beds
+                    </Card.Text>
+                    <div className="d-flex align-items-center mb-2">
+                      {l.isAds && (
+                        <SuccessBadge className="me-2 py-0" style={{ fontSize: "10px" }}>
+                          ADS
+                        </SuccessBadge>
+                      )}
+                      <Card.Title className="mb-0">
+                        <Link className="text-decoration-none fw-bold">
+                          {l.title}
+                        </Link>
+                      </Card.Title>
+                    </div>
+                    <Card.Text className="text-muted small">
+                      <i className="bi bi-geo-alt"></i> {l.address}
+                    </Card.Text>
+
+                    <div className="d-flex justify-content-between align-items-center">
+                      <span>
+                        <span className="fw-bold">${l.price}</span> <span className="text-muted">/night</span>
+                      </span>
+                      {!!l.reviewPoint && (
+                        <StartRating reviewCount={l.reviewCount} point={l.reviewPoint} />
+                      )}
                     </div>
                   </Card.Body>
                 </Card>
               </ResponsiveTile>
-            </>
+            </div>
           ))}
         </div>
       </TabPanel>
