@@ -27,8 +27,8 @@ const PaymentCompletedModal: FC<IProps> = ({ handleClose, activeModal }) => {
                 <div className="d-flex flex-column">
                   <span>
                     {activeModal === "paymentCompleted"
-                      ? "Pay One - Payment completed"
-                      : "Pay One - Payment started"}
+                      ? "Pay One Payment completed"
+                      : "Pay One Payment started"}
                   </span>
                   <span className="text-muted small">
                     February 7, 2023 - 10:18 AM

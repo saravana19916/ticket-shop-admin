@@ -27,10 +27,12 @@ import ResendOrderModal from "../ResendOrderModal";
 import { ChevronLeft } from "react-feather";
 import CustomDropdownMenu from "../../shared/CustomDropdownMenu";
 import PaymentCompletedModal from "./PaymentCompletedModal";
+import ContactModal from "./ContactModal";
 export type IOrderDetailsModalType =
   | "resendEmail"
   | "paymentCompleted"
-  | "paymentStarted";
+  | "paymentStarted"
+  | "contact";
 interface TimelineItemProps {
   icon: React.ReactNode;
   title: string;
@@ -156,7 +158,7 @@ const OrderDetails = () => {
             <Card.Body>
               <div className="d-flex justify-content-between">
                 <h3 className="fs-16px fw-600 mb-5">Contact</h3>
-                <span className="text-primary fw-semibold cursor-pointer">
+                <span className="text-primary fw-semibold cursor-pointer" onClick={() => handleShow("contact")}>
                   more
                 </span>
               </div>
@@ -309,6 +311,10 @@ const OrderDetails = () => {
         show={activeModal === "resendEmail"}
       />
       <PaymentCompletedModal
+        handleClose={handleClose}
+        activeModal={activeModal}
+      />
+      <ContactModal
         handleClose={handleClose}
         activeModal={activeModal}
       />
