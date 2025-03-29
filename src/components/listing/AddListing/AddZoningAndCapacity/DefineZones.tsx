@@ -51,11 +51,7 @@ const DefineZones = () => {
               placement="top"
               overlay={
                 <Tooltip>
-                  Sections and zones are different areas in your event that have
-                  different access and may have different prices. The tickets in
-                  each zone, must have similar prices. if you have multiple
-                  sections in one zone, then you need to define each of them as
-                  different zones.
+                  Sections and zones represent different areas of your event with varying access levels and pricing. Tickets within a zone must have the same price. If a zone contains multiple sections, each section should be defined as a separate zone.
                 </Tooltip>
               }
             >
@@ -73,14 +69,12 @@ const DefineZones = () => {
         <Form.Group>
           <FormLabelStyled>
             Name
-            <CustomTooltip
-              title="Name"
-            />
           </FormLabelStyled>
           <FormInputStyled
             type="text"
             className="form-control"
             name="zoneName"
+            placeholder="Enter the name of the zone"
           />
         </Form.Group>
       </div>
@@ -89,7 +83,7 @@ const DefineZones = () => {
           <FormLabelStyled>
             Format
             <CustomTooltip
-              title="Format"
+              title="Choose whether the zone will be Seating or Standing."
             />
           </FormLabelStyled>
           <SelectDropDown
@@ -105,7 +99,7 @@ const DefineZones = () => {
           <FormLabelStyled>
             Selection
             <CustomTooltip
-              title="Selection"
+              title="Choose if seats are Manually selected or assigned Automatically."
             />
           </FormLabelStyled>
           <SelectDropDown
@@ -121,7 +115,7 @@ const DefineZones = () => {
           <FormLabelStyled>
             Type
             <CustomTooltip
-              title="Type"
+              title="Select if the zone is Allocated or Free seating."
             />
           </FormLabelStyled>
           <SelectDropDown
@@ -137,7 +131,7 @@ const DefineZones = () => {
           <FormLabelStyled>
             Total Capacity
             <CustomTooltip
-              title="Total Capacity"
+              title="Enter the maximum number of people the zone can hold."
             />
           </FormLabelStyled>
           <FormInputStyled
@@ -152,7 +146,7 @@ const DefineZones = () => {
           <FormLabelStyled>
             On Sale Cap
             <CustomTooltip
-              title="On Sale Cap"
+              title="Set the number of tickets available for sale in this zone."
             />
           </FormLabelStyled>
           <FormInputStyled
@@ -167,7 +161,7 @@ const DefineZones = () => {
           <FormLabelStyled>
             Blocked Cap
             <CustomTooltip
-              title="Blocked Cap"
+              title="Define the number of tickets or spaces reserved or unavailable for sale."
             />
           </FormLabelStyled>
           <FormInputStyled

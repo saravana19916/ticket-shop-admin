@@ -79,11 +79,10 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled>
                   Product Name
-                  <CustomTooltip title="Product Name" />
                 </FormLabelStyled>
                 <FormInputStyled
                   type="text"
-                  placeholder="Type the product name"
+                  placeholder="Enter the name of the product"
                   className="form-control"
                   name="productName"
                 />
@@ -94,9 +93,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
                 <FormLabelStyled className="d-flex align-items-center">
                   Product Type
                   <CustomTooltip
-                    title="Pick your listing top from the dropdown menu (i.e :
-                        Event, Restaurant, Experience, Transportation, Product,
-                        Service )"
+                    title="Select the type of product from the dropdown."
                   />
                 </FormLabelStyled>
                 <SelectDropDown
@@ -111,7 +108,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled>
                   Product Description
-                  <CustomTooltip title="Product Description" />
+                  <CustomTooltip title="Provide a brief summary of the product’s details and features." />
                 </FormLabelStyled>
                 <StyledSunEditor
                   setOptions={{
@@ -131,7 +128,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled>
                   Category
-                  <CustomTooltip title="Category" />
+                  <CustomTooltip title="Choose the appropriate category to classify the product." />
                 </FormLabelStyled>
                 <div className="row">
                   {[
@@ -208,7 +205,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled>
                   Age Limit
-                  <CustomTooltip title="Age Limit" />
+                  <CustomTooltip title="Select the minimum age required for purchase or access." />
                 </FormLabelStyled>
                 <div className="row">
                   {[
@@ -262,7 +259,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
                   Net Price
-                  <CustomTooltip title="Net Price" />
+                  <CustomTooltip title="Enter the base price of the product before taxes and fees." />
                 </FormLabelStyled>
                 <FormInputStyled
                   type="text"
@@ -291,7 +288,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
                   VAT Tax
-                  <CustomTooltip title="VAT Tax" />
+                  <CustomTooltip title="Specify the Value Added Tax percentage, if applicable." />
                 </FormLabelStyled>
                 <FormInputWrapper className="w-100">
                   <FormInputStyled
@@ -307,7 +304,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
                   Entertainment Tax
-                  <CustomTooltip title="Entertainment Tax" />
+                  <CustomTooltip title="Enter any applicable entertainment-related tax." />
                 </FormLabelStyled>
                 <FormInputWrapper className="w-100">
                   <FormInputStyled
@@ -323,7 +320,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
                   C/T Tax
-                  <CustomTooltip title="C/T Tax" />
+                  <CustomTooltip title="Specify city or tourism tax if required." />
                 </FormLabelStyled>
                 <FormInputWrapper className="w-100">
                   <FormInputStyled
@@ -339,7 +336,7 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
               <Form.Group>
                 <FormLabelStyled className="d-flex align-items-center">
                   Other Taxes
-                  <CustomTooltip title="Other Taxes" />
+                  <CustomTooltip title="include any additional applicable taxes." />
                 </FormLabelStyled>
                 <FormInputWrapper className="w-100">
                   <FormInputStyled
@@ -353,43 +350,45 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
             </div>
             <div className="col-12 mb-7 p-0">
               <FormStyledContentSectionUndesignedForFields>
-                <div className="col-12 col-xl-6 mb-6 mb-xl-0">
-                  <Form.Group>
-                    <FormLabelStyled className="d-flex align-items-center">
-                      Service Fee Option{" "}
-                      <CustomTooltip title="Service Fee Option" />
-                    </FormLabelStyled>
-                    <SelectDropDown
-                      options={serviceFeeOption}
-                      placeholder="Select Fee Option"
-                      classNamePrefix="Select"
-                      className="mt-1"
-                      onChange={handleServiceOptionChange}
-                    />
-                  </Form.Group>
-                </div>
-                <div className="col-12 col-xl-6 mb-6 mb-xl-0">
-                  <Form.Group>
-                    <FormLabelStyled className="d-flex align-items-center">
-                      Service fee per Ticket{" "}
-                      <CustomTooltip title="Service fee per Ticket" />
-                    </FormLabelStyled>
-                    <FormInputWrapper className="w-100">
-                      <FormInputStyled
-                        className="form-control mt-1 fw-semibold"
-                        type="text"
-                        name="otherTaxes1"
-                        value="160.00"
-                        style={{ border: "1px #fff", color: "#000" }}
+                <div className="row w-100">
+                  <div className="col-12 col-md-6 mb-6 mb-xl-0">
+                    <Form.Group>
+                      <FormLabelStyled className="d-flex align-items-center">
+                        Service Fee Option{" "}
+                        <CustomTooltip title="Select whether a service fee applies and how it is charged." />
+                      </FormLabelStyled>
+                      <SelectDropDown
+                        options={serviceFeeOption}
+                        placeholder="Select Fee Option"
+                        classNamePrefix="Select"
+                        className="mt-1"
+                        onChange={handleServiceOptionChange}
                       />
-                      <FormInputGroupLabel
-                        className="fw-semibold"
-                        style={{ color: "#000", top: "15px" }}
-                      >
-                        {selectedServiceOption}
-                      </FormInputGroupLabel>
-                    </FormInputWrapper>
-                  </Form.Group>
+                    </Form.Group>
+                  </div>
+                  <div className="col-12 col-md-6 mb-6 mb-xl-0">
+                    <Form.Group>
+                      <FormLabelStyled className="d-flex align-items-center">
+                        Service fee per Ticket{" "}
+                        <CustomTooltip title="Service fee per Ticket" />
+                      </FormLabelStyled>
+                      <FormInputWrapper className="w-100">
+                        <FormInputStyled
+                          className="form-control mt-1 fw-semibold"
+                          type="text"
+                          name="otherTaxes1"
+                          value="160.00"
+                          style={{ border: "1px #fff", color: "#000" }}
+                        />
+                        <FormInputGroupLabel
+                          className="fw-semibold"
+                          style={{ color: "#000", top: "15px" }}
+                        >
+                          {selectedServiceOption}
+                        </FormInputGroupLabel>
+                      </FormInputWrapper>
+                    </Form.Group>
+                  </div>
                 </div>
               </FormStyledContentSectionUndesignedForFields>
             </div>

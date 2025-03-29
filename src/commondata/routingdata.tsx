@@ -20,6 +20,8 @@ import Finance from "../components/finance";
 import InvoiceDetail from "../components/finance/Invoice-Detail";
 import AddRole from "../components/settings/AddRole";
 import Legal from "../components/legal";
+import AddContact from "../components/legal/AddContact";
+import AddBankAccount from "../components/finance/AddBankAccount";
 
 const CardsDesign = lazy(
   () => import("../components/apps/cardsdesign/cardsdesign")
@@ -337,6 +339,7 @@ const FormInputSpinners = lazy(
 );
 
 const Chat = lazy(() => import("../components/chat/chat"));
+const ChatCon = lazy(() => import("../components/chat/index"));
 
 export const RouterData = [
   { path: `${import.meta.env.BASE_URL}dashboard`, element: <Dashboard /> },
@@ -542,6 +545,10 @@ export const RouterData = [
     element: <Finance />,
   },
   {
+    path: `${import.meta.env.BASE_URL}add-bank`,
+    element: <AddBankAccount />,
+  },
+  {
     path: `${import.meta.env.BASE_URL}view-scanning/:id`,
     element: <ScanningDetails />,
   },
@@ -560,6 +567,10 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}/legal`,
     element: <Legal />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}/add-contact`,
+    element: <AddContact />,
   },
   {
     path: `${import.meta.env.BASE_URL}apps/carddesigns`,
@@ -955,5 +966,9 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}/chats`,
     element: <Chat />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}/chat`,
+    element: <ChatCon />,
   },
 ];

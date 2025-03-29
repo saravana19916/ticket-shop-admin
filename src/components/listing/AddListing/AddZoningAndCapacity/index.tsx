@@ -98,10 +98,7 @@ const AddZoningAndCapacity: FC<IAddZoningAndCapacityProps> = ({}) => {
                           placement="top"
                           overlay={
                             <Tooltip>
-                              In this section you can design your zones
-                              manually. If you wish to design your floor plan
-                              using the Design tools, click on Design Floor
-                              Plan.{" "}
+                              You can manually create your zones in this section here. To design your floor plan using the built-in design tools, click Design Floor Plan.
                             </Tooltip>
                           }
                         >

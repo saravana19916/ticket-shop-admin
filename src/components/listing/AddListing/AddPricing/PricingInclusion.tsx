@@ -77,7 +77,7 @@ const PricingInclusion: FC<IProps> = ({
             <OverlayTrigger
               placement="top"
               overlay={
-                <Tooltip>Insert what is included in the Product.</Tooltip>
+                <Tooltip>Specify any additional benefits or extras included with the product.</Tooltip>
               }
             >
               <i className="fe fe-info d-inline-block ms-3 cursor-pointer"></i>

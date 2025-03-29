@@ -41,10 +41,10 @@ const CompanyCR: FC<IProps> = ({}) => {
   return (
     <>
       <div className="d-flex gap-4 align-items-center flex-wrap">
-        <div className="flex-grow-1 mb-2">
+        <div className="flex-grow-1">
           <Form.Group>
             <FormLabelStyled
-              htmlFor="showName"
+              htmlFor="companyCR"
               className="d-flex align-items-center"
             >
               Company CR{" "}

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Card, Dropdown, InputGroup, FormControl } from "react-bootstrap";
-import { Eye, Mail, Slash } from "react-feather";
-import { IconButtonPrimary } from "../../styledComponents/styledButton";
+import { Edit2, Eye, Mail, Slash, Trash2 } from "react-feather";
+import {
+  IconButtonPrimary,
+  ButtonPrimary,
+} from "../../styledComponents/styledButton";
 import { ArrowDownTrayIcon, WifiIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 import { Download, Filter } from "react-feather";
@@ -12,7 +15,8 @@ import CustomDropdownMenu from "../../shared/CustomDropdownMenu";
 import { FaFingerprint } from "react-icons/fa";
 import { TabPanel } from "@headlessui/react";
 import { Imagesdata } from "../../../commondata/commonimages";
-// import ResendOrderModal from ".././ResendOrderModal";
+import InviteUserModal from "./InviteUserModal";
+import EditUserModel from "./EditUserModel";
 
 const index = () => {
   const navigate = useNavigate();
@@ -65,40 +69,60 @@ const index = () => {
   ];
 
   const handleEdit = (id: number) => {
-    navigate(`${import.meta.env.BASE_URL}view-order/${id}`);
+    setSelectedUser(id);
+    setShowEditUserModal((prev) => !prev);
   };
 
   const handleDelete = (id: number) => {
     navigate(`${import.meta.env.BASE_URL}view-order/${id}`);
   };
-  const [resendOrderModal, setResendOrderModal] = useState<boolean>(false);
+  const [showInviteUserModal, setShowInviteUserModal] =
+    useState<boolean>(false);
+  const handleInviteModal = () => setShowInviteUserModal((prev) => !prev);
+
+  const [showEditUserModal, setShowEditUserModal] = useState<boolean>(false);
+  const [selectedUser, setSelectedUser] = useState<number>(0);
+  const handleEditModal = () => {
+    setShowEditUserModal((prev) => !prev);
+  };
   return (
     <>
       <TabPanel>
-        <div className="row pt-lg-5 pt-0 px-0 pt-xl-5 mt-6">
+        <InviteUserModal
+          show={showInviteUserModal}
+          handleClose={handleInviteModal}
+        />
+
+        <div className="row pt-lg-5 pt-0 px-0 pt-xl-5">
           <p className="fw-600 fs-26px text-black mb-6">Users</p>
-          <div className="row mb-6">
-            <div className="col-12 col-md-6">
-              <div className="row">
-                <div className="col-8">
-                  <SearchBar />
-                  <p className="mt-3 ms-3">
-                    A minimum of four characters is required
-                  </p>
-                </div>
-                <div className="col-4">
-                  <ButtonPrimaryLight className="btn py-2">
-                    <Filter className="w-5 h-5" />
-                  </ButtonPrimaryLight>
-                </div>
+          <div className="col-12 col-md-6 mb-6">
+            <div className="row">
+              <div className="col-8">
+                <SearchBar />
+                <p className="mt-3 ms-3">
+                  A minimum of four characters is required
+                </p>
+              </div>
+              <div className="col-4">
+                <ButtonPrimaryLight className="btn py-2">
+                  <Filter className="w-5 h-5" />
+                </ButtonPrimaryLight>
               </div>
             </div>
-            <div className="col-12 col-md-6 text-end">
-              <IconButtonPrimary className="btn" style={{ width: "118px" }}>
-                <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
-                <span>Export</span>
-              </IconButtonPrimary>
-            </div>
+          </div>
+          <div className="col-12 col-md-6 text-end mb-6">
+            <ButtonPrimary
+              type="button"
+              className="btn m-3"
+              style={{ minWidth: "118px" }}
+              onClick={handleInviteModal}
+            >
+              Invite User
+            </ButtonPrimary>
+            <IconButtonPrimary className="btn" style={{ width: "118px" }}>
+              <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
+              <span>Export</span>
+            </IconButtonPrimary>
           </div>
           <div className="col-12 table-responsive">
             <table className="table table-striped table-hover bordered text-nowrap">
@@ -131,12 +155,12 @@ const index = () => {
                           {
                             itemName: "Edit",
                             onClick: () => handleEdit(1),
-                            icon: <Eye size={20} />,
+                            icon: <Edit2 size={20} />,
                           },
                           {
                             itemName: "Delete",
-                            onClick: () => handleDelete(1),
-                            icon: <Mail size={20} />,
+                            onClick: () => {},
+                            icon: <Trash2 size={20} />,
                           },
                         ]}
                       />
@@ -145,50 +169,38 @@ const index = () => {
                 ))}
               </tbody>
             </table>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <div className="flex items-center space-x-2">
-                  <label className="text-gray-700">Items per page</label>
-                  <select className="border p-1 ms-3">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                  </select>
-                </div>
-                <div className="text-gray-700">1 - 8 Of 8 Items</div>
-              </div>
           </div>
         </div>
-        <div className="row pt-lg-5 pt-0 px-0 pt-xl-5 mt-6">
+        <div className="row pt-lg-5 pt-0 px-0 pt-xl-5 mt-8">
           <p className="fw-600 fs-26px text-black mb-6">
             Temporary Access History
           </p>
           <p>
-            For your convenience, certain CM.com employees may get temporary
+            For your convenience, certain Tixbox.com employees may get temporary
             access to your account without an invitation in the case its
             considered necessary. Data is shown for the past 90
           </p>
-          <p>Get a weekly email if CM.com employees accessed my account</p>
-          <div className="row mb-6">
-            <div className="col-12 col-md-6">
-              <div className="row">
-                <div className="col-8">
-                  <SearchBar />
-                  <p className="mt-3 ms-3">
-                    A minimum of four characters is required
-                  </p>
-                </div>
-                <div className="col-4">
-                  <ButtonPrimaryLight className="btn py-2">
-                    <Filter className="w-5 h-5" />
-                  </ButtonPrimaryLight>
-                </div>
+          <p>Get a weekly email if Tixbox.com employees accessed my account</p>
+          <div className="col-12 col-md-6 mb-6">
+            <div className="row">
+              <div className="col-8">
+                <SearchBar />
+                <p className="mt-3 ms-3">
+                  A minimum of four characters is required
+                </p>
+              </div>
+              <div className="col-4">
+                <ButtonPrimaryLight className="btn py-2">
+                  <Filter className="w-5 h-5" />
+                </ButtonPrimaryLight>
               </div>
             </div>
-            <div className="col-12 col-md-6 text-end">
-              <IconButtonPrimary className="btn" style={{ width: "118px" }}>
-                <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
-                <span>Export</span>
-              </IconButtonPrimary>
-            </div>
+          </div>
+          <div className="col-12 col-md-6 text-end mb-6">
+            <IconButtonPrimary className="btn" style={{ width: "118px" }}>
+              <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
+              <span>Export</span>
+            </IconButtonPrimary>
           </div>
           <div className="col-12 table-responsive">
             <table className="table table-striped table-hover bordered text-nowrap">
@@ -248,19 +260,14 @@ const index = () => {
                 ))}
               </tbody>
             </table>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <div className="flex items-center space-x-2">
-                  <label className="text-gray-700">Items per page</label>
-                  <select className="border p-1 ms-3">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                  </select>
-                </div>
-                <div className="text-gray-700">1 - 1 Of 1 Items</div>
-              </div>
           </div>
         </div>
       </TabPanel>
+      <EditUserModel
+        show={showEditUserModal}
+        onClose={handleEditModal}
+        userId={selectedUser}
+      />
     </>
   );
 };

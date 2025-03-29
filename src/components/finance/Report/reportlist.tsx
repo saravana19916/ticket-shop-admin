@@ -1,6 +1,20 @@
 import React, { Fragment } from "react";
 import { Button, Card, Dropdown, Table } from "react-bootstrap";
 import { Imagesdata } from "../../../commondata/commonimages";
+import { Edit2, Trash2 } from "react-feather";
+import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import SearchBar from "../../shared/SearchBar";
+import {
+  ButtonPrimary,
+  IconButtonPrimary,
+} from "../../styledComponents/styledButton";
+import {
+  DangerBadge,
+  InfoBadge,
+  SuccessBadge,
+  WaringBadge,
+} from "../../styledComponents/badge";
+import CustomDropdownMenu from "../../shared/CustomDropdownMenu";
 
 const headerTable = [
   {
@@ -129,126 +143,91 @@ export const ReportList = () => {
   };
   return (
     <>
-      <Card>
-        <Card.Header>
-          <div className="d-flex align-items-center gap-3 w-100">
-            <Card.Title as="h3">Manage Reports</Card.Title>
-            <Button className="btn btn-primary ms-auto">
-              <i className="fe fe-plus me-2"></i> Create Invoice
-            </Button>
-            <Dropdown>
-              <Dropdown.Toggle variant="default">
-                <i className="fe fe-more-vertical"></i>
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item eventKey="1">Dropdown Link</Dropdown.Item>
-                <Dropdown.Item eventKey="2">Dropdown Link</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+      <div className="row pt-lg-5 pt-0 px-0 pt-xl-5">
+        <p className="fw-600 fs-26px text-black mb-6">Report List</p>
+        <div className="col-12 col-md-6 mb-6">
+          <div className="row">
+            <div className="col-8">
+              <SearchBar />
+              <p className="mt-3 ms-3">
+                A minimum of four characters is required
+              </p>
+            </div>
           </div>
-        </Card.Header>
-        <Card.Body>
-          <Table bordered>
-            <thead>
+        </div>
+        <div className="col-12 col-md-6 mb-6 text-end">
+          <IconButtonPrimary className="btn" style={{ width: "118px" }}>
+            <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
+            <span>Export</span>
+          </IconButtonPrimary>
+          <a href="#">
+            <ButtonPrimary
+              type="submit"
+              className="btn ms-3"
+              style={{ minWidth: "118px" }}
+            >
+              Add Report
+            </ButtonPrimary>
+          </a>
+        </div>
+        <div className="col-12 table-responsive">
+          <table className="table table-striped table-hover bordered text-nowrap">
+            <thead className="border-0">
               <tr>
-                {headerTable.map((item: any) => {
+                {headerTable.map((item) => {
                   return (
-                    <>
-                      <th
-                        key={item.id}
-                        style={{
-                          fontWeight: "600",
-                          textTransform: "unset",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {item.title}
-                      </th>
-                    </>
+                    <th
+                      key={item.id}
+                      className="fw-bold text-start border-end text-capitalize"
+                    >
+                      {item.title}
+                    </th>
                   );
                 })}
               </tr>
             </thead>
-            <tbody>
-              {rowTable.map((row: any, index: any) => {
-                return (
-                  <>
-                    <tr key={index}>
-                      <td className="text-start">{row.reportName}</td>
-
-                      <td className="text-start"> {row.issuedDate} </td>
-                      <td className="text-start"> {row.amount} </td>
-                      <td className="text-start">
-                        <span className={`tag ${getStatusClass(row.status)}`}>
-                          {row.status}
-                        </span>
-                      </td>
-                      <td className="text-start"> {row.dueDate} </td>
-                      <td className="text-start">
-                        <div className="d-flex align-items-center gap-3">
-                          <button
-                            className="btn btn-info-light btn-icon btn-sm"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="top"
-                            data-bs-title="Print"
-                          >
-                            <i className="ri-printer-line"></i>
-                          </button>
-                          <button
-                            className="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="top"
-                            data-bs-title="Delete"
-                          >
-                            <i className="ri-delete-bin-5-line"></i>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  </>
-                );
-              })}
+            <tbody className="border-0">
+              {rowTable.map((row: any, index: number) => (
+                <tr key={index}>
+                  <td className="text-start align-middle">{row.reportName}</td>
+                  <td className="text-start align-middle">{row.issuedDate}</td>
+                  <td className="text-start align-middle">{row.amount}</td>
+                  <td className="text-start align-middle">
+                    {row.status === "Paid" ? (
+                      <SuccessBadge>{row.status}</SuccessBadge>
+                    ) : row.status === "Overdue" ? (
+                      <DangerBadge>{row.status}</DangerBadge>
+                    ) : row.status === "Pending" ? (
+                      <WaringBadge>{row.status}</WaringBadge>
+                    ) : row.status === "Due By 1 Day" ? (
+                      <InfoBadge>{row.status}</InfoBadge>
+                    ) : (
+                      <DangerBadge>{row.status}</DangerBadge>
+                    )}
+                  </td>
+                  <td className="text-start align-middle">{row.dueDate}</td>
+                  <td className="text-start align-middle">
+                    <CustomDropdownMenu
+                      menuItems={[
+                        {
+                          itemName: "Edit",
+                          onClick: () => {},
+                          icon: <Edit2 size={20} />,
+                        },
+                        {
+                          itemName: "Delete",
+                          onClick: () => {},
+                          icon: <Trash2 size={20} />,
+                        },
+                      ]}
+                    />
+                  </td>
+                </tr>
+              ))}
             </tbody>
-          </Table>
-          <div className="d-block d-sm-flex mt-4 ">
-            <span className="">
-              Page <strong>1 of 3</strong>{" "}
-            </span>
-            <span className="ms-sm-auto">
-              <Button
-                variant=""
-                className="btn-default tablebutton d-sm-inline d-block me-2 my-2"
-              >
-                {" Previous "}
-              </Button>
-              {/* <Button variant="" className="btn-default tablebutton me-2 my-2">
-                {" << "}
-              </Button>
-              <Button variant="" className="btn-default tablebutton me-2 my-2">
-                {" < "}
-              </Button> */}
-              <Button variant="" className="btn-default tablebutton me-2 my-2">
-                {" 1 "}
-              </Button>
-              <Button variant="" className="btn-default tablebutton me-2 my-2">
-                {" 2 "}
-              </Button>
-              <Button variant="" className="btn-default tablebutton me-2 my-2">
-                {" 3 "}
-              </Button>
-              {/* <Button variant="" className="btn-default tablebutton me-2 my-2">
-                {" > "}
-              </Button>
-              <Button variant="" className="btn-default tablebutton me-2 my-2">
-                {" >> "}
-              </Button> */}
-              <Button variant="" className="btn-default tablebutton me-2 my-2">
-                {" Next "}
-              </Button>
-            </span>
-          </div>
-        </Card.Body>
-      </Card>
+          </table>
+        </div>
+      </div>
     </>
   );
 };

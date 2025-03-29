@@ -4,7 +4,10 @@ import {
   FormInputStyled,
   FormLabelStyled,
 } from "../../styledComponents/styledForm";
-import { ButtonPrimary } from "../../styledComponents/styledButton";
+import {
+  ButtonPrimary,
+  IconButtonPrimary,
+} from "../../styledComponents/styledButton";
 import CompanyCR from "./CompanyCR";
 import CompanyArticlesAssociation from "./CompanyArticlesAssociation";
 import ComputerCard from "./ComputerCard";
@@ -39,7 +42,7 @@ const index: FC<IProps> = () => {
 
   return (
     <>
-      <div className="row" id="Documentation">
+      <div className="row mt-3" id="Documentation">
         <div className="col-lg-9 col-12 mb-7">
           <CompanyCR />
         </div>
@@ -63,7 +66,7 @@ const index: FC<IProps> = () => {
             />
           </Form.Group>
         </div>
-        <div className="col-lg-9 col-12 mb-3">
+        <div className="col-lg-9 col-12 mb-6">
           <Form.Group>
             <FormLabelStyled>Authorized Activities </FormLabelStyled>
             <Form onSubmit={handleAddRule}>
@@ -79,13 +82,13 @@ const index: FC<IProps> = () => {
                   </Form.Group>
                 </div>
                 <div>
-                  <ButtonPrimary
-                    type="submit"
-                    className="btn w-100 w-md-auto "
-                    style={{ minWidth: "120px" }}
+                  <IconButtonPrimary
+                    className="btn px-4"
+                    style={{ marginBottom: "7px" }}
+                    type="button"
                   >
-                    Add
-                  </ButtonPrimary>
+                    <PlusIcon className="h-5 w-5 fw-bold" />
+                  </IconButtonPrimary>
                 </div>
               </div>
             </Form>
@@ -110,7 +113,7 @@ const index: FC<IProps> = () => {
           </div>
         </div>
 
-        <div className="col-lg-9 col-12 mb-7 pe-0">
+        <div className="col-lg-9 col-12 mb-7">
           <div className="float-end">
             <ButtonPrimary
               type="submit"

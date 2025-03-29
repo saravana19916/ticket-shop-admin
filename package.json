@@ -65,6 +65,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "hh-mm-ss": "^1.2.0",
     "i18next": "^23.12.2",
+    "jotai": "^2.12.2",
     "leaflet": "^1.9.4",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",

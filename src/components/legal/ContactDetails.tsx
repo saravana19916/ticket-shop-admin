@@ -1,20 +1,13 @@
 import React, { FC, useState } from "react";
-import { Form } from "react-bootstrap";
-import {
-  FormInputStyled,
-  FormLabelStyled,
-} from "../styledComponents/styledForm";
 import {
   ButtonPrimary,
   IconButtonPrimary,
 } from "../styledComponents/styledButton";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 import SearchBar from "../shared/SearchBar";
 import { ArrowDownTrayIcon, WifiIcon } from "@heroicons/react/24/outline";
 import { DangerBadge, SuccessBadge } from "../styledComponents/badge";
 import CustomDropdownMenu from "../shared/CustomDropdownMenu";
-import { Eye, Mail } from "react-feather";
+import { Delete, Edit2, Eye, Mail, Trash2 } from "react-feather";
 
 interface IProps {}
 const ContactDetails: FC<IProps> = () => {
@@ -95,87 +88,32 @@ const ContactDetails: FC<IProps> = () => {
 
   return (
     <>
-      <div className="row" id="ContactDetails">
-        <div className="col-lg-9 col-12 mb-7">
-          <Form.Group>
-            <FormLabelStyled>Name </FormLabelStyled>
-            <FormInputStyled
-              type="text"
-              className="form-control"
-              placeholder="Enter Name "
-              value=""
-            />
-          </Form.Group>
-        </div>
-        <div className="col-lg-9 col-12 mb-7">
-          <Form.Group>
-            <FormLabelStyled>Contact Number </FormLabelStyled>
-            <div className="position-relative">
-              <PhoneInput
-                country={"us"}
-                placeholder="Enter phone number"
-                inputStyle={{
-                  width: "100%",
-                  minHeight: "3.55rem !important",
-                  fontSize: "14px",
-                  borderRadius: "50rem",
-                  border: "1px solid #d1d5db",
-                  outline: "none",
-                  height: "3.4rem",
-                }}
-                buttonStyle={{
-                  background: "transparent",
-                  border: "none",
-                  borderRadius: "50rem 0 0 50rem",
-                }}
-                inputClass="custom-phone-input"
-              />
+      <div className="row pt-lg-5 pt-0 px-0 pt-xl-5" id="ContactDetails">
+        <p className="fw-600 fs-26px text-black mb-6">Contact List</p>
+        <div className="col-12 col-md-6 mb-6">
+          <div className="row">
+            <div className="col-8">
+              <SearchBar />
+              <p className="mt-3 ms-3">
+                A minimum of four characters is required
+              </p>
             </div>
-          </Form.Group>
+          </div>
         </div>
-        <div className="col-lg-9 col-12 mb-7">
-          <Form.Group>
-            <FormLabelStyled>Email Id </FormLabelStyled>
-            <FormInputStyled
-              type="text"
-              className="form-control"
-              placeholder="Enter Email Id "
-              value=""
-            />
-          </Form.Group>
-        </div>
-
-        <div className="col-lg-9 col-12 mb-7 pe-0">
-          <div className="float-end">
+        <div className="col-12 col-md-6 text-end mb-6">
+          <IconButtonPrimary className="btn" style={{ width: "118px" }}>
+            <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
+            <span>Export</span>
+          </IconButtonPrimary>
+          <a href="/add-contact">
             <ButtonPrimary
               type="submit"
-              className="btn"
+              className="btn ms-3"
               style={{ minWidth: "118px" }}
             >
-              Submit
+              Add Contact
             </ButtonPrimary>
-          </div>
-        </div>
-      </div>
-      <div className="row pt-lg-5 pt-0 px-0 pt-xl-5 mt-6">
-        <p className="fw-600 fs-26px text-black mb-6">Contact List</p>
-        <div className="row mb-6">
-          <div className="col-12 col-md-6">
-            <div className="row">
-              <div className="col-8">
-                <SearchBar />
-                <p className="mt-3 ms-3">
-                  A minimum of four characters is required
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 text-end">
-            <IconButtonPrimary className="btn" style={{ width: "118px" }}>
-              <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
-              <span>Export</span>
-            </IconButtonPrimary>
-          </div>
+          </a>
         </div>
         <div className="col-12 table-responsive">
           <table className="table table-striped table-hover bordered text-nowrap">
@@ -216,14 +154,20 @@ const ContactDetails: FC<IProps> = () => {
                     )}
                   </td>
                   <td className="text-start align-middle">
-                    <div className="d-flex align-items-center gap-3">
-                      <button className="btn btn-success-light btn-icon">
-                        <i className="ri-download-2-line"></i>
-                      </button>
-                      <button className="btn btn-info-light btn-icon ms-1 invoice-btn">
-                        <i className="ri-edit-line"></i>
-                      </button>
-                    </div>
+                    <CustomDropdownMenu
+                      menuItems={[
+                        {
+                          itemName: "Edit",
+                          onClick: () => {},
+                          icon: <Edit2 size={20} />,
+                        },
+                        {
+                          itemName: "Delete",
+                          onClick: () => {},
+                          icon: <Trash2 size={20} />,
+                        },
+                      ]}
+                    />
                   </td>
                 </tr>
               ))}

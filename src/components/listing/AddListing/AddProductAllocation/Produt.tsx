@@ -129,9 +129,6 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
               <Form.Group>
                 <FormLabelStyled>
                   Select Product
-                  <CustomTooltip
-                    title="Select Product"
-                  />
                 </FormLabelStyled>
                 <SelectDropDown
                   options={productTypes}
@@ -146,9 +143,6 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
               <Form.Group>
                 <FormLabelStyled>
                   Zone
-                  <CustomTooltip
-                    title="Zone"
-                  />
                 </FormLabelStyled>
                 <SelectDropDown
                   options={zoneTypes}
@@ -162,9 +156,6 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
               <Form.Group>
                 <FormLabelStyled>
                   Section or Row
-                  <CustomTooltip
-                    title="Section or Row"
-                  />
                 </FormLabelStyled>
                 <SelectDropDown
                   options={sectionTypes}
@@ -178,9 +169,6 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
               <Form.Group>
                 <FormLabelStyled>
                   Has access to
-                  <CustomTooltip
-                    title="Has access to"
-                  />
                 </FormLabelStyled>
                 <div className="row">
                   {[
@@ -239,9 +227,6 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
               <Form.Group>
                 <FormLabelStyled>
                   Entrance Gate
-                  <CustomTooltip
-                    title="Entrance Gate"
-                  />
                 </FormLabelStyled>
                 <FormInputStyled
                   type="text"
@@ -255,9 +240,6 @@ const ProductInfo: FC<IProductInfoProps> = ({ handleOnChange }) => {
               <Form.Group>
                 <FormLabelStyled>
                   Color Tag
-                  <CustomTooltip
-                    title="Color Tag"
-                  />
                 </FormLabelStyled>
                 <FormDivStyled
                   ref={colorPickerRef}

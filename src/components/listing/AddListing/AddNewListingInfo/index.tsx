@@ -2,10 +2,8 @@ import React, { FC, useState } from "react";
 import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { MultiValue } from "react-select";
 
-import {
-  listingCategory,
-  listingType,
-} from "../../../../commondata/addListingPageOne";
+import { listingType } from "../../../../commondata/addListingPageOne";
+import { listingCategory, ListingType } from "../../../../commondata/listingCategoryData";
 import ReactSelect from "react-select";
 import { Formik, Form as FormikForm } from "formik";
 import { listingInfoInitialState, listingInfoValidationSchema } from "./helper";
@@ -23,11 +21,19 @@ import { ButtonPrimary } from "../../../styledComponents/styledButton";
 interface IAddListingPageOneProps {}
 const languageOptions = [
   { value: "english", label: "English" },
-  { value: "arabic", label: "Arabic" },
-  { value: "spanish", label: "Spanish" },
+  { value: "arabic", label: "Arabic" }
 ];
 const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
   const [selectedLanguage, setSelectedLanguage] = useState<any>([]);
+  const [listingSelectedType, setListingSelectedType] = useState<ListingType | "">("");
+  const [subcategories, setSubcategories] = useState<string[]>([]);
+
+  const handleListingChange = (value: string | number | boolean | null) => {
+    const selectedType = value as ListingType;
+    setListingSelectedType(selectedType);
+    setSubcategories(listingCategory[selectedType] || []);
+  };
+
   const isSeparateUrl =
     window.location?.pathname === "/add-info" ||
     window.location?.pathname.startsWith("/edit-info/");
@@ -73,8 +79,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             Listing Name
                             <CustomTooltip
                               iconMarginBottom="1px"
-                              title="Type your listing name which would be placed
-                                  as the title of your listing."
+                              title="Enter the name of your listing. This will be displayed as the title of your content."
                             />
                           </FormLabelStyled>{" "}
                           <FormInputStyled
@@ -103,9 +108,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             Listing Description{" "}
                             <CustomTooltip
                               iconMarginBottom="1px"
-                              title="In this section, you should provide us with
-                                  description of your listing, limited to xxxx
-                                  characters."
+                              title="Provide a brief and engaging description of your listing. This will be displayed on your content page."
                             />
                           </FormLabelStyled>
                           <StyledSunEditor
@@ -136,9 +139,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             Listing Type{" "}
                             <CustomTooltip
                               iconMarginBottom="1px"
-                              title="Pick your listing top from the dropdown menu
-                                  (i.e : Event, Restaurant, Experience,
-                                  Transportation, Product, Service )"
+                              title="Select the category that best describes the nature of your listing."
                             />
                           </FormLabelStyled>
                           <SelectDropDown
@@ -150,7 +151,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                               (l) => l.value === values?.listingType
                             )}
                             onChange={(e) => {
-                              setFieldValue("listingType", e?.value || null);
+                              handleListingChange(e?.value || null);
                             }}
                           />
                         </Form.Group>
@@ -169,25 +170,17 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             Listing Category{" "}
                             <CustomTooltip
                               iconMarginBottom="1px"
-                              title="In this section, you choose the category of
-                                  your listing, so it can be classified
-                                  accordingly in the platform."
+                              title="Choose the most relevant category to help users find your listing easily."
                             />
                           </FormLabelStyled>
                           <SelectDropDown
-                            options={listingCategory}
-                            placeholder="Select Category"
+                            options={subcategories.map((subcategory) => ({
+                              value: subcategory,
+                              label: subcategory,
+                            }))}
+                            placeholder="Select Subcategory"
                             classNamePrefix="Select"
-                            className="mb-2"
-                            selectedValue={listingCategory?.find(
-                              (l) => l.value === values?.listingCategory
-                            )}
-                            onChange={(e) => {
-                              setFieldValue(
-                                "listingCategory",
-                                e?.value || null
-                              );
-                            }}
+                            className="w-full"
                           />
                         </Form.Group>
                         {errors?.listingCategory &&
@@ -205,8 +198,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             Language{" "}
                             <CustomTooltip
                               iconMarginBottom="1px"
-                              title="In this section, you choose the language of
-                                  the performance or content."
+                              title="Select the language in which your listing content is presented."
                             />
                           </FormLabelStyled>
                           <SelectDropDown
@@ -291,7 +283,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             Suitabilities
                             <CustomTooltip
                               iconMarginBottom="2px"
-                              title="Suitabilities"
+                              title="Choose the audience that your listing is intended for. "
                             />
                           </FormLabelStyled>
                           <div className="row">
@@ -365,7 +357,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             Content Grading
                             <CustomTooltip
                               iconMarginBottom="2px"
-                              title="Content Grading"
+                              title="Select the appropriate content rating for your listing."
                             />
                           </FormLabelStyled>
                           <div className="row">
@@ -374,26 +366,31 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                                 id: "generalAudience",
                                 label: "General Audience (G)",
                                 value: "G",
+                                desc: "Suitable for all ages."
                               },
                               {
                                 id: "parentalGuidance",
                                 label: "Parental Guidance (PG)",
                                 value: "PG",
+                                desc: "Suitable for children with parental supervision."
                               },
                               {
                                 id: "teens",
                                 label: "Teens (12 - 18)",
                                 value: "Teens",
+                                desc: "Appropriate for teenagers."
                               },
                               {
                                 id: "mature",
                                 label: "Mature",
                                 value: "Mature",
+                                desc: "Intended for mature audiences, typically 18 and older."
                               },
                               {
                                 id: "explicit",
                                 label: "Explicit",
                                 value: "Explicit",
+                                desc: "Contains explicit content, for adult audiences only."
                               },
                             ].map((option) => (
                               <div
@@ -427,16 +424,25 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                                       );
                                     }}
                                   />
-                                  <label
-                                    htmlFor={option.value}
-                                    className="form-check-label ms-3"
-                                    style={{
-                                      marginTop: "7px",
-                                      fontSize: "12px",
-                                    }}
+                                  <OverlayTrigger
+                                    placement="top"
+                                    overlay={
+                                      <Tooltip id={`tooltip-${option.value}`}>
+                                        {option.desc}
+                                      </Tooltip>
+                                    }
                                   >
-                                    {option.label}
-                                  </label>
+                                    <label
+                                      htmlFor={option.value}
+                                      className="form-check-label ms-3 cursor-pointer"
+                                      style={{
+                                        marginTop: "7px",
+                                        fontSize: "12px",
+                                      }}
+                                    >
+                                      {option.label}
+                                    </label>
+                                  </OverlayTrigger>
                                 </StyledInputDiv>
                               </div>
                             ))}
@@ -455,7 +461,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             Age Limit
                             <CustomTooltip
                               iconMarginBottom="2px"
-                              title="Age Limit"
+                              title="Select the age limit for your listing to ensure it is shown to the appropriate audience."
                             />
                           </FormLabelStyled>
                           <div className="row">
@@ -521,7 +527,7 @@ const AddNewListingInfo: FC<IAddListingPageOneProps> = ({}) => {
                             Facilities
                             <CustomTooltip
                               iconMarginBottom="2px"
-                              title="Facilities"
+                              title="Select the facilities available at your listing."
                             />
                           </FormLabelStyled>
                           <div className="row">

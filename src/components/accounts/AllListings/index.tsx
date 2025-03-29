@@ -1,6 +1,6 @@
 import { TabPanel } from "@headlessui/react";
 import moment from "moment";
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { Card, Dropdown } from "react-bootstrap";
 import { IListDetailsProps } from "..";
 import ResponsiveTile from "../../styledComponents/tiles";
@@ -18,16 +18,30 @@ const index: FC<IAllListingProps> = ({ listDetailsData }) => {
     sessionStorage.setItem("editShop", JSON.stringify(shopData));
   };
 
+  const [cardWidth, setCardWidth] = useState("100%");
+
+  useEffect(() => {
+    const updateWidth = () => {
+      setCardWidth(window.innerWidth >= 1400 ? "90%" : "100%");
+    };
+  
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
   return (
     <>
       <TabPanel>
         <div className="row" id="myListings">
           {listDetailsData?.map((l: IListDetailsProps, index: number) => (
-            <div key={index} className="col-12 col-xl-3 mb-4 d-flex">
+            <div key={index} className="col-12 col-xl-6 col-xxl-3 mb-4 d-flex">
               <ResponsiveTile className="w-100">
                 <Card
-                  className="overflow-hidden position-relative w-90"
+                  className="overflow-hidden position-relative"
                   style={{
+                    width: cardWidth,
                     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
                   }}
                 >

@@ -191,15 +191,11 @@ const ShopInformation: FC<IShopInformationProps> = ({
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
             Shop Name
-            <CustomTooltip
-              iconMarginBottom="1px"
-              title="Add the shops you like by filling up the below fields"
-            />
           </FormLabelStyled>
           <FormInputStyled
             type="text"
             className="form-control"
-            placeholder="Type the shop name"
+            placeholder="Enter your shop name"
             value={values.shopInformation?.shopName || ""}
             name="shopName"
             onChange={handleChange}
@@ -218,11 +214,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
             Shop Type
             <CustomTooltip
               iconMarginBottom="1px"
-              title="Choose the type of store you are presenting your product in
-                  alongside a tag for the shop. Physical store means a store
-                  that would sell your products physically without a web page
-                  Digital Store, means a store that would sell your products
-                  through a dedicated web page."
+              title="Choose the type of store where your product will be sold and add a tag for the shop. Physical Store is the store selling products in person without a website. Digital Store is the store selling products through a dedicated web page."
             />
           </FormLabelStyled>
           <SelectDropDown
@@ -249,11 +241,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
             Shop Tag/Code
             <CustomTooltip
               iconMarginBottom="1px"
-              title="Choose the type of store you are presenting your product in
-                  alongside a tag for the shop. Physical store means a store
-                  that would sell your products physically without a web page
-                  Digital Store, means a store that would sell your products
-                  through a dedicated web page."
+              title='Use a tag or code to categorize or label the store (e.g., "Premium", "Online Only") for easier identification and filtering.'
             />
           </FormLabelStyled>
           <FormInputStyled
@@ -278,7 +266,6 @@ const ShopInformation: FC<IShopInformationProps> = ({
         <Form.Group>
           <FormLabelStyled>
             Shop Country
-            <CustomTooltip iconMarginBottom="1px" title="Shop Country" />
           </FormLabelStyled>
           <SelectDropDown
             options={countriesList}
@@ -310,7 +297,6 @@ const ShopInformation: FC<IShopInformationProps> = ({
         <Form.Group>
           <FormLabelStyled>
             Shop City
-            <CustomTooltip iconMarginBottom="1px" title="Shop city" />
           </FormLabelStyled>
           <SelectDropDown
             options={cityData}
@@ -334,10 +320,6 @@ const ShopInformation: FC<IShopInformationProps> = ({
         <Form.Group>
           <FormLabelStyled className="d-flex align-items-center">
             Shop Address{" "}
-            <CustomTooltip
-              iconMarginBottom="1px"
-              title="Add the shops you like by filling up the shop address fields."
-            />
           </FormLabelStyled>
           <FormInputStyled
             type="text"
@@ -363,7 +345,7 @@ const ShopInformation: FC<IShopInformationProps> = ({
             Point of Contact
             <CustomTooltip
               iconMarginBottom="1px"
-              title="Add the shops you like by filling up the point of contact fields."
+              title="Main contact from your organization for this shop."
             />
           </FormLabelStyled>
           <FormInputStyled
@@ -389,10 +371,6 @@ const ShopInformation: FC<IShopInformationProps> = ({
           <FormLabelStyled className="d-flex align-items-center">
             {" "}
             Email Address
-            <CustomTooltip
-              iconMarginBottom="1px"
-              title="Add the shops you like by filling up the email address fields."
-            />
           </FormLabelStyled>
           <FormInputStyled
             type="email"
@@ -418,10 +396,6 @@ const ShopInformation: FC<IShopInformationProps> = ({
           <FormLabelStyled className="d-flex align-items-center">
             {" "}
             Phone Number
-            <CustomTooltip
-              iconMarginBottom="1px"
-              title="Add the shops you like by filling up the below fields."
-            />
           </FormLabelStyled>
           <div className="position-relative">
             <PhoneInput

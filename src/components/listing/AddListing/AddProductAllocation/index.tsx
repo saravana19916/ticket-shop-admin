@@ -145,9 +145,7 @@ const AddPricing: FC<IAddPricingProps> = () => {
                           placement="top"
                           overlay={
                             <Tooltip>
-                              In the section, you connect the products created
-                              with the relevant zones and define access for each
-                              of the products.
+                              In this section, you connect the created products to the relevant zones and define the access for each product.
                             </Tooltip>
                           }
                         >

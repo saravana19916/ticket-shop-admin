@@ -2,6 +2,10 @@ import React, { Fragment, useState } from "react";
 import BackBreadCrumb from "../../shared/BackBreadCrumb/BackBreadCrumb";
 import { Button, Card } from "react-bootstrap";
 import Buttons from "../../bootstrap/buttons/buttons";
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+} from "../../styledComponents/styledButton";
 const index = () => {
   return (
     <>
@@ -18,27 +22,41 @@ const index = () => {
             <Card.Header>
               <div className="d-flex align-items-center gap-3 w-100">
                 <Card.Title as="h3">
-                  SHOPPING INVOICE :
+                  SHOPPING INVOICE:{" "}
                   <span className="text-primary">#8140-2099</span>
                 </Card.Title>
-                <Button className="btn btn-primary ms-auto">
+                <ButtonPrimary
+                  type="submit"
+                  className="btn ms-auto"
+                  style={{ minWidth: "118px" }}
+                >
                   Print <i className="fe fe-printer"></i>
-                </Button>
-                <Button variant="info" className="btn">
+                </ButtonPrimary>
+                <ButtonSecondary
+                  type="submit"
+                  className="btn"
+                  style={{ minWidth: "118px" }}
+                >
                   Save As PDF <i className="bi bi-file-pdf"></i>
-                </Button>
+                </ButtonSecondary>
+                {/* <Button className="btn btn-primary ms-auto">
+                  Print <i className="fe fe-printer"></i>
+                </Button> */}
+                {/* <Button variant="info" className="btn">
+                  Save As PDF <i className="bi bi-file-pdf"></i>
+                </Button> */}
               </div>
             </Card.Header>
             <Card.Body>
               <div className="row gy-3">
-                <div className="col-xl-12">
+                <div className="col-xl-12 mb-6">
                   <div className="row">
                     <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                      <p className="text-muted mb-2"> Billing From : </p>
+                      <p className="text-muted mb-2"> Billing From: </p>
                       <p className="fw-bold mb-1"> SPRUKO TECHNOLOGIES </p>
-                      <p className="mb-1 text-muted">Mig-1-11,Manroe street</p>
+                      <p className="mb-1 text-muted">Mig-1-11, Manroe street</p>
                       <p className="mb-1 text-muted">
-                        Georgetown,Washington D.C,USA,200071
+                        Georgetown, Washington D.C, USA, 200071
                       </p>
                       <p className="mb-1 text-muted">
                         sprukotrust.sash@gmail.com
@@ -46,51 +64,48 @@ const index = () => {
                       <p className="mb-1 text-muted"> (555) 555-1234 </p>
                       <p className="text-muted">
                         For more information check for
-                        <a
-                          href="javascript:void(0);"
-                          className="text-primary fw-semibold"
-                        >
+                        <a href="#" className="text-primary fw-semibold">
                           <u>GSTIN</u>
                         </a>
                         Details.
                       </p>
                     </div>
                     <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 ms-auto mt-sm-0 mt-3">
-                      <p className="text-muted mb-2"> Billing To : </p>
+                      <p className="text-muted mb-2"> Billing To: </p>
                       <p className="fw-bold mb-1"> Json Taylor </p>
                       <p className="text-muted mb-1">
-                        Lig-22-1,20 Covington Place
+                        Lig-22-1, 20 Covington Place
                       </p>
                       <p className="text-muted mb-1">
-                        New Castle,de, United States,19320
+                        New Castle, de, United States, 19320
                       </p>
                       <p className="text-muted mb-1">
                         jsontaylor2134@gmail.com
                       </p>
-                      <p className="text-muted"> +1 202-918-2132 </p>
+                      <p className="text-muted">+1 202-918-2132 </p>
                     </div>
                   </div>
                 </div>
                 <div className="col-xl-3">
-                  <p className="fw-semibold text-muted mb-1">Invoice ID :</p>
+                  <p className="fw-semibold text-muted mb-1">Invoice ID:</p>
                   <p className="fs-15 mb-1">#SPK120219890</p>
                 </div>
                 <div className="col-xl-3">
-                  <p className="fw-semibold text-muted mb-1">Date Issued :</p>
+                  <p className="fw-semibold text-muted mb-1">Date Issued:</p>
                   <p className="fs-15 mb-1">
-                    29,Nov 2022 -
-                    <span className="text-muted fs-12">12:42PM</span>
+                    29, Nov 2022 -
+                    <span className="text-muted fs-12"> 12:42PM</span>
                   </p>
                 </div>
                 <div className="col-xl-3">
-                  <p className="fw-semibold text-muted mb-1">Due Date :</p>
-                  <p className="fs-15 mb-1">29,Dec 2022</p>
+                  <p className="fw-semibold text-muted mb-1">Due Date:</p>
+                  <p className="fs-15 mb-1">29, Dec 2022</p>
                 </div>
                 <div className="col-xl-3">
-                  <p className="fw-semibold text-muted mb-1">Due Amount :</p>
+                  <p className="fw-semibold text-muted mb-1">Due Amount:</p>
                   <p className="fs-16 mb-1 fw-semibold">$2,570.42</p>
                 </div>
-                <div className="col-xl-12">
+                <div className="col-xl-12 mt-6">
                   <div className="table-responsive">
                     <table className="table nowrap text-nowrap border mt-4">
                       <thead>
@@ -270,7 +285,7 @@ const index = () => {
                 <div className="col-xl-12">
                   <div>
                     <label htmlFor="invoice-note" className="form-label">
-                      Note:
+                      Note:{" "}
                     </label>
                     <textarea
                       className="form-control form-control-light"
@@ -286,10 +301,18 @@ const index = () => {
               </div>
             </Card.Body>
             <Card.Footer className="text-end">
-              <Button variant="success">
+              <ButtonPrimary
+                type="submit"
+                className="btn"
+                style={{ minWidth: "118px" }}
+              >
                 Download
                 <i className="ri-download-2-line ms-1 align-middle"></i>
-              </Button>
+              </ButtonPrimary>
+              {/* <Button variant="success">
+                Download
+                <i className="ri-download-2-line ms-1 align-middle"></i>
+              </Button> */}
             </Card.Footer>
           </Card>
         </div>
@@ -297,7 +320,7 @@ const index = () => {
           <Card>
             <Card.Header
               style={{
-                padding: "1.8rem 3.5rem",
+                padding: "1.8rem",
               }}
             >
               <div className="d-flex align-items-center gap-3 w-100">
@@ -310,19 +333,19 @@ const index = () => {
                   <p className="fs-14 fw-semibold"> Credit/Debit Card </p>
                   <p>
                     <span className="fw-semibold text-muted fs-12">
-                      Name On Card :
+                      Name On Card:{" "}
                     </span>
                     Json Taylor
                   </p>
                   <p>
                     <span className="fw-semibold text-muted fs-12">
-                      Card Number :
+                      Card Number:{" "}
                     </span>
                     1234 5678 9087 XXXX
                   </p>
                   <p>
                     <span className="fw-semibold text-muted fs-12">
-                      Total Amount :
+                      Total Amount:{" "}
                     </span>
                     <span className="text-success fw-semibold fs-14">
                       $2570.42
@@ -330,7 +353,7 @@ const index = () => {
                   </p>
                   <p>
                     <span className="fw-semibold text-muted fs-12">
-                      Due Date :
+                      Due Date:{" "}
                     </span>
                     29,Dec 2022 -
                     <span className="text-danger fs-12 fw-semibold">
@@ -338,9 +361,9 @@ const index = () => {
                     </span>
                   </p>
                   <p>
-                    <span className="fw-semibold text-muted fs-12">
-                      Invoice Status :
-                      <span className="badge bg-warning-transparent">
+                    <span className="fw-semibold text-muted fs-12 d-flex align-items-center">
+                      Invoice Status:&nbsp;
+                      <span className="badge bg-warning-transparent text-dark">
                         Pending
                       </span>
                     </span>

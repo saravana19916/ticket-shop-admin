@@ -134,9 +134,7 @@ const AddShops: FC<IAddShopsProps> = () => {
                           placement="top"
                           overlay={
                             <Tooltip>
-                              Shops represent your sales channels. you can add
-                              the shops you like by filling up the below fields
-                              and allocate your products to the shops.
+                              Shops represent your sales channels. You can add shops by filling out the fields below and allocate your products to the respective shops.
                             </Tooltip>
                           }
                         >

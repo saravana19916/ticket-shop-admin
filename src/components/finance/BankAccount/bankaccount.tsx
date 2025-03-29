@@ -1,349 +1,148 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Form, Table } from "react-bootstrap";
 import {
-  FormInputStyled,
-  FormLabelStyled,
-} from "../../styledComponents/styledForm";
-import CustomTooltip from "../../shared/CustomTooltip";
-import SelectDropDown from "../../shared/SelectDropDown";
-import { GetCountries } from "react-country-state-city";
-import { ButtonPrimary } from "../../styledComponents/styledButton";
-
-const headerTable = [
-  {
-    id: "1",
-    title: "Invoice",
-  },
-  {
-    id: "2",
-    title: "Created Date",
-  },
-  {
-    id: "3",
-    title: "Status",
-  },
-  {
-    id: "4",
-    title: "Action",
-  },
-];
-
-const rowTable = [
-  {
-    id: "1",
-    invoice: "Zelensk",
-    createdDate: "25-Apr-2021",
-    status: "Paid",
-  },
-  {
-    id: "2",
-    invoice: "Kim Jong",
-    createdDate: "29-Apr-2022",
-    status: "Pending",
-  },
-  {
-    id: "3",
-    invoice: "Obana",
-    createdDate: "30-Nov-2022",
-    status: "Paid",
-  },
-  {
-    id: "4",
-    invoice: "Sean Paul",
-    createdDate: "01-Jan-2022",
-    status: "Paid",
-  },
-  {
-    id: "5",
-    invoice: "Karizma",
-    createdDate: "14-Feb-2022",
-    status: "Pending",
-  },
-];
+  ButtonPrimary,
+  IconButtonPrimary,
+} from "../../styledComponents/styledButton";
+import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import {
+  DangerBadge,
+  SuccessBadge,
+  WaringBadge,
+} from "../../styledComponents/badge";
+import CustomDropdownMenu from "../../shared/CustomDropdownMenu";
+import { Edit2, Trash2 } from "react-feather";
+import SearchBar from "../../shared/SearchBar";
 
 export const BankAccount = () => {
-  const [countriesList, setCountriesList] = useState([]);
-  const [sliceCountry, setSliceCountry] = useState([]);
-  const [cityList, setCityList] = useState([]);
-  const [cityData, setCityData] = useState([]);
+  const rowTable = [
+    {
+      id: "1",
+      accountName: "Zelensk",
+      country: "Ukraine",
+      bankName: "Bank of Kyiv",
+      iban: "UA1234567890123456789012345678901",
+      swiftCode: "BKYIUAUK",
+    },
+    {
+      id: "2",
+      accountName: "Kim Jong",
+      country: "North Korea",
+      bankName: "Pyongyang Bank",
+      iban: "KP1234567890123456789012345678901",
+      swiftCode: "PYNKPRKP",
+    },
+    {
+      id: "3",
+      accountName: "Obana",
+      country: "USA",
+      bankName: "Bank of America",
+      iban: "US1234567890123456789012345678901",
+      swiftCode: "BOFAUS3N",
+    },
+    {
+      id: "4",
+      accountName: "Sean Paul",
+      country: "Jamaica",
+      bankName: "National Commercial Bank",
+      iban: "JM1234567890123456789012345678901",
+      swiftCode: "NCBJJMKX",
+    },
+    {
+      id: "5",
+      accountName: "Karizma",
+      country: "France",
+      bankName: "BNP Paribas",
+      iban: "FR1234567890123456789012345678901",
+      swiftCode: "BNPAFRPP",
+    },
+  ];
 
-  const handleCountryChange = () => {
-    fetchCitiesByCountry();
-  };
-  useEffect(() => {
-    GetCountries().then((result: any) => {
-      const data = result.map((country: any) => {
-        return {
-          value: country.id,
-          label: country.name,
-        };
-      });
-      setCountriesList(data);
-      setSliceCountry(data);
-    });
-  }, []);
-  const fetchCitiesByCountry = async () => {
-    const stateList = await fetchCitiesFromAPI();
-    const citiesList = stateList?.map((i: any) => i.states);
-    const citiesData = citiesList?.flatMap((array: any) =>
-      array.flatMap((item: any) => item.cities)
-    );
-    setCityList(citiesData);
-    const data = citiesData?.slice(0, 10);
-    const transformedData = data?.map((city: any) => ({
-      value: city.id,
-      label: city.name,
-    }));
-
-    setCityData(transformedData);
-  };
-  const fetchCitiesFromAPI = async () => {
-    const response = await fetch(
-      `https://venkatmcajj.github.io/react-country-state-city/data/citiesminified.json`
-    );
-    const data = await response.json();
-    return data;
-  };
-  // Function to filter cities based on user input
-  const filterCities = (inputValue: any) => {
-    const filteredCities = cityList?.filter((city: any) =>
-      city.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    const data = filteredCities?.slice(0, 10);
-    const transformedData: any = data?.map((city: any) => ({
-      value: city.name,
-      label: city.name,
-    }));
-
-    setCityData(transformedData);
-  };
-  const filterCountries = (inputValue: any) => {
-    const filteredCountries = sliceCountry?.filter((country: any) =>
-      country.label.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    const data = filteredCountries?.slice(0, 10);
-    const transformedData: any = data?.map((city: any) => ({
-      value: city.value,
-      label: city.label,
-    }));
-
-    setCountriesList(transformedData);
-  };
-
-  const getStatusClass = (status: string) => {
-    switch (status) {
-      case "Paid":
-        return "text-success";
-      case "Pending":
-        return "text-danger";
-      default:
-        return "";
-    }
-  };
+  const headerTable = [
+    { id: "1", title: "Account Name" },
+    { id: "2", title: "Country" },
+    { id: "3", title: "Bank Name" },
+    { id: "4", title: "IBAN" },
+    { id: "5", title: "Swift Code" },
+    { id: "6", title: "Action" },
+  ];
 
   return (
     <>
-      <div className="row mb-4">
-        <div className="col-12 mb-3 mt-3">
-          <span className="fw-600 fs-2">Bank Account</span>
+      <div className="row pt-lg-5 pt-0 px-0 pt-xl-5">
+        <p className="fw-600 fs-26px text-black mb-6">Bank Account List</p>
+        <div className="col-12 col-md-6 mb-6">
+          <div className="row">
+            <div className="col-8">
+              <SearchBar />
+              <p className="mt-3 ms-3">
+                A minimum of four characters is required
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-      <Table borderless={true} responsive={true}>
-        <thead>
-          <tr>
-            {headerTable.map((item: any) => {
-              return (
-                <>
-                  <th
-                    key={item.id}
-                    style={{
-                      fontWeight: "600",
-                      textTransform: "unset",
-                      fontSize: "14px",
-                    }}
-                  >
-                    {item.title}
-                  </th>
-                </>
-              );
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {rowTable.map((row: any) => {
-            return (
-              <>
-                <tr key={row.id}>
-                  <td className="text-start">
-                    <Form.Check type="checkbox" label={row.invoice} />
-                    {/* {row.invoice} */}
-                  </td>
-                  <td className="text-start"> {row.createdDate} </td>
-                  <td className="text-start">
-                    <span className={`${getStatusClass(row.status)}`}>
-                      {row.status}
-                    </span>
-                  </td>
-                  <td className="text-start">
-                    <div className="d-flex align-items-center gap-3">
-                      <button className="btn fs-6">
-                        <i className="fe fe-download"></i>
-                      </button>
-                      <button className="btn">
-                        <i className="fe fe-edit-3 fs-6"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </>
-            );
-          })}
-        </tbody>
-      </Table>
-      <div className="row mb-4">
-        <div className="col-12 mb-3 mt-3">
-          <span className="fw-600 fs-2">Add Bank Account</span>
-        </div>
-      </div>
-      <div className="row w-75">
-        <div className="col-12 mb-7">
-          <Form.Group>
-            <FormLabelStyled className="d-flex align-items-center">
-              Account Holder Name <CustomTooltip title="Account Holder Name" />
-            </FormLabelStyled>
-            <FormInputStyled
-              type="text"
-              placeholder="Enter Account Holder Name"
-              className="form-control"
-              value=""
-            />
-          </Form.Group>
-        </div>
-        <div className="col-xl-4 col-12 mb-7">
-          <FormLabelStyled>
-            Country <CustomTooltip title="Country" />
-          </FormLabelStyled>
-          <SelectDropDown
-            isSearchable
-            options={countriesList}
-            placeholder={"Country"}
-            onChange={() => {
-              handleCountryChange();
-            }}
-            onInputChange={filterCountries}
-            className="city-default fs-12px from-control placeholder-danger-subtle"
-          />
-        </div>
-        <div className="col-xl-4 col-12 mb-7">
-          <FormLabelStyled>
-            City <CustomTooltip title="City" />
-          </FormLabelStyled>
-          <SelectDropDown
-            isSearchable
-            options={cityData}
-            placeholder="City"
-            onInputChange={filterCities}
-            className="city-default fs-12px from-control placeholder-danger-subtle"
-          />
-        </div>
-        <div className="col-xl-4 col-12 mb-7">
-          <Form.Group>
-            <FormLabelStyled className="d-flex align-items-center">
-              Currency
-              <CustomTooltip title="Currency" />
-            </FormLabelStyled>
-            <SelectDropDown
-              options={[
-                { value: "USD", label: "USD" },
-                { value: "AED", label: "AED" },
-              ]}
-              placeholder="Select Currency"
-              classNamePrefix="Select"
-              className="mt-1"
-            />
-          </Form.Group>
-        </div>
-        <div className="col-12 mb-7">
-          <Form.Group>
-            <FormLabelStyled className="d-flex align-items-center">
-              Bank <CustomTooltip title="Bank" />
-            </FormLabelStyled>
-            <SelectDropDown
-              options={[{ value: "Emirates NBD", label: "Emirates NBD" }]}
-              placeholder="Select Bank"
-              classNamePrefix="Select"
-              className="mt-1"
-            />
-          </Form.Group>
-        </div>
-        <div className="col-12 mb-7">
-          <Form.Group>
-            <FormLabelStyled className="d-flex align-items-center">
-              IBAN Number <CustomTooltip title="IBAN Number" />
-            </FormLabelStyled>
-            <FormInputStyled
-              type="text"
-              placeholder="Enter IBAN Number"
-              className="form-control"
-              value=""
-            />
-          </Form.Group>
-        </div>
-        <div className="col-xl-6 col-12 mb-7">
-          <Form.Group>
-            <FormLabelStyled className="d-flex align-items-center">
-              Swift Code
-              <CustomTooltip title="Swift Code" />
-            </FormLabelStyled>
-            <FormInputStyled
-              type="text"
-              placeholder="Enter Swift Code"
-              className="form-control"
-              value=""
-            />
-          </Form.Group>
-        </div>
-        <div className="col-xl-6 col-12 mb-7">
-          <Form.Group>
-            <FormLabelStyled className="d-flex align-items-center">
-              Routing Code
-              <CustomTooltip title="Routing Code" />
-            </FormLabelStyled>
-            <FormInputStyled
-              type="text"
-              placeholder="Enter Routing Code"
-              className="form-control"
-              value=""
-            />
-          </Form.Group>
-        </div>
-        <div className="col-12 mb-7">
-          <Form.Group>
-            <FormLabelStyled className="d-flex align-items-center">
-              Intermediary Bank {"(If Any)"}
-              <CustomTooltip title="Intermediary Bank" />
-            </FormLabelStyled>
-            <SelectDropDown
-              options={[{ value: "Emirates NBD", label: "Emirates NBD" }]}
-              placeholder="Select Intermediary Bank"
-              classNamePrefix="Select"
-              className="mt-1"
-            />
-          </Form.Group>
-        </div>
-        <div className="col-12 pe-0">
-          <div className="float-end">
+        <div className="col-12 col-md-6 mb-6 text-end">
+          <IconButtonPrimary className="btn" style={{ width: "118px" }}>
+            <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
+            <span>Export</span>
+          </IconButtonPrimary>
+          <a href="/add-bank">
             <ButtonPrimary
               type="submit"
-              className="btn"
+              className="btn ms-3"
               style={{ minWidth: "118px" }}
             >
-              Add
+              Add Bank
             </ButtonPrimary>
-          </div>
+          </a>
+        </div>
+        <div className="col-12 table-responsive">
+          <table className="table table-striped table-hover bordered text-nowrap">
+            <thead className="border-0">
+              <tr>
+                {headerTable.map((item) => {
+                  return (
+                    <th
+                      key={item.id}
+                      className="fw-bold text-start border-end text-capitalize"
+                    >
+                      {item.title}
+                    </th>
+                  );
+                })}
+              </tr>
+            </thead>
+            <tbody className="border-0">
+              {rowTable.map((row, index) => (
+                <tr key={index}>
+                  <td className="text-start align-middle">{row.accountName}</td>
+                  <td className="text-start align-middle">{row.country}</td>
+                  <td className="text-start align-middle">{row.bankName}</td>
+                  <td className="text-start align-middle">{row.iban}</td>
+                  <td className="text-start align-middle">{row.swiftCode}</td>
+                  <td className="text-start align-middle">
+                    <CustomDropdownMenu
+                      menuItems={[
+                        {
+                          itemName: "Edit",
+                          onClick: () => {},
+                          icon: <Edit2 size={20} />,
+                        },
+                        {
+                          itemName: "Delete",
+                          onClick: () => {},
+                          icon: <Trash2 size={20} />,
+                        },
+                      ]}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>
   );
 };
+
 export default BankAccount;

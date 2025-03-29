@@ -36,81 +36,85 @@ const SideMenuIcon: any = () => {
 import AccountsSwitch from "./accountsswitch";
 import CustomToastContainer from "../../components/shared/CustomToastContainer";
 import { AxiosError } from "axios";
-
-// Darkmode
-const DarkMode = () => {
-  if (document.querySelector("body")?.classList.contains("dark-mode")) {
-    document.querySelector("body")?.classList.remove("dark-mode");
-    localStorage.setItem("sashlightmode", "true");
-    localStorage.removeItem("sashdarktheme");
-    let myonoffswitch2 = document.querySelector(
-      "#myonoffswitch1"
-    ) as HTMLInputElement;
-    myonoffswitch2.checked = true;
-    let myonoffswitch5 = document.querySelector(
-      "#myonoffswitch3"
-    ) as HTMLInputElement;
-    myonoffswitch5.checked = true;
-    let myonoffswitch8 = document.querySelector(
-      "#myonoffswitch6"
-    ) as HTMLInputElement;
-    myonoffswitch8.checked = true;
-  } else {
-    document.querySelector("body")?.classList.add("dark-mode");
-    localStorage.setItem("sashdarktheme", "true");
-    localStorage.removeItem("sashlightmode");
-    let myonoffswitch2 = document.querySelector(
-      "#myonoffswitch2"
-    ) as HTMLInputElement;
-    myonoffswitch2.checked = true;
-    let myonoffswitch5 = document.querySelector(
-      "#myonoffswitch5"
-    ) as HTMLInputElement;
-    myonoffswitch5.checked = true;
-    let myonoffswitch8 = document.querySelector(
-      "#myonoffswitch8"
-    ) as HTMLInputElement;
-    myonoffswitch8.checked = true;
-  }
-};
-// FullScreen
-var elem: any = document.documentElement;
-var i = true;
-const Fullscreen: any = (vale: any) => {
-  switch (vale) {
-    case true:
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.webkitRequestFullscreen) {
-        /* Safari */
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) {
-        /* IE11 */
-        elem.msRequestFullscreen();
-      }
-      i = false;
-      break;
-    case false:
-      document.exitFullscreen();
-      i = true;
-      break;
-  }
-};
-// SwitcherMenu
-const SidSwitcherIcon: any = () => {
-  console.log("working");
-  // leftsidemenu
-  document.querySelector(".demo_changer")?.classList.toggle("active");
-  let Rightside: any = document.querySelector(".demo_changer");
-  Rightside.style.insetInlineEnd = "0px";
-};
-const RightSideBar: any = () => {
-  // leftsidemenu
-  // rightsidebar
-  document.querySelector(".sidebar-right")?.classList.toggle("sidebar-open");
-  // swichermainright
-};
 const Header1 = () => {
+  const [darkTheme, setDarkTheme] = useState(false);
+
+  // Darkmode
+  const DarkMode = () => {
+    if (document.querySelector("body")?.classList.contains("dark-mode")) {
+      setDarkTheme(false);
+      document.querySelector("body")?.classList.remove("dark-mode");
+      localStorage.setItem("sashlightmode", "true");
+      localStorage.removeItem("sashdarktheme");
+      let myonoffswitch2 = document.querySelector(
+        "#myonoffswitch1"
+      ) as HTMLInputElement;
+      myonoffswitch2.checked = true;
+      let myonoffswitch5 = document.querySelector(
+        "#myonoffswitch3"
+      ) as HTMLInputElement;
+      myonoffswitch5.checked = true;
+      let myonoffswitch8 = document.querySelector(
+        "#myonoffswitch6"
+      ) as HTMLInputElement;
+      myonoffswitch8.checked = true;
+    } else {
+      setDarkTheme(true);
+      document.querySelector("body")?.classList.add("dark-mode");
+      localStorage.setItem("sashdarktheme", "true");
+      localStorage.removeItem("sashlightmode");
+      let myonoffswitch2 = document.querySelector(
+        "#myonoffswitch2"
+      ) as HTMLInputElement;
+      myonoffswitch2.checked = true;
+      let myonoffswitch5 = document.querySelector(
+        "#myonoffswitch5"
+      ) as HTMLInputElement;
+      myonoffswitch5.checked = true;
+      let myonoffswitch8 = document.querySelector(
+        "#myonoffswitch8"
+      ) as HTMLInputElement;
+      myonoffswitch8.checked = true;
+    }
+  };
+  // FullScreen
+  var elem: any = document.documentElement;
+  var i = true;
+  const Fullscreen: any = (vale: any) => {
+    switch (vale) {
+      case true:
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          /* Safari */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          /* IE11 */
+          elem.msRequestFullscreen();
+        }
+        i = false;
+        break;
+      case false:
+        document.exitFullscreen();
+        i = true;
+        break;
+    }
+  };
+  // SwitcherMenu
+  const SidSwitcherIcon: any = () => {
+    console.log("working");
+    // leftsidemenu
+    document.querySelector(".demo_changer")?.classList.toggle("active");
+    let Rightside: any = document.querySelector(".demo_changer");
+    Rightside.style.insetInlineEnd = "0px";
+  };
+  const RightSideBar: any = () => {
+    // leftsidemenu
+    // rightsidebar
+    document.querySelector(".sidebar-right")?.classList.toggle("sidebar-open");
+    // swichermainright
+  };
+
   document.querySelector(".main-content")?.addEventListener("click", () => {
     document.querySelector(".search-result")?.classList.add("d-none");
   });
@@ -234,7 +238,6 @@ const Header1 = () => {
       toast.error("Please enter Email Id");
     }
   };
-  const [darkTheme, setDarkTheme] = useState(false);
 
   return (
     <>
@@ -1039,7 +1042,7 @@ const Header1 = () => {
                                 </Dropdown.Item>
                               </li>
                               <li>
-                                <Dropdown.Item href="#">
+                                <Dropdown.Item href="/notificationlist">
                                   <i className="dropdown-icon bx bx-bell fs-5"></i>{" "}
                                   Notifications
                                 </Dropdown.Item>
@@ -1064,7 +1067,7 @@ const Header1 = () => {
                                   type="checkbox"
                                   role="switch"
                                   checked={darkTheme}
-                                  onChange={() => setDarkTheme(!darkTheme)}
+                                  onChange={() => DarkMode()}
                                   style={{ marginLeft: "100px" }}
                                 />
                               </div>

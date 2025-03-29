@@ -168,10 +168,6 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                 <Form.Group>
                   <FormLabelStyled>
                     Location Name
-                    <CustomTooltip
-                      iconMarginBottom="2px"
-                      title="Location Name"
-                    />
                   </FormLabelStyled>
                   <FormInputStyled
                     type="text"
@@ -192,10 +188,6 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                 <Form.Group>
                   <FormLabelStyled>
                     Location Website
-                    <CustomTooltip
-                      iconMarginBottom="2px"
-                      title="Location Website"
-                    />
                   </FormLabelStyled>
                   <FormInputStyled
                     type="text"
@@ -218,7 +210,6 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                     <div className="col-xl-4 col-12 mb-7 pe-0">
                       <FormLabelStyled>
                         Country
-                        <CustomTooltip iconMarginBottom="2px" title="Country" />
                       </FormLabelStyled>
                       <SelectDropDown
                         isSearchable
@@ -245,7 +236,6 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                     <div className="col-xl-4 col-12 mb-7 pe-0">
                       <FormLabelStyled>
                         City
-                        <CustomTooltip iconMarginBottom="2px" title="City" />
                       </FormLabelStyled>
                       <SelectDropDown
                         isSearchable
@@ -271,10 +261,6 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                     <div className="col-xl-4 col-12 mb-7 pe-0">
                       <FormLabelStyled>
                         Zip Code
-                        <CustomTooltip
-                          iconMarginBottom="2px"
-                          title="Zip Code"
-                        />
                       </FormLabelStyled>
 
                       <FormInputStyled
@@ -298,7 +284,6 @@ const ManualLocationTab: FC<IProps> = ({}) => {
                 <Form.Group>
                   <FormLabelStyled>
                     Address
-                    <CustomTooltip iconMarginBottom="2px" title="Address" />
                   </FormLabelStyled>
                   <FormInputStyled
                     type="text"

@@ -109,10 +109,9 @@ const ProductAllocation: FC<IProductAllocationProps> = ({ handleOnChange }) => {
     <>
       <div className="col-12 mb-3">
         <Form.Label className="fs-5 fw-500 text-black mb-4 d-flex align-items-center">
-          Product allocation
+          Product Allocation
           <CustomTooltip
-            title="Add the products you like to the shop and define special
-                discount if any"
+            title="Add the products you like to the shop and define a special discount if applicable."
           />
         </Form.Label>
       </div>

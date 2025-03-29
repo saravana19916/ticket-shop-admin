@@ -55,7 +55,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
               <Form.Group>
                 <FormLabelStyled>
                   Minimum Order
-                  <CustomTooltip title="Minimum Order" />
+                  <CustomTooltip title="Set the lowest quantity a customer can purchase." />
                 </FormLabelStyled>
                 <FormInputStyled
                   min={1}
@@ -79,7 +79,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
               <Form.Group>
                 <FormLabelStyled>
                   Maximum Order
-                  <CustomTooltip title="Maximum Order" />
+                  <CustomTooltip title="Set the highest quantity a customer can purchase." />
                 </FormLabelStyled>
                 <FormInputStyled
                   min={1}
@@ -103,7 +103,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
               <Form.Group>
                 <FormLabelStyled>
                   Number of Access/Entires
-                  <CustomTooltip title="Number of Access/Entires" />
+                  <CustomTooltip title="Define how many times this product grants access." />
                 </FormLabelStyled>
                 <FormInputStyled
                   type="text"
@@ -127,7 +127,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
               <Form.Group>
                 <FormLabelStyled>
                   Number of Authorized Scan
-                  <CustomTooltip title="Number of Authorized Scan" />
+                  <CustomTooltip title="Set the allowed scans for entry validation." />
                 </FormLabelStyled>
                 <FormInputStyled
                   type="text"
@@ -151,7 +151,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
               <Form.Group>
                 <FormLabelStyled>
                   Sale Start Date & Time
-                  <CustomTooltip title="Sale Start Date & Time" />
+                  <CustomTooltip title="Choose when the product becomes available for purchase." />
                 </FormLabelStyled>
                 <DateFlatpickr
                   value={
@@ -180,7 +180,7 @@ const PricingAndCapacity: FC<IPricingAndCapacityProps> = ({
               <Form.Group>
                 <FormLabelStyled>
                   Sale End Date & Time
-                  <CustomTooltip title="Sale End Date & Time" />
+                  <CustomTooltip title="Choose when the product is no longer available for sale." />
                 </FormLabelStyled>
                 <DateFlatpickr
                   value={

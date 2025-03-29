@@ -2,6 +2,10 @@ import { TabPanel } from "@headlessui/react";
 import { FC, useState } from "react";
 import { Form } from "react-bootstrap"; // Correct import for Form
 import { ButtonPrimary } from "../../styledComponents/styledButton";
+import {
+  FormInputStyled,
+  FormLabelStyled,
+} from "../../styledComponents/styledForm";
 
 interface SocialMediaFormData {
   facebook: string;
@@ -59,32 +63,64 @@ const Index: FC = () => {
     <TabPanel>
       <div className="row" id="myProfile">
         <Form onSubmit={handleSubmit}>
-          {Object.keys(formData).map((key) => (
-            <Form.Group key={key} className="mb-3">
-              <Form.Label>
-                {key.charAt(0).toUpperCase() + key.slice(1)} Channel
-              </Form.Label>
-              <input
-                type="text"
-                name={key}
-                value={formData[key as keyof SocialMediaFormData]}
-                onChange={handleChange}
-                className={`form-control ${
-                  errors[key as keyof SocialMediaFormData] ? "is-invalid" : ""
-                }`}
-              />
-              {errors[key as keyof SocialMediaFormData] && (
-                <div className="invalid-feedback">
-                  {errors[key as keyof SocialMediaFormData]}
-                </div>
-              )}
+          <div className="col-lg-9 col-12 mb-6">
+            <Form.Group>
+              <FormLabelStyled>Facebook Channel</FormLabelStyled>
+              <FormInputStyled type="text" className="form-control" placeholder="Enter Facebook channel" />
             </Form.Group>
-          ))}
+          </div>
 
-          <ButtonPrimary type="submit" className="btn">
-            <i className="fa fa-arrow-right d-block d-md-none" aria-hidden="true"></i>{" "}
-            <span>Save</span>
-          </ButtonPrimary>
+          <div className="col-lg-9 col-12 mb-6">
+            <Form.Group>
+              <FormLabelStyled>Instagram Channel</FormLabelStyled>
+              <FormInputStyled type="text" className="form-control" placeholder="Enter Instagram channel" />
+            </Form.Group>
+          </div>
+
+          <div className="col-lg-9 col-12 mb-6">
+            <Form.Group>
+              <FormLabelStyled>Tiktok Channel</FormLabelStyled>
+              <FormInputStyled type="text" className="form-control" placeholder="Enter Tiktok channel" />
+            </Form.Group>
+          </div>
+
+          <div className="col-lg-9 col-12 mb-6">
+            <Form.Group>
+              <FormLabelStyled>Twitter(X) Channel</FormLabelStyled>
+              <FormInputStyled type="text" className="form-control" placeholder="Enter Twitter(X) channel" />
+            </Form.Group>
+          </div>
+
+          <div className="col-lg-9 col-12 mb-6">
+            <Form.Group>
+              <FormLabelStyled>Linkedin Channel</FormLabelStyled>
+              <FormInputStyled type="text" className="form-control" placeholder="Enter Linkedin channel" />
+            </Form.Group>
+          </div>
+
+          <div className="col-lg-9 col-12 mb-6">
+            <Form.Group>
+              <FormLabelStyled>Threads</FormLabelStyled>
+              <FormInputStyled type="text" className="form-control" placeholder="Enter Threads" />
+            </Form.Group>
+          </div>
+
+          <div className="col-lg-9 col-12 mb-6">
+            <Form.Group>
+              <FormLabelStyled>Whatsapp Number</FormLabelStyled>
+              <FormInputStyled type="text" className="form-control" placeholder="Enter Whatsapp number" />
+            </Form.Group>
+          </div>
+
+          <div className="col-lg-9 col-12 mb-6 text-end">  
+            <ButtonPrimary
+              type="submit"
+              className="btn m-3"
+              style={{ minWidth: "118px" }}
+            >
+              Submit
+            </ButtonPrimary>
+          </div>
         </Form>
       </div>
     </TabPanel>

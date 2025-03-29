@@ -17,12 +17,11 @@ export interface IProductDataProps {
   isTextBox?: boolean;
 }
 export const listingType: IOptionProps[] = [
-  { value: "Event", label: "Event" },
-  { value: "Restaurant", label: "Restaurant" },
-  { value: "Experience", label: "Experience" },
-  { value: "Transportation", label: "Transportation" },
-  { value: "Product", label: "Product" },
-  { value: "Service", label: "Service" },
+  { value: "event", label: "Event" },
+  { value: "attraction", label: "Attraction" },
+  { value: "experience", label: "Experience" },
+  { value: "accommodation", label: "Accommodation" },
+  { value: "service", label: "Service" },
 ];
 
 export const listingCategory: IOptionProps[] = [

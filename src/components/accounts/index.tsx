@@ -12,7 +12,7 @@ interface IListingProps {}
 const tabList = [
   "My Profile",
   "Company Info",
-  // "Social Media",
+  "Social Media",
   "Previous Projects",
 ];
 export interface IListDetailsProps {
@@ -107,8 +107,8 @@ const index: FC<IListingProps> = ({}) => {
             <TabPanels as="div" className="col-12">
               <MyProfile />
               <CompanyInfo />
-              {/* <SocialMedia /> */}
-                <PreviousProjects />
+              <SocialMedia />
+              <PreviousProjects />
             </TabPanels>
           </TabGroup>
         </div>

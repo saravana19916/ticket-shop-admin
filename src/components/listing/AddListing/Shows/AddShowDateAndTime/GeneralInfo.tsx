@@ -79,7 +79,7 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
                     handleDateTimeChange("startDateAndTime", date)
                   }
                   type="datetime"
-                  placeholder="Enter Start Date Time"
+                  placeholder="Enter start date and  time"
                 />
               </Form.Group>
             </div>
@@ -98,7 +98,7 @@ const GeneralInfo: FC<IGeneralInfo> = ({}) => {
                     handleDateTimeChange("endDateAndTime", date)
                   }
                   type="datetime"
-                  placeholder="Enter End Date Time"
+                  placeholder="Enter end date and time"
                 />
               </Form.Group>
             </div>

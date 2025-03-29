@@ -6,6 +6,7 @@ import {
   FormDescriptionStyled,
   FormInputStyled,
   FormLabelStyled,
+  StyledInputDiv,
 } from "../../styledComponents/styledForm";
 import DateFlatpickr from "../../shared/DateFlatpickr";
 import SelectDropDown from "../../shared/SelectDropDown";
@@ -326,15 +327,74 @@ const Index: FC = () => {
               </Form.Control.Feedback>
             </Form.Group> */}
             <div className="col-lg-9 col-12 mb-6">
+              <Form.Group className="mb-1">
+                <StyledInputDiv className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id={"Sector/Role"}
+                    name={"Sector/Role"}
+                    value={"Sector/Role"}
+                  />
+                  <label
+                    htmlFor={"Sector/Role"}
+                    className="form-check-label ms-3"
+                    style={{
+                      marginTop: "7px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    {"Sector/Role"}
+                  </label>
+                </StyledInputDiv>
+              </Form.Group>
+            </div>
+            <div className="col-lg-9 col-12 mb-6">
               <Form.Group>
-                <Form.Check
-                  type="checkbox"
-                  label="Sector/Role"
-                  name="sector"
-                  checked={formData.sector}
+                <FormLabelStyled>Address</FormLabelStyled>
+                <FormInputStyled
+                  type="text"
+                  name="address"
+                  value={formData.address}
                   onChange={handleChange}
-                  className="my-4"
+                  // isInvalid={!!errors.address}
+                  className="form-control"
                 />
+                <Form.Control.Feedback type="invalid">
+                  {errors.address}
+                </Form.Control.Feedback>
+              </Form.Group>
+            </div>
+            <div className="col-lg-9 col-12 mb-6">
+              <Form.Group>
+                <FormLabelStyled>PO Box / Zip Code</FormLabelStyled>
+                <FormInputStyled
+                  type="text"
+                  name="poBox"
+                  value={formData.poBox}
+                  onChange={handleChange}
+                  // isInvalid={!!errors.poBox}
+                  className="form-control"
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors.poBox}
+                </Form.Control.Feedback>
+              </Form.Group>
+            </div>
+            <div className="col-lg-9 col-12 mb-6">
+              <Form.Group>
+                <FormLabelStyled>Website</FormLabelStyled>
+                <FormInputStyled
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  // isInvalid={!!errors.website}
+                  className="form-control"
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors.website}
+                </Form.Control.Feedback>
               </Form.Group>
             </div>
             <div className="col-lg-9 col-12 mb-6">

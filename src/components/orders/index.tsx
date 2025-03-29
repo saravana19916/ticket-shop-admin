@@ -56,28 +56,26 @@ const index = () => {
       />
       <div className="row pt-lg-5 pt-0 px-0 pt-xl-5 mt-6">
         <p className="fw-600 fs-26px text-black mb-6">Orders</p>
-        <div className="row mb-6">
-          <div className="col-12 col-md-6">
-            <div className="row">
-              <div className="col-8">
-                <SearchBar />
-                <p className="mt-3 ms-3">
-                  A minimum of four characters is required
-                </p>
-              </div>
-              <div className="col-4">
-                <ButtonPrimaryLight className="btn py-2">
-                  <Filter className="w-5 h-5" />
-                </ButtonPrimaryLight>
-              </div>
+        <div className="col-12 col-md-6 mb-6">
+          <div className="row">
+            <div className="col-8">
+              <SearchBar />
+              <p className="mt-3 ms-3">
+                A minimum of four characters is required
+              </p>
+            </div>
+            <div className="col-4">
+              <ButtonPrimaryLight className="btn py-2">
+                <Filter className="w-5 h-5" />
+              </ButtonPrimaryLight>
             </div>
           </div>
-          <div className="col-12 col-md-6 text-end">
-            <IconButtonPrimary className="btn" style={{ width: "118px" }}>
-              <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
-              <span>Export</span>
-            </IconButtonPrimary>
-          </div>
+        </div>
+        <div className="col-12 col-md-6 text-end mb-6">
+          <IconButtonPrimary className="btn" style={{ width: "118px" }}>
+            <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
+            <span>Export</span>
+          </IconButtonPrimary>
         </div>
         <div className="col-12 table-responsive">
           <table className="table table-striped table-hover bordered text-nowrap">

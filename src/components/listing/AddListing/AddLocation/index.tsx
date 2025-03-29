@@ -70,10 +70,6 @@ const AddLocationForListing: FC = () => {
                     <Form.Group>
                       <FormLabelStyled>
                         Search from Google
-                        <CustomTooltip
-                          iconMarginBottom="2px"
-                          title="Search from Google"
-                        />
                       </FormLabelStyled>
                       <FormInputWrapper className="w-100">
                         <FormInputStyled
@@ -111,10 +107,6 @@ const AddLocationForListing: FC = () => {
                     <Form.Group>
                       <FormLabelStyled>
                         Location Website
-                        <CustomTooltip
-                          iconMarginBottom="2px"
-                          title="Location Website"
-                        />
                       </FormLabelStyled>
                       <FormInputStyled
                         type="text"

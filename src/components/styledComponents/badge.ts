@@ -99,12 +99,19 @@ export const WaringBadge = styled.span`
   padding: 2px 10px;
   font-weight: 500;
 `;
-
+export const InfoBadge = styled.span`
+  border-radius: 8px;
+  border: 1px solid #5bc0de;
+  background-color: #d9edf7;
+  color: #31708f;
+  padding: 2px 10px;
+  font-weight: 500;
+`;
 export const SaleOffBadge = styled.span`
   border-radius: 50px;
   min-width: 100px;
-  border: 1px solid #ED003B;
-  background-color: #ED003B;
+  border: 1px solid #ed003b;
+  background-color: #ed003b;
   color: #fff;
   padding: 2px 10px;
   font-weight: 500;

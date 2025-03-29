@@ -111,7 +111,7 @@ const index = () => {
                               <Form.Group>
                                 <FormLabelStyled>
                                   Policy Name
-                                  <CustomTooltip title="Policy Name" />
+                                  <CustomTooltip title="Enter the policy name. You can use the templates listed below on this page." />
                                 </FormLabelStyled>
                                 <FormInputStyled
                                   type="text"
@@ -178,7 +178,7 @@ const index = () => {
                               <Form.Group>
                                 <FormLabelStyled htmlFor="policyText">
                                   Policy Text{" "}
-                                  <CustomTooltip title="Policy Text" />
+                                  <CustomTooltip title="Enter the policy details clearly and concisely. Ensure it covers terms, conditions, and any important guidelines." />
                                 </FormLabelStyled>
                                 <StyledSunEditor
                                   setOptions={{
