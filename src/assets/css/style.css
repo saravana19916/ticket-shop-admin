@@ -70009,3 +70009,14 @@ padding: 10px;
     border-left: 3px solid rgb(var(--info-rgb)) !important;
     border-radius: 5px;
 }
+
+.level-info-radio .form-check-input {
+  width : 20px !important;
+  height: 20px !important;
+  margin-top: 0px !important;
+}
+
+
+.level-info-radio .form-check-label {
+  margin-left: 5px !important;
+}

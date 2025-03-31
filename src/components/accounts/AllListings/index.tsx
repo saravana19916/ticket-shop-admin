@@ -22,7 +22,7 @@ const index: FC<IAllListingProps> = ({ listDetailsData }) => {
 
   useEffect(() => {
     const updateWidth = () => {
-      setCardWidth(window.innerWidth >= 1400 ? "90%" : "100%");
+      setCardWidth(window.innerWidth >= 1400 ? "100%" : "100%");
     };
   
     updateWidth();
@@ -37,7 +37,6 @@ const index: FC<IAllListingProps> = ({ listDetailsData }) => {
         <div className="row" id="myListings">
           {listDetailsData?.map((l: IListDetailsProps, index: number) => (
             <div key={index} className="col-12 col-xl-6 col-xxl-3 mb-4 d-flex">
-              <ResponsiveTile className="w-100">
                 <Card
                   className="overflow-hidden position-relative"
                   style={{
@@ -89,7 +88,6 @@ const index: FC<IAllListingProps> = ({ listDetailsData }) => {
                     </div>
                   </Card.Body>
                 </Card>
-              </ResponsiveTile>
             </div>
           ))}
         </div>

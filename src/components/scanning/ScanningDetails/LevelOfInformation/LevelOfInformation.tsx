@@ -70,6 +70,7 @@ const LevelOfInformation = () => {
                   id={option.id}
                   label={option.label}
                   value={option.value}
+                  className="level-info-radio"
                 />
               ))}
             </div>
