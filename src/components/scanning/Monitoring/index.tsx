@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { TabPanel } from "@headlessui/react";
 import { ButtonPrimaryLight } from "../../styledComponents/styledButton";
 import { Download, Filter } from "react-feather";
-import { SuccessBadge } from "../../styledComponents/badge";
+import { DangerBadge, SuccessBadge } from "../../styledComponents/badge";
 import { monitoringData } from "./data";
 import { IMonitoringProps } from "./types";
 import ExportScanningDataModal from "./ExportScanningDataModal";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import OffcanvasFilter from "./OffcanvasFilter";
+import { Form } from "react-bootstrap";
 
 const Index = () => {
   const [refresh, setRefresh] = useState<boolean>(true);
@@ -25,16 +26,28 @@ const Index = () => {
 
       <TabPanel>
         <div className="row">
-          <div className="col-9 mb-8">
-            {refresh && (
-              <SuccessBadge>Refresh page every 30 seconds</SuccessBadge>
-            )}
-            <span
-              className="d-inline-block ms-4 fw-semibold text-primary cursor-pointer"
-              onClick={handleRefresh}
-            >
-              {refresh ? "turn off" : "turn on refresh every 30 seconds!"}
-            </span>
+          <div className="col-9 mb-8 d-flex align-items-center">
+            <Form.Group className="d-flex align-items-center gap-3">
+              <label className="custom-switch form-switch me-5 ">
+                <input
+                  type="checkbox"
+                  name="custom-switch-radio1"
+                  className="custom-switch-input"
+                  checked={refresh}
+                  style={{
+                    borderColor: "#ff003e33",
+                  }}
+                  onClick={handleRefresh}
+                />
+                <span
+                  className="custom-switch-indicator custom-switch-indicator-md cursor-pointer"
+                  style={{
+                    borderColor: "#ff003e33",
+                  }}
+                ></span>
+              </label>
+            </Form.Group>
+            <label className="m-0">Refresh every 30 seconds.</label>
           </div>
           <div className="col-3 mb-8">
             <div className="d-flex gap-3 float-end">

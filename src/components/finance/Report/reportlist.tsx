@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Button, Card, Dropdown, Table } from "react-bootstrap";
 import { Imagesdata } from "../../../commondata/commonimages";
 import { Edit2, Trash2 } from "react-feather";
@@ -15,6 +15,7 @@ import {
   WaringBadge,
 } from "../../styledComponents/badge";
 import CustomDropdownMenu from "../../shared/CustomDropdownMenu";
+import AddReportModal from "./AddReportModal";
 
 const headerTable = [
   {
@@ -127,6 +128,9 @@ const rowTable: any = [
 ];
 
 export const ReportList = () => {
+  const [showAddModal, setShowAddModal] = useState<boolean>(false);
+  const handleAddModal = () => setShowAddModal((prev) => !prev);
+
   const getStatusClass = (status: string) => {
     switch (status) {
       case "Paid":
@@ -143,6 +147,11 @@ export const ReportList = () => {
   };
   return (
     <>
+      <AddReportModal
+        show={showAddModal}
+        handleClose={handleAddModal}
+      />
+
       <div className="row pt-lg-5 pt-0 px-0 pt-xl-5">
         <p className="fw-600 fs-26px text-black mb-6">Report List</p>
         <div className="col-12 col-md-6 mb-6">
@@ -165,6 +174,7 @@ export const ReportList = () => {
               type="submit"
               className="btn ms-3"
               style={{ minWidth: "118px" }}
+              onClick={handleAddModal}
             >
               Add Report
             </ButtonPrimary>

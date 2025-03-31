@@ -1,6 +1,9 @@
 import { TabPanel } from "@headlessui/react";
 import React, { useEffect, useState } from "react";
-import { ButtonPrimary } from "../../styledComponents/styledButton";
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+} from "../../styledComponents/styledButton";
 import SwitchReact from "../../shared/SwitchReact";
 import styled from "styled-components";
 import { Form, Offcanvas } from "react-bootstrap";
@@ -13,6 +16,7 @@ import SelectDropDown from "../../shared/SelectDropDown";
 import { scanUserType } from "../../../commondata/addListingPageOne";
 import SwitchButton from "../../shared/SwitchButton";
 import { useNavigate } from "react-router-dom";
+import PickList from "../../shared/PickList";
 
 const data = [
   { date: "19th December", type: "Mater" },
@@ -40,6 +44,7 @@ const index = () => {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(true);
   const [show, setShow] = useState(false);
+  const [addScanTap, setAddScanTap] = useState<number>(1);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -75,14 +80,32 @@ const index = () => {
     setSelectedScanUser(null);
   };
 
-  const handleSave = () => {
+  const handleNext = () => {
+    setAddScanTap(2);
     if (isValid) {
       console.log("Form submitted!");
     }
   };
+  const handleBack = () => {
+    setAddScanTap(1);
+  };
 
   const handleViewDetails = () => {
     navigate(`${import.meta.env.BASE_URL}view-scanning/1`);
+  };
+
+  const initialSource = [
+    "Diamond Table - The Spider",
+    "Priority Access",
+    "Ticket Cancellation",
+    "Flexi Ticket",
+    "Diamond Table - Reactor",
+  ];
+  const initialTarget: string[] = [];
+
+  const handlePickListChange = (source: string[], target: string[]) => {
+    console.log("Updated Source List:", source);
+    console.log("Updated Target List:", target);
   };
 
   return (
@@ -130,10 +153,12 @@ const index = () => {
             <i className="fe fe-arrow-left"></i>
           </span>
           <div className="m-auto d-flex align-items-center gap-3">
-            <span className="text-primary fw-semibold">
+            <span className={addScanTap == 1 ? `text-primary fw-semibold` : ""}>
               1. Scan service name
             </span>
-            <span>2. Tickets</span>
+            <span className={addScanTap == 2 ? `text-primary fw-semibold` : ""}>
+              2. Tickets
+            </span>
           </div>
           {/* <Offcanvas.Title>Offcanvas</Offcanvas.Title> */}
         </Offcanvas.Header>
@@ -149,91 +174,121 @@ const index = () => {
               height: "35rem",
             }}
           >
-            <div className="row">
-              <div className="col-6 mt-3">
-                <Form.Group>
-                  <FormLabelStyled>Scan service name</FormLabelStyled>
-                  <FormInputStyled
-                    type="text"
-                    value={scanServiceName}
-                    onChange={(e) => setScanServiceName(e.target.value)}
-                    className="form-control"
-                  />
-                  <span>A minimum of six characters is required</span>
-                </Form.Group>
-              </div>
+            {addScanTap == 1 && (
+              <div className="row">
+                <div className="col-6 mt-3">
+                  <Form.Group>
+                    <FormLabelStyled>Scan service name</FormLabelStyled>
+                    <FormInputStyled
+                      type="text"
+                      value={scanServiceName}
+                      onChange={(e) => setScanServiceName(e.target.value)}
+                      className="form-control"
+                    />
+                    <span>A minimum of six characters is required</span>
+                  </Form.Group>
+                </div>
 
-              <div className="col-6 mt-3">
-                <Form.Group>
-                  <FormLabelStyled>Scan User</FormLabelStyled>
-                  <SwitchButton
-                    options={["Existing", "New"]}
-                    defaultSelected="New"
-                    onChange={handleSwitchChange}
-                  />
-                </Form.Group>
-              </div>
-              <div className="col-6"></div>
-              {selectedOption === "Existing" && (
                 <div className="col-6 mt-3">
                   <Form.Group>
                     <FormLabelStyled>Scan User</FormLabelStyled>
-                    <SelectDropDown
-                      options={scanUserType}
-                      placeholder="Select"
-                      classNamePrefix="Select"
-                      className="mt-1"
-                      selectedValue={selectedScanUser}
-                      onChange={(e) => setSelectedScanUser(e)}
+                    <SwitchButton
+                      options={["Existing", "New"]}
+                      defaultSelected="New"
+                      onChange={handleSwitchChange}
                     />
                   </Form.Group>
                 </div>
-              )}
-
-              {selectedOption === "New" && (
-                <>
+                <div className="col-6"></div>
+                {selectedOption === "Existing" && (
                   <div className="col-6 mt-3">
                     <Form.Group>
-                      <FormLabelStyled>Username</FormLabelStyled>
-                      <FormInputStyled
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        className="form-control"
+                      <FormLabelStyled>Scan User</FormLabelStyled>
+                      <SelectDropDown
+                        options={scanUserType}
+                        placeholder="Select"
+                        classNamePrefix="Select"
+                        className="mt-1"
+                        selectedValue={selectedScanUser}
+                        onChange={(e) => setSelectedScanUser(e)}
                       />
-                      <span>A minimum of six characters is required</span>
                     </Form.Group>
                   </div>
-                  <div className="col-6"></div>
-                  <div className="col-6 mt-3">
-                    <Form.Group>
-                      <FormLabelStyled>Password</FormLabelStyled>
-                      <FormInputStyled
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="form-control"
-                      />
-                      <span>A minimum of six characters is required</span>
-                    </Form.Group>
-                  </div>
-                </>
-              )}
+                )}
 
-              <div className="col-12 pe-0 mt-5">
-                <div className="float-end">
-                  <ButtonPrimary
-                    type="submit"
-                    className="btn"
-                    style={{ minWidth: "118px" }}
-                    onClick={handleSave}
-                    disabled={!isValid}
-                  >
-                    Save
-                  </ButtonPrimary>
+                {selectedOption === "New" && (
+                  <>
+                    <div className="col-6 mt-3">
+                      <Form.Group>
+                        <FormLabelStyled>Username</FormLabelStyled>
+                        <FormInputStyled
+                          type="text"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                          className="form-control"
+                        />
+                        <span>A minimum of six characters is required</span>
+                      </Form.Group>
+                    </div>
+                    <div className="col-6"></div>
+                    <div className="col-6 mt-3">
+                      <Form.Group>
+                        <FormLabelStyled>Password</FormLabelStyled>
+                        <FormInputStyled
+                          type="password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          className="form-control"
+                        />
+                        <span>A minimum of six characters is required</span>
+                      </Form.Group>
+                    </div>
+                  </>
+                )}
+
+                <div className="col-12 pe-0 mt-5">
+                  <div className="float-end">
+                    <ButtonPrimary
+                      type="submit"
+                      className="btn"
+                      style={{ minWidth: "118px" }}
+                      onClick={handleNext}
+                      disabled={!isValid}
+                    >
+                      Next
+                    </ButtonPrimary>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+            {addScanTap == 2 && (
+              <div className="row h-100" style={{ overflow: "hidden auto" }}>
+                <PickList
+                  sourceItems={initialSource}
+                  targetItems={initialTarget}
+                  onChange={handlePickListChange}
+                />
+                <div className="col-12 pe-0 mt-5">
+                  <div className="float-end">
+                    <ButtonSecondary
+                      type="submit"
+                      className="btn"
+                      style={{ minWidth: "118px" }}
+                      onClick={handleBack}
+                    >
+                      Back
+                    </ButtonSecondary>
+                    <ButtonPrimary
+                      type="submit"
+                      className="btn"
+                      style={{ minWidth: "118px" }}
+                    >
+                      Save
+                    </ButtonPrimary>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </Offcanvas.Body>
       </Offcanvas>

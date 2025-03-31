@@ -77,7 +77,7 @@ const index = () => {
             <span>Export</span>
           </IconButtonPrimary>
         </div>
-        <div className="col-12 table-responsive">
+        <div className="col-12 table-responsive" style={{ height: "50vh" }}>
           <table className="table table-striped table-hover bordered text-nowrap">
             <thead className="border-0">
               <tr>

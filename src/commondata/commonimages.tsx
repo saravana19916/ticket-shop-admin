@@ -202,6 +202,7 @@ import VIPVerticalFront from "../assets/images/VIP-vertical-front.png";
 import VIPVerticalBack from "../assets/images/VIP-vertical-back.png";
 import VIPHorizFront from "../assets/images/VIP-Horiz-front.png";
 import VIPHorizBack from "../assets/images/VIP-Horiz-back.png";
+import Favicon from "../assets/images/brand/favicon.ico";
 export const Imagesdata = (data: any) => {
   const img: any = {
     users15,
@@ -407,6 +408,7 @@ export const Imagesdata = (data: any) => {
     VIPVerticalBack,
     VIPHorizFront,
     VIPHorizBack,
+    Favicon,
   };
 
   return img[data];

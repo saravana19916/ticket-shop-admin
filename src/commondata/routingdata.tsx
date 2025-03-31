@@ -22,6 +22,7 @@ import AddRole from "../components/settings/AddRole";
 import Legal from "../components/legal";
 import AddContact from "../components/legal/AddContact";
 import AddBankAccount from "../components/finance/AddBankAccount";
+import AddInvoice from "../components/finance/AddInvoice";
 
 const CardsDesign = lazy(
   () => import("../components/apps/cardsdesign/cardsdesign")
@@ -547,6 +548,10 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}add-bank`,
     element: <AddBankAccount />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}add-invoice`,
+    element: <AddInvoice />,
   },
   {
     path: `${import.meta.env.BASE_URL}view-scanning/:id`,

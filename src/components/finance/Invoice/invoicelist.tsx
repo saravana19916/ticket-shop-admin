@@ -165,7 +165,7 @@ export const InvoiceList = () => {
             <ArrowDownTrayIcon className="w-5 h-5 me-2 mb-1" />
             <span>Export</span>
           </IconButtonPrimary>
-          <a href="#">
+          <a href="/add-invoice">
             <ButtonPrimary
               type="submit"
               className="btn ms-3"

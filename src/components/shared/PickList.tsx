@@ -16,7 +16,8 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-self: center;
+  // align-self: center;
+  margin-top: 4rem;
 `;
 
 const ListItem = styled.div<{ selected: boolean }>`
@@ -63,23 +64,35 @@ const PickList: React.FC<PickListProps> = ({
 }) => {
   const [sourceList, setSourceList] = useState(sourceItems);
   const [targetList, setTargetList] = useState(targetItems);
-  const [selectedSource, setSelectedSource] = useState<string | null>(null);
-  const [selectedTarget, setSelectedTarget] = useState<string | null>(null);
+  const [selectedSource, setSelectedSource] = useState<string[]>([]);
+  const [selectedTarget, setSelectedTarget] = useState<string[]>([]);
 
-  const moveItem = (
+  const toggleSelection = (
+    item: string,
+    selected: string[],
+    setSelected: Function
+  ) => {
+    console.log(selected);
+
+    setSelected((prev: string[]) =>
+      prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item]
+    );
+  };
+
+  const moveItems = (
     from: string[],
     to: string[],
-    item: string | null,
+    selected: string[],
     setFrom: Function,
-    setTo: Function
+    setTo: Function,
+    setSelected: Function
   ) => {
-    if (item) {
-      const newFrom = from.filter((i) => i !== item);
-      const newTo = [...to, item];
-      setFrom(newFrom);
-      setTo(newTo);
-      onChange(newFrom, newTo);
-    }
+    const newFrom = from.filter((item) => !selected.includes(item));
+    const newTo = [...to, ...selected];
+    setFrom(newFrom);
+    setTo(newTo);
+    setSelected([]);
+    onChange(newFrom, newTo);
   };
 
   return (
@@ -91,8 +104,10 @@ const PickList: React.FC<PickListProps> = ({
         {sourceList.map((item) => (
           <ListItem
             key={item}
-            selected={selectedSource === item}
-            onClick={() => setSelectedSource(item)}
+            selected={selectedSource.includes(item)}
+            onClick={() =>
+              toggleSelection(item, selectedSource, setSelectedSource)
+            }
           >
             {item}
           </ListItem>
@@ -102,12 +117,13 @@ const PickList: React.FC<PickListProps> = ({
       <ButtonContainer>
         <Button
           onClick={() =>
-            moveItem(
+            moveItems(
               sourceList,
               targetList,
               selectedSource,
               setSourceList,
-              setTargetList
+              setTargetList,
+              setSelectedSource
             )
           }
           disabled={!selectedSource}
@@ -116,12 +132,13 @@ const PickList: React.FC<PickListProps> = ({
         </Button>
         <Button
           onClick={() =>
-            moveItem(
+            moveItems(
               targetList,
               sourceList,
               selectedTarget,
               setTargetList,
-              setSourceList
+              setSourceList,
+              setSelectedTarget
             )
           }
           disabled={!selectedTarget}
@@ -137,8 +154,10 @@ const PickList: React.FC<PickListProps> = ({
         {targetList.map((item) => (
           <ListItem
             key={item}
-            selected={selectedTarget === item}
-            onClick={() => setSelectedTarget(item)}
+            selected={selectedTarget.includes(item)}
+            onClick={() =>
+              toggleSelection(item, selectedTarget, setSelectedTarget)
+            }
           >
             {item}
           </ListItem>
