@@ -238,7 +238,7 @@ const _handleAddListing = () => {
   return (
     <>
       <TabPanel>
-        <div className="row" style={{ maxWidth }}>
+        <div className="row">
           <div className="col-6 mb-6">
             <p className="fw-600 fs-26px text-black mb-3">Previous Listings</p>
           </div>
