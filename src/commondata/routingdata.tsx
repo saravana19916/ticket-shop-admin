@@ -23,6 +23,7 @@ import Legal from "../components/legal";
 import AddContact from "../components/legal/AddContact";
 import AddBankAccount from "../components/finance/AddBankAccount";
 import AddInvoice from "../components/finance/AddInvoice";
+import Email from "../components/email";
 
 const CardsDesign = lazy(
   () => import("../components/apps/cardsdesign/cardsdesign")
@@ -544,6 +545,10 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}finance`,
     element: <Finance />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}email`,
+    element: <Email />,
   },
   {
     path: `${import.meta.env.BASE_URL}add-bank`,

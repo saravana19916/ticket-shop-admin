@@ -16,11 +16,79 @@ import {
 } from "react-bootstrap";
 interface IProps {}
 const index: FC<IProps> = () => {
+  const customStyles = {
+    singleValue: (provided: any) => ({
+      ...provided,
+      color: "#4d5875",
+      fontWeight: "400",
+      // fontSize: "14px",
+      fontSize: "0.875rem",
+    }),
+    indicatorSeparator: (provided: any) => ({
+      ...provided,
+      display: "none",
+    }),
+    dropdownIndicator: (provided: any) => ({
+      ...provided,
+      color: "#777",
+    }),
+    control: (provided: any, state: any) => ({
+      ...provided,
+      fontSize: "0.875rem",
+      // padding: "3px",
+      // paddingLeft: "14px",
+      borderRadius: "7px",
+      borderColor: state.isFocused ? "#fec9da80" : "#e5e7eb",
+      // outline: state.isFocused ? "1px solid #fec9da80" : "none",
+      boxShadow: "null",
+      // "&:focus": {
+      //   borderColor: "#fec9da80",
+      //   outline: "1px solid #fec9da80",
+      // },
+      // "&:focus-within": {
+      //   borderColor: "#fec9da80",
+      //   outline: "1px solid #fec9da80",
+      // },
+      "&:hover": {
+        border: "1px solid #e9edf4",
+      },
+    }),
+    menu: (provided: any) => ({
+      ...provided,
+      borderRadius: "8px",
+    }),
+    multiValue: (provided: any) => ({
+      ...provided,
+      color: "#000",
+      fontWeight: "500",
+      fontSize: "18px",
+      margin: "0px",
+      padding: "0px",
+      backgroundColor: "",
+    }),
+    option: (provided: any, state: any) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? "#ED003B" : "transparent",
+      color: state.isSelected ? "#fff" : provided.color,
+      cursor: "pointer",
+      transition: "background-color 0.2s ease",
+      "&:hover": {
+        backgroundColor: state.isSelected ? "#ED003B" : "#fec9da80",
+      },
+    }),
+  };
+
   const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
+    { value: "Lacoste", label: "BHD - (Bahraini Dinar)" },
+    { value: "Spykar", label: "CHF - (Swiss Franc)" },
+    { value: "Puma", label: "KWD - (Kuwaiti Dinar)" },
+    { value: "Armani", label: "USD - (United States Dollar)" },
   ];
+
+  const [payMode, setPayMode] = useState("upi");
+  const handleChangeMode = (pay: string) => {
+    setPayMode(pay);
+  };
   return (
     <>
       <div className="row mb-4">
@@ -170,6 +238,13 @@ const index: FC<IProps> = () => {
                         <div className="col-xl-12 choices-control">
                           <p className="dw-semibold mb-2 mt-2"> Currency : </p>
                           {/* <Select options={options} /> */}
+                          <Select
+                            options={options}
+                            placeholder="Select Currency"
+                            classNamePrefix="Select"
+                            styles={customStyles}
+                            className="mt-1"
+                          />
                         </div>
                       </div>
                     </div>
@@ -591,21 +666,20 @@ const index: FC<IProps> = () => {
             <div className="card-body">
               <div className="row gy-3">
                 <div className="col-xl-12">
-                  <ButtonToolbar>
-                    <ToggleButtonGroup
-                      type="radio"
-                      name="options"
-                      defaultValue={1}
-                      size="sm"
+                  <ButtonGroup size="sm">
+                    <Button
+                      onClick={() => setPayMode("upi")}
+                      variant={payMode == "card" ? "light" : "primary"}
                     >
-                      <ToggleButton value={1}>UPI</ToggleButton>
-                      <ToggleButton value={2}>Credit/Debit Card</ToggleButton>
-                    </ToggleButtonGroup>
-                  </ButtonToolbar>
-                  {/* <ButtonGroup size="sm">
-                    <Button>UPI</Button>
-                    <Button>Credit/Debit Card</Button>
-                  </ButtonGroup> */}
+                      UPI
+                    </Button>
+                    <Button
+                      onClick={() => setPayMode("card")}
+                      variant={payMode == "upi" ? "light" : "primary"}
+                    >
+                      Credit/Debit Card
+                    </Button>
+                  </ButtonGroup>
                 </div>
                 <div className="col-xl-12">
                   <input

@@ -1284,7 +1284,7 @@ export const MENUITEMS = [
             title: "SMS",
           },
           {
-            path: `${import.meta.env.BASE_URL}`,
+            path: `${import.meta.env.BASE_URL}email`,
             type: "link",
             active: false,
             selected: false,

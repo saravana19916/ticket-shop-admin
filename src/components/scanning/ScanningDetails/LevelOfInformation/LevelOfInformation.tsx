@@ -65,12 +65,12 @@ const LevelOfInformation = () => {
                 },
               ].map((option) => (
                 <Form.Check
+                  className="scan-level-of-info"
                   type="radio"
                   name="levelOfInformation"
                   id={option.id}
                   label={option.label}
                   value={option.value}
-                  className="level-info-radio"
                 />
               ))}
             </div>
