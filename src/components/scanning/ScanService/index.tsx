@@ -17,6 +17,7 @@ import { scanUserType } from "../../../commondata/addListingPageOne";
 import SwitchButton from "../../shared/SwitchButton";
 import { useNavigate } from "react-router-dom";
 import PickList from "../../shared/PickList";
+import { Button, ButtonGroup, ToggleButton } from "react-bootstrap";
 
 const data = [
   { date: "19th December", type: "Mater" },
@@ -60,6 +61,16 @@ const index = () => {
   const [isValid, setIsValid] = useState<boolean>(false);
 
   const [selectedOption, setSelectedOption] = useState("New");
+  const [activeTab, setActiveTab] = useState("events");
+  const tabs = [
+    "Events",
+    "Attractions",
+    "Merchandise",
+    "Hotel",
+    "Accommodation",
+    "Flights",
+    "Cruises",
+  ];
 
   useEffect(() => {
     if (selectedOption === "New") {
@@ -115,19 +126,19 @@ const index = () => {
           <div>
             <h5 className="fs-5 fw-semibold text-black">Filter On event</h5>
             <div className="d-flex align-items-center justify-content-between">
-              {/* <SwitchReact checked={checked} onChange={handleChange} /> */}
-              <Form.Group>
-                <label className="custom-switch form-switch me-5 mb-3">
-                  <input
+              <ButtonGroup className="bg-pink-lighter p-2">
+                {tabs.map((tab) => (
+                  <ToggleButton
+                    key={tab}
                     type="radio"
-                    name="custom-switch-radio1"
-                    className="custom-switch-input"
-                    checked={checked}
-                    onClick={() => setChecked((prev) => !prev)}
-                  />
-                  <span className="custom-switch-indicator custom-switch-indicator-md"></span>
-                </label>
-              </Form.Group>
+                    variant={activeTab === tab.toLowerCase() ? "primary" : "light"}
+                    className="fw-semibold"
+                    checked={activeTab === tab.toLowerCase()}
+                    onClick={() => setActiveTab(tab.toLowerCase())} id={""} value={""}                  >
+                    {tab}
+                  </ToggleButton>
+                ))}
+              </ButtonGroup>
               <ButtonPrimary
                 type="submit"
                 className="btn"

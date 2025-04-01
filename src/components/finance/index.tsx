@@ -9,6 +9,7 @@ import BadgesPills from "../bootstrap/badgespills/badgespills";
 import Buttons from "../bootstrap/buttons/buttons";
 import ReportList from "./Report/reportlist";
 import BankAccount from "./BankAccount/bankaccount";
+import Plan from "./Plan/plan";
 const tabList = ["Plan", "Bank Account", "Invoice", "Reports"];
 const index = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
@@ -44,7 +45,7 @@ const index = () => {
               {(() => {
                 switch (selectedTab) {
                   case 0:
-                    return <></>;
+                    return <Plan />;
                   case 1:
                     return <BankAccount />;
                   case 2:
