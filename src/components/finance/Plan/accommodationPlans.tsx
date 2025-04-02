@@ -249,7 +249,7 @@ const organizer = [
   },
 ];
 
-const AttractionPlans = () => {
+const AccommodationPlans = () => {
   return (
     <Container className="mt-5">
       <div className="shadow-lg p-4 bg-white rounded">
@@ -464,4 +464,4 @@ const AttractionPlans = () => {
   );
 };
 
-export default AttractionPlans;
+export default AccommodationPlans;

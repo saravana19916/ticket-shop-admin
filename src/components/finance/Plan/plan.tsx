@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import EventPlans from "./eventPlans"; // Assuming this component exists
 import AttractionPlans from "./attractionPlans";
+import MerchandisePlans from "./merchandisePlans";
+import HotelPlans from "./hotelPlans";
+import AccommodationPlans from "./accommodationPlans";
+import FlightPlans from "./flightPlans";
+import CruisesPlans from "./cruisesPlans";
 
 const TabbedContent = () => {
   const [activeTab, setActiveTab] = useState("events");
@@ -24,15 +29,15 @@ const TabbedContent = () => {
       case "attractions":
         return <AttractionPlans />;
       case "merchandise":
-        return <h3>Merchandise Details Coming Soon...</h3>;
+        return <MerchandisePlans />;
       case "hotel":
-        return <h3>Find the Best Hotels Nearby...</h3>;
+        return <HotelPlans />;
       case "accommodation":
-        return <h3>Explore Accommodation Options...</h3>;
+        return <AccommodationPlans />;
       case "flights":
-        return <h3>Flight Booking Options...</h3>;
+        return <FlightPlans />;
       case "cruises":
-        return <h3>Check Out the Best Cruise Deals...</h3>;
+        return <CruisesPlans />;
       default:
         return <h3>Coming Soon...</h3>;
     }
@@ -41,13 +46,13 @@ const TabbedContent = () => {
   return (
     <>
       {/* Toggle Button Group */}
-      <ButtonGroup className="bg-pink-lighter p-2">
+      <ButtonGroup className="bg-pink-lighter p-3">
         {tabs.map((tab) => (
           <ToggleButton
             key={tab}
             type="radio"
             variant={activeTab === tab.toLowerCase() ? "primary" : "light"}
-            className="fw-semibold"
+            className="fw-semibold p-3"
             checked={activeTab === tab.toLowerCase()}
             onClick={() => setActiveTab(tab.toLowerCase())}
             id={tab.toLowerCase()}
