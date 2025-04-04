@@ -15,6 +15,10 @@ import { Link } from "react-router-dom";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { onlineusers } from "../../commondata/commondata";
 import { Imagesdata } from "../../commondata/commonimages";
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+} from "../styledComponents/styledButton";
 
 interface IProps {}
 const index: FC<IProps> = () => {
@@ -810,21 +814,20 @@ const index: FC<IProps> = () => {
                   </div>
                   <Nav>
                     <div className="d-flex">
-                      <button
+                    <button
                         aria-label="button"
                         type="button"
                         className="btn btn-icon btn-light ms-2 d-none d-sm-block"
                       >
-                        {" "}
-                        <i className="bx bx-phone"></i>{" "}
+                        <i className="bx bx-phone" style={{ fontSize: 24, marginTop: 4 }}></i>
                       </button>
+
                       <button
                         aria-label="button"
                         type="button"
                         className="btn btn-icon btn-light ms-2 d-none d-sm-block"
                       >
-                        {" "}
-                        <i className="bx bx-video"></i>{" "}
+                        <i className="bx bx-video" style={{ fontSize: 24, marginTop: 4 }}></i>
                       </button>
                       <button
                         aria-label="button"
@@ -838,6 +841,7 @@ const index: FC<IProps> = () => {
                         <i
                           className="bx bx-user-circle"
                           id="responsive-chat-close"
+                          style={{ fontSize: 24, marginTop: 4 }}
                         ></i>{" "}
                       </button>
                       {/* <InputGroup>
@@ -1070,13 +1074,13 @@ const index: FC<IProps> = () => {
                     {" "}
                     <i className="ri-mic-line"></i>{" "}
                   </a>{" "}
-                  <a
-                    className="btn btn-primary d-inline-flex"
-                    href="javascript:void(0)"
+                  <ButtonPrimary
+                    type="submit"
+                    className="btn m-3"
+                    style={{ minWidth: "118px" }}
                   >
-                    {" "}
-                    <i className="ri-send-plane-2-line me-2"></i>Send{" "}
-                  </a>{" "}
+                    Send
+                  </ButtonPrimary>
                 </div>
                 {/* <div className="main-chat-footer">
 
