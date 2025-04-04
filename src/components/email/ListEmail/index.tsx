@@ -15,6 +15,7 @@ import {
 } from "../../styledComponents/badge";
 import CustomDropdownMenu from "../../shared/CustomDropdownMenu";
 import { ButtonGroup, Dropdown } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 interface EmailData {
   title: string;
   type: string;
@@ -112,6 +113,11 @@ const rowTable: EmailData[] = [
 ];
 
 const index = () => {
+  const navigate = useNavigate();
+  const _handleEditEmail = (id: number) => {
+    navigate(`/create-email/${id}`);
+  };
+
   return (
     <>
       <div className="row pt-lg-5 pt-0 px-0 pt-xl-5">
@@ -134,7 +140,7 @@ const index = () => {
           >
             View analytics
           </ButtonSecondary>
-          <a href="#">
+          <a href="/create-email/0">
             <ButtonPrimary
               type="submit"
               className="btn ms-3"
@@ -324,7 +330,9 @@ const index = () => {
                       menuItems={[
                         {
                           itemName: "Edit",
-                          onClick: () => {},
+                          onClick: () => {
+                            _handleEditEmail(index + 1);
+                          },
                           icon: <Edit2 size={20} />,
                         },
                         {

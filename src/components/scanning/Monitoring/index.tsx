@@ -64,7 +64,7 @@ const Index = () => {
               <thead>
                 <tr>
                   <th className="fw-bold text-center border-end text-capitalize">
-                    Product
+                    Event
                   </th>
                   <th className="fw-bold text-center border-end text-capitalize">
                     Scanned

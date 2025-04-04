@@ -2,7 +2,7 @@ import { IMonitoringProps } from "./types";
 
 export const monitoringData: IMonitoringProps[] = [
   {
-    product: "Event A",
+    product: "Silver Ticket",
     scanned: 120,
     remaining: 80,
     total: 200,
@@ -10,7 +10,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "In Progress",
   },
   {
-    product: "Event B",
+    product: "Gold Ticket",
     scanned: 50,
     remaining: 150,
     total: 200,
@@ -18,7 +18,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Pending",
   },
   {
-    product: "Event C",
+    product: "Platinum Ticket",
     scanned: 200,
     remaining: 0,
     total: 200,
@@ -26,7 +26,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Completed",
   },
   {
-    product: "Event D",
+    product: "Diamond Ticket",
     scanned: 75,
     remaining: 125,
     total: 200,
@@ -34,7 +34,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "In Progress",
   },
   {
-    product: "Event E",
+    product: "VIP Ticket",
     scanned: 180,
     remaining: 20,
     total: 200,
@@ -42,7 +42,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Almost Done",
   },
   {
-    product: "Event F",
+    product: "Standard Ticket",
     scanned: 40,
     remaining: 160,
     total: 200,
@@ -50,7 +50,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Pending",
   },
   {
-    product: "Event G",
+    product: "Exclusive Pass",
     scanned: 95,
     remaining: 105,
     total: 200,
@@ -58,7 +58,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "In Progress",
   },
   {
-    product: "Event H",
+    product: "Early Bird Ticket",
     scanned: 10,
     remaining: 190,
     total: 200,
@@ -66,7 +66,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Pending",
   },
   {
-    product: "Event I",
+    product: "Front Row Ticket",
     scanned: 190,
     remaining: 10,
     total: 200,
@@ -74,7 +74,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Almost Done",
   },
   {
-    product: "Event J",
+    product: "Backstage Pass",
     scanned: 30,
     remaining: 170,
     total: 200,
@@ -82,7 +82,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Pending",
   },
   {
-    product: "Event K",
+    product: "Lounge Ticket",
     scanned: 110,
     remaining: 90,
     total: 200,
@@ -90,7 +90,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "In Progress",
   },
   {
-    product: "Event L",
+    product: "Group Ticket",
     scanned: 50,
     remaining: 150,
     total: 200,
@@ -98,7 +98,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Pending",
   },
   {
-    product: "Event M",
+    product: "Family Pack Ticket",
     scanned: 150,
     remaining: 50,
     total: 200,
@@ -106,7 +106,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Almost Done",
   },
   {
-    product: "Event N",
+    product: "Promo Ticket",
     scanned: 5,
     remaining: 195,
     total: 200,
@@ -114,7 +114,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Pending",
   },
   {
-    product: "Event O",
+    product: "Season Pass",
     scanned: 175,
     remaining: 25,
     total: 200,
@@ -122,7 +122,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "In Progress",
   },
   {
-    product: "Event P",
+    product: "Corporate Ticket",
     scanned: 80,
     remaining: 120,
     total: 200,
@@ -130,7 +130,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "In Progress",
   },
   {
-    product: "Event Q",
+    product: "Ultimate Experience Pass",
     scanned: 95,
     remaining: 105,
     total: 200,
@@ -138,7 +138,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "In Progress",
   },
   {
-    product: "Event R",
+    product: "Premium Ticket",
     scanned: 200,
     remaining: 0,
     total: 200,
@@ -146,7 +146,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Completed",
   },
   {
-    product: "Event S",
+    product: "Super VIP Ticket",
     scanned: 160,
     remaining: 40,
     total: 200,
@@ -154,7 +154,7 @@ export const monitoringData: IMonitoringProps[] = [
     status: "Almost Done",
   },
   {
-    product: "Event T",
+    product: "Budget Ticket",
     scanned: 20,
     remaining: 180,
     total: 200,

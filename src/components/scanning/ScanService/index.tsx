@@ -6,7 +6,13 @@ import {
 } from "../../styledComponents/styledButton";
 import SwitchReact from "../../shared/SwitchReact";
 import styled from "styled-components";
-import { Form, Offcanvas } from "react-bootstrap";
+import {
+  Form,
+  Offcanvas,
+  Button,
+  ButtonGroup,
+  ToggleButton,
+} from "react-bootstrap";
 import {
   FormDescriptionStyled,
   FormInputStyled,
@@ -17,7 +23,7 @@ import { scanUserType } from "../../../commondata/addListingPageOne";
 import SwitchButton from "../../shared/SwitchButton";
 import { useNavigate } from "react-router-dom";
 import PickList from "../../shared/PickList";
-import { Button, ButtonGroup, ToggleButton } from "react-bootstrap";
+import CustomTab3 from "../../shared/CustomTab3";
 
 const data = [
   { date: "19th December", type: "Mater" },
@@ -32,7 +38,7 @@ const Container = styled.div`
 `;
 
 const StyledSpan = styled.span`
-  border: 1px solid #e9edf4;
+  border: 1px solid #d1d5db;
   border-radius: 16px;
   padding: 2.3rem;
   color: #5b5b5b;
@@ -61,6 +67,7 @@ const index = () => {
   const [isValid, setIsValid] = useState<boolean>(false);
 
   const [selectedOption, setSelectedOption] = useState("New");
+
   const [activeTab, setActiveTab] = useState("events");
   const tabs = [
     "Events",
@@ -124,21 +131,8 @@ const index = () => {
       <TabPanel>
         <div>
           <div>
-            <h5 className="fs-5 fw-semibold text-black">Filter On event</h5>
-            <div className="d-flex align-items-center justify-content-between">
-              <ButtonGroup className="bg-pink-lighter p-2">
-                {tabs.map((tab) => (
-                  <ToggleButton
-                    key={tab}
-                    type="radio"
-                    variant={activeTab === tab.toLowerCase() ? "primary" : "light"}
-                    className="fw-semibold"
-                    checked={activeTab === tab.toLowerCase()}
-                    onClick={() => setActiveTab(tab.toLowerCase())} id={""} value={""}                  >
-                    {tab}
-                  </ToggleButton>
-                ))}
-              </ButtonGroup>
+            <div className="d-flex align-items-center justify-content-between mb-7">
+              <CustomTab3 tabs={tabs} />
               <ButtonPrimary
                 type="submit"
                 className="btn"
@@ -280,7 +274,7 @@ const index = () => {
                   onChange={handlePickListChange}
                 />
                 <div className="col-12 pe-0 mt-5">
-                  <div className="float-end">
+                  <div className="d-flex gap-3 float-end">
                     <ButtonSecondary
                       type="submit"
                       className="btn"

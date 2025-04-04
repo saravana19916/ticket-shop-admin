@@ -1048,7 +1048,7 @@ const Header1 = () => {
                                 </Dropdown.Item>
                               </li>
                               <li>
-                                <Dropdown.Item href="#">
+                                <Dropdown.Item href="/chat">
                                   <i className="dropdown-icon bx bx-chat fs-5"></i>{" "}
                                   Chat
                                 </Dropdown.Item>

@@ -70020,8 +70020,3 @@ padding: 10px;
 .scan-level-of-info .form-check-label {
   margin-left: 5px !important;
 }
-
-
-#plan-table>:not(caption)>*>* {
-    padding: 1rem 1rem !important;
-}

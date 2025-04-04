@@ -23,7 +23,7 @@ import Legal from "../components/legal";
 import AddContact from "../components/legal/AddContact";
 import AddBankAccount from "../components/finance/AddBankAccount";
 import AddInvoice from "../components/finance/AddInvoice";
-import Email from "../components/email";
+import CreateEmail from "../components/email/CreateEmail";
 
 const CardsDesign = lazy(
   () => import("../components/apps/cardsdesign/cardsdesign")
@@ -161,6 +161,7 @@ const AddShops = lazy(() => import("../components/shops/AddShops"));
 const SeatsIoDesigner = lazy(
   () => import("../components/SeatPlanner/SeatsIoDesigner")
 );
+const Email = lazy(() => import("../components/email"));
 // const SignIn = lazy(() => import("../components/authentication/login/SignIn"));
 // const SignInOptions = lazy(
 //   () => import("../components/authentication/signInOptions")
@@ -513,6 +514,14 @@ export const RouterData = [
   {
     path: `${import.meta.env.BASE_URL}seating-plan`,
     element: <SeatsIoDesigner />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}emails`,
+    element: <Email />,
+  },
+  {
+    path: `${import.meta.env.BASE_URL}create-email/:id`,
+    element: <CreateEmail />,
   },
   {
     path: `${import.meta.env.BASE_URL}orders`,
