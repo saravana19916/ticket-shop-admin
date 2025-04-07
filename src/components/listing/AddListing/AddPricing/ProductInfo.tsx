@@ -25,6 +25,10 @@ interface IProductInfoProps {
 }
 
 const ProductInfo: FC<IProductInfoProps> = ({}) => {
+  const [inputValue, setInputValue] = useState('160');
+  const handleInputChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    setInputValue(event.target.value);
+  };
   const [color, setColor] = useState("#00D1FF");
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -412,7 +416,8 @@ const ProductInfo: FC<IProductInfoProps> = ({}) => {
                     className="form-control mt-1 fw-semibold"
                     type="text"
                     name="otherTaxes1"
-                    value="160.00"
+                    value={inputValue}
+                    onChange={handleInputChange}
                     style={{ border: "1px #fff", color: "#000" }}
                   />
                   <FormInputGroupLabel
